@@ -1,0 +1,40 @@
+<!-- @dsCard group="Colors" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;background:#fff;color:var(--fg1);}
+  .wrap{padding:24px 28px;display:flex;flex-direction:column;gap:18px;}
+  .grp{display:flex;flex-direction:column;gap:9px;}
+  .cap{font-family:var(--font-mono);font-size:9px;text-transform:uppercase;letter-spacing:.7px;color:var(--fg4);}
+  .tags{display:flex;gap:8px;flex-wrap:wrap;}
+  .tag{font-size:10px;font-weight:500;padding:3px 9px;border-radius:9999px;}
+  .scores{display:flex;gap:8px;}
+  .score{font-size:11px;font-weight:600;padding:3px 11px;border-radius:9999px;color:#fff;font-family:var(--font-mono);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="grp">
+    <span class="cap">News / category tags</span>
+    <div class="tags">
+      <span class="tag" style="background:var(--tag-funding-bg);color:var(--tag-funding-fg)">Funding</span>
+      <span class="tag" style="background:var(--tag-tech-bg);color:var(--tag-tech-fg)">Technology</span>
+      <span class="tag" style="background:var(--tag-market-bg);color:var(--tag-market-fg)">Market</span>
+      <span class="tag" style="background:var(--tag-policy-bg);color:var(--tag-policy-fg)">Policy</span>
+      <span class="tag" style="background:var(--tag-people-bg);color:var(--tag-people-fg)">People</span>
+    </div>
+  </div>
+  <div class="grp">
+    <span class="cap">Match score scale</span>
+    <div class="scores">
+      <span class="score" style="background:var(--score-high)">87 · high</span>
+      <span class="score" style="background:var(--score-mid)">44 · mid</span>
+      <span class="score" style="background:var(--score-low)">12 · low</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!-- @dsCard group="Colors" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;background:#fff;color:var(--fg1);}
+  .wrap{padding:22px 28px;display:flex;gap:12px;align-items:stretch;}
+  .chip{border-radius:10px;border:1px solid var(--border-1);overflow:hidden;width:120px;}
+  .chip .fill{height:64px;}
+  .chip .cap{padding:7px 9px;font-family:var(--font-mono);font-size:10px;color:var(--fg3);}
+  .chip .cap b{display:block;color:var(--fg1);font-size:11px;font-weight:600;font-family:var(--font-sans);margin-bottom:1px;}
+  .demo{flex:1;display:flex;flex-direction:column;gap:10px;justify-content:center;padding-left:6px;}
+  .nav{display:flex;align-items:center;gap:10px;background:var(--brand-tint);color:var(--brand-strong);padding:8px 12px;border-radius:8px;font-size:13px;font-weight:500;}
+  .mono-tile{width:32px;height:32px;border-radius:6px;background:var(--brand);color:var(--brand-fg);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;font-weight:500;}
+  .ico{width:16px;height:16px;}
+  .note{font-size:11px;color:var(--fg4);font-family:var(--font-mono);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="chip">
+    <div class="fill" style="background:#DE5533"></div>
+    <div class="cap"><b>Coral</b>#DE5533</div>
+  </div>
+  <div class="chip">
+    <div class="fill" style="background:#BC2D29"></div>
+    <div class="cap"><b>Brick</b>#BC2D29</div>
+  </div>
+  <div class="chip">
+    <div class="fill" style="background:#FFA103"></div>
+    <div class="cap"><b>Amber</b>#FFA103</div>
+  </div>
+  <div class="demo">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <div class="mono-tile">EA</div>
+      <span class="nav">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 3l9 6.5"/><path d="M5 10v10h14V10"/></svg>
+        Startups
+      </span>
+    </div>
+    <span class="note">monogram (coral) · active nav (tint + brick)</span>
+  </div>
+</div>
+</body>
+</html>

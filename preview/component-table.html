@@ -1,0 +1,43 @@
+<!-- @dsCard group="Components" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;background:#fff;color:var(--fg1);font-family:var(--font-sans);}
+  .wrap{padding:22px 28px;}
+  .tbl{border:1px solid var(--border-1);border-radius:12px;overflow:hidden;}
+  table{width:100%;border-collapse:collapse;font-size:13px;}
+  thead{background:var(--surface-muted);}
+  th{text-align:left;padding:10px 14px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--fg3);}
+  th .s{display:inline-flex;align-items:center;gap:4px;}
+  td{padding:11px 14px;border-top:1px solid var(--border-2);}
+  tr:hover td{background:var(--surface-muted);}
+  .lnk{font-weight:500;color:var(--fg1);text-decoration:none;}
+  .lnk:hover{text-decoration:underline;}
+  .sdot{font-size:10px;color:#fff;padding:2px 8px;border-radius:9999px;}
+  .mut{color:var(--fg3);}
+  svg{width:12px;height:12px;color:var(--fg4);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="tbl">
+    <table>
+      <thead><tr>
+        <th><span class="s">Company <i data-lucide="chevron-up"></i></span></th>
+        <th>Sector</th><th>Stage</th><th>Location</th>
+      </tr></thead>
+      <tbody>
+        <tr><td><a class="lnk">Mosa Meat</a></td><td><span class="sdot" style="background:#7F77DD">Food as a Medicine</span></td><td class="mut">Series B</td><td class="mut">Maastricht, NL</td></tr>
+        <tr><td><a class="lnk">Apeel</a></td><td><span class="sdot" style="background:#EF9F27">Food Logistics</span></td><td class="mut">Growth</td><td class="mut">Santa Barbara, US</td></tr>
+        <tr><td><a class="lnk">Aerofarms</a></td><td><span class="sdot" style="background:#1D9E75">Agritech</span></td><td class="mut">Series C</td><td class="mut">Newark, US</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>

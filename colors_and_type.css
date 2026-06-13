@@ -1,0 +1,208 @@
+/* =========================================================================
+   Eatable Adventures — Startup Intelligence (Ecosystem DB)
+   colors_and_type.css — design tokens
+   Stack of record: Next.js 14 + Tailwind + shadcn/ui (new-york base)
+   Source: github.com/joselcabanero/ecosystem-db  (src/app/globals.css,
+           tailwind.config.ts, lib/ontology-colors.ts)
+   Color: Eatable Adventures warm brand palette (user-supplied) layered over
+          a warmed shadcn neutral scale.
+   ========================================================================= */
+
+/* ---- Webfonts -----------------------------------------------------------
+   App loads Inter (sans) + IBM Plex Mono (mono) via next/font (Google).
+   We mirror that with a Google Fonts import. If you need offline TTFs,
+   drop them in fonts/ and swap the @import for @font-face. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+  /* ===== TYPE FAMILIES ================================================== */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  /* App enables Inter stylistic sets (slashed zero / alt chars) */
+  --font-feature-settings: 'cv11', 'ss01';
+
+  /* ===== BRAND PALETTE (raw — the 8 supplied swatches) ================= */
+  --paper: #FFFFFF;   /* pure white            */
+  --cream: #FFF9EE;   /* warm ivory            */
+  --sand:  #F5EACE;   /* pale sand             */
+  --amber: #FFA103;   /* amber — highlight     */
+  --coral: #DE5533;   /* terracotta — identity */
+  --brick: #BC2D29;   /* brick red — deep id   */
+  --wine:  #450E14;   /* deep wine — darkest   */
+  --ink:   #1E1E1E;   /* charcoal — text/action */
+
+  /* ===== SEMANTIC TOKENS (shadcn shape, full hsl() colors) ============= */
+  --background: hsl(0 0% 100%);
+  --foreground: hsl(0 0% 12%);            /* #1E1E1E charcoal text */
+  --card: hsl(0 0% 100%);
+  --card-foreground: hsl(0 0% 12%);
+  --popover: hsl(0 0% 100%);
+  --popover-foreground: hsl(0 0% 12%);
+  --primary: hsl(0 0% 12%);               /* #1E1E1E charcoal buttons */
+  --primary-foreground: hsl(40 100% 97%); /* #FFF9EE cream */
+  --secondary: hsl(41 71% 95%);           /* #FBF3E2 warm fill */
+  --secondary-foreground: hsl(0 0% 12%);
+  --muted: hsl(41 71% 95%);
+  --muted-foreground: hsl(25 9% 45%);     /* #7C726C warm muted */
+  --accent: hsl(13 71% 53%);              /* #DE5533 coral */
+  --accent-foreground: hsl(40 100% 97%);
+  --destructive: hsl(2 64% 45%);          /* #BC2D29 brick */
+  --destructive-foreground: hsl(40 100% 97%);
+  --border: hsl(40 41% 89%);              /* #EBE2D2 warm border */
+  --input: hsl(40 41% 89%);
+  --ring: hsl(13 71% 53%);                /* coral focus ring */
+  --radius: 0.5rem;                   /* 8px */
+
+  /* ===== CONVENIENCE HEX (resolved, warmed neutrals) =================== */
+  --bg:            #ffffff;
+  --fg1:           #1E1E1E;   /* primary text / charcoal */
+  --fg2:           #4A433F;   /* warm-700 secondary text */
+  --fg3:           #7C726C;   /* warm-500 muted / captions */
+  --fg4:           #ABA097;   /* warm-400 faint meta / placeholder */
+  --surface:       #ffffff;
+  --surface-muted: #FFFBF4;   /* warm-50 hover / table head */
+  --surface-fill:  #FBF3E2;   /* warm-100 chips / wells */
+  --surface-warm:  #FFF9EE;   /* cream section background */
+  --surface-sand:  #F5EACE;   /* sand band / emphasis surface */
+  --border-1:      #EBE2D2;   /* warm-200 default border */
+  --border-2:      #F4ECDD;   /* warm-100 hairline dividers */
+  --black:         #1E1E1E;   /* primary action surface */
+  --black-hover:   #38302C;   /* warm-900 pressed */
+
+  /* ===== BRAND ========================================================= */
+  /* Identity accent — the "EA" monogram, active nav, links, focus.
+     Coral is the headline brand color; brick is its darker/readable pair;
+     amber is the highlight; cream is the text on brand fills. */
+  --brand:        #DE5533;    /* Eatable Adventures coral */
+  --brand-strong: #BC2D29;    /* brick — readable brand text on light */
+  --brand-amber:  #FFA103;    /* amber highlight / accent */
+  --brand-tint:   #FDECE4;    /* active-nav / selected background */
+  --brand-fg:     #FFF9EE;    /* cream text on brand bg */
+  --brand-hover:  #C6431F;    /* darker pressed coral */
+
+  /* ===== NODE-TYPE COLORS (graph + entity badges) ====================== */
+  --node-startup:   #2563eb;  /* blue   */
+  --node-investor:  #16a34a;  /* green  */
+  --node-person:    #9333ea;  /* purple */
+  --node-corporate: #ea580c;  /* orange */
+
+  /* ===== TAXONOMY / SECTOR COLORS (canonical ontology map) ============= */
+  --sector-agritech:        #1D9E75;
+  --sector-innovative-food: #639922;
+  --sector-logistics:       #EF9F27;
+  --sector-retail:          #D85A30;
+  --sector-kitchen:         #97C459;
+  --sector-medicine:        #7F77DD;
+  --sector-other:           #888780;
+
+  /* ===== NEWS / STATUS BADGE COLORS ==================================== */
+  --tag-funding-bg:   #dcfce7; --tag-funding-fg:   #15803d; /* green  */
+  --tag-tech-bg:      #dbeafe; --tag-tech-fg:      #1d4ed8; /* blue   */
+  --tag-market-bg:    #fef3c7; --tag-market-fg:    #b45309; /* amber  */
+  --tag-policy-bg:    #f3e8ff; --tag-policy-fg:    #7e22ce; /* purple */
+  --tag-people-bg:    #ffe4e6; --tag-people-fg:    #be123c; /* rose   */
+
+  /* match-score scale (programs / matrix) */
+  --score-high:   #16a34a;  /* >= 60 */
+  --score-mid:    #d97706;  /* 30-59 */
+  --score-low:    #dc2626;  /* < 30  */
+
+  /* ===== ELEVATION ===================================================== */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow:    0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  /* ===== RADII ========================================================= */
+  --radius-sm: 4px;   /* calc(radius - 4px) */
+  --radius-md: 6px;   /* calc(radius - 2px) */
+  --radius-lg: 8px;   /* --radius */
+  --radius-xl: 12px;  /* cards/containers (rounded-xl) */
+  --radius-full: 9999px;
+
+  /* ===== SPACING (Tailwind 4px base, common steps) ===================== */
+  --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px;
+  --space-5: 20px; --space-6: 24px; --space-8: 32px; --space-12: 48px;
+
+  /* ===== TYPE SCALE (resolved from app usage) ========================== */
+  --text-page-title: 24px;  /* h1 — "Startups"  (text-2xl font-medium tracking-tight) */
+  --text-section:    20px;  /* h2 page section  (text-xl font-semibold) */
+  --text-card-title: 14px;  /* card header      (text-sm font-semibold) */
+  --text-body:       14px;  /* table / body     (text-sm) */
+  --text-sm:         13px;  /* dense rows       */
+  --text-meta:       12px;  /* captions / meta  (text-xs) */
+  --text-micro:      11px;  /* tertiary meta    */
+  --text-label:      9px;   /* mono group label (uppercase, tracked) */
+}
+
+/* =========================================================================
+   SEMANTIC ELEMENT STYLES — apply directly or copy the rules you need.
+   ========================================================================= */
+body {
+  font-family: var(--font-sans);
+  font-feature-settings: var(--font-feature-settings);
+  -webkit-font-smoothing: antialiased;
+  color: var(--fg1);
+  background: var(--bg);
+}
+
+h1, .h1 {
+  font-size: var(--text-page-title);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+h2, .h2 {
+  font-size: var(--text-section);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+h3, .h3 {
+  font-size: var(--text-card-title);
+  font-weight: 600;
+  line-height: 1.3;
+}
+p, .body {
+  font-size: var(--text-body);
+  line-height: 1.55;
+  color: var(--fg1);
+}
+.muted {
+  font-size: var(--text-body);
+  color: var(--fg3);
+}
+.meta {
+  font-size: var(--text-meta);
+  color: var(--fg3);
+}
+
+/* The signature mono "group label" used for sidebar/section headers */
+.label-mono {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  color: var(--fg4);
+}
+/* Uppercase section eyebrow used on the Home page */
+.eyebrow {
+  font-size: var(--text-meta);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--fg3);
+}
+
+code, .mono {
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+a.link {
+  color: var(--fg1);
+  font-weight: 500;
+  text-decoration: none;
+}
+a.link:hover { text-decoration: underline; }

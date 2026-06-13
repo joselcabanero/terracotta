@@ -1,0 +1,24 @@
+<!-- @dsCard group="Spacing" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;background:#fafafa;color:var(--fg1);}
+  .wrap{padding:30px 28px;display:flex;gap:24px;align-items:center;justify-content:space-around;}
+  .item{display:flex;flex-direction:column;gap:14px;align-items:center;}
+  .box{width:96px;height:60px;background:#fff;border:1px solid var(--border-1);border-radius:12px;}
+  .nm{font-family:var(--font-mono);font-size:10px;color:var(--fg3);}
+  .nm b{display:block;color:var(--fg1);font-family:var(--font-sans);font-size:11px;font-weight:600;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="item"><div class="box" style="box-shadow:none"></div><div class="nm"><b>rest</b>border only</div></div>
+  <div class="item"><div class="box" style="box-shadow:var(--shadow-sm)"></div><div class="nm"><b>sm</b>hover</div></div>
+  <div class="item"><div class="box" style="box-shadow:var(--shadow-md)"></div><div class="nm"><b>md</b>popover</div></div>
+  <div class="item"><div class="box" style="box-shadow:var(--shadow-lg)"></div><div class="nm"><b>lg</b>dialog</div></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!-- @dsCard group="Components" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;background:#fff;color:var(--fg1);font-family:var(--font-sans);}
+  .wrap{padding:24px 28px;display:flex;flex-direction:column;gap:16px;}
+  .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  button{font-family:var(--font-sans);font-size:14px;font-weight:500;display:inline-flex;align-items:center;gap:8px;cursor:pointer;border:none;white-space:nowrap;transition:background .12s,color .12s;}
+  .btn-primary{background:var(--black);color:#fff;padding:8px 14px;border-radius:8px;}
+  .btn-primary:hover{background:var(--black-hover);}
+  .btn-outline{background:#fff;color:var(--fg1);border:1px solid var(--border-1);padding:8px 14px;border-radius:8px;}
+  .btn-outline:hover{background:var(--surface-muted);border-color:var(--fg4);}
+  .btn-ghost{background:transparent;color:var(--fg2);padding:8px 12px;border-radius:8px;}
+  .btn-ghost:hover{background:var(--surface-fill);color:var(--fg1);}
+  .btn-sm{font-size:12px;padding:6px 11px;border-radius:8px;border:1px solid var(--border-1);background:#fff;}
+  .btn-sm:hover{background:var(--surface-muted);}
+  .btn-destructive{background:var(--destructive);color:#fff;padding:8px 14px;border-radius:8px;}
+  .cap{font-family:var(--font-mono);font-size:9px;text-transform:uppercase;letter-spacing:.7px;color:var(--fg4);}
+  svg{width:16px;height:16px;}
+  .btn-sm svg{width:13px;height:13px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="row">
+    <button class="btn-primary"><i data-lucide="plus"></i>Add Startup</button>
+    <button class="btn-outline">Cancel</button>
+    <button class="btn-ghost">View all</button>
+    <button class="btn-destructive"><i data-lucide="trash-2"></i>Delete</button>
+  </div>
+  <div class="row">
+    <span class="cap">small / secondary</span>
+    <button class="btn-sm"><i data-lucide="sliders-horizontal"></i>Filters</button>
+    <button class="btn-sm"><i data-lucide="download"></i>Export</button>
+    <button class="btn-sm"><i data-lucide="bookmark"></i>Save filter</button>
+  </div>
+</div>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>
