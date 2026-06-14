@@ -1,0 +1,109 @@
+/* =========================================================================
+   Eatable Adventures — grid.css
+   The Müller-Brockmann grid: a 12-column modular grid on an 8px baseline.
+   Objective, mathematical, repeatable. Layout decisions are made on the
+   grid — asymmetry comes from WHERE you place elements in the columns,
+   not from arbitrary offsets. Load AFTER colors_and_type.css.
+   ========================================================================= */
+
+:root {
+  /* ---- Grid structure ---- */
+  --grid-cols:    12; /* @kind other */
+  --grid-gutter:  24px;     /* space between columns (3 baselines) */
+  --grid-margin:  32px;     /* page margin (4 baselines)           */
+  --grid-max:     1440px;   /* max line of the type area           */
+
+  /* ---- Baseline rhythm ---- */
+  --baseline:     8px;      /* everything snaps to multiples of 8   */
+
+  /* ---- 8px spacing scale (vertical & horizontal rhythm) ---- */
+  --b1:   8px;   --b2:  16px;  --b3:  24px;  --b4:  32px;
+  --b5:  40px;   --b6:  48px;  --b8:  64px;  --b10: 80px;  --b12: 96px;
+  --b-half: 4px;
+}
+
+/* ---- Container: the type area, centered, with page margins ---- */
+.swiss-container {
+  width: 100%;
+  max-width: var(--grid-max);
+  margin-inline: auto;
+  padding-inline: var(--grid-margin);
+  box-sizing: border-box;
+}
+
+/* ---- The grid itself ---- */
+.swiss-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-cols), minmax(0, 1fr));
+  column-gap: var(--grid-gutter);
+  row-gap: var(--b3);
+}
+.swiss-grid.tight  { row-gap: var(--b2); }
+.swiss-grid.gutters-wide { column-gap: var(--b6); }
+
+/* ---- Column spans: .col-1 … .col-12 ---- */
+.col-1  { grid-column: span 1; }
+.col-2  { grid-column: span 2; }
+.col-3  { grid-column: span 3; }
+.col-4  { grid-column: span 4; }
+.col-5  { grid-column: span 5; }
+.col-6  { grid-column: span 6; }
+.col-7  { grid-column: span 7; }
+.col-8  { grid-column: span 8; }
+.col-9  { grid-column: span 9; }
+.col-10 { grid-column: span 10; }
+.col-11 { grid-column: span 11; }
+.col-12 { grid-column: span 12; }
+
+/* ---- Explicit start lines: .start-1 … .start-12 (for asymmetric placement) ---- */
+.start-1  { grid-column-start: 1; }   .start-2  { grid-column-start: 2; }
+.start-3  { grid-column-start: 3; }   .start-4  { grid-column-start: 4; }
+.start-5  { grid-column-start: 5; }   .start-6  { grid-column-start: 6; }
+.start-7  { grid-column-start: 7; }   .start-8  { grid-column-start: 8; }
+.start-9  { grid-column-start: 9; }   .start-10 { grid-column-start: 10; }
+.start-11 { grid-column-start: 11; }  .start-12 { grid-column-start: 12; }
+
+/* ---- Baseline-snapped vertical spacing utilities ---- */
+.mt-1 { margin-top: var(--b1); }  .mt-2 { margin-top: var(--b2); }
+.mt-3 { margin-top: var(--b3); }  .mt-4 { margin-top: var(--b4); }
+.mt-6 { margin-top: var(--b6); }  .mt-8 { margin-top: var(--b8); }
+.mb-1 { margin-bottom: var(--b1); }  .mb-2 { margin-bottom: var(--b2); }
+.mb-3 { margin-bottom: var(--b3); }  .mb-4 { margin-bottom: var(--b4); }
+.stack > * + * { margin-top: var(--b2); }
+.stack-3 > * + * { margin-top: var(--b3); }
+.stack-4 > * + * { margin-top: var(--b4); }
+
+/* =========================================================================
+   OVERLAYS (for specimens / debugging — not for production chrome)
+   ========================================================================= */
+
+/* Column-field overlay: paints the 12 columns as faint red fields. */
+.grid-overlay {
+  position: relative;
+}
+.grid-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin-inline: var(--grid-margin);
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    to right,
+    rgba(225, 37, 27, 0.10) 0,
+    rgba(225, 37, 27, 0.10) calc((100% - 11 * var(--grid-gutter)) / 12),
+    transparent           calc((100% - 11 * var(--grid-gutter)) / 12),
+    transparent           calc((100% - 11 * var(--grid-gutter)) / 12 + var(--grid-gutter))
+  );
+  background-size: calc(100% + var(--grid-gutter)) 100%;
+}
+
+/* Baseline overlay: a horizontal rhythm of 8px lines. */
+.baseline-overlay {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(17, 17, 17, 0.08) 0,
+    rgba(17, 17, 17, 0.08) 1px,
+    transparent 1px,
+    transparent var(--baseline)
+  );
+}

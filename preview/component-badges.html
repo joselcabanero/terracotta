@@ -5,34 +5,30 @@
 <meta charset="utf-8">
 <link rel="stylesheet" href="../colors_and_type.css">
 <style>
-  html,body{margin:0;background:#fff;color:var(--fg1);font-family:var(--font-sans);}
-  .wrap{padding:22px 28px;display:flex;flex-direction:column;gap:16px;}
+  html,body{margin:0;background:#fff;color:var(--ink);font-family:var(--font-sans);}
+  .wrap{padding:24px 32px;display:flex;flex-direction:column;gap:16px;}
   .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
-  .cap{font-family:var(--font-mono);font-size:9px;text-transform:uppercase;letter-spacing:.7px;color:var(--fg4);width:88px;}
-  .b{font-size:11px;font-weight:500;padding:3px 10px;border-radius:9999px;display:inline-flex;align-items:center;}
-  .b-gray{background:var(--surface-fill);color:var(--fg2);}
-  .b-sector{color:#fff;}
-  .b-outline{border:1px solid var(--border-1);color:var(--fg2);background:#fff;}
-  .b-dark{background:var(--black);color:#fff;}
+  .cap{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--fg3);width:84px;}
+  .b{font-size:11px;font-weight:600;padding:3px 9px;border-radius:0;display:inline-flex;align-items:center;gap:6px;text-transform:uppercase;letter-spacing:.04em;}
+  .b-ink{background:#111;color:#fff;}
+  .b-outline{border:1px solid #111;color:#111;background:#fff;}
+  .b-red{background:#E1251B;color:#fff;}
+  .b-sector{border:1px solid #111;color:#111;background:#fff;}
+  .dot{width:9px;height:9px;display:inline-block;}
 </style>
 </head>
 <body>
 <div class="wrap">
+  <div class="row"><span class="cap">status</span>
+    <span class="b b-ink">Admin</span>
+    <span class="b b-outline">Seed</span>
+    <span class="b b-outline">Series A</span>
+    <span class="b b-red">Live round</span>
+  </div>
   <div class="row"><span class="cap">sector</span>
-    <span class="b b-sector" style="background:#1D9E75">Agritech</span>
-    <span class="b b-sector" style="background:#639922">Innovative Food</span>
-    <span class="b b-sector" style="background:#7F77DD">Food as a Medicine</span>
-  </div>
-  <div class="row"><span class="cap">neutral</span>
-    <span class="b b-gray">Seed</span>
-    <span class="b b-gray">Series A</span>
-    <span class="b b-outline">Bootstrapped</span>
-    <span class="b b-dark">Admin</span>
-  </div>
-  <div class="row"><span class="cap">keyword</span>
-    <span class="b b-gray">fermentation</span>
-    <span class="b b-gray">precision-ag</span>
-    <span class="b b-gray">upcycling</span>
+    <span class="b b-sector"><span class="dot" style="background:#1D9E75"></span>Agritech</span>
+    <span class="b b-sector"><span class="dot" style="background:#639922"></span>Innovative Food</span>
+    <span class="b b-sector"><span class="dot" style="background:#7F77DD"></span>Food as Medicine</span>
   </div>
 </div>
 </body>

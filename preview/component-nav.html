@@ -5,17 +5,17 @@
 <meta charset="utf-8">
 <link rel="stylesheet" href="../colors_and_type.css">
 <style>
-  html,body{margin:0;background:#fff;color:var(--fg1);font-family:var(--font-sans);}
-  .wrap{padding:20px 28px;display:flex;gap:28px;align-items:center;}
-  .rail{width:200px;background:#fff;border:1px solid var(--border-1);border-radius:12px;padding:10px 8px;display:flex;flex-direction:column;gap:2px;}
-  .glabel{font-family:var(--font-mono);font-size:9px;text-transform:uppercase;letter-spacing:.7px;color:var(--fg4);padding:4px 8px 2px;}
-  .nav{display:flex;align-items:center;gap:10px;padding:7px 9px;border-radius:6px;font-size:12px;font-weight:500;color:var(--fg3);text-decoration:none;}
+  html,body{margin:0;background:#fff;color:var(--ink);font-family:var(--font-sans);}
+  .wrap{padding:20px 32px;display:flex;gap:30px;align-items:center;}
+  .rail{width:200px;border:1px solid #111;padding:10px 0;display:flex;flex-direction:column;gap:2px;}
+  .glabel{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--fg3);padding:6px 14px 3px;}
+  .nav{display:flex;align-items:center;gap:10px;padding:8px 14px;font-size:13px;font-weight:500;color:var(--fg2);text-decoration:none;border-left:3px solid transparent;}
   .nav svg{width:16px;height:16px;}
-  .nav.active{background:var(--brand-tint);color:var(--brand);}
-  .nav.idle:hover{background:var(--surface-fill);color:var(--fg1);}
+  .nav.active{border-left-color:var(--red);color:var(--ink);font-weight:700;background:#F4F4F2;}
+  .nav.idle:hover{background:#EAEAEA;color:var(--ink);}
   .nav.disabled{opacity:.35;}
-  .legend{display:flex;flex-direction:column;gap:8px;font-size:11px;color:var(--fg3);font-family:var(--font-mono);}
-  .legend b{color:var(--fg1);font-family:var(--font-sans)}
+  .legend{width:160px;flex-shrink:0;display:flex;flex-direction:column;gap:9px;font-family:var(--font-mono);font-size:10px;color:var(--fg3);}
+  .legend b{color:var(--ink);font-family:var(--font-sans);font-weight:700;}
 </style>
 </head>
 <body>
@@ -25,14 +25,14 @@
     <a class="nav active"><i data-lucide="building-2"></i>Startups</a>
     <a class="nav idle"><i data-lucide="trending-up"></i>Investors</a>
     <a class="nav idle"><i data-lucide="users"></i>People</a>
-    <span class="glabel" style="margin-top:6px">TOOLS</span>
+    <span class="glabel" style="margin-top:6px">Tools</span>
     <a class="nav idle"><i data-lucide="network"></i>Graph</a>
     <a class="nav disabled"><i data-lucide="telescope"></i>Scout</a>
   </div>
   <div class="legend">
-    <span><b>active</b> · tint bg + brand fg</span>
-    <span><b>idle</b> · neutral-400, hover fill</span>
-    <span><b>disabled</b> · 35% opacity</span>
+    <span><b>active</b><br>red marker bar + ink label</span>
+    <span><b>idle</b><br>grey-700, hover fill</span>
+    <span><b>disabled</b><br>35% opacity</span>
   </div>
 </div>
 <script src="https://unpkg.com/lucide@latest"></script>

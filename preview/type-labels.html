@@ -5,28 +5,25 @@
 <meta charset="utf-8">
 <link rel="stylesheet" href="../colors_and_type.css">
 <style>
-  html,body{margin:0;background:#fff;color:var(--fg1);}
-  .wrap{padding:24px 28px;display:flex;flex-direction:column;gap:20px;}
-  .grp{display:flex;flex-direction:column;gap:7px;}
-  .note{font-size:11px;color:var(--fg4);font-family:var(--font-mono);}
-  .label-mono{font-family:var(--font-mono);font-size:9px;font-weight:400;text-transform:uppercase;letter-spacing:.7px;color:var(--fg4);}
-  .eyebrow{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--fg3);}
-  .col-head{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--fg3);}
+  html,body{margin:0;background:#fff;color:var(--ink);font-family:var(--font-sans);}
+  .wrap{padding:26px 32px;display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .col{display:flex;flex-direction:column;gap:10px;}
+  .grp{display:flex;flex-direction:column;gap:6px;}
+  .note{font-size:10px;color:var(--fg4);font-family:var(--font-mono);}
+  .label{font-family:var(--font-sans);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--ink);}
+  .eyebrow{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--ink);}
+  .colhead{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink);border-bottom:2px solid var(--ink);padding-bottom:5px;}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="grp">
-    <span class="label-mono">MAIN&nbsp;&nbsp;·&nbsp;&nbsp;DB&nbsp;&nbsp;·&nbsp;&nbsp;TOOLS</span>
-    <span class="note">.label-mono — IBM Plex Mono 9px, sidebar group labels</span>
+  <div class="col">
+    <div class="grp"><span class="label">Main / DB / Tools</span><span class="note">.label — grotesk 11px 700, tracked .12em</span></div>
+    <div class="grp"><span class="eyebrow">Agrifoodtech News</span><span class="note">.eyebrow — 12px 700, tracked .14em</span></div>
   </div>
-  <div class="grp">
-    <span class="eyebrow">Agrifoodtech News</span>
-    <span class="note">.eyebrow — Inter 12px 600, Home section divider</span>
-  </div>
-  <div class="grp">
-    <span class="col-head">Company&nbsp;&nbsp;&nbsp;Sector&nbsp;&nbsp;&nbsp;Stage&nbsp;&nbsp;&nbsp;Founded</span>
-    <span class="note">table column header — Inter 12px 600 uppercase tracked</span>
+  <div class="col">
+    <div class="grp"><span class="colhead">Company&nbsp;&nbsp;Sector&nbsp;&nbsp;Stage</span><span class="note">column header — 11px 700, ink keyline</span></div>
+    <div class="grp"><a class="link" style="font-size:15px;align-self:flex-start;">View all startups</a><span class="note">link — ink + red underline marker</span></div>
   </div>
 </div>
 </body>

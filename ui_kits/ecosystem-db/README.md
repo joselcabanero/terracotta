@@ -32,5 +32,5 @@ Open `index.html` in a browser. No build step — React + Babel run in-browser. 
 ## Implementation notes
 - **Icons** come from Lucide (CDN UMD) — the app uses `lucide-react`. Never hand-draw SVG icons; add a `<window.Icon name="…">`.
 - **Interactive states** (hover, focus) are CSS-class driven (see the `<style>` block in `index.html`) rather than JS inline-style, so they repaint reliably. Discrete "active page" highlighting remounts the Sidebar via a React `key`.
-- **Colors & type** are pulled from the shared `colors_and_type.css` (a copy of the design-system root token file) plus literal hex values matching the production Tailwind/shadcn neutral theme.
+- **Colors & type** are pulled from the shared `colors_and_type.css` + `grid.css` (copies of the design-system root token files) plus literal hex values matching the austere **International Typographic Style** palette — ink `#111`, paper `#fff`, and the single red `#E1251B`.
 - To extend: add a screen component, export it on `window`, wire a route branch in `App.jsx`, and add a `<script type="text/babel" src>` tag in `index.html`.

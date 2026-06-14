@@ -1,92 +1,117 @@
 /* =========================================================================
    Eatable Adventures — Startup Intelligence (Ecosystem DB)
    colors_and_type.css — design tokens
-   Stack of record: Next.js 14 + Tailwind + shadcn/ui (new-york base)
-   Source: github.com/joselcabanero/ecosystem-db  (src/app/globals.css,
-           tailwind.config.ts, lib/ontology-colors.ts)
-   Color: Eatable Adventures warm brand palette (user-supplied) layered over
-          a warmed shadcn neutral scale.
+   ─────────────────────────────────────────────────────────────────────────
+   STYLE: International Typographic Style (Müller-Brockmann).
+   Austere, objective, grid-driven. Ink + paper + ONE functional red.
+   Hierarchy comes from size, weight, and position on the grid — never
+   from ornament, color, or shadow. Pair this file with grid.css.
+   ─────────────────────────────────────────────────────────────────────────
+   Stack of record: Next.js 14 + Tailwind + shadcn/ui (new-york base).
+   Source: github.com/joselcabanero/ecosystem-db
    ========================================================================= */
 
 /* ---- Webfonts -----------------------------------------------------------
-   App loads Inter (sans) + IBM Plex Mono (mono) via next/font (Google).
-   We mirror that with a Google Fonts import. If you need offline TTFs,
-   drop them in fonts/ and swap the @import for @font-face. */
+   Müller-Brockmann worked in Akzidenz-Grotesk / Helvetica. The faithful,
+   zero-load substitute is the system Helvetica/Arial stack; Inter is the
+   cross-platform grotesk fallback (loaded below). IBM Plex Mono is kept
+   only for tabular numerals. See README → "Typographic character" for the
+   font-substitution note. */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
 :root {
   /* ===== TYPE FAMILIES ================================================== */
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  /* Primary grotesk: Helvetica Neue → Helvetica → Arial (all Akzidenz-
+     adjacent), with Inter as the loaded cross-platform fallback. */
+  --font-sans: 'Helvetica Neue', Helvetica, Arial, 'Inter', system-ui, sans-serif;
+  --font-grotesk: var(--font-sans);
   --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
-  /* App enables Inter stylistic sets (slashed zero / alt chars) */
-  --font-feature-settings: 'cv11', 'ss01';
+  --font-feature-settings: normal;   /* objective default — no stylistic sets */
 
-  /* ===== BRAND PALETTE (raw — the 8 supplied swatches) ================= */
-  --paper: #FFFFFF;   /* pure white            */
-  --cream: #FFF9EE;   /* warm ivory            */
-  --sand:  #F5EACE;   /* pale sand             */
-  --amber: #FFA103;   /* amber — highlight     */
-  --coral: #DE5533;   /* terracotta — identity */
-  --brick: #BC2D29;   /* brick red — deep id   */
-  --wine:  #450E14;   /* deep wine — darkest   */
-  --ink:   #1E1E1E;   /* charcoal — text/action */
+  /* =====================================================================
+     COLOR — ink, paper, and one red. That is the whole system.
+     ===================================================================== */
 
-  /* ===== SEMANTIC TOKENS (shadcn shape, full hsl() colors) ============= */
-  --background: hsl(0 0% 100%);
-  --foreground: hsl(0 0% 12%);            /* #1E1E1E charcoal text */
-  --card: hsl(0 0% 100%);
-  --card-foreground: hsl(0 0% 12%);
-  --popover: hsl(0 0% 100%);
-  --popover-foreground: hsl(0 0% 12%);
-  --primary: hsl(0 0% 12%);               /* #1E1E1E charcoal buttons */
-  --primary-foreground: hsl(40 100% 97%); /* #FFF9EE cream */
-  --secondary: hsl(41 71% 95%);           /* #FBF3E2 warm fill */
-  --secondary-foreground: hsl(0 0% 12%);
-  --muted: hsl(41 71% 95%);
-  --muted-foreground: hsl(25 9% 45%);     /* #7C726C warm muted */
-  --accent: hsl(13 71% 53%);              /* #DE5533 coral */
-  --accent-foreground: hsl(40 100% 97%);
-  --destructive: hsl(2 64% 45%);          /* #BC2D29 brick */
-  --destructive-foreground: hsl(40 100% 97%);
-  --border: hsl(40 41% 89%);              /* #EBE2D2 warm border */
-  --input: hsl(40 41% 89%);
-  --ring: hsl(13 71% 53%);                /* coral focus ring */
-  --radius: 0.5rem;                   /* 8px */
+  /* ---- Core triad ---- */
+  --paper:      #FFFFFF;   /* ground            */
+  --paper-2:    #F4F4F2;   /* secondary ground  */
+  --ink:        #111111;   /* text + ink fills  */
+  --black:      #111111;   /* primary action surface (alias of ink) */
+  --black-hover:#000000;   /* pressed ink       */
+  --red:        #E1251B;   /* THE functional accent — Swiss red */
+  --red-strong: #B71C13;   /* pressed / deep red */
 
-  /* ===== CONVENIENCE HEX (resolved, warmed neutrals) =================== */
-  --bg:            #ffffff;
-  --fg1:           #1E1E1E;   /* primary text / charcoal */
-  --fg2:           #4A433F;   /* warm-700 secondary text */
-  --fg3:           #7C726C;   /* warm-500 muted / captions */
-  --fg4:           #ABA097;   /* warm-400 faint meta / placeholder */
-  --surface:       #ffffff;
-  --surface-muted: #FFFBF4;   /* warm-50 hover / table head */
-  --surface-fill:  #FBF3E2;   /* warm-100 chips / wells */
-  --surface-warm:  #FFF9EE;   /* cream section background */
-  --surface-sand:  #F5EACE;   /* sand band / emphasis surface */
-  --border-1:      #EBE2D2;   /* warm-200 default border */
-  --border-2:      #F4ECDD;   /* warm-100 hairline dividers */
-  --black:         #1E1E1E;   /* primary action surface */
-  --black-hover:   #38302C;   /* warm-900 pressed */
+  /* ---- Objective neutral ramp (halftone grays) ---- */
+  --n-0:   #FFFFFF;
+  --n-50:  #F4F4F2;
+  --n-100: #EAEAEA;
+  --n-200: #DBDBDB;   /* soft divider */
+  --n-300: #C2C2C2;
+  --n-400: #9B9B9B;
+  --n-500: #6F6F6F;   /* muted text */
+  --n-600: #4A4A4A;   /* secondary text */
+  --n-800: #222222;
+  --n-900: #111111;   /* ink */
+
+  /* ---- Convenience foreground/surface aliases (used across the kit) ---- */
+  --bg:            #FFFFFF;
+  --fg1:           #111111;   /* primary text / ink           */
+  --fg2:           #4A4A4A;   /* secondary text               */
+  --fg3:           #6F6F6F;   /* muted / captions             */
+  --fg4:           #9B9B9B;   /* faint meta / placeholder     */
+  --surface:       #FFFFFF;
+  --surface-muted: #F4F4F2;   /* table head / hover ground    */
+  --surface-fill:  #EAEAEA;   /* chips / wells                */
+  --surface-warm:  #F4F4F2;   /* legacy alias → neutral ground */
+  --surface-sand:  #EAEAEA;   /* legacy alias → neutral fill   */
+
+  /* ---- Rules & borders: hard ink keylines over soft dividers ---- */
+  --rule:     #111111;        /* structural keyline (the Swiss device) */
+  --border:   #DBDBDB;        /* soft hairline divider */
+  --border-1: #DBDBDB;        /* default border */
+  --border-2: #EAEAEA;        /* faint divider  */
+  --input:    #111111;        /* inputs carry an ink keyline */
 
   /* ===== BRAND ========================================================= */
-  /* Identity accent — the "EA" monogram, active nav, links, focus.
-     Coral is the headline brand color; brick is its darker/readable pair;
-     amber is the highlight; cream is the text on brand fills. */
-  --brand:        #DE5533;    /* Eatable Adventures coral */
-  --brand-strong: #BC2D29;    /* brick — readable brand text on light */
-  --brand-amber:  #FFA103;    /* amber highlight / accent */
-  --brand-tint:   #FDECE4;    /* active-nav / selected background */
-  --brand-fg:     #FFF9EE;    /* cream text on brand bg */
-  --brand-hover:  #C6431F;    /* darker pressed coral */
+  /* Identity = red. The "EA" monogram, active state, links, focus ring.
+     Red is used as a FIELD or MARKER, never as a soft tint. */
+  --brand:        #E1251B;    /* red — the single accent       */
+  --brand-strong: #B71C13;    /* pressed red                   */
+  --brand-amber:  #E1251B;    /* legacy alias → red (no amber)  */
+  --brand-tint:   #FBE2E0;    /* faintest red wash — active row, sparingly */
+  --brand-fg:     #FFFFFF;    /* paper text on red field       */
+  --brand-hover:  #B71C13;    /* pressed red                   */
 
-  /* ===== NODE-TYPE COLORS (graph + entity badges) ====================== */
-  --node-startup:   #2563eb;  /* blue   */
-  --node-investor:  #16a34a;  /* green  */
-  --node-person:    #9333ea;  /* purple */
-  --node-corporate: #ea580c;  /* orange */
+  /* ===== shadcn SEMANTIC TOKENS (full hsl() colors) ==================== */
+  --background: hsl(0 0% 100%);
+  --foreground: hsl(0 0% 7%);              /* #111 ink */
+  --card: hsl(0 0% 100%);
+  --card-foreground: hsl(0 0% 7%);
+  --popover: hsl(0 0% 100%);
+  --popover-foreground: hsl(0 0% 7%);
+  --primary: hsl(0 0% 7%);                 /* ink — primary buttons */
+  --primary-foreground: hsl(0 0% 100%);    /* paper */
+  --secondary: hsl(0 0% 92%);              /* #EAEAEA fill */
+  --secondary-foreground: hsl(0 0% 7%);
+  --muted: hsl(0 0% 96%);                  /* #F4F4F2 */
+  --muted-foreground: hsl(0 0% 44%);       /* #6F6F6F */
+  --accent: hsl(3 78% 49%);                /* #E1251B red */
+  --accent-foreground: hsl(0 0% 100%);
+  --destructive: hsl(3 78% 49%);           /* the one red doubles as destructive */
+  --destructive-foreground: hsl(0 0% 100%);
+  --border-hsl: hsl(0 0% 86%);             /* #DBDBDB */
+  --ring: hsl(3 78% 49%);                  /* red focus ring */
+  --radius: 0;                             /* SHARP — rectilinear Swiss */
 
-  /* ===== TAXONOMY / SECTOR COLORS (canonical ontology map) ============= */
+  /* ===== DATA-ENCODING COLORS ==========================================
+     The ONE sanctioned exception to "one accent": categorical data where
+     hue carries meaning (the ontology). Use only as small fields / dots /
+     rules inside data views — never as page chrome. ===================== */
+  --node-startup:   #2563eb;
+  --node-investor:  #16a34a;
+  --node-person:    #9333ea;
+  --node-corporate: #ea580c;
+
   --sector-agritech:        #1D9E75;
   --sector-innovative-food: #639922;
   --sector-logistics:       #EF9F27;
@@ -95,48 +120,65 @@
   --sector-medicine:        #7F77DD;
   --sector-other:           #888780;
 
-  /* ===== NEWS / STATUS BADGE COLORS ==================================== */
-  --tag-funding-bg:   #dcfce7; --tag-funding-fg:   #15803d; /* green  */
-  --tag-tech-bg:      #dbeafe; --tag-tech-fg:      #1d4ed8; /* blue   */
-  --tag-market-bg:    #fef3c7; --tag-market-fg:    #b45309; /* amber  */
-  --tag-policy-bg:    #f3e8ff; --tag-policy-fg:    #7e22ce; /* purple */
-  --tag-people-bg:    #ffe4e6; --tag-people-fg:    #be123c; /* rose   */
+  /* News tags & match scores — kept monochrome by default; the fg colors
+     below are the functional-data exception, used as text/keylines only. */
+  --tag-funding-bg:#F4F4F2; --tag-funding-fg:#111111;
+  --tag-tech-bg:   #F4F4F2; --tag-tech-fg:   #111111;
+  --tag-market-bg: #F4F4F2; --tag-market-fg: #111111;
+  --tag-policy-bg: #F4F4F2; --tag-policy-fg: #111111;
+  --tag-people-bg: #F4F4F2; --tag-people-fg: #111111;
 
-  /* match-score scale (programs / matrix) */
-  --score-high:   #16a34a;  /* >= 60 */
-  --score-mid:    #d97706;  /* 30-59 */
-  --score-low:    #dc2626;  /* < 30  */
+  --score-high: #111111;  /* hierarchy by weight, not hue */
+  --score-mid:  #6F6F6F;
+  --score-low:  #9B9B9B;
 
-  /* ===== ELEVATION ===================================================== */
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow:    0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  /* ===== ELEVATION — flat. Rules, not shadows. ========================= */
+  --shadow-sm: none;
+  --shadow:    none;
+  --shadow-md: 0 0 0 1px rgba(17,17,17,0.08), 0 8px 24px -12px rgba(17,17,17,0.25);
+  --shadow-lg: 0 0 0 1px rgba(17,17,17,0.08), 0 16px 40px -16px rgba(17,17,17,0.30);
 
-  /* ===== RADII ========================================================= */
-  --radius-sm: 4px;   /* calc(radius - 4px) */
-  --radius-md: 6px;   /* calc(radius - 2px) */
-  --radius-lg: 8px;   /* --radius */
-  --radius-xl: 12px;  /* cards/containers (rounded-xl) */
-  --radius-full: 9999px;
+  /* ===== RADII — rectilinear ========================================== */
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+  --radius-full: 9999px;   /* reserved for true dots/score markers only */
 
-  /* ===== SPACING (Tailwind 4px base, common steps) ===================== */
+  /* ===== SPACING — 8px baseline grid (4 = half-step) ================== */
   --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px;
-  --space-5: 20px; --space-6: 24px; --space-8: 32px; --space-12: 48px;
+  --space-5: 24px; --space-6: 24px; --space-8: 32px; --space-12: 48px;
 
-  /* ===== TYPE SCALE (resolved from app usage) ========================== */
-  --text-page-title: 24px;  /* h1 — "Startups"  (text-2xl font-medium tracking-tight) */
-  --text-section:    20px;  /* h2 page section  (text-xl font-semibold) */
-  --text-card-title: 14px;  /* card header      (text-sm font-semibold) */
-  --text-body:       14px;  /* table / body     (text-sm) */
-  --text-sm:         13px;  /* dense rows       */
-  --text-meta:       12px;  /* captions / meta  (text-xs) */
-  --text-micro:      11px;  /* tertiary meta    */
-  --text-label:      9px;   /* mono group label (uppercase, tracked) */
+  /* ===== MODULAR TYPE SCALE ===========================================
+     Strict scale, ratio 1.25 (major third), base 16px. Each step is
+     ~1.25× its predecessor. Line-heights snap to the 8px baseline. */
+  --ratio: 1.25; /* @kind other */
+  --t-xs:   13px;   /* base / 1.25 — meta, captions   */
+  --t-ui:   14px;   /* dense UI body (the app's text-sm exception) */
+  --t-base: 16px;   /* body                           */
+  --t-md:   20px;   /* lead / h4   (16 × 1.25)         */
+  --t-lg:   25px;   /* h3          (× 1.25)            */
+  --t-xl:   31px;   /* h2          (× 1.25)            */
+  --t-2xl:  39px;   /* h1          (× 1.25)            */
+  --t-3xl:  49px;   /* display     (× 1.25)            */
+  --t-4xl:  61px;   /* poster      (× 1.25)            */
+  --t-5xl:  76px;   /* big poster  (× 1.25)            */
+
+  /* Legacy semantic aliases (kept so existing markup resolves) */
+  --text-page-title: var(--t-2xl);  /* 39 */
+  --text-section:    var(--t-xl);   /* 31 */
+  --text-card-title: var(--t-ui);   /* 14 */
+  --text-body:       var(--t-base); /* 16 */
+  --text-sm:         var(--t-xs);   /* 13 */
+  --text-meta:       12px;
+  --text-micro:      11px;
+  --text-label:      11px;
 }
 
 /* =========================================================================
-   SEMANTIC ELEMENT STYLES — apply directly or copy the rules you need.
+   SEMANTIC ELEMENT STYLES — objective hierarchy. Copy what you need.
+   Headings are flush-left, tight, set in the grotesk. Weight + size do the
+   work; tracking tightens as size grows.
    ========================================================================= */
 body {
   font-family: var(--font-sans);
@@ -147,62 +189,79 @@ body {
 }
 
 h1, .h1 {
-  font-size: var(--text-page-title);
-  font-weight: 500;
+  font-size: var(--t-2xl);
+  font-weight: 700;
   letter-spacing: -0.02em;
-  line-height: 1.2;
+  line-height: 1.05;       /* 40/39 ≈ baseline-snapped */
+  margin: 0;
 }
 h2, .h2 {
-  font-size: var(--text-section);
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  line-height: 1.25;
+  font-size: var(--t-xl);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  margin: 0;
 }
 h3, .h3 {
-  font-size: var(--text-card-title);
-  font-weight: 600;
-  line-height: 1.3;
+  font-size: var(--t-lg);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.12;
+  margin: 0;
+}
+h4, .h4 {
+  font-size: var(--t-md);
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  line-height: 1.2;
+  margin: 0;
 }
 p, .body {
-  font-size: var(--text-body);
-  line-height: 1.55;
+  font-size: var(--t-base);
+  line-height: 1.5;        /* 24px on a 16px body — two baselines */
   color: var(--fg1);
 }
-.muted {
-  font-size: var(--text-body);
-  color: var(--fg3);
+.lead {
+  font-size: var(--t-md);
+  line-height: 1.4;
+  color: var(--fg2);
 }
-.meta {
-  font-size: var(--text-meta);
-  color: var(--fg3);
-}
+.muted { font-size: var(--t-base); color: var(--fg3); }
+.meta  { font-size: var(--text-meta); color: var(--fg3); line-height: 1.33; }
 
-/* The signature mono "group label" used for sidebar/section headers */
-.label-mono {
-  font-family: var(--font-mono);
+/* Tabular numerals for data tables / metrics */
+.tnum { font-variant-numeric: tabular-nums; font-feature-settings: 'tnum' 1; }
+
+/* Uppercase tracked label — the grotesk eyebrow that titles a grid field.
+   (Was a mono label; in the Swiss system it is grotesk, uppercase, tracked.) */
+.label, .label-mono {
+  font-family: var(--font-sans);
   font-size: var(--text-label);
-  font-weight: 400;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.7px;
-  color: var(--fg4);
+  letter-spacing: 0.12em;
+  color: var(--fg1);
 }
-/* Uppercase section eyebrow used on the Home page */
 .eyebrow {
   font-size: var(--text-meta);
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--fg3);
-}
-
-code, .mono {
-  font-family: var(--font-mono);
-  font-size: 13px;
-}
-
-a.link {
+  letter-spacing: 0.14em;
   color: var(--fg1);
+}
+
+code, .mono { font-family: var(--font-mono); font-size: 13px; }
+
+/* Links: ink with a red underline marker, or plain red. */
+a.link {
+  color: var(--ink);
   font-weight: 500;
   text-decoration: none;
+  border-bottom: 2px solid var(--red);
+  padding-bottom: 1px;
 }
-a.link:hover { text-decoration: underline; }
+a.link:hover { color: var(--red); }
+
+/* The Swiss keyline: a hard ink rule used to structure the grid. */
+.keyline { border: 0; border-top: 1px solid var(--rule); }
+.keyline-heavy { border: 0; border-top: 2px solid var(--rule); }

@@ -5,18 +5,18 @@ function LoginScreen({ onSignIn }) {
   const handle = () => { setLoading(true); setTimeout(()=>{ onSignIn(); }, 650); };
   return (
     <div style={{ flex:1, display:'flex', alignItems:'center', justifyContent:'center',
-      padding:16, minHeight:'100%', background:'#FFF9EE' }}>
-      <div style={{ width:'100%', maxWidth:360, background:'#fff', borderRadius:12,
-        boxShadow:'var(--shadow-sm)', border:'1px solid #f5f5f5', padding:32, textAlign:'center' }}>
-        <div style={{ display:'flex', flexDirection:'column', alignItems:'center', gap:12, marginBottom:32 }}>
-          <img src="assets/logo.svg" alt="Eatable Adventures" style={{ height:96, width:'auto', objectFit:'contain' }} />
-          <span style={{ fontSize:14, color:'#0a0a0a', fontWeight:500, letterSpacing:'.02em' }}>Startup Intelligence</span>
+      padding:16, minHeight:'100%', background:'#F4F4F2' }}>
+      <div style={{ width:'100%', maxWidth:360, background:'#fff', borderRadius:0,
+        boxShadow:'var(--shadow-md)', border:'1px solid #111', borderTop:'4px solid #E1251B', padding:32, textAlign:'center' }}>
+        <div style={{ display:'flex', flexDirection:'column', alignItems:'center', gap:14, marginBottom:32 }}>
+          <img src="assets/logo.svg" alt="Eatable Adventures" style={{ height:88, width:'auto', objectFit:'contain' }} />
+          <span style={{ fontSize:11, color:'#111', fontWeight:700, textTransform:'uppercase', letterSpacing:'.14em' }}>Startup Intelligence</span>
         </div>
         <button onClick={handle} disabled={loading}
           style={{ width:'100%', display:'flex', alignItems:'center', justifyContent:'center', gap:12,
-            background:'#fff', color:'#0a0a0a', border:'1px solid #e5e5e5', padding:'12px',
-            borderRadius:8, cursor:'pointer', fontWeight:500, fontSize:16, fontFamily:'var(--font-sans)',
-            boxShadow:'var(--shadow-sm)', opacity: loading ? .5 : 1 }}>
+            background:'#fff', color:'#111', border:'1px solid #111', padding:'12px',
+            borderRadius:0, cursor:'pointer', fontWeight:500, fontSize:16, fontFamily:'var(--font-sans)',
+            opacity: loading ? .5 : 1 }}>
           {loading
             ? <window.Icon name="LoaderCircle" size={20} className="spin" />
             : <svg viewBox="0 0 24 24" style={{ width:20, height:20 }}>
@@ -27,7 +27,7 @@ function LoginScreen({ onSignIn }) {
               </svg>}
           Continue with Google
         </button>
-        <p style={{ marginTop:24, fontSize:14, color:'#0a0a0a' }}>Access is granted by your administrator</p>
+        <p style={{ marginTop:24, fontSize:13, color:'#6F6F6F' }}>Access is granted by your administrator</p>
       </div>
     </div>
   );

@@ -5,20 +5,22 @@
 <meta charset="utf-8">
 <link rel="stylesheet" href="../colors_and_type.css">
 <style>
-  html,body{margin:0;background:#fafafa;color:var(--fg1);}
-  .wrap{padding:30px 28px;display:flex;gap:24px;align-items:center;justify-content:space-around;}
+  html,body{margin:0;background:#F4F4F2;color:var(--ink);font-family:var(--font-sans);}
+  .wrap{padding:30px 32px;display:flex;gap:30px;align-items:center;justify-content:center;}
   .item{display:flex;flex-direction:column;gap:14px;align-items:center;}
-  .box{width:96px;height:60px;background:#fff;border:1px solid var(--border-1);border-radius:12px;}
-  .nm{font-family:var(--font-mono);font-size:10px;color:var(--fg3);}
-  .nm b{display:block;color:var(--fg1);font-family:var(--font-sans);font-size:11px;font-weight:600;}
+  .box{width:120px;height:64px;background:#fff;}
+  .b-rule{border:1px solid #111;}
+  .b-key{border-top:2px solid #111;border-left:1px solid #DBDBDB;border-right:1px solid #DBDBDB;border-bottom:1px solid #DBDBDB;}
+  .b-float{box-shadow:var(--shadow-md);}
+  .nm{font-family:var(--font-mono);font-size:10px;color:var(--fg3);text-align:center;line-height:1.5;}
+  .nm b{display:block;color:var(--ink);font-family:var(--font-sans);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="item"><div class="box" style="box-shadow:none"></div><div class="nm"><b>rest</b>border only</div></div>
-  <div class="item"><div class="box" style="box-shadow:var(--shadow-sm)"></div><div class="nm"><b>sm</b>hover</div></div>
-  <div class="item"><div class="box" style="box-shadow:var(--shadow-md)"></div><div class="nm"><b>md</b>popover</div></div>
-  <div class="item"><div class="box" style="box-shadow:var(--shadow-lg)"></div><div class="nm"><b>lg</b>dialog</div></div>
+  <div class="item"><div class="box b-rule"></div><div class="nm"><b>Rest</b>1px ink keyline</div></div>
+  <div class="item"><div class="box b-key"></div><div class="nm"><b>Active</b>2px top rule</div></div>
+  <div class="item"><div class="box b-float"></div><div class="nm"><b>Float only</b>dialog / popover</div></div>
 </div>
 </body>
 </html>

@@ -1,19 +1,19 @@
 /* HomeScreen — news feed + recent activity columns. From src/app/home/page.tsx */
 
 function NewsCard({ item }) {
-  const [bg, fg] = window.TAG_COLORS[item.category] || ['#f5f5f5','#737373'];
+  const isFunding = item.category === 'Funding';
   return (
     <a className="eds-newscard">
-      <div style={{ display:'flex', justifyContent:'space-between' }}>
-        <span style={{ fontSize:11, color:'#a3a3a3' }}>{item.source}</span>
-        <span style={{ fontSize:11, color:'#a3a3a3' }}>{item.date}</span>
+      <div style={{ display:'flex', justifyContent:'space-between', fontFamily:'var(--font-mono)' }}>
+        <span style={{ fontSize:10, color:'#6F6F6F', textTransform:'uppercase', letterSpacing:'.06em' }}>{item.source}</span>
+        <span style={{ fontSize:10, color:'#9B9B9B' }}>{item.date}</span>
       </div>
-      <p style={{ margin:0, fontSize:13, fontWeight:500, color:'#171717', lineHeight:1.35,
+      <p style={{ margin:0, fontSize:13, fontWeight:700, color:'#111', lineHeight:1.25, letterSpacing:'-0.01em',
         display:'-webkit-box', WebkitLineClamp:2, WebkitBoxOrient:'vertical', overflow:'hidden' }}>{item.title}</p>
-      <p style={{ margin:0, fontSize:11, color:'#737373', lineHeight:1.4, flex:1,
+      <p style={{ margin:0, fontSize:11, color:'#6F6F6F', lineHeight:1.4, flex:1,
         display:'-webkit-box', WebkitLineClamp:2, WebkitBoxOrient:'vertical', overflow:'hidden' }}>{item.summary}</p>
-      <span style={{ alignSelf:'flex-start', fontSize:10, fontWeight:500, padding:'2px 8px',
-        borderRadius:9999, marginTop:'auto', background:bg, color:fg }}>{item.category}</span>
+      <span style={{ alignSelf:'flex-start', fontSize:9, fontWeight:700, textTransform:'uppercase', letterSpacing:'.1em', padding:'2px 7px',
+        borderRadius:0, marginTop:'auto', background: isFunding ? '#E1251B' : '#fff', color: isFunding ? '#fff' : '#111', border: isFunding ? '1px solid #E1251B' : '1px solid #111' }}>{item.category}</span>
     </a>
   );
 }
@@ -22,22 +22,22 @@ function ActivityRow({ name, color, tag, meta, time }) {
   return (
     <div className="eds-arow">
       <div style={{ minWidth:0, paddingRight:8 }}>
-        <p style={{ margin:0, fontSize:13, fontWeight:500, color:'#171717', whiteSpace:'nowrap', overflow:'hidden', textOverflow:'ellipsis' }}>{name}</p>
+        <p style={{ margin:0, fontSize:13, fontWeight:500, color:'#111', whiteSpace:'nowrap', overflow:'hidden', textOverflow:'ellipsis' }}>{name}</p>
         <div style={{ display:'flex', alignItems:'center', gap:6, marginTop:3 }}>
-          {tag && color && <span style={{ fontSize:10, color:'#fff', padding:'1px 7px', borderRadius:9999, background:color, whiteSpace:'nowrap' }}>{tag}</span>}
-          {meta && <span style={{ fontSize:11, color:'#a3a3a3' }}>{meta}</span>}
+          {tag && color && <span style={{ width:8, height:8, background:color, flexShrink:0 }}></span>}
+          {(tag || meta) && <span style={{ fontSize:11, color:'#6F6F6F' }}>{[tag, meta].filter(Boolean).join(' · ')}</span>}
         </div>
       </div>
-      <span style={{ fontSize:11, color:'#a3a3a3', flexShrink:0 }}>{time}</span>
+      <span style={{ fontFamily:'var(--font-mono)', fontSize:10, color:'#9B9B9B', flexShrink:0 }}>{time}</span>
     </div>
   );
 }
 
 function ActivityColumn({ title, onViewAll, children }) {
   return (
-    <div style={{ flex:1, minWidth:0, background:'#fff', border:'1px solid #e5e5e5', borderRadius:12, overflow:'hidden' }}>
-      <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', padding:'10px 12px', borderBottom:'1px solid #f5f5f5' }}>
-        <h3 style={{ margin:0, fontSize:14, fontWeight:600, color:'#171717' }}>{title}</h3>
+    <div style={{ flex:1, minWidth:0, background:'#fff', border:'1px solid #111', borderRadius:0, overflow:'hidden' }}>
+      <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', padding:'10px 12px', borderBottom:'2px solid #111' }}>
+        <h3 style={{ margin:0, fontSize:13, fontWeight:700, textTransform:'uppercase', letterSpacing:'.06em', color:'#111' }}>{title}</h3>
         <a className="eds-viewall" onClick={onViewAll}>View all →</a>
       </div>
       {children}
@@ -50,10 +50,10 @@ function HomeScreen({ onNavigate }) {
   return (
     <div style={{ maxWidth:1120, margin:'0 auto', padding:'8px 4px 48px', display:'flex', flexDirection:'column', gap:24 }}>
       <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', paddingTop:8 }}>
-        <h1 style={{ margin:0, fontSize:20, fontWeight:600, color:'#171717' }}>Home</h1>
+        <h1 style={{ margin:0, fontSize:31, fontWeight:700, letterSpacing:'-0.015em', color:'#111' }}>Home</h1>
         <div style={{ display:'flex', alignItems:'center', gap:8 }}>
-          <span style={{ fontSize:14, color:'#737373' }}>Showing:</span>
-          <select style={{ fontSize:14, border:'1px solid #e5e5e5', borderRadius:8, padding:'6px 10px', background:'#fff', cursor:'pointer' }}>
+          <span style={{ fontSize:14, color:'#6F6F6F' }}>Showing:</span>
+          <select style={{ fontSize:14, border:'1px solid #111', borderRadius:0, padding:'6px 10px', background:'#fff', cursor:'pointer', fontFamily:'var(--font-sans)' }}>
             <option>All regions</option><option>Europe</option><option>North America</option>
           </select>
         </div>
@@ -61,14 +61,14 @@ function HomeScreen({ onNavigate }) {
 
       <section>
         <window.Eyebrow>Agrifoodtech News</window.Eyebrow>
-        <div style={{ display:'grid', gridTemplateColumns:'repeat(3, 1fr)', gap:12, marginTop:12 }}>
+        <div style={{ display:'grid', gridTemplateColumns:'repeat(3, 1fr)', gap:12, marginTop:16 }}>
           {window.NEWS.map((n,i)=><NewsCard key={i} item={n} />)}
         </div>
       </section>
 
       <section>
         <window.Eyebrow>Recent Activity</window.Eyebrow>
-        <div style={{ display:'flex', gap:16, marginTop:12 }}>
+        <div style={{ display:'flex', gap:16, marginTop:16 }}>
           <ActivityColumn title="Latest Startups" onViewAll={()=>onNavigate('startups')}>
             {window.STARTUPS.slice(0,4).map((s,i)=>(
               <ActivityRow key={s.id} name={s.company_name} color={window.sectorColor(s.sector)} tag={s.sector} meta={s.country} time={times[i]} />

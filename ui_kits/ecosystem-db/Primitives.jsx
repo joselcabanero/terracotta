@@ -1,27 +1,33 @@
 /* Shared primitives for the Ecosystem DB kit — flat, bordered, monochrome. */
 
+/* SectorBadge — austere: ink outline chip with a small sector-color square (data encoding). */
 function SectorBadge({ sector, size = 'sm' }) {
-  if (!sector) return React.createElement('span', { style:{ color:'#a3a3a3' } }, '—');
+  if (!sector) return React.createElement('span', { style:{ color:'#9B9B9B' } }, '—');
   const fz = size === 'xs' ? 10 : 11;
   return (
     <span style={{
-      backgroundColor: window.sectorColor(sector), color:'#fff', fontSize:fz,
-      fontWeight:500, padding:'2px 9px', borderRadius:9999, whiteSpace:'nowrap',
-    }}>{sector}</span>
+      display:'inline-flex', alignItems:'center', gap:6, background:'#fff', color:'#111',
+      border:'1px solid #111', fontSize:fz, fontWeight:600, textTransform:'uppercase',
+      letterSpacing:'.04em', padding:'2px 8px', borderRadius:0, whiteSpace:'nowrap',
+    }}>
+      <span style={{ width:8, height:8, background:window.sectorColor(sector), flexShrink:0 }}></span>
+      {sector}
+    </span>
   );
 }
 
 function Chip({ children, tone = 'gray' }) {
   const map = {
-    gray: { bg:'#f5f5f5', fg:'#404040', bd:'transparent' },
-    outline: { bg:'#fff', fg:'#404040', bd:'#e5e5e5' },
-    dark: { bg:'#171717', fg:'#fff', bd:'transparent' },
+    gray: { bg:'#fff', fg:'#111', bd:'#111' },
+    outline: { bg:'#fff', fg:'#111', bd:'#111' },
+    dark: { bg:'#111', fg:'#fff', bd:'#111' },
+    red: { bg:'#E1251B', fg:'#fff', bd:'#E1251B' },
   };
   const t = map[tone] || map.gray;
   return (
     <span style={{
       background:t.bg, color:t.fg, border:`1px solid ${t.bd}`, fontSize:11,
-      fontWeight:500, padding:'2px 9px', borderRadius:9999, whiteSpace:'nowrap',
+      fontWeight:600, padding:'2px 9px', borderRadius:0, whiteSpace:'nowrap',
     }}>{children}</span>
   );
 }
@@ -43,8 +49,8 @@ function Card({ children, style, hover, onClick }) {
 }
 
 function Eyebrow({ children }) {
-  return <h2 style={{ margin:0, fontSize:12, fontWeight:600, textTransform:'uppercase',
-    letterSpacing:'.06em', color:'#737373' }}>{children}</h2>;
+  return <h2 style={{ margin:0, fontSize:12, fontWeight:700, textTransform:'uppercase',
+    letterSpacing:'.14em', color:'#111', borderBottom:'2px solid #111', paddingBottom:6 }}>{children}</h2>;
 }
 
 Object.assign(window, { SectorBadge, Chip, Button, Card, Eyebrow });

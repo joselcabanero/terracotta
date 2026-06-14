@@ -2,7 +2,9 @@
 
 A faithful, reusable design system for **Eatable Adventures'** internal product, **Ecosystem DB** (a.k.a. *Startup Intelligence*) — a graph-based intelligence platform for the agrifood-tech & agritech startup ecosystem. It manages startups, investors, people, and corporate entities, and its headline use case is **matching startups with investors** by taxonomy alignment.
 
-This folder gives a design agent everything needed to produce on-brand interfaces, mockups, prototypes, and slides: design tokens (color + type), real brand assets, written tone/voice guidance, and a high-fidelity UI kit recreating the product.
+This folder gives a design agent everything needed to produce on-brand interfaces, mockups, prototypes, and slides: design tokens (color + type), a 12-column grid system, real brand assets, written tone/voice guidance, and a high-fidelity UI kit recreating the product.
+
+> **Design language: International Typographic Style (Josef Müller-Brockmann).** The system is austere and objective — **ink + paper + one functional red**, set in a grotesk, laid out on a strict **12-column modular grid** with an **8px baseline** and a **1.25 modular type scale**. Order comes from size, weight, and position on the grid; never from ornament, shadow, or decorative color.
 
 ---
 
@@ -33,6 +35,20 @@ Everything here was reverse-engineered from the production codebase. Explore it 
 
 ---
 
+## DESIGN LANGUAGE — International Typographic Style (Müller-Brockmann)
+
+The seven principles the whole system obeys. When in doubt, return here.
+
+1. **The grid is the law.** Every layout sits on a **12-column modular grid** (`grid.css`) with a **24px gutter** and **32px page margin**. Composition decisions are made by choosing *which columns* an element occupies. Asymmetry is created by placement on the grid, not by arbitrary offsets.
+2. **Objective, not expressive.** Design serves the information. No decoration, no flourish, no "brand moment" that doesn't carry meaning. If an element isn't doing a job, it's removed.
+3. **One grotesk, flush-left.** A single neutral sans (Helvetica/Akzidenz lineage) does all the work, set **flush-left / ragged-right**. No serifs, no second display face, no centered text.
+4. **Hierarchy from size, weight & position** — never from color or ornament. The **1.25 modular scale** gives a small set of objective sizes; emphasis is weight (400/500/700) and where a thing sits on the page.
+5. **8px baseline rhythm.** Type, leading, spacing, and component heights are all multiples of 8, so vertical rhythm is mathematically consistent everywhere.
+6. **Ink, paper, and ONE red.** Color is functional. Black `#111111` and white `#FFFFFF` carry the interface; a single Swiss red `#E1251B` marks identity, the active state, links, and focus. The categorical **data palette** (sectors, node types) is the one sanctioned exception, used only as small fields inside data views.
+7. **Rules, not shadows; squares, not pills.** Structure is drawn with **hard ink keylines** (1–2px rules). Surfaces are flat (no shadow except floating dialogs). Corners are **square** (`radius 0`); the only curve is the data dot.
+
+---
+
 ## CONTENT FUNDAMENTALS — voice & copy
 
 The product's copy is **terse, functional, and unfussy** — the register of an internal analyst tool, not a consumer brand.
@@ -42,8 +58,8 @@ The product's copy is **terse, functional, and unfussy** — the register of an 
 - **Casing:**
   - **Page & section titles:** Title Case or sentence case headline ("Startups", "Recent Activity", "Latest Startups").
   - **Eyebrows / section dividers on Home:** **UPPERCASE, letter-spaced** ("AGRIFOODTECH NEWS", "RECENT INVESTMENT ROUNDS").
-  - **Sidebar group labels:** lowercase→UPPERCASE mono micro-labels ("MAIN", "DB", "TOOLS") in IBM Plex Mono, 9px, tracked.
-  - **Table column headers:** UPPERCASE, 12px, tracked, neutral-500.
+  - **Sidebar group labels:** UPPERCASE grotesk micro-labels ("MAIN", "DB", "TOOLS"), 11px, bold, tracked `+0.12em`.
+  - **Table column headers:** UPPERCASE, 11px, bold, tracked, under a 2px ink keyline.
   - **Buttons:** Sentence case ("Add Startup", "Save filter", "Export", "Continue with Google").
 - **Microcopy patterns:**
   - Counts are explicit and terse: "{n} total", "1–25 of 312", "{n} rows match current filters".
@@ -51,7 +67,7 @@ The product's copy is **terse, functional, and unfussy** — the register of an 
   - Em dashes ("—") are used as the null/placeholder glyph in table cells and as a soft separator in meta lines.
   - Toasts confirm actions in past tense: "Startup deleted", "Exported 50 rows as CSV", 'Filter "Series A in Europe" saved'.
 - **Naming:** Internal/domain vocabulary is used confidently without explanation — "nodes", "edges", "Programs", "Watchlists", "Rounds Inbox", "match score", "taxonomy". The audience is internal experts.
-- **Vibe:** *Bloomberg-terminal-for-foodtech, warmed up.* Dense, data-first, on warm paper with a confident coral/amber identity. Information over decoration.
+- **Vibe:** *Swiss data instrument.* Objective, gridded, monochrome with a single red mark. Dense, flush-left, information over decoration — a Müller-Brockmann timetable for the agrifood-tech ecosystem.
 
 **Do:** "Browse and filter all startups" · "{n} total" · "Add Startup"
 **Don't:** "Discover amazing startups! 🚀" · "Oops! Nothing here yet" · "Click here to get started"
@@ -60,44 +76,44 @@ The product's copy is **terse, functional, and unfussy** — the register of an 
 
 ## VISUAL FOUNDATIONS
 
-A **warm, high-density, shadcn/ui (new-york) system** built on the Eatable Adventures brand palette. The aesthetic is restrained and utilitarian but appetising — warm paper/cream surfaces, hairline warm borders, charcoal text and actions, and a coral→brick→amber accent family reserved for identity, highlights, and selected state.
+An **austere, objective, grid-driven** system in the International Typographic Style. **Ink + paper + one functional red**, set in a grotesk on a 12-column / 8px-baseline grid. Hierarchy is built from size, weight, and position — not from ornament, shadow, or decorative color.
 
-**Brand palette (8 swatches):** Paper `#FFFFFF` · Cream `#FFF9EE` · Sand `#F5EACE` · Amber `#FFA103` · Coral `#DE5533` · Brick `#BC2D29` · Wine `#450E14` · Ink `#1E1E1E`.
+**Core palette:** Paper `#FFFFFF` · Ink `#111111` · **Red `#E1251B`** (the single accent) — plus an objective neutral ramp `#F4F4F2 · #EAEAEA · #DBDBDB · #9B9B9B · #6F6F6F · #4A4A4A`.
 
 ### Color
-- **Warm neutrals do the work.** Backgrounds are white (`#fff`) with cream (`#FFF9EE`) and sand (`#F5EACE`) for section surfaces; content sits on white cards with `1px` warm borders (`#EBE2D2`). Text runs charcoal (`#1E1E1E`), secondary `#7C726C`, faint meta `#ABA097`. Wells/chips use warm `#FBF3E2`.
-- **Primary actions are charcoal, not coral.** The main button is ink `#1E1E1E` with cream text (`#FFF9EE`) → hover `#38302C`. Following the shadcn move — dark = action, brand color = identity.
-- **Coral `#DE5533` is the headline brand color**, with **brick `#BC2D29`** as its darker, more readable pair and **amber `#FFA103`** as the highlight. Used for the `EA` monogram tile (coral fill, cream text), the **active nav item** (brick text/icon on `#FDECE4` coral tint), links, and focus rings. Tint `#FDECE4` is the "selected" background.
-- **Semantic / domain color is data, not chrome.** Sector badges use the canonical ontology palette (greens for Agritech/Innovative Food, ambers/oranges for Logistics & Retail, purple for Food-as-Medicine). Node-type colors (startup blue / investor green / person purple / corporate orange) color the graph and entity badges. These are kept from the production app as data-encoding colors and intentionally sit apart from the warm brand chrome.
+- **Ink and paper carry the interface.** Surfaces are white (`#FFFFFF`) with a neutral secondary ground (`#F4F4F2`). Text is ink (`#111111`), secondary `#4A4A4A`, muted `#6F6F6F`, faint meta `#9B9B9B`. Wells/chips use `#EAEAEA`.
+- **Primary actions are ink, not red.** The main button is ink `#111111` with paper text → hover black `#000`. Red is held in reserve so it always means something.
+- **Red `#E1251B` is the single functional accent** — used as a **field or marker**, never a soft tint: the `EA` monogram, the active-nav marker bar, links (ink text + red underline), focus rings, and "live" status. Pressed red is `#B71C13`.
+- **Data color is the one exception.** Categorical hues (sector taxonomy, node types) encode meaning and are used only as **small squares / dots / keylines** inside data views — never as page chrome. News tags are monochrome by default; match scores are ranked by **weight**, not hue.
 
 ### Type
-- **Inter** for everything UI (400/500/600/700), with stylistic sets `cv11`+`ss01` enabled for a cleaner, slightly technical character. **IBM Plex Mono** (400/500) for micro-labels, the monogram, and numeric/system accents.
-- **Small and tight.** Page titles are only 24px (`font-medium`, `tracking-tight`); section headers 20px `font-semibold`; body/table text 14px; dense meta 11–13px. Letter-spacing is tightened on headings (`-0.01…-0.02em`) and widened on uppercase mono labels.
-- Hierarchy comes from **weight + color + size**, not from large display type. There is no serif and no display face.
+- **One grotesk:** `Helvetica Neue → Helvetica → Arial`, with **Inter** as the loaded cross-platform fallback (Akzidenz-Grotesk is the historical reference; see the substitution note below). **IBM Plex Mono** is kept only for tabular numerals and code. No stylistic sets — objective default.
+- **Strict 1.25 modular scale, base 16px:** 13 · 16 · 20 · 25 · 31 · 39 · 49 · 61 · 76. Dense UI keeps a 14px step. Headings are flush-left, tight (`-0.015…-0.03em`), heavier as they grow (h1 = 39/700).
+- Hierarchy comes from **size + weight + position on the grid**. No serif, no centered text, no decorative display face.
 
-### Spacing, layout & shape
-- **4px base grid.** Content padding `24px` (`p-6`); card padding `12–16px`; tight `gap-1.5/gap-2` clusters inside rows.
-- **Corner radii:** controls/buttons/inputs `8px` (`rounded-lg`) — sometimes `6px` (`rounded-md`) for inner controls; **cards & containers `12px`** (`rounded-xl`); badges & avatars `9999px` (fully round). The base shadcn `--radius` is `0.5rem`.
-- **Fixed app frame:** sidebar and top bar are fixed; only the content column scrolls. Tables live inside a single bordered, rounded-xl container with a `neutral-50` header and `divide-y` hairline rows.
+### Grid, spacing & layout
+- **12-column modular grid** (`grid.css`): `24px` gutter, `32px` page margin, `1440px` max type area. Use `.swiss-container` → `.swiss-grid` → `.col-1…col-12` (and `.start-N` for asymmetric placement).
+- **8px baseline.** All spacing is a multiple of 8 (`--b1…--b12`; 4 is the half-step). Leading and component heights snap to it.
+- **Fixed app frame:** sidebar and top bar are fixed; only the content column scrolls. Content placed on the grid, flush-left.
 
-### Borders, elevation & surfaces
-- **Borders before shadows.** The system leans on `1px` hairline borders (`#e5e5e5`, dividers `#f5f5f5`) far more than shadow. Cards are flat with a border; shadow appears only subtly on hover (`hover:shadow-sm`) or on floating surfaces (login card, popovers, dialogs).
-- Shadows are the soft shadcn scale (`shadow-sm` → `shadow-lg`); never heavy or colored. No glows, no neumorphism.
-- No gradients anywhere in chrome. No background images, textures, or patterns. Surfaces are flat white/neutral.
+### Borders, elevation & shape
+- **Rules, not shadows.** Structure is drawn with **hard ink keylines** — `2px` rules to open a section/table head, `1px` `#DBDBDB` hairlines for dividers. Surfaces are **flat**; shadow appears only on truly floating layers (dialog/popover), never on resting cards.
+- **Square by rule.** `--radius: 0`. Buttons, inputs, cards, badges are rectangular. The only curve is the `9999px` **data dot**.
+- No gradients, textures, images, or glows in chrome. Ever.
 
 ### Motion
-- **Minimal and quick.** Page content fades in with `fadeIn` — `opacity 0→1` + `translateY(4px→0)` over **0.15s ease-out**. Sidebar expand/collapse is a `200ms` width transition. Hovers are `transition-colors` (background/text only). A 2px black top-loader bar (`#000`) marks route changes.
-- **No** bounces, springs, parallax, or decorative looping animation. Interaction states change color, not size.
+- **Minimal and quick.** Content fades in (`translateY(4px→0)` + opacity, **0.15s ease-out**); sidebar width animates `200ms`. Hovers are `transition-colors` only.
+- **No** bounces, springs, parallax, or looping animation. Interaction changes color, not size.
 
 ### Interaction states
-- **Hover:** subtle background shift — rows → `#fafafa`; ghost buttons → `#f5f5f5` / darker text; cards → border darkens to `neutral-400` + `shadow-sm`; links → underline.
-- **Active/selected nav:** `#FDECE4` coral-tint background, `#BC2D29` brick icon + label.
-- **Press:** primary ink button darkens to `#38302C`; brand elements darken. No scale-down.
-- **Focus:** coral focus ring (`--ring` = `#DE5533`) on inputs / the search pill. Visible but quiet.
-- **Disabled:** `opacity` drop (35–50%), `cursor-not-allowed`; "soon" features dimmed in nav.
+- **Hover:** subtle ground shift — rows/ghost buttons → `#F4F4F2`/`#EAEAEA`; links → turn red.
+- **Active/selected nav:** **3px red marker bar** + ink bold label on `#F4F4F2` (no pill, no tint fill).
+- **Press:** ink button → black `#000`; red → `#B71C13`. No scale-down.
+- **Focus:** `1px` red ring (`--ring` = `#E1251B`) on inputs / search. Quiet but visible.
+- **Disabled:** `opacity` 35–50% + `cursor-not-allowed`.
 
 ### Cards (the recurring unit)
-White background · `1px` `#e5e5e5` border · `rounded-xl` (12px) · no/minimal shadow at rest · optional `hover:shadow-sm` + border darken. Card header is a `text-sm font-semibold` title with an optional `neutral-100` bottom divider; body is dense rows or a small stat. This single pattern composes the entire UI — news cards, activity columns, detail cards, list containers.
+Paper background · `1px` ink (or `#DBDBDB`) keyline · **square** (radius 0) · **flat** at rest. A card header is an UPPERCASE bold title over a **2px ink rule**; the body is dense rows or a single large tabular figure. This one rectilinear pattern composes the whole UI — news cards, activity columns, detail panels, list containers.
 
 ---
 
@@ -107,7 +123,7 @@ White background · `1px` `#e5e5e5` border · `rounded-xl` (12px) · no/minimal 
 - **In-product icons seen:** `Home, Building2, TrendingUp, Briefcase, Users, FolderKanban, Bookmark, Network, Settings, BarChart2, Telescope, Inbox, Search, User, Plus, Trash2, Download, SlidersHorizontal, ChevronUp/Down/Left/Right, ChevronsUpDown, X, Loader2`.
 - **Recreations should link Lucide from CDN** (`https://unpkg.com/lucide@latest`) rather than redrawing glyphs. Do **not** hand-roll SVG icons or substitute emoji.
 - **No icon font, no PNG icons, no emoji.** Unicode is used only as glyphs-in-text: the em dash `—` as the null/placeholder value, and `→` in "View all →" links.
-- **Brand mark / logo:** `assets/logo.svg` — the Eatable Adventures wordmark (single-color, black). In-app the identity is most often expressed as a compact **`EA` monogram**: an `8×8` `6px`-radius tile filled brand-coral `#DE5533` with `EA` set in IBM Plex Mono cream `#FFF9EE`. The full `logo.svg` wordmark appears on the login screen (`h-28`). There is no separate favicon/standalone mark in the repo.
+- **Brand mark / logo:** `assets/logo.svg` — the Eatable Adventures wordmark (single-color). In-app the identity is most often expressed as a compact **`EA` monogram**: a **square** red `#E1251B` field with `EA` set in **grotesk bold**, paper-white. The full `logo.svg` wordmark appears on the login screen. There is no separate favicon/standalone mark in the repo.
 - **Brand color of imagery:** there is essentially **no photography or illustration** in the product — it is a data tool. The only "imagery" is the force-directed graph (colored nodes on white) and small colored sector/category dots. Keep any added imagery neutral, flat, and data-adjacent.
 
 ---
@@ -118,22 +134,27 @@ White background · `1px` `#e5e5e5` border · `rounded-xl` (12px) · no/minimal 
 |---|---|
 | `README.md` | This file — context, voice, visual foundations, iconography, index. |
 | `DESIGN.md` | Condensed, code-ready design guide for AI coding agents (Claude Code) — Tailwind/shadcn tokens, type, components, voice, checklist. |
-| `colors_and_type.css` | All design tokens as CSS variables (neutrals, brand, sector/node/status colors, type scale, radii, shadows, spacing) + semantic element styles. Import this first. |
+| `styles.css` | **Single entry point** — `@import`s `colors_and_type.css` + `grid.css`. Link this one file to get everything. |
+| `colors_and_type.css` | All design tokens as CSS variables (ink/paper/red, neutral ramp, data-encoding colors, **1.25 modular type scale**, square radii, flat elevation, 8px spacing) + semantic element styles. Import this first. |
+| `grid.css` | The 12-column modular grid + 8px baseline: container, grid, `.col-N`/`.start-N` spans, baseline spacing utilities, and column/baseline overlays. Import after `colors_and_type.css`. |
 | `SKILL.md` | Agent-Skill front-matter so this system can be used as a downloadable Claude Skill. |
 | `assets/` | Brand assets — `logo.svg` (Eatable Adventures wordmark). |
-| `fonts/` | Font note — the system uses Google-hosted Inter + IBM Plex Mono (see below). |
+| `fonts/` | Font note — the system uses the grotesk Helvetica/Arial stack (Inter loaded as fallback) + IBM Plex Mono (see below). |
 | `preview/` | Small standalone HTML specimen cards that populate the Design System tab (type, color, spacing, components, brand). |
 | `ui_kits/ecosystem-db/` | High-fidelity, interactive recreation of the app: `index.html` (click-through demo) + JSX components (`Sidebar`, `TopBar`, `EntityTable`, `Home`, primitives, etc.) + its own `README.md`. |
 
 ### Fonts
-The app uses **Inter** and **IBM Plex Mono**, both served from Google Fonts via `next/font`. `colors_and_type.css` mirrors that with a Google Fonts `@import`, so no local files are required for HTML output. If you need a fully offline bundle, download the two families into `fonts/` and replace the `@import` with `@font-face` rules.
+The Swiss system is set in a **grotesk**: `Helvetica Neue → Helvetica → Arial` (the Akzidenz-Grotesk / Helvetica lineage Müller-Brockmann worked in), with **Inter** loaded from Google Fonts as the cross-platform fallback so the look holds on machines without Helvetica. **IBM Plex Mono** is kept for tabular numerals. `colors_and_type.css` loads Inter + IBM Plex Mono via `@import`, so no local files are required.
+
+> **Font substitution flag:** true Akzidenz-Grotesk and Helvetica Neue are licensed/system-dependent fonts and are **not** bundled. On most machines the stack resolves to Helvetica or Arial (faithful), falling back to Inter elsewhere. If you want pixel-exact Swiss type, license Akzidenz-Grotesk or Helvetica Neue and drop the web fonts into `fonts/`, then update `--font-sans`.
 
 ---
 
 ## How to use this system
 
-1. **Link the tokens:** `<link rel="stylesheet" href="colors_and_type.css">` (adjust the relative path), then build with the CSS variables.
-2. **Lead with warm neutrals + ink actions.** Reach for paper/cream/sand surfaces and charcoal text/buttons first; use `--brand` (coral) / `--brand-strong` (brick) / `--brand-amber` for identity, highlights, and selected state; use sector/node/status colors only to encode data.
-3. **Borders over shadows, small tight type, 4px grid, rounded-xl cards.**
-4. **Compose from the UI kit** in `ui_kits/ecosystem-db/` for anything app-like — don't reinvent the shell.
-5. **Icons:** Lucide from CDN, 16px, outline.
+1. **Link the tokens, then the grid:** `<link rel="stylesheet" href="colors_and_type.css">` then `<link rel="stylesheet" href="grid.css">` (adjust relative paths).
+2. **Compose on the grid.** Wrap content in `.swiss-container` → `.swiss-grid`, place elements with `.col-N` / `.start-N`. Create interest by *asymmetric placement* on the 12 columns, not by offsets or ornament.
+3. **Ink + paper + one red.** Ink text and buttons, paper grounds, neutral ramp for hierarchy; `--brand` (red `#E1251B`) only for identity, active state, links, and focus. Categorical data colors only as small fields inside data views.
+4. **Rules not shadows, squares not pills, flush-left grotesk, 8px rhythm.** Open sections and tables with `2px` ink keylines; keep `--radius: 0`.
+5. **Compose from the UI kit** in `ui_kits/ecosystem-db/` for anything app-like — don't reinvent the shell.
+6. **Icons:** Lucide from CDN, 16px, outline.

@@ -1,0 +1,35 @@
+<!-- @dsCard group="Spacing" viewport="700x180" name="Baseline rhythm" subtitle="Everything snaps to the 8px baseline" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;background:#fff;color:var(--ink);font-family:var(--font-sans);}
+  .wrap{padding:24px 32px;display:flex;gap:32px;align-items:flex-start;}
+  .rhythm{flex:1;background-image:repeating-linear-gradient(to bottom,rgba(225,37,27,0.16) 0,rgba(225,37,27,0.16) 1px,transparent 1px,transparent 8px);}
+  .rhythm h4{margin:0;font-size:20px;line-height:24px;font-weight:700;}
+  .rhythm p{margin:8px 0 0;font-size:13px;line-height:16px;color:#4A4A4A;}
+  .legend{width:150px;flex-shrink:0;display:flex;flex-direction:column;gap:10px;}
+  .legend .t{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;border-bottom:2px solid var(--ink);padding-bottom:6px;}
+  .legend .row{font-family:var(--font-mono);font-size:10px;color:var(--fg3);display:flex;justify-content:space-between;}
+  .legend .row b{color:var(--ink);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="rhythm">
+    <h4>Baseline rhythm</h4>
+    <p>Every line of type sits on an 8-pixel baseline. Leading, margins, and component heights are all multiples of the same unit, so vertical rhythm stays mathematically consistent across the whole interface.</p>
+  </div>
+  <div class="legend">
+    <span class="t">8px base</span>
+    <span class="row"><span>baseline</span><b>8</b></span>
+    <span class="row"><span>body leading</span><b>24</b></span>
+    <span class="row"><span>h4 leading</span><b>24</b></span>
+    <span class="row"><span>caption</span><b>16</b></span>
+    <span class="row"><span>section gap</span><b>48</b></span>
+  </div>
+</div>
+</body>
+</html>

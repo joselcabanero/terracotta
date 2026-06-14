@@ -27,7 +27,7 @@ function NavItem({ item, active, expanded, onClick }) {
     <a className={cls} onClick={()=>!item.disabled && onClick(item.key)} title={!expanded ? item.label : undefined}>
       <window.Icon name={item.icon} size={16} />
       {expanded && <span className="eds-nav-label">
-        {item.label}{item.disabled && <span style={{color:'#a3a3a3'}}> (soon)</span>}
+        {item.label}{item.disabled && <span style={{color:'#9B9B9B'}}> (soon)</span>}
       </span>}
     </a>
   );
@@ -36,21 +36,20 @@ function NavItem({ item, active, expanded, onClick }) {
 function Sidebar({ active, expanded, onToggle, onNavigate }) {
   return (
     <nav style={{
-      height:'100%', background:'#fff', borderRight:'1px solid #e5e5e5',
+      height:'100%', background:'#fff', borderRight:'1px solid #111',
       display:'flex', flexDirection:'column', flexShrink:0, padding:'12px 0',
-      gap:4, overflow:'hidden', transition:'width .2s', width: expanded ? 200 : 52,
-      alignItems: expanded ? 'stretch' : 'center',
+      gap:4, overflow:'hidden', transition:'width .2s', width: expanded ? 200 : 52,      alignItems: expanded ? 'stretch' : 'center',
     }}>
       {/* Logo + toggle */}
       <div style={{ display:'flex', alignItems:'center', marginBottom:8,
         width:'100%', padding: expanded ? '0 12px' : 0,
         justifyContent: expanded ? 'space-between' : 'center' }}>
-        <div style={{ width:32, height:32, borderRadius:6, background:'#DE5533',
+        <div style={{ width:32, height:32, borderRadius:0, background:'#E1251B',
           display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
-          <span style={{ fontFamily:'var(--font-mono)', fontSize:11, fontWeight:500, color:'#FFF9EE' }}>EA</span>
+          <span style={{ fontFamily:'var(--font-sans)', fontSize:13, fontWeight:700, letterSpacing:'-0.02em', color:'#fff' }}>EA</span>
         </div>
-        {expanded && <span style={{ fontSize:11, fontWeight:500, color:'#737373', flex:1, marginLeft:8, whiteSpace:'nowrap' }}>Eatable Adventures</span>}
-        <button onClick={onToggle} className="eds-iconbtn" style={{ color:'#a3a3a3' }}>
+        {expanded && <span style={{ fontSize:11, fontWeight:700, textTransform:'uppercase', letterSpacing:'.1em', color:'#111', flex:1, marginLeft:10, whiteSpace:'nowrap' }}>Eatable Adventures</span>}
+        <button onClick={onToggle} className="eds-iconbtn" style={{ color:'#6F6F6F' }}>
           <window.Icon name={expanded ? 'ChevronLeft' : 'ChevronRight'} size={14} />
         </button>
       </div>
@@ -59,9 +58,9 @@ function Sidebar({ active, expanded, onToggle, onNavigate }) {
         <div key={g.label} style={{ display:'flex', flexDirection:'column', gap:2, width:'100%',
           padding: expanded ? '0 8px' : '0 6px', alignItems: expanded ? 'stretch':'center',
           marginTop: gi>0 ? 8 : 0, paddingTop: gi>0 ? 8 : 0,
-          borderTop: gi>0 ? '1px solid #f5f5f5' : 'none' }}>
-          {expanded && <span style={{ fontFamily:'var(--font-mono)', fontSize:9, fontWeight:400,
-            textTransform:'uppercase', letterSpacing:'.7px', color:'#a3a3a3', padding:'0 8px 4px' }}>{g.label}</span>}
+          borderTop: gi>0 ? '1px solid #DBDBDB' : 'none' }}>
+          {expanded && <span style={{ fontFamily:'var(--font-sans)', fontSize:10, fontWeight:700,
+            textTransform:'uppercase', letterSpacing:'.12em', color:'#6F6F6F', padding:'0 8px 4px' }}>{g.label}</span>}
           {g.items.map(it => <NavItem key={it.key} item={it} active={active} expanded={expanded} onClick={onNavigate} />)}
         </div>
       ))}

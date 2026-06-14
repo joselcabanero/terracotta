@@ -57,12 +57,12 @@ function Placeholder({ route }) {
   return (
     <div style={{ display:'flex', flexDirection:'column', gap:24 }}>
       <div>
-        <h1 style={{ margin:0, fontSize:24, fontWeight:500, letterSpacing:'-0.02em' }}>{t}</h1>
-        <p style={{ margin:'4px 0 0', fontSize:14, color:'#737373' }}>{sub}</p>
+        <h1 style={{ margin:0, fontSize:31, fontWeight:700, letterSpacing:'-0.015em' }}>{t}</h1>
+        <p style={{ margin:'6px 0 0', fontSize:14, color:'#6F6F6F' }}>{sub}</p>
       </div>
-      <div style={{ border:'1px dashed #e5e5e5', borderRadius:12, padding:'64px 24px', textAlign:'center',
-        display:'flex', flexDirection:'column', alignItems:'center', gap:12, color:'#a3a3a3' }}>
-        <window.Icon name={icon} size={28} style={{ color:'#d4d4d4' }} />
+      <div style={{ border:'1px solid #DBDBDB', borderRadius:0, padding:'64px 24px', textAlign:'center',
+        display:'flex', flexDirection:'column', alignItems:'center', gap:12, color:'#6F6F6F' }}>
+        <window.Icon name={icon} size={28} style={{ color:'#C2C2C2' }} />
         <p style={{ margin:0, fontSize:14 }}>This screen is not reconstructed in the UI kit.</p>
         <p style={{ margin:0, fontSize:12 }}>See <code style={{ fontFamily:'var(--font-mono)' }}>Home</code> and <code style={{ fontFamily:'var(--font-mono)' }}>Startups</code> for the full pattern.</p>
       </div>

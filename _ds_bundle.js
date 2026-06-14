@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":3,"namespace":"EatableAdventuresAPPsDesignSystem_b28ef2","components":[],"sourceHashes":{"ui_kits/ecosystem-db/App.jsx":"8a1603d6bfa6","ui_kits/ecosystem-db/DetailScreen.jsx":"a88653f85ce2","ui_kits/ecosystem-db/HomeScreen.jsx":"8fbc556afa5e","ui_kits/ecosystem-db/Icon.jsx":"780d9d3bfd77","ui_kits/ecosystem-db/LoginScreen.jsx":"28ea9b1ff074","ui_kits/ecosystem-db/Primitives.jsx":"3f249af1a4a1","ui_kits/ecosystem-db/Sidebar.jsx":"29d1d59fc7f5","ui_kits/ecosystem-db/StartupsScreen.jsx":"83282f797529","ui_kits/ecosystem-db/TopBar.jsx":"e978ea74e24b","ui_kits/ecosystem-db/data.jsx":"af1799a14e22"},"inlinedExternals":[],"unexposedExports":[]} */
+/* @ds-bundle: {"format":3,"namespace":"EatableAdventuresAPPsDesignSystem_b28ef2","components":[],"sourceHashes":{"ui_kits/ecosystem-db/App.jsx":"b75d7e3b3843","ui_kits/ecosystem-db/DetailScreen.jsx":"731070413a21","ui_kits/ecosystem-db/HomeScreen.jsx":"ace14f439513","ui_kits/ecosystem-db/Icon.jsx":"780d9d3bfd77","ui_kits/ecosystem-db/LoginScreen.jsx":"da1a7003b60e","ui_kits/ecosystem-db/Primitives.jsx":"79a567865972","ui_kits/ecosystem-db/Sidebar.jsx":"73edb1111d65","ui_kits/ecosystem-db/StartupsScreen.jsx":"86118cd1ba90","ui_kits/ecosystem-db/TopBar.jsx":"9826eaede8a7","ui_kits/ecosystem-db/data.jsx":"af1799a14e22"},"inlinedExternals":[],"unexposedExports":[]} */
 
 (() => {
 
@@ -109,33 +109,33 @@ function Placeholder({
   }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", {
     style: {
       margin: 0,
-      fontSize: 24,
-      fontWeight: 500,
-      letterSpacing: '-0.02em'
+      fontSize: 31,
+      fontWeight: 700,
+      letterSpacing: '-0.015em'
     }
   }, t), /*#__PURE__*/React.createElement("p", {
     style: {
-      margin: '4px 0 0',
+      margin: '6px 0 0',
       fontSize: 14,
-      color: '#737373'
+      color: '#6F6F6F'
     }
   }, sub)), /*#__PURE__*/React.createElement("div", {
     style: {
-      border: '1px dashed #e5e5e5',
-      borderRadius: 12,
+      border: '1px solid #DBDBDB',
+      borderRadius: 0,
       padding: '64px 24px',
       textAlign: 'center',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
       gap: 12,
-      color: '#a3a3a3'
+      color: '#6F6F6F'
     }
   }, /*#__PURE__*/React.createElement(window.Icon, {
     name: icon,
     size: 28,
     style: {
-      color: '#d4d4d4'
+      color: '#C2C2C2'
     }
   }), /*#__PURE__*/React.createElement("p", {
     style: {
@@ -176,16 +176,16 @@ function DetailCard({
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       padding: '12px 16px',
-      borderBottom: '1px solid #f5f5f5'
+      borderBottom: '2px solid #111'
     }
   }, /*#__PURE__*/React.createElement("h3", {
     style: {
       margin: 0,
       fontSize: 13,
-      fontWeight: 600,
-      color: '#171717',
+      fontWeight: 700,
+      color: '#111',
       textTransform: 'uppercase',
-      letterSpacing: '.03em'
+      letterSpacing: '.06em'
     }
   }, title)), /*#__PURE__*/React.createElement("div", {
     style: {
@@ -207,15 +207,15 @@ function Field({
   }, /*#__PURE__*/React.createElement("span", {
     style: {
       fontSize: 11,
-      color: '#a3a3a3',
+      color: '#6F6F6F',
       textTransform: 'uppercase',
-      letterSpacing: '.04em',
-      fontWeight: 500
+      letterSpacing: '.06em',
+      fontWeight: 700
     }
   }, label), /*#__PURE__*/React.createElement("span", {
     style: {
       fontSize: 14,
-      color: '#171717'
+      color: '#111'
     }
   }, children));
 }
@@ -240,7 +240,7 @@ function DetailScreen({
       alignItems: 'center',
       gap: 6,
       fontSize: 13,
-      color: '#737373',
+      color: '#6F6F6F',
       background: 'none',
       border: 'none',
       cursor: 'pointer',
@@ -266,9 +266,8 @@ function DetailScreen({
     style: {
       width: 48,
       height: 48,
-      borderRadius: 10,
-      background: window.sectorColor(s.sector) + '1a',
-      border: `1px solid ${window.sectorColor(s.sector)}40`,
+      borderRadius: 0,
+      background: '#111',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center'
@@ -277,21 +276,21 @@ function DetailScreen({
     name: "Building2",
     size: 22,
     style: {
-      color: window.sectorColor(s.sector)
+      color: '#fff'
     }
   })), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", {
     style: {
       margin: 0,
-      fontSize: 24,
-      fontWeight: 500,
-      letterSpacing: '-0.02em'
+      fontSize: 31,
+      fontWeight: 700,
+      letterSpacing: '-0.015em'
     }
   }, s.company_name), /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
       alignItems: 'center',
       gap: 8,
-      marginTop: 5
+      marginTop: 7
     }
   }, /*#__PURE__*/React.createElement(window.SectorBadge, {
     sector: s.sector
@@ -300,8 +299,10 @@ function DetailScreen({
     target: "_blank",
     style: {
       fontSize: 13,
-      color: '#BC2D29',
-      textDecoration: 'none'
+      color: '#111',
+      textDecoration: 'none',
+      borderBottom: '2px solid #E1251B',
+      paddingBottom: 1
     }
   }, s.website_url, " \u2197")))), /*#__PURE__*/React.createElement(window.Button, {
     variant: "outline",
@@ -309,9 +310,9 @@ function DetailScreen({
   }, "Edit"))), /*#__PURE__*/React.createElement("p", {
     style: {
       margin: 0,
-      fontSize: 15,
-      color: '#404040',
-      lineHeight: 1.55,
+      fontSize: 20,
+      color: '#4A4A4A',
+      lineHeight: 1.4,
       maxWidth: 680
     }
   }, s.short_overview), /*#__PURE__*/React.createElement("div", {
@@ -337,10 +338,10 @@ function DetailScreen({
   }, /*#__PURE__*/React.createElement("span", {
     style: {
       fontSize: 11,
-      color: '#a3a3a3',
+      color: '#6F6F6F',
       textTransform: 'uppercase',
-      letterSpacing: '.04em',
-      fontWeight: 500
+      letterSpacing: '.06em',
+      fontWeight: 700
     }
   }, "Keywords"), /*#__PURE__*/React.createElement("div", {
     style: {
@@ -383,14 +384,14 @@ function DetailScreen({
       alignItems: 'center',
       gap: 10,
       padding: '6px 0',
-      borderBottom: '1px solid #f5f5f5'
+      borderBottom: '1px solid #DBDBDB'
     }
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       width: 30,
       height: 30,
-      borderRadius: 9999,
-      background: '#9333ea1a',
+      borderRadius: 0,
+      background: '#111',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center'
@@ -399,7 +400,7 @@ function DetailScreen({
     name: "User",
     size: 15,
     style: {
-      color: '#9333ea'
+      color: '#fff'
     }
   })), /*#__PURE__*/React.createElement("div", {
     style: {
@@ -415,13 +416,14 @@ function DetailScreen({
     style: {
       margin: 0,
       fontSize: 11,
-      color: '#a3a3a3'
+      color: '#6F6F6F',
+      fontFamily: 'var(--font-mono)'
     }
   }, p.role, " \xB7 works_at")))) : /*#__PURE__*/React.createElement("p", {
     style: {
       margin: 0,
       fontSize: 13,
-      color: '#a3a3a3'
+      color: '#6F6F6F'
     }
   }, "No connected nodes yet."))));
 }
@@ -437,31 +439,35 @@ try { (() => {
 function NewsCard({
   item
 }) {
-  const [bg, fg] = window.TAG_COLORS[item.category] || ['#f5f5f5', '#737373'];
+  const isFunding = item.category === 'Funding';
   return /*#__PURE__*/React.createElement("a", {
     className: "eds-newscard"
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
-      justifyContent: 'space-between'
+      justifyContent: 'space-between',
+      fontFamily: 'var(--font-mono)'
     }
   }, /*#__PURE__*/React.createElement("span", {
     style: {
-      fontSize: 11,
-      color: '#a3a3a3'
+      fontSize: 10,
+      color: '#6F6F6F',
+      textTransform: 'uppercase',
+      letterSpacing: '.06em'
     }
   }, item.source), /*#__PURE__*/React.createElement("span", {
     style: {
-      fontSize: 11,
-      color: '#a3a3a3'
+      fontSize: 10,
+      color: '#9B9B9B'
     }
   }, item.date)), /*#__PURE__*/React.createElement("p", {
     style: {
       margin: 0,
       fontSize: 13,
-      fontWeight: 500,
-      color: '#171717',
-      lineHeight: 1.35,
+      fontWeight: 700,
+      color: '#111',
+      lineHeight: 1.25,
+      letterSpacing: '-0.01em',
       display: '-webkit-box',
       WebkitLineClamp: 2,
       WebkitBoxOrient: 'vertical',
@@ -471,7 +477,7 @@ function NewsCard({
     style: {
       margin: 0,
       fontSize: 11,
-      color: '#737373',
+      color: '#6F6F6F',
       lineHeight: 1.4,
       flex: 1,
       display: '-webkit-box',
@@ -482,13 +488,16 @@ function NewsCard({
   }, item.summary), /*#__PURE__*/React.createElement("span", {
     style: {
       alignSelf: 'flex-start',
-      fontSize: 10,
-      fontWeight: 500,
-      padding: '2px 8px',
-      borderRadius: 9999,
+      fontSize: 9,
+      fontWeight: 700,
+      textTransform: 'uppercase',
+      letterSpacing: '.1em',
+      padding: '2px 7px',
+      borderRadius: 0,
       marginTop: 'auto',
-      background: bg,
-      color: fg
+      background: isFunding ? '#E1251B' : '#fff',
+      color: isFunding ? '#fff' : '#111',
+      border: isFunding ? '1px solid #E1251B' : '1px solid #111'
     }
   }, item.category));
 }
@@ -511,7 +520,7 @@ function ActivityRow({
       margin: 0,
       fontSize: 13,
       fontWeight: 500,
-      color: '#171717',
+      color: '#111',
       whiteSpace: 'nowrap',
       overflow: 'hidden',
       textOverflow: 'ellipsis'
@@ -525,22 +534,21 @@ function ActivityRow({
     }
   }, tag && color && /*#__PURE__*/React.createElement("span", {
     style: {
-      fontSize: 10,
-      color: '#fff',
-      padding: '1px 7px',
-      borderRadius: 9999,
+      width: 8,
+      height: 8,
       background: color,
-      whiteSpace: 'nowrap'
+      flexShrink: 0
     }
-  }, tag), meta && /*#__PURE__*/React.createElement("span", {
+  }), (tag || meta) && /*#__PURE__*/React.createElement("span", {
     style: {
       fontSize: 11,
-      color: '#a3a3a3'
+      color: '#6F6F6F'
     }
-  }, meta))), /*#__PURE__*/React.createElement("span", {
+  }, [tag, meta].filter(Boolean).join(' · ')))), /*#__PURE__*/React.createElement("span", {
     style: {
-      fontSize: 11,
-      color: '#a3a3a3',
+      fontFamily: 'var(--font-mono)',
+      fontSize: 10,
+      color: '#9B9B9B',
       flexShrink: 0
     }
   }, time));
@@ -555,8 +563,8 @@ function ActivityColumn({
       flex: 1,
       minWidth: 0,
       background: '#fff',
-      border: '1px solid #e5e5e5',
-      borderRadius: 12,
+      border: '1px solid #111',
+      borderRadius: 0,
       overflow: 'hidden'
     }
   }, /*#__PURE__*/React.createElement("div", {
@@ -565,14 +573,16 @@ function ActivityColumn({
       justifyContent: 'space-between',
       alignItems: 'center',
       padding: '10px 12px',
-      borderBottom: '1px solid #f5f5f5'
+      borderBottom: '2px solid #111'
     }
   }, /*#__PURE__*/React.createElement("h3", {
     style: {
       margin: 0,
-      fontSize: 14,
-      fontWeight: 600,
-      color: '#171717'
+      fontSize: 13,
+      fontWeight: 700,
+      textTransform: 'uppercase',
+      letterSpacing: '.06em',
+      color: '#111'
     }
   }, title), /*#__PURE__*/React.createElement("a", {
     className: "eds-viewall",
@@ -602,9 +612,10 @@ function HomeScreen({
   }, /*#__PURE__*/React.createElement("h1", {
     style: {
       margin: 0,
-      fontSize: 20,
-      fontWeight: 600,
-      color: '#171717'
+      fontSize: 31,
+      fontWeight: 700,
+      letterSpacing: '-0.015em',
+      color: '#111'
     }
   }, "Home"), /*#__PURE__*/React.createElement("div", {
     style: {
@@ -615,23 +626,24 @@ function HomeScreen({
   }, /*#__PURE__*/React.createElement("span", {
     style: {
       fontSize: 14,
-      color: '#737373'
+      color: '#6F6F6F'
     }
   }, "Showing:"), /*#__PURE__*/React.createElement("select", {
     style: {
       fontSize: 14,
-      border: '1px solid #e5e5e5',
-      borderRadius: 8,
+      border: '1px solid #111',
+      borderRadius: 0,
       padding: '6px 10px',
       background: '#fff',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      fontFamily: 'var(--font-sans)'
     }
   }, /*#__PURE__*/React.createElement("option", null, "All regions"), /*#__PURE__*/React.createElement("option", null, "Europe"), /*#__PURE__*/React.createElement("option", null, "North America")))), /*#__PURE__*/React.createElement("section", null, /*#__PURE__*/React.createElement(window.Eyebrow, null, "Agrifoodtech News"), /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'grid',
       gridTemplateColumns: 'repeat(3, 1fr)',
       gap: 12,
-      marginTop: 12
+      marginTop: 16
     }
   }, window.NEWS.map((n, i) => /*#__PURE__*/React.createElement(NewsCard, {
     key: i,
@@ -640,7 +652,7 @@ function HomeScreen({
     style: {
       display: 'flex',
       gap: 16,
-      marginTop: 12
+      marginTop: 16
     }
   }, /*#__PURE__*/React.createElement(ActivityColumn, {
     title: "Latest Startups",
@@ -733,16 +745,17 @@ function LoginScreen({
       justifyContent: 'center',
       padding: 16,
       minHeight: '100%',
-      background: '#FFF9EE'
+      background: '#F4F4F2'
     }
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       width: '100%',
       maxWidth: 360,
       background: '#fff',
-      borderRadius: 12,
-      boxShadow: 'var(--shadow-sm)',
-      border: '1px solid #f5f5f5',
+      borderRadius: 0,
+      boxShadow: 'var(--shadow-md)',
+      border: '1px solid #111',
+      borderTop: '4px solid #E1251B',
       padding: 32,
       textAlign: 'center'
     }
@@ -751,23 +764,24 @@ function LoginScreen({
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      gap: 12,
+      gap: 14,
       marginBottom: 32
     }
   }, /*#__PURE__*/React.createElement("img", {
     src: "assets/logo.svg",
     alt: "Eatable Adventures",
     style: {
-      height: 96,
+      height: 88,
       width: 'auto',
       objectFit: 'contain'
     }
   }), /*#__PURE__*/React.createElement("span", {
     style: {
-      fontSize: 14,
-      color: '#0a0a0a',
-      fontWeight: 500,
-      letterSpacing: '.02em'
+      fontSize: 11,
+      color: '#111',
+      fontWeight: 700,
+      textTransform: 'uppercase',
+      letterSpacing: '.14em'
     }
   }, "Startup Intelligence")), /*#__PURE__*/React.createElement("button", {
     onClick: handle,
@@ -779,15 +793,14 @@ function LoginScreen({
       justifyContent: 'center',
       gap: 12,
       background: '#fff',
-      color: '#0a0a0a',
-      border: '1px solid #e5e5e5',
+      color: '#111',
+      border: '1px solid #111',
       padding: '12px',
-      borderRadius: 8,
+      borderRadius: 0,
       cursor: 'pointer',
       fontWeight: 500,
       fontSize: 16,
       fontFamily: 'var(--font-sans)',
-      boxShadow: 'var(--shadow-sm)',
       opacity: loading ? .5 : 1
     }
   }, loading ? /*#__PURE__*/React.createElement(window.Icon, {
@@ -815,8 +828,8 @@ function LoginScreen({
   })), "Continue with Google"), /*#__PURE__*/React.createElement("p", {
     style: {
       marginTop: 24,
-      fontSize: 14,
-      color: '#0a0a0a'
+      fontSize: 13,
+      color: '#6F6F6F'
     }
   }, "Access is granted by your administrator")));
 }
@@ -829,27 +842,41 @@ Object.assign(window, {
 try { (() => {
 /* Shared primitives for the Ecosystem DB kit — flat, bordered, monochrome. */
 
+/* SectorBadge — austere: ink outline chip with a small sector-color square (data encoding). */
 function SectorBadge({
   sector,
   size = 'sm'
 }) {
   if (!sector) return React.createElement('span', {
     style: {
-      color: '#a3a3a3'
+      color: '#9B9B9B'
     }
   }, '—');
   const fz = size === 'xs' ? 10 : 11;
   return /*#__PURE__*/React.createElement("span", {
     style: {
-      backgroundColor: window.sectorColor(sector),
-      color: '#fff',
+      display: 'inline-flex',
+      alignItems: 'center',
+      gap: 6,
+      background: '#fff',
+      color: '#111',
+      border: '1px solid #111',
       fontSize: fz,
-      fontWeight: 500,
-      padding: '2px 9px',
-      borderRadius: 9999,
+      fontWeight: 600,
+      textTransform: 'uppercase',
+      letterSpacing: '.04em',
+      padding: '2px 8px',
+      borderRadius: 0,
       whiteSpace: 'nowrap'
     }
-  }, sector);
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      width: 8,
+      height: 8,
+      background: window.sectorColor(sector),
+      flexShrink: 0
+    }
+  }), sector);
 }
 function Chip({
   children,
@@ -857,19 +884,24 @@ function Chip({
 }) {
   const map = {
     gray: {
-      bg: '#f5f5f5',
-      fg: '#404040',
-      bd: 'transparent'
+      bg: '#fff',
+      fg: '#111',
+      bd: '#111'
     },
     outline: {
       bg: '#fff',
-      fg: '#404040',
-      bd: '#e5e5e5'
+      fg: '#111',
+      bd: '#111'
     },
     dark: {
-      bg: '#171717',
+      bg: '#111',
       fg: '#fff',
-      bd: 'transparent'
+      bd: '#111'
+    },
+    red: {
+      bg: '#E1251B',
+      fg: '#fff',
+      bd: '#E1251B'
     }
   };
   const t = map[tone] || map.gray;
@@ -879,9 +911,9 @@ function Chip({
       color: t.fg,
       border: `1px solid ${t.bd}`,
       fontSize: 11,
-      fontWeight: 500,
+      fontWeight: 600,
       padding: '2px 9px',
-      borderRadius: 9999,
+      borderRadius: 0,
       whiteSpace: 'nowrap'
     }
   }, children);
@@ -926,10 +958,12 @@ function Eyebrow({
     style: {
       margin: 0,
       fontSize: 12,
-      fontWeight: 600,
+      fontWeight: 700,
       textTransform: 'uppercase',
-      letterSpacing: '.06em',
-      color: '#737373'
+      letterSpacing: '.14em',
+      color: '#111',
+      borderBottom: '2px solid #111',
+      paddingBottom: 6
     }
   }, children);
 }
@@ -1021,7 +1055,7 @@ function NavItem({
     className: "eds-nav-label"
   }, item.label, item.disabled && /*#__PURE__*/React.createElement("span", {
     style: {
-      color: '#a3a3a3'
+      color: '#9B9B9B'
     }
   }, " (soon)")));
 }
@@ -1035,7 +1069,7 @@ function Sidebar({
     style: {
       height: '100%',
       background: '#fff',
-      borderRight: '1px solid #e5e5e5',
+      borderRight: '1px solid #111',
       display: 'flex',
       flexDirection: 'column',
       flexShrink: 0,
@@ -1059,8 +1093,8 @@ function Sidebar({
     style: {
       width: 32,
       height: 32,
-      borderRadius: 6,
-      background: '#DE5533',
+      borderRadius: 0,
+      background: '#E1251B',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -1068,25 +1102,28 @@ function Sidebar({
     }
   }, /*#__PURE__*/React.createElement("span", {
     style: {
-      fontFamily: 'var(--font-mono)',
-      fontSize: 11,
-      fontWeight: 500,
-      color: '#FFF9EE'
+      fontFamily: 'var(--font-sans)',
+      fontSize: 13,
+      fontWeight: 700,
+      letterSpacing: '-0.02em',
+      color: '#fff'
     }
   }, "EA")), expanded && /*#__PURE__*/React.createElement("span", {
     style: {
       fontSize: 11,
-      fontWeight: 500,
-      color: '#737373',
+      fontWeight: 700,
+      textTransform: 'uppercase',
+      letterSpacing: '.1em',
+      color: '#111',
       flex: 1,
-      marginLeft: 8,
+      marginLeft: 10,
       whiteSpace: 'nowrap'
     }
   }, "Eatable Adventures"), /*#__PURE__*/React.createElement("button", {
     onClick: onToggle,
     className: "eds-iconbtn",
     style: {
-      color: '#a3a3a3'
+      color: '#6F6F6F'
     }
   }, /*#__PURE__*/React.createElement(window.Icon, {
     name: expanded ? 'ChevronLeft' : 'ChevronRight',
@@ -1102,16 +1139,16 @@ function Sidebar({
       alignItems: expanded ? 'stretch' : 'center',
       marginTop: gi > 0 ? 8 : 0,
       paddingTop: gi > 0 ? 8 : 0,
-      borderTop: gi > 0 ? '1px solid #f5f5f5' : 'none'
+      borderTop: gi > 0 ? '1px solid #DBDBDB' : 'none'
     }
   }, expanded && /*#__PURE__*/React.createElement("span", {
     style: {
-      fontFamily: 'var(--font-mono)',
-      fontSize: 9,
-      fontWeight: 400,
+      fontFamily: 'var(--font-sans)',
+      fontSize: 10,
+      fontWeight: 700,
       textTransform: 'uppercase',
-      letterSpacing: '.7px',
-      color: '#a3a3a3',
+      letterSpacing: '.12em',
+      color: '#6F6F6F',
       padding: '0 8px 4px'
     }
   }, g.label), g.items.map(it => /*#__PURE__*/React.createElement(NavItem, {
@@ -1218,10 +1255,10 @@ function StartupsScreen({
       textAlign: 'left',
       padding: '10px 14px',
       fontSize: 11,
-      fontWeight: 600,
+      fontWeight: 700,
       textTransform: 'uppercase',
-      letterSpacing: '.04em',
-      color: '#737373'
+      letterSpacing: '.06em',
+      color: '#111'
     }
   }, /*#__PURE__*/React.createElement("button", {
     onClick: () => toggleSort(col.key),
@@ -1242,7 +1279,7 @@ function StartupsScreen({
     name: sort.key === col.key ? sort.dir === 'asc' ? 'ChevronUp' : 'ChevronDown' : 'ChevronsUpDown',
     size: 12,
     style: {
-      color: sort.key === col.key ? '#737373' : '#d4d4d4'
+      color: sort.key === col.key ? '#E1251B' : '#C2C2C2'
     }
   })));
   return /*#__PURE__*/React.createElement("div", {
@@ -1260,15 +1297,15 @@ function StartupsScreen({
   }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", {
     style: {
       margin: 0,
-      fontSize: 24,
-      fontWeight: 500,
-      letterSpacing: '-0.02em'
+      fontSize: 31,
+      fontWeight: 700,
+      letterSpacing: '-0.015em'
     }
   }, "Startups"), /*#__PURE__*/React.createElement("p", {
     style: {
-      margin: '4px 0 0',
+      margin: '6px 0 0',
       fontSize: 14,
-      color: '#737373'
+      color: '#6F6F6F'
     }
   }, "Browse and filter all startups")), /*#__PURE__*/React.createElement(window.Button, {
     icon: "Plus"
@@ -1294,11 +1331,11 @@ function StartupsScreen({
   }), " Filters", activeCount > 0 && /*#__PURE__*/React.createElement("span", {
     style: {
       background: '#fff',
-      color: '#171717',
+      color: '#111',
       fontSize: 10,
       fontWeight: 700,
       padding: '1px 6px',
-      borderRadius: 9999
+      borderRadius: 0
     }
   }, activeCount)), /*#__PURE__*/React.createElement("div", {
     style: {
@@ -1309,8 +1346,9 @@ function StartupsScreen({
     }
   }, /*#__PURE__*/React.createElement("span", {
     style: {
-      fontSize: 12,
-      color: '#a3a3a3'
+      fontFamily: 'var(--font-mono)',
+      fontSize: 11,
+      color: '#6F6F6F'
     }
   }, rows.length, " total"), /*#__PURE__*/React.createElement(window.Button, {
     variant: "outline",
@@ -1320,8 +1358,8 @@ function StartupsScreen({
     style: {
       padding: 16,
       background: '#fff',
-      border: '1px solid #e5e5e5',
-      borderRadius: 12,
+      border: '1px solid #111',
+      borderRadius: 0,
       display: 'grid',
       gridTemplateColumns: 'repeat(4, 1fr)',
       gap: 12
@@ -1369,7 +1407,7 @@ function StartupsScreen({
       alignItems: 'center',
       gap: 4,
       fontSize: 12,
-      color: '#737373',
+      color: '#E1251B',
       background: 'none',
       border: 'none',
       cursor: 'pointer'
@@ -1380,8 +1418,8 @@ function StartupsScreen({
   }), " Clear filters")))), /*#__PURE__*/React.createElement("div", {
     style: {
       background: '#fff',
-      border: '1px solid #e5e5e5',
-      borderRadius: 12,
+      border: '1px solid #111',
+      borderRadius: 0,
       overflow: 'hidden'
     }
   }, /*#__PURE__*/React.createElement("table", {
@@ -1392,8 +1430,8 @@ function StartupsScreen({
     }
   }, /*#__PURE__*/React.createElement("thead", {
     style: {
-      background: '#fafafa',
-      borderBottom: '1px solid #e5e5e5'
+      background: '#fff',
+      borderBottom: '2px solid #111'
     }
   }, /*#__PURE__*/React.createElement("tr", null, COLS.map(c => /*#__PURE__*/React.createElement(Th, {
     key: c.key,
@@ -1411,7 +1449,7 @@ function StartupsScreen({
     style: {
       padding: '48px',
       textAlign: 'center',
-      color: '#a3a3a3',
+      color: '#6F6F6F',
       fontSize: 14
     }
   }, "No results found."))))), rows.length > 0 && /*#__PURE__*/React.createElement("div", {
@@ -1419,8 +1457,9 @@ function StartupsScreen({
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
-      fontSize: 12,
-      color: '#737373'
+      fontFamily: 'var(--font-mono)',
+      fontSize: 11,
+      color: '#6F6F6F'
     }
   }, /*#__PURE__*/React.createElement("div", {
     style: {
@@ -1473,22 +1512,24 @@ function Row({
   })), /*#__PURE__*/React.createElement("td", {
     style: {
       ...td,
-      color: '#737373'
+      color: '#6F6F6F'
     }
   }, s.funding_stage), /*#__PURE__*/React.createElement("td", {
     style: {
       ...td,
-      color: '#737373'
+      color: '#6F6F6F'
     }
   }, s.city, ", ", s.country), /*#__PURE__*/React.createElement("td", {
     style: {
       ...td,
-      color: '#737373'
+      color: '#6F6F6F',
+      fontVariantNumeric: 'tabular-nums'
     }
   }, s.founded_year), /*#__PURE__*/React.createElement("td", {
     style: {
       ...td,
-      color: '#737373'
+      color: '#6F6F6F',
+      fontVariantNumeric: 'tabular-nums'
     }
   }, s.employees), /*#__PURE__*/React.createElement("td", {
     style: td
@@ -1512,10 +1553,12 @@ function FilterField({
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("label", {
     style: {
       display: 'block',
-      fontSize: 12,
-      fontWeight: 500,
-      color: '#737373',
-      marginBottom: 4
+      fontSize: 11,
+      fontWeight: 700,
+      textTransform: 'uppercase',
+      letterSpacing: '.06em',
+      color: '#111',
+      marginBottom: 5
     }
   }, label), children);
 }
@@ -1523,8 +1566,8 @@ const selStyle = {
   width: '100%',
   padding: '7px 10px',
   fontSize: 13,
-  border: '1px solid #e5e5e5',
-  borderRadius: 6,
+  border: '1px solid #111',
+  borderRadius: 0,
   background: '#fff',
   fontFamily: 'var(--font-sans)',
   boxSizing: 'border-box',
@@ -1534,8 +1577,8 @@ const inpStyle = {
   width: '100%',
   padding: '7px 10px',
   fontSize: 13,
-  border: '1px solid #e5e5e5',
-  borderRadius: 6,
+  border: '1px solid #111',
+  borderRadius: 0,
   fontFamily: 'var(--font-sans)',
   boxSizing: 'border-box'
 };
@@ -1544,13 +1587,13 @@ const td = {
 };
 const pgBtn = dis => ({
   padding: 4,
-  borderRadius: 6,
+  borderRadius: 0,
   background: 'none',
   border: 'none',
   cursor: dis ? 'not-allowed' : 'pointer',
   opacity: dis ? .3 : 1,
   display: 'flex',
-  color: '#737373'
+  color: '#6F6F6F'
 });
 Object.assign(window, {
   StartupsScreen
@@ -1584,7 +1627,7 @@ function TopBar({
   return /*#__PURE__*/React.createElement("div", {
     style: {
       height: 64,
-      borderBottom: '1px solid #e5e5e5',
+      borderBottom: '1px solid #111',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
@@ -1610,19 +1653,19 @@ function TopBar({
     }
   }, /*#__PURE__*/React.createElement("span", {
     style: {
-      color: '#737373',
-      fontWeight: 500
+      color: detailLabel ? '#6F6F6F' : '#111',
+      fontWeight: detailLabel ? 500 : 700
     }
   }, CRUMB[active] || 'Home'), detailLabel && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(window.Icon, {
     name: "ChevronRight",
     size: 14,
     style: {
-      color: '#d4d4d4'
+      color: '#C2C2C2'
     }
   }), /*#__PURE__*/React.createElement("span", {
     style: {
-      color: '#0a0a0a',
-      fontWeight: 500
+      color: '#111',
+      fontWeight: 700
     }
   }, detailLabel))), /*#__PURE__*/React.createElement("div", {
     style: {
@@ -1638,7 +1681,7 @@ function TopBar({
       left: 12,
       top: '50%',
       transform: 'translateY(-50%)',
-      color: '#a3a3a3'
+      color: '#9B9B9B'
     }
   }), /*#__PURE__*/React.createElement("input", {
     value: query,
@@ -1648,8 +1691,8 @@ function TopBar({
     style: {
       width: '100%',
       padding: '9px 16px 9px 36px',
-      border: '1px solid #e5e5e5',
-      borderRadius: 9999,
+      border: '1px solid #111',
+      borderRadius: 0,
       fontSize: 14,
       fontFamily: 'var(--font-sans)',
       boxSizing: 'border-box',
@@ -1668,30 +1711,33 @@ function TopBar({
       alignItems: 'center',
       gap: 6,
       padding: '4px 8px',
-      background: '#fafafa',
-      border: '1px solid #e5e5e5',
-      borderRadius: 8
+      background: '#F4F4F2',
+      border: '1px solid #DBDBDB',
+      borderRadius: 0
     }
   }, /*#__PURE__*/React.createElement("span", {
     style: {
       fontSize: 11,
-      fontWeight: 500,
-      color: '#404040'
+      fontWeight: 700,
+      textTransform: 'uppercase',
+      letterSpacing: '.06em',
+      color: '#111'
     }
   }, "Startups"), /*#__PURE__*/React.createElement("span", {
     style: {
       fontSize: 11,
-      color: '#a3a3a3'
+      color: '#6F6F6F',
+      fontVariantNumeric: 'tabular-nums'
     }
   }, count)), /*#__PURE__*/React.createElement("button", {
     style: {
       background: 'none',
       border: 'none',
       cursor: 'pointer',
-      color: '#a3a3a3',
+      color: '#6F6F6F',
       display: 'flex',
       padding: 8,
-      borderRadius: 8
+      borderRadius: 0
     }
   }, /*#__PURE__*/React.createElement(window.Icon, {
     name: "Bug",
@@ -1706,15 +1752,15 @@ function TopBar({
     style: {
       fontSize: 14,
       fontWeight: 500,
-      color: '#0a0a0a'
+      color: '#111'
     }
   }, "Jos\xE9 Caba\xF1ero"), /*#__PURE__*/React.createElement("span", {
     style: {
       fontSize: 10,
-      color: '#0a0a0a',
+      color: '#111',
       textTransform: 'uppercase',
-      letterSpacing: '.05em',
-      fontWeight: 600,
+      letterSpacing: '.08em',
+      fontWeight: 700,
       cursor: 'pointer',
       whiteSpace: 'nowrap'
     }
@@ -1722,8 +1768,8 @@ function TopBar({
     style: {
       width: 32,
       height: 32,
-      borderRadius: 9999,
-      background: '#f5f5f5',
+      borderRadius: 0,
+      background: '#111',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center'
@@ -1732,7 +1778,7 @@ function TopBar({
     name: "User",
     size: 16,
     style: {
-      color: '#0a0a0a'
+      color: '#fff'
     }
   }))));
 }

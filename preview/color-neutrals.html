@@ -5,38 +5,41 @@
 <meta charset="utf-8">
 <link rel="stylesheet" href="../colors_and_type.css">
 <style>
-  html,body{margin:0;background:#fff;color:var(--fg1);}
-  .wrap{padding:24px 28px;}
-  .scale{display:flex;gap:0;border:1px solid var(--border-1);border-radius:10px;overflow:hidden;}
-  .sw{flex:1;height:74px;}
-  .labels{display:flex;gap:0;margin-top:8px;}
-  .lb{flex:1;font-family:var(--font-mono);font-size:9px;color:var(--fg3);text-align:center;line-height:1.4;}
-  .lb b{display:block;color:var(--fg1);font-weight:500;font-size:9.5px;}
+  html,body{margin:0;background:#fff;color:var(--ink);font-family:var(--font-sans);}
+  .wrap{padding:28px 32px;}
+  .scale{display:flex;border:1px solid var(--ink);}
+  .sw{flex:1;height:70px;border-right:1px solid #DBDBDB;}
+  .sw:last-child{border-right:0;}
+  .labels{display:flex;margin-top:8px;}
+  .lb{flex:1;font-family:var(--font-mono);font-size:9px;color:var(--fg3);text-align:center;line-height:1.5;}
+  .lb b{display:block;color:var(--ink);font-weight:700;font-size:9.5px;font-family:var(--font-sans);}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="scale">
-    <div class="sw" style="background:#ffffff;border-right:1px solid var(--border-1)"></div>
-    <div class="sw" style="background:#FFFBF4"></div>
-    <div class="sw" style="background:#FBF3E2"></div>
-    <div class="sw" style="background:#F5EACE"></div>
-    <div class="sw" style="background:#EBE2D2"></div>
-    <div class="sw" style="background:#ABA097"></div>
-    <div class="sw" style="background:#7C726C"></div>
-    <div class="sw" style="background:#4A433F"></div>
-    <div class="sw" style="background:#1E1E1E"></div>
+    <div class="sw" style="background:#FFFFFF"></div>
+    <div class="sw" style="background:#F4F4F2"></div>
+    <div class="sw" style="background:#EAEAEA"></div>
+    <div class="sw" style="background:#DBDBDB"></div>
+    <div class="sw" style="background:#C2C2C2"></div>
+    <div class="sw" style="background:#9B9B9B"></div>
+    <div class="sw" style="background:#6F6F6F"></div>
+    <div class="sw" style="background:#4A4A4A"></div>
+    <div class="sw" style="background:#222222"></div>
+    <div class="sw" style="background:#111111"></div>
   </div>
   <div class="labels">
-    <div class="lb"><b>paper</b>#fff</div>
-    <div class="lb"><b>50</b>#FFFBF4</div>
-    <div class="lb"><b>100</b>#FBF3E2</div>
-    <div class="lb"><b>sand</b>#F5EACE</div>
-    <div class="lb"><b>200</b>#EBE2D2</div>
-    <div class="lb"><b>400</b>#ABA097</div>
-    <div class="lb"><b>500</b>#7C726C</div>
-    <div class="lb"><b>700</b>#4A433F</div>
-    <div class="lb"><b>ink</b>#1E1E1E</div>
+    <div class="lb"><b>0</b>fff</div>
+    <div class="lb"><b>50</b>f4f4f2</div>
+    <div class="lb"><b>100</b>eaeaea</div>
+    <div class="lb"><b>200</b>dbdbdb</div>
+    <div class="lb"><b>300</b>c2c2c2</div>
+    <div class="lb"><b>400</b>9b9b9b</div>
+    <div class="lb"><b>500</b>6f6f6f</div>
+    <div class="lb"><b>600</b>4a4a4a</div>
+    <div class="lb"><b>800</b>222</div>
+    <div class="lb"><b>900</b>111</div>
   </div>
 </div>
 </body>

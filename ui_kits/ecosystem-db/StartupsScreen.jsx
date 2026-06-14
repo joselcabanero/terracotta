@@ -31,13 +31,13 @@ function StartupsScreen({ query, onOpen }) {
     { key:'founded_year', label:'Founded' }, { key:'employees', label:'Employees' },
   ];
   const Th = ({ col }) => (
-    <th style={{ textAlign:'left', padding:'10px 14px', fontSize:11, fontWeight:600,
-      textTransform:'uppercase', letterSpacing:'.04em', color:'#737373' }}>
+    <th style={{ textAlign:'left', padding:'10px 14px', fontSize:11, fontWeight:700,
+      textTransform:'uppercase', letterSpacing:'.06em', color:'#111' }}>
       <button onClick={()=>toggleSort(col.key)} style={{ display:'inline-flex', alignItems:'center', gap:4,
         background:'none', border:'none', cursor:'pointer', font:'inherit', color:'inherit', textTransform:'inherit', letterSpacing:'inherit', padding:0 }}>
         {col.label}
         <window.Icon name={sort.key===col.key ? (sort.dir==='asc'?'ChevronUp':'ChevronDown') : 'ChevronsUpDown'} size={12}
-          style={{ color: sort.key===col.key ? '#737373' : '#d4d4d4' }} />
+          style={{ color: sort.key===col.key ? '#E1251B' : '#C2C2C2' }} />
       </button>
     </th>
   );
@@ -46,8 +46,8 @@ function StartupsScreen({ query, onOpen }) {
     <div style={{ display:'flex', flexDirection:'column', gap:24 }}>
       <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-start' }}>
         <div>
-          <h1 style={{ margin:0, fontSize:24, fontWeight:500, letterSpacing:'-0.02em' }}>Startups</h1>
-          <p style={{ margin:'4px 0 0', fontSize:14, color:'#737373' }}>Browse and filter all startups</p>
+          <h1 style={{ margin:0, fontSize:31, fontWeight:700, letterSpacing:'-0.015em' }}>Startups</h1>
+          <p style={{ margin:'6px 0 0', fontSize:14, color:'#6F6F6F' }}>Browse and filter all startups</p>
         </div>
         <window.Button icon="Plus">Add Startup</window.Button>
       </div>
@@ -57,44 +57,44 @@ function StartupsScreen({ query, onOpen }) {
         <div style={{ display:'flex', alignItems:'center', gap:12 }}>
           <button key={'fb-'+(filtersOpen||activeCount>0)} onClick={()=>setFiltersOpen(v=>!v)} className={`eds-filterbtn ${(filtersOpen||activeCount)?'on':''}`}>
             <window.Icon name="SlidersHorizontal" size={14} /> Filters
-            {activeCount>0 && <span style={{ background:'#fff', color:'#171717', fontSize:10, fontWeight:700, padding:'1px 6px', borderRadius:9999 }}>{activeCount}</span>}
+            {activeCount>0 && <span style={{ background:'#fff', color:'#111', fontSize:10, fontWeight:700, padding:'1px 6px', borderRadius:0 }}>{activeCount}</span>}
           </button>
           <div style={{ marginLeft:'auto', display:'flex', alignItems:'center', gap:8 }}>
-            <span style={{ fontSize:12, color:'#a3a3a3' }}>{rows.length} total</span>
+            <span style={{ fontFamily:'var(--font-mono)', fontSize:11, color:'#6F6F6F' }}>{rows.length} total</span>
             <window.Button variant="outline" size="sm" icon="Download">Export</window.Button>
           </div>
         </div>
         {filtersOpen && (
-          <div style={{ padding:16, background:'#fff', border:'1px solid #e5e5e5', borderRadius:12,
+          <div style={{ padding:16, background:'#fff', border:'1px solid #111', borderRadius:0,
             display:'grid', gridTemplateColumns:'repeat(4, 1fr)', gap:12 }}>
             <FilterField label="Sector"><select value={filters.sector} onChange={e=>setFilter('sector',e.target.value)} style={selStyle}><option value="">All</option>{window.SECTORS.map(s=><option key={s}>{s}</option>)}</select></FilterField>
             <FilterField label="Stage"><select value={filters.stage} onChange={e=>setFilter('stage',e.target.value)} style={selStyle}><option value="">All</option>{window.FUNDING_STAGES.map(s=><option key={s}>{s}</option>)}</select></FilterField>
             <FilterField label="Location"><input value={filters.location} onChange={e=>setFilter('location',e.target.value)} placeholder="City, country, or region" style={inpStyle} /></FilterField>
             {activeCount>0 && <div style={{ display:'flex', alignItems:'flex-end' }}>
-              <button onClick={()=>setFilters({sector:'',stage:'',location:''})} style={{ display:'flex', alignItems:'center', gap:4, fontSize:12, color:'#737373', background:'none', border:'none', cursor:'pointer' }}><window.Icon name="X" size={12}/> Clear filters</button>
+              <button onClick={()=>setFilters({sector:'',stage:'',location:''})} style={{ display:'flex', alignItems:'center', gap:4, fontSize:12, color:'#E1251B', background:'none', border:'none', cursor:'pointer' }}><window.Icon name="X" size={12}/> Clear filters</button>
             </div>}
           </div>
         )}
       </div>
 
       {/* Table */}
-      <div style={{ background:'#fff', border:'1px solid #e5e5e5', borderRadius:12, overflow:'hidden' }}>
+      <div style={{ background:'#fff', border:'1px solid #111', borderRadius:0, overflow:'hidden' }}>
         <table style={{ width:'100%', borderCollapse:'collapse', fontSize:13 }}>
-          <thead style={{ background:'#fafafa', borderBottom:'1px solid #e5e5e5' }}>
+          <thead style={{ background:'#fff', borderBottom:'2px solid #111' }}>
             <tr>{COLS.map(c=><Th key={c.key} col={c} />)}<th style={{ width:56 }}></th></tr>
           </thead>
           <tbody>
             {rows.map(s=>(
               <Row key={s.id} s={s} onOpen={onOpen} />
             ))}
-            {rows.length===0 && <tr><td colSpan={7} style={{ padding:'48px', textAlign:'center', color:'#a3a3a3', fontSize:14 }}>No results found.</td></tr>}
+            {rows.length===0 && <tr><td colSpan={7} style={{ padding:'48px', textAlign:'center', color:'#6F6F6F', fontSize:14 }}>No results found.</td></tr>}
           </tbody>
         </table>
       </div>
 
       {/* Pagination */}
       {rows.length>0 && (
-        <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', fontSize:12, color:'#737373' }}>
+        <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', fontFamily:'var(--font-mono)', fontSize:11, color:'#6F6F6F' }}>
           <div style={{ display:'flex', alignItems:'center', gap:8 }}>
             <span>Rows per page:</span>
             <select style={{ ...selStyle, width:'auto', padding:'4px 8px' }}><option>25</option><option>50</option></select>
@@ -115,10 +115,10 @@ function Row({ s, onOpen }) {
     <tr className="eds-trow">
       <td style={td}><a className="eds-link" onClick={()=>onOpen(s)}>{s.company_name}</a></td>
       <td style={td}><window.SectorBadge sector={s.sector} size="xs" /></td>
-      <td style={{ ...td, color:'#737373' }}>{s.funding_stage}</td>
-      <td style={{ ...td, color:'#737373' }}>{s.city}, {s.country}</td>
-      <td style={{ ...td, color:'#737373' }}>{s.founded_year}</td>
-      <td style={{ ...td, color:'#737373' }}>{s.employees}</td>
+      <td style={{ ...td, color:'#6F6F6F' }}>{s.funding_stage}</td>
+      <td style={{ ...td, color:'#6F6F6F' }}>{s.city}, {s.country}</td>
+      <td style={{ ...td, color:'#6F6F6F', fontVariantNumeric:'tabular-nums' }}>{s.founded_year}</td>
+      <td style={{ ...td, color:'#6F6F6F', fontVariantNumeric:'tabular-nums' }}>{s.employees}</td>
       <td style={td}>
         <div style={{ display:'flex', justifyContent:'flex-end' }}>
           <button title="Add to watchlist" className="eds-iconbtn"><window.Icon name="Bookmark" size={14}/></button>
@@ -129,11 +129,11 @@ function Row({ s, onOpen }) {
 }
 
 function FilterField({ label, children }) {
-  return <div><label style={{ display:'block', fontSize:12, fontWeight:500, color:'#737373', marginBottom:4 }}>{label}</label>{children}</div>;
+  return <div><label style={{ display:'block', fontSize:11, fontWeight:700, textTransform:'uppercase', letterSpacing:'.06em', color:'#111', marginBottom:5 }}>{label}</label>{children}</div>;
 }
-const selStyle = { width:'100%', padding:'7px 10px', fontSize:13, border:'1px solid #e5e5e5', borderRadius:6, background:'#fff', fontFamily:'var(--font-sans)', boxSizing:'border-box', cursor:'pointer' };
-const inpStyle = { width:'100%', padding:'7px 10px', fontSize:13, border:'1px solid #e5e5e5', borderRadius:6, fontFamily:'var(--font-sans)', boxSizing:'border-box' };
+const selStyle = { width:'100%', padding:'7px 10px', fontSize:13, border:'1px solid #111', borderRadius:0, background:'#fff', fontFamily:'var(--font-sans)', boxSizing:'border-box', cursor:'pointer' };
+const inpStyle = { width:'100%', padding:'7px 10px', fontSize:13, border:'1px solid #111', borderRadius:0, fontFamily:'var(--font-sans)', boxSizing:'border-box' };
 const td = { padding:'11px 14px' };
-const pgBtn = (dis)=>({ padding:4, borderRadius:6, background:'none', border:'none', cursor:dis?'not-allowed':'pointer', opacity:dis?.3:1, display:'flex', color:'#737373' });
+const pgBtn = (dis)=>({ padding:4, borderRadius:0, background:'none', border:'none', cursor:dis?'not-allowed':'pointer', opacity:dis?.3:1, display:'flex', color:'#6F6F6F' });
 
 Object.assign(window, { StartupsScreen });

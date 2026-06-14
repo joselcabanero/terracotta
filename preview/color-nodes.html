@@ -5,20 +5,25 @@
 <meta charset="utf-8">
 <link rel="stylesheet" href="../colors_and_type.css">
 <style>
-  html,body{margin:0;background:#fff;color:var(--fg1);}
-  .wrap{padding:24px 28px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
-  .node{display:flex;flex-direction:column;gap:8px;align-items:center;}
-  .dot{width:46px;height:46px;border-radius:9999px;}
-  .nm{font-size:12px;font-weight:600;}
+  html,body{margin:0;background:#fff;color:var(--ink);font-family:var(--font-sans);}
+  .wrap{padding:22px 32px;}
+  .hd{font-family:var(--font-mono);font-size:10px;color:var(--fg3);text-transform:uppercase;letter-spacing:.1em;border-bottom:2px solid #111;padding-bottom:6px;margin-bottom:14px;}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .node{display:flex;flex-direction:column;gap:7px;}
+  .sq{width:28px;height:28px;}
+  .nm{font-size:13px;font-weight:700;}
   .hex{font-family:var(--font-mono);font-size:10px;color:var(--fg3);}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="node"><div class="dot" style="background:#2563eb"></div><div class="nm">Startup</div><div class="hex">#2563eb</div></div>
-  <div class="node"><div class="dot" style="background:#16a34a"></div><div class="nm">Investor</div><div class="hex">#16a34a</div></div>
-  <div class="node"><div class="dot" style="background:#9333ea"></div><div class="nm">Person</div><div class="hex">#9333ea</div></div>
-  <div class="node"><div class="dot" style="background:#ea580c"></div><div class="nm">Corporate</div><div class="hex">#ea580c</div></div>
+  <div class="hd">Node types — graph encoding</div>
+  <div class="grid">
+    <div class="node"><div class="sq" style="background:#2563eb"></div><div class="nm">Startup</div><div class="hex">2563EB</div></div>
+    <div class="node"><div class="sq" style="background:#16a34a"></div><div class="nm">Investor</div><div class="hex">16A34A</div></div>
+    <div class="node"><div class="sq" style="background:#9333ea"></div><div class="nm">Person</div><div class="hex">9333EA</div></div>
+    <div class="node"><div class="sq" style="background:#ea580c"></div><div class="nm">Corporate</div><div class="hex">EA580C</div></div>
+  </div>
 </div>
 </body>
 </html>

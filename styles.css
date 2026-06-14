@@ -1,0 +1,8 @@
+/* =========================================================================
+   Eatable Adventures — styles.css
+   Single entry point for the design system. Consumers can link this one
+   file to get every token, the type system, and the 12-column grid.
+   International Typographic Style (Müller-Brockmann): ink + paper + one red.
+   ========================================================================= */
+@import url('colors_and_type.css');
+@import url('grid.css');

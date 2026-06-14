@@ -5,42 +5,41 @@
 <meta charset="utf-8">
 <link rel="stylesheet" href="../colors_and_type.css">
 <style>
-  html,body{margin:0;background:#fafafa;color:var(--fg1);font-family:var(--font-sans);}
-  .wrap{padding:22px 28px;display:flex;gap:14px;}
-  .news{width:210px;background:#fff;border:1px solid var(--border-1);border-radius:8px;padding:12px;display:flex;flex-direction:column;gap:6px;}
-  .news:hover{border-color:var(--fg4);box-shadow:var(--shadow-sm);}
-  .news .top{display:flex;justify-content:space-between;font-size:11px;color:var(--fg4);}
-  .news .ttl{font-size:13px;font-weight:500;line-height:1.35;}
-  .news .sum{font-size:11px;color:var(--fg3);line-height:1.4;}
-  .news .tag{align-self:flex-start;font-size:10px;font-weight:500;padding:2px 8px;border-radius:9999px;margin-top:2px;}
-  .col{flex:1;background:#fff;border:1px solid var(--border-1);border-radius:12px;overflow:hidden;}
-  .col .hd{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border-bottom:1px solid var(--border-2);}
-  .col .hd h3{margin:0;font-size:14px;font-weight:600;}
-  .col .hd a{font-size:12px;color:var(--fg4);text-decoration:none;}
-  .item{display:flex;justify-content:space-between;align-items:center;padding:9px 12px;border-bottom:1px solid var(--border-2);}
+  html,body{margin:0;background:#fff;color:var(--ink);font-family:var(--font-sans);}
+  .wrap{padding:22px 32px;display:flex;gap:16px;}
+  .news{width:220px;border:1px solid #111;padding:12px;display:flex;flex-direction:column;gap:6px;}
+  .news .top{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:10px;color:var(--fg3);}
+  .news .ttl{font-size:14px;font-weight:700;line-height:1.25;letter-spacing:-0.01em;}
+  .news .sum{font-size:12px;color:var(--fg3);line-height:1.4;}
+  .news .tag{align-self:flex-start;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#fff;background:#E1251B;padding:2px 7px;margin-top:2px;}
+  .col{flex:1;border:1px solid #111;}
+  .col .hd{display:flex;justify-content:space-between;align-items:center;padding:9px 12px;border-bottom:2px solid #111;}
+  .col .hd h3{margin:0;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;}
+  .col .hd a{font-family:var(--font-mono);font-size:11px;color:var(--ink);text-decoration:none;}
+  .item{display:flex;justify-content:space-between;align-items:center;padding:9px 12px;border-bottom:1px solid #DBDBDB;}
   .item:last-child{border-bottom:0;}
   .item .nm{font-size:13px;font-weight:500;}
   .item .meta{display:flex;gap:6px;align-items:center;margin-top:3px;}
-  .sdot{font-size:10px;color:#fff;padding:1px 7px;border-radius:9999px;}
-  .item .t{font-size:11px;color:var(--fg4);}
+  .sq{width:9px;height:9px;display:inline-block;}
+  .item .t{font-family:var(--font-mono);font-size:10px;color:var(--fg3);}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="news">
-    <div class="top"><span>AgFunder</span><span>2d</span></div>
+    <div class="top"><span>AGFUNDER</span><span>2d</span></div>
     <div class="ttl">Vertical-farming startup raises €12M Series A</div>
     <div class="sum">Round led by a European impact fund to scale leafy-green production.</div>
-    <span class="tag" style="background:var(--tag-funding-bg);color:var(--tag-funding-fg)">Funding</span>
+    <span class="tag">Funding</span>
   </div>
   <div class="col">
     <div class="hd"><h3>Latest Startups</h3><a>View all →</a></div>
     <div class="item">
-      <div><div class="nm">Mycorena</div><div class="meta"><span class="sdot" style="background:#639922">Innovative Food</span><span class="t">Sweden</span></div></div>
+      <div><div class="nm">Mycorena</div><div class="meta"><span class="sq" style="background:#639922"></span><span class="t">Innovative Food · Sweden</span></div></div>
       <span class="t">3h</span>
     </div>
     <div class="item">
-      <div><div class="nm">Infarm</div><div class="meta"><span class="sdot" style="background:#1D9E75">Agritech</span><span class="t">Germany</span></div></div>
+      <div><div class="nm">Infarm</div><div class="meta"><span class="sq" style="background:#1D9E75"></span><span class="t">Agritech · Germany</span></div></div>
       <span class="t">1d</span>
     </div>
   </div>
