@@ -4,38 +4,38 @@
 <head>
 <meta charset="utf-8">
 <link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,300,0,0">
 <style>
-  html,body{margin:0;background:#fff;color:var(--ink);font-family:var(--font-sans);}
+  html,body{margin:0;background:#fff;color:var(--fg1);font-family:var(--font-sans);}
   .wrap{padding:20px 32px;display:flex;gap:30px;align-items:center;}
-  .rail{width:200px;border:1px solid #111;padding:10px 0;display:flex;flex-direction:column;gap:2px;}
-  .glabel{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--fg3);padding:6px 14px 3px;}
-  .nav{display:flex;align-items:center;gap:10px;padding:8px 14px;font-size:13px;font-weight:500;color:var(--fg2);text-decoration:none;border-left:3px solid transparent;}
-  .nav svg{width:16px;height:16px;}
-  .nav.active{border-left-color:var(--red);color:var(--ink);font-weight:700;background:#F4F4F2;}
-  .nav.idle:hover{background:#EAEAEA;color:var(--ink);}
-  .nav.disabled{opacity:.35;}
-  .legend{width:160px;flex-shrink:0;display:flex;flex-direction:column;gap:9px;font-family:var(--font-mono);font-size:10px;color:var(--fg3);}
-  .legend b{color:var(--ink);font-family:var(--font-sans);font-weight:700;}
+  .rail{width:210px;background:var(--surface-cream);border:1px solid var(--border-2);border-radius:var(--radius-lg);padding:12px 10px;display:flex;flex-direction:column;gap:2px;}
+  .glabel{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--fg4);padding:6px 12px 4px;}
+  .nav{display:flex;align-items:center;gap:11px;padding:9px 12px;font-size:14px;font-weight:500;color:var(--fg2);text-decoration:none;border-radius:var(--radius-md);position:relative;}
+  .material-symbols-outlined{font-size:20px;line-height:1;}
+  .nav.active{background:#fff;color:var(--red);font-weight:500;box-shadow:var(--shadow-sm);}
+  .nav.active::before{content:"";position:absolute;left:0;top:8px;bottom:8px;width:3px;border-radius:999px;background:var(--red);}
+  .nav.idle:hover{background:rgba(255,255,255,.6);color:var(--fg1);}
+  .nav.disabled{opacity:.4;}
+  .legend{width:160px;flex-shrink:0;display:flex;flex-direction:column;gap:10px;font-size:11px;color:var(--fg3);}
+  .legend b{color:var(--fg1);font-weight:700;}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="rail">
-    <span class="glabel">DB</span>
-    <a class="nav active"><i data-lucide="building-2"></i>Startups</a>
-    <a class="nav idle"><i data-lucide="trending-up"></i>Investors</a>
-    <a class="nav idle"><i data-lucide="users"></i>People</a>
+    <span class="glabel">System</span>
+    <a class="nav active"><span class="material-symbols-outlined">dashboard</span>Overview</a>
+    <a class="nav idle"><span class="material-symbols-outlined">deployed_code</span>Programs</a>
+    <a class="nav idle"><span class="material-symbols-outlined">hub</span>Hubs</a>
     <span class="glabel" style="margin-top:6px">Tools</span>
-    <a class="nav idle"><i data-lucide="network"></i>Graph</a>
-    <a class="nav disabled"><i data-lucide="telescope"></i>Scout</a>
+    <a class="nav idle"><span class="material-symbols-outlined">monitoring</span>Reports</a>
+    <a class="nav disabled"><span class="material-symbols-outlined">travel_explore</span>Scout</a>
   </div>
   <div class="legend">
-    <span><b>active</b><br>red marker bar + ink label</span>
-    <span><b>idle</b><br>grey-700, hover fill</span>
-    <span><b>disabled</b><br>35% opacity</span>
+    <span><b>active</b><br>white pill + red marker &amp; label</span>
+    <span><b>idle</b><br>warm grey, hover lift</span>
+    <span><b>disabled</b><br>40% opacity</span>
   </div>
 </div>
-<script src="https://unpkg.com/lucide@latest"></script>
-<script>lucide.createIcons();</script>
 </body>
 </html>

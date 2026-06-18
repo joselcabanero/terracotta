@@ -5,25 +5,26 @@
 <meta charset="utf-8">
 <link rel="stylesheet" href="../colors_and_type.css">
 <style>
-  html,body{margin:0;background:#fff;color:var(--ink);font-family:var(--font-sans);}
+  html,body{margin:0;background:#fff;color:var(--fg1);font-family:var(--font-sans);}
   .wrap{padding:26px 32px;display:grid;grid-template-columns:1fr 1fr;gap:24px;}
-  .col{display:flex;flex-direction:column;gap:10px;}
+  .col{display:flex;flex-direction:column;gap:14px;}
   .grp{display:flex;flex-direction:column;gap:6px;}
-  .note{font-size:10px;color:var(--fg4);font-family:var(--font-mono);}
-  .label{font-family:var(--font-sans);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--ink);}
-  .eyebrow{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--ink);}
-  .colhead{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink);border-bottom:2px solid var(--ink);padding-bottom:5px;}
+  .note{font-size:10px;color:var(--fg4);}
+  .label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.10em;color:var(--fg1);}
+  .eyebrow{font-size:12px;font-weight:400;text-transform:uppercase;letter-spacing:.16em;color:var(--red);}
+  .eyebrow.ink{color:var(--fg1);}
+  .link{font-size:15px;align-self:flex-start;color:var(--fg1);font-weight:500;text-decoration:none;border-bottom:2px solid var(--red);padding-bottom:1px;}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="col">
-    <div class="grp"><span class="label">Main / DB / Tools</span><span class="note">.label — grotesk 11px 700, tracked .12em</span></div>
-    <div class="grp"><span class="eyebrow">Agrifoodtech News</span><span class="note">.eyebrow — 12px 700, tracked .14em</span></div>
+    <div class="grp"><span class="eyebrow">Agrifoodtech</span><span class="note">.eyebrow — Rubik Regular, uppercase, tracked .16em, red or ink</span></div>
+    <div class="grp"><span class="eyebrow ink">The system</span><span class="note">ink eyebrow variant</span></div>
   </div>
   <div class="col">
-    <div class="grp"><span class="colhead">Company&nbsp;&nbsp;Sector&nbsp;&nbsp;Stage</span><span class="note">column header — 11px 700, ink keyline</span></div>
-    <div class="grp"><a class="link" style="font-size:15px;align-self:flex-start;">View all startups</a><span class="note">link — ink + red underline marker</span></div>
+    <div class="grp"><span class="label">Detect · Build · Test · Scale</span><span class="note">.label — Rubik 11px Bold, uppercase, tracked .10em</span></div>
+    <div class="grp"><a class="link">Let's Beat</a><span class="note">link — ink label + EAV Red underline marker</span></div>
   </div>
 </div>
 </body>

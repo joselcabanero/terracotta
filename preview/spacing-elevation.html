@@ -5,22 +5,24 @@
 <meta charset="utf-8">
 <link rel="stylesheet" href="../colors_and_type.css">
 <style>
-  html,body{margin:0;background:#F4F4F2;color:var(--ink);font-family:var(--font-sans);}
-  .wrap{padding:30px 32px;display:flex;gap:30px;align-items:center;justify-content:center;}
+  html,body{margin:0;background:var(--surface-grey);color:var(--fg1);font-family:var(--font-sans);}
+  .wrap{padding:30px 32px;display:flex;gap:26px;align-items:center;justify-content:center;}
   .item{display:flex;flex-direction:column;gap:14px;align-items:center;}
-  .box{width:120px;height:64px;background:#fff;}
-  .b-rule{border:1px solid #111;}
-  .b-key{border-top:2px solid #111;border-left:1px solid #DBDBDB;border-right:1px solid #DBDBDB;border-bottom:1px solid #DBDBDB;}
+  .box{width:118px;height:64px;background:#fff;border-radius:var(--radius-lg);}
+  .b-rest{border:1px solid var(--border-1);}
+  .b-soft{box-shadow:var(--shadow);}
   .b-float{box-shadow:var(--shadow-md);}
-  .nm{font-family:var(--font-mono);font-size:10px;color:var(--fg3);text-align:center;line-height:1.5;}
-  .nm b{display:block;color:var(--ink);font-family:var(--font-sans);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;}
+  .b-cream{background:var(--surface-cream);border:1px solid var(--border-2);}
+  .nm{font-size:10px;color:var(--fg3);text-align:center;line-height:1.5;}
+  .nm b{display:block;color:var(--fg1);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="item"><div class="box b-rule"></div><div class="nm"><b>Rest</b>1px ink keyline</div></div>
-  <div class="item"><div class="box b-key"></div><div class="nm"><b>Active</b>2px top rule</div></div>
-  <div class="item"><div class="box b-float"></div><div class="nm"><b>Float only</b>dialog / popover</div></div>
+  <div class="item"><div class="box b-rest"></div><div class="nm"><b>Rest</b>1px warm border</div></div>
+  <div class="item"><div class="box b-soft"></div><div class="nm"><b>Raised</b>soft shadow</div></div>
+  <div class="item"><div class="box b-float"></div><div class="nm"><b>Float</b>dialog / popover</div></div>
+  <div class="item"><div class="box b-cream"></div><div class="nm"><b>Cream</b>highlighted block</div></div>
 </div>
 </body>
 </html>

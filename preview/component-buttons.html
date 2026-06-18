@@ -4,42 +4,41 @@
 <head>
 <meta charset="utf-8">
 <link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,300,0,0">
 <style>
-  html,body{margin:0;background:#fff;color:var(--ink);font-family:var(--font-sans);}
-  .wrap{padding:24px 32px;display:flex;flex-direction:column;gap:16px;}
-  .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
-  button{font-family:var(--font-sans);font-size:14px;font-weight:500;display:inline-flex;align-items:center;gap:8px;cursor:pointer;border:1px solid transparent;border-radius:0;white-space:nowrap;transition:background .12s,color .12s,border-color .12s;}
-  .btn-primary{background:#111;color:#fff;padding:9px 16px;}
-  .btn-primary:hover{background:#000;}
-  .btn-outline{background:#fff;color:#111;border-color:#111;padding:9px 16px;}
-  .btn-outline:hover{background:#F4F4F2;}
-  .btn-ghost{background:transparent;color:#4A4A4A;padding:9px 14px;}
-  .btn-ghost:hover{background:#EAEAEA;color:#111;}
-  .btn-red{background:#E1251B;color:#fff;padding:9px 16px;}
-  .btn-red:hover{background:#B71C13;}
-  .btn-sm{font-size:12px;padding:7px 12px;border:1px solid #111;background:#fff;color:#111;}
-  .btn-sm:hover{background:#F4F4F2;}
-  .cap{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--fg3);}
-  svg{width:16px;height:16px;}
-  .btn-sm svg{width:13px;height:13px;}
+  html,body{margin:0;background:#fff;color:var(--fg1);font-family:var(--font-sans);}
+  .wrap{padding:24px 32px;display:flex;flex-direction:column;gap:18px;}
+  .row{display:flex;gap:12px;align-items:center;flex-wrap:wrap;}
+  button{font-family:var(--font-sans);font-size:14px;font-weight:500;display:inline-flex;align-items:center;gap:8px;cursor:pointer;border:1px solid transparent;border-radius:var(--radius-pill);white-space:nowrap;transition:background .15s,color .15s,border-color .15s,box-shadow .2s;}
+  .material-symbols-outlined{font-size:18px;line-height:1;}
+  .btn-primary{background:var(--red);color:#fff;padding:10px 20px;}
+  .btn-primary:hover{background:var(--brand-strong);box-shadow:var(--pulse-red-on);}
+  .btn-cta{background:var(--burgundy);color:#FFF9EE;padding:10px 20px;}
+  .btn-cta:hover{box-shadow:0 6px 22px rgba(69,14,20,.34);}
+  .btn-outline{background:#fff;color:var(--red);border-color:var(--red);padding:10px 20px;}
+  .btn-outline:hover{background:var(--brand-tint);}
+  .btn-ghost{background:transparent;color:var(--fg2);padding:10px 16px;}
+  .btn-ghost:hover{background:var(--surface-cream);color:var(--fg1);}
+  .btn-sm{font-size:13px;padding:7px 14px;border:1px solid var(--input);background:#fff;color:var(--fg1);}
+  .btn-sm:hover{background:var(--surface-cream);}
+  .cap{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--fg3);width:88px;}
+  .btn-sm .material-symbols-outlined{font-size:16px;}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="row">
-    <button class="btn-primary"><i data-lucide="plus"></i>Add Startup</button>
+    <button class="btn-primary"><span class="material-symbols-outlined">add</span>New project</button>
+    <button class="btn-cta">Let's Beat</button>
     <button class="btn-outline">Cancel</button>
     <button class="btn-ghost">View all</button>
-    <button class="btn-red"><i data-lucide="trash-2"></i>Delete</button>
   </div>
   <div class="row">
-    <span class="cap">small / secondary</span>
-    <button class="btn-sm"><i data-lucide="sliders-horizontal"></i>Filters</button>
-    <button class="btn-sm"><i data-lucide="download"></i>Export</button>
-    <button class="btn-sm"><i data-lucide="bookmark"></i>Save filter</button>
+    <span class="cap">small</span>
+    <button class="btn-sm"><span class="material-symbols-outlined">tune</span>Filters</button>
+    <button class="btn-sm"><span class="material-symbols-outlined">download</span>Export</button>
+    <button class="btn-sm"><span class="material-symbols-outlined">bookmark</span>Save</button>
   </div>
 </div>
-<script src="https://unpkg.com/lucide@latest"></script>
-<script>lucide.createIcons();</script>
 </body>
 </html>

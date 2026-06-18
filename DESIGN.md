@@ -1,170 +1,146 @@
-# DESIGN.md — Eatable Adventures (Ecosystem DB / Startup Intelligence)
+# DESIGN.md — Eatable Adventures (Brand Design System)
 
-Design guide for building on-brand UI. Drop this in your repo (or reference it from `CLAUDE.md`) so the agent designs with the right tokens, type, and grid. **Design language: International Typographic Style (Josef Müller-Brockmann)** — austere, objective, grid-driven. Stack of record: Next.js 14 + Tailwind + shadcn/ui, **grotesk (Helvetica/Inter)**, **Lucide** icons.
+Design guide for building on-brand product UI. Drop this in your repo (or reference it from `CLAUDE.md`) so the agent designs with the right tokens, type, and graphic system. **Brand: "The Beating Heart of Food Innovation."** The visual system is born from the heartbeat — **pulse · rhythm · impact** — and is warm, human, and premium without arrogance. Type is **Rubik** (only), color is **EAV Red + warm creams**, surfaces are **rounded**, energy is **contained**.
 
-> Companion files: `README.md` (full rationale), `colors_and_type.css` (tokens), `grid.css` (the grid), `ui_kits/ecosystem-db/` (working components). When in doubt, copy patterns from the UI kit.
+> Companion files: `README.md` (full rationale + voice), `colors_and_type.css` (tokens), `grid.css` (the grid), `preview/` (specimen cards), `Brand Foundations.html` (one-page showcase), `templates/app-shell/` (a ready product shell). When in doubt, copy patterns from the foundations page or the app-shell template.
 
 ---
 
-## 1. The seven principles (obey these)
+## 1. Principles (obey these)
 
-1. **The grid is the law** — 12 columns, 24px gutter, 32px margin. Compose by choosing columns; asymmetry from placement, not offsets.
-2. **Objective, not expressive** — design serves the data. No decoration that doesn't carry meaning.
-3. **One grotesk, flush-left** — single neutral sans, ragged-right. No serifs, no centered text.
-4. **Hierarchy from size, weight & position** — never from color/ornament. Modular 1.25 scale.
-5. **8px baseline rhythm** — type, leading, spacing, heights all multiples of 8.
-6. **Ink, paper, and ONE red** — `#111` + `#FFF` + `#E1251B`. Data palette is the only exception.
-7. **Rules not shadows, squares not pills** — hard ink keylines, flat surfaces, `radius: 0`.
+1. **Operational clarity** — direct headlines, clean modules, clear hierarchy, enough air. Read quickly. Sophistication is in judgment, not complexity.
+2. **Contained energy** — intensity, controlled. Red, the light point and gradients activate a composition without making it noisy.
+3. **Real humanity** — people, contexts and processes feel close and in action; never cold or abstract.
+4. **Structure with movement** — gridded and ordered, but alive. The brand does not shout, but does not disappear either.
+5. **Brand intensity scales** — restrained (apps, data, reports) → intermediate (decks) → high (covers, campaigns). **Product UI is restrained**: white & cream grounds, Rubik, subtle red accents; gradients held for hero/CTA moments.
+6. **One family, one system** — Rubik only; the EAV palette only; rounded cards/pills; the light point as a precise accent.
+7. **Color is structural, not decorative** — assigned by hierarchy and meaning, with balance between intensity and rest.
 
 ---
 
 ## 2. Palette
 
-| Token | Hex | Use |
+Hex is the source of record for screen. Two **mother colors** (EAV Red + EAV Cream) anchor the system.
+
+| Token | Hex | Role |
 |---|---|---|
-| Paper | `#FFFFFF` | ground, cards |
-| Ground-2 | `#F4F4F2` | secondary surface, hover |
-| Fill | `#EAEAEA` | chips, wells |
-| Divider | `#DBDBDB` | hairline borders |
-| Muted | `#6F6F6F` | secondary/caption text |
-| Secondary | `#4A4A4A` | body-secondary text |
-| **Ink** | `#111111` | text + primary actions + keylines |
-| **Red** | `#E1251B` | THE accent — identity, active, links, focus |
-| Red-pressed | `#B71C13` | pressed red |
+| **EAV Red** | `#BC2D29` | the representative color — identity, active, links, focus, CTAs |
+| **EAV Cream** | `#FFF9EE` | highlighted/editorial blocks, app grounds |
+| White | `#FFFFFF` | predominant ground; balances the gradients |
+| **EAV Black** | `#1E1E1E` | footers & typography (primary text) |
+| EAV Dark Cream | `#F5EACE` | secondary gradients, soft wells |
+| EAV Light Grey | `#FAFAFA` | neutral / consulting grounds |
+| EAV Grey | `#E8E8E8` | consulting blocks & dividers |
+| EAV Yellow | `#FFA103` | the **light point** only |
+| EAV Orange | `#DE5533` | gradient **transition** only |
+| EAV Burgundy | `#450E14` | closings, CTAs, depth |
 
-**Neutral ramp:** `#FFFFFF · #F4F4F2 · #EAEAEA · #DBDBDB · #C2C2C2 · #9B9B9B · #6F6F6F · #4A4A4A · #222 · #111`.
+**Warm text ramp (derived):** `--fg1 #1E1E1E · --fg2 #574E48 · --fg3 #857B72 · --fg4 #ABA197`. Borders: `--border-1 #E8E8E8` (default), `--border-2 #F0ECE3` (faint).
 
-**Data-encoding palette (the one exception — small fields/dots/keylines only, never chrome):**
-Sectors — Agritech `#1D9E75` · Innovative Food `#639922` · Food Logistics `#EF9F27` · Retail/Restaurant `#D85A30` · Kitchen/Cooking `#97C459` · Food-as-Medicine `#7F77DD`.
-Node types — startup `#2563eb` · investor `#16a34a` · person `#9333ea` · corporate `#ea580c`.
+**Hierarchy rules:** Red is the mark — use as a field/marker, never a soft tint. White carries air & cleanliness. Cream is the editorial block. Yellow is *only* the light point; Orange is *only* a gradient stop; Burgundy is for depth/closings. Don't introduce colors outside this palette.
 
 ---
 
 ## 3. Tailwind / shadcn tokens
 
-shadcn consumes `hsl(var(--x))`, so store bare HSL triplets in `globals.css`:
+`colors_and_type.css` ships full `hsl()` shadcn tokens (remap if you prefer bare triplets):
 
 ```css
-@layer base {
-  :root {
-    --background: 0 0% 100%;          /* paper */
-    --foreground: 0 0% 7%;            /* ink #111 */
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 7%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 7%;
-    --primary: 0 0% 7%;              /* ink — primary buttons */
-    --primary-foreground: 0 0% 100%; /* paper */
-    --secondary: 0 0% 92%;           /* #EAEAEA fill */
-    --secondary-foreground: 0 0% 7%;
-    --muted: 0 0% 96%;               /* #F4F4F2 */
-    --muted-foreground: 0 0% 44%;    /* #6F6F6F */
-    --accent: 3 78% 49%;             /* red #E1251B */
-    --accent-foreground: 0 0% 100%;
-    --destructive: 3 78% 49%;        /* the one red */
-    --destructive-foreground: 0 0% 100%;
-    --border: 0 0% 86%;              /* #DBDBDB */
-    --input: 0 0% 7%;                /* inputs carry an ink keyline */
-    --ring: 3 78% 49%;               /* red focus ring */
-    --radius: 0rem;                  /* SQUARE */
-  }
-}
+--background: hsl(0 0% 100%);        /* white  */
+--foreground: hsl(0 0% 12%);         /* EAV Black */
+--primary: hsl(2 64% 45%);           /* EAV Red — primary actions */
+--primary-foreground: hsl(0 0% 100%);
+--secondary: hsl(40 38% 95%);        /* cream fill */
+--muted: hsl(40 50% 97%);            /* cream */
+--muted-foreground: hsl(24 8% 48%);  /* warm muted */
+--accent: hsl(2 64% 45%);            /* EAV Red */
+--destructive: hsl(2 64% 45%);
+--ring: hsl(2 64% 45%);              /* red focus ring */
+--radius: 10px;                      /* ROUNDED */
 ```
 
-Brand-only extras (full colors, consume directly): `--brand:#E1251B; --brand-strong:#B71C13; --ink:#111; --rule:#111;`.
-
-> ⚠️ shadcn tokens are bare triplets → `hsl(var(--primary))`. The `--brand`/`--ink`/`--rule` extras are full hex → `var(--brand)`. **`--radius` is `0`** — Tailwind `rounded-*` resolve to square; use `rounded-full` only for data dots.
+Brand extras (full hex, consume directly): `--red #BC2D29 · --burgundy #450E14 · --cream #FFF9EE · --yellow #FFA103 · --light-point #FFA103`. Radii: `--radius-sm 6 · md 10 · lg 16 · xl 24 · pill 999`.
 
 ---
 
-## 4. Grid (`grid.css`)
+## 4. Type — Rubik only
 
-```html
-<div class="swiss-container">      <!-- max 1440, 32px margins -->
-  <div class="swiss-grid">         <!-- 12 cols, 24px gutter -->
-    <header class="col-12">…</header>
-    <h1 class="col-8">Headline</h1> <!-- spans 8 of 12 -->
-    <aside class="col-3 start-10">…</aside> <!-- asymmetric placement -->
-  </div>
-</div>
-```
-
-- 12 columns · `--grid-gutter: 24px` · `--grid-margin: 32px` · `--grid-max: 1440px`.
-- Baseline `8px`; spacing tokens `--b1…--b12` (8,16,24,32,40,48,64,80,96). `4px` half-step.
-- `.col-1…12` span; `.start-1…12` set the start line (asymmetry). `.stack`, `.stack-3/4` for vertical rhythm.
-- Overlays for specimens: `.grid-overlay` (red column fields), `.baseline-overlay` (8px lines).
+- **One family:** `font-family: 'Rubik', system-ui, sans-serif`. Weights **Light 300 · Regular 400 · Medium 500 · Bold 700 · Extrabold 800**, + italics. **No secondary typeface.** (A system mono is kept *only* as a functional fallback for code/tabular data — not a brand face.)
+- **Headlines are Rubik Regular (400)** with an initial capital and the rest lowercase; emphasis is a single **bold (700) fragment**, and at most **one word may turn red** (headlines only, never body). Use `<b>` / `.hl` to bold a fragment, `.hl-red` for the red word.
+- **Eyebrows:** Rubik Regular, UPPERCASE, tracked `+0.16em`, red or ink. Always above the headline.
+- **Subtitles:** Regular, smaller than the headline. **Body:** Regular with bold highlights; long-form moves to Light (300) with Medium (500) highlights.
+- **Scale** (`--t-*`, base 16): 12 (eyebrow) · 13 · 14 · 16 (body) · 18 (subtitle) · 22 · 28 · 36 (h1) · 46 · 60 · 76.
+- Paragraphs **left-aligned**, never justified. Centered only for short hero blocks (covers, dividers).
 
 ---
 
-## 5. Type
+## 5. Grid & spacing (`grid.css`)
 
-- **One grotesk:** `font-family: 'Helvetica Neue', Helvetica, Arial, 'Inter', sans-serif`. Inter is the loaded fallback. **IBM Plex Mono** for tabular numerals only. Set everything **flush-left / ragged-right**.
-- **Modular scale, ratio 1.25, base 16** (`--t-*`):
-
-| Token | px | Role |
-|---|---|---|
-| `--t-5xl` | 76 | poster |
-| `--t-4xl` | 61 | display |
-| `--t-3xl` | 49 | display |
-| `--t-2xl` | 39 | h1 (700, −0.02em) |
-| `--t-xl` | 31 | h2 (700) |
-| `--t-lg` | 25 | h3 (500) |
-| `--t-md` | 20 | h4 / lead |
-| `--t-base` | 16 | body (1.5 line-height) |
-| `--t-ui` | 14 | dense UI body |
-| `--t-xs` | 13 | meta / caption |
-
-- Labels/eyebrows: UPPERCASE, **700**, tracked `+0.12…0.14em`. Column headers: 11px 700 UPPERCASE under a 2px ink rule.
-- Emphasis = weight (400/500/700) + size + grid position. Never color.
+- Flexible, **1–4 columns by content hierarchy** (1 = hero; 2 = 1/1 or 1/3; 3 = 1/1/1; 4 = cards/phases). A 12-column backbone subdivides cleanly; `.swiss-container` → `.swiss-grid` → `.col-N` / `.start-N` still available for data-dense product layouts.
+- **8px baseline.** Spacing tokens `--b1…--b12` (8,16,24,32,40,48,64,80,96); `4px` half-step. Gutter 24, page margin 32.
+- Consistent margins, well-separated blocks, **enough air**. Cards/boxes structure information.
 
 ---
 
 ## 6. Components
 
-- **Primary button:** `bg-[#111] text-white`, **square**, `px-4 py-2`, 14px/500 → hover `#000`.
-- **Outline button:** white, `1px solid #111`, ink text → hover bg `#F4F4F2`.
-- **Ghost:** transparent, `#4A4A4A` → hover bg `#EAEAEA`.
-- **Red button:** `bg-[#E1251B] text-white` → hover `#B71C13` (destructive + emphatic actions).
-- **Card:** paper, `1px solid #111` (or `#DBDBDB`), **square**, flat. Header = UPPERCASE bold title over a **2px ink rule**.
-- **Input / search:** `1px solid #111`, square; focus → **red** border + `0 0 0 1px #E1251B` ring.
-- **Active nav:** **3px red left marker bar** + ink bold label on `#F4F4F2`. Idle `#4A4A4A` → hover `#EAEAEA`. Disabled 35%.
-- **EA monogram:** **square** red `#E1251B` field, `EA` in grotesk bold, paper-white.
-- **Badges:** square, UPPERCASE, 11px 700 — ink fill, ink outline, or red ("live"). Sector chips: ink outline + a small sector-color square.
-- **Table:** ink keyline frame; header row 11px 700 UPPERCASE under 2px ink rule; `1px #DBDBDB` row dividers; hover `#F4F4F2`; numerics tabular.
+- **Primary button:** EAV Red, **pill** (`radius-pill`), white text, `px 18–20 / py 10`, 14px/500 → hover `--brand-strong` **+ the CTA pulse** (`box-shadow: var(--pulse-red-on)` — a soft same-color expansion).
+- **CTA / closing button:** EAV Burgundy, cream text (depth moments, "Let's Beat").
+- **Outline button:** white, `1px` EAV Red border, red text → hover `--brand-tint`.
+- **Ghost:** transparent, `--fg2` → hover cream fill.
+- **Card / box:** white (or cream for highlighted blocks), `1px` warm border, **rounded** (`radius-lg` 16px), flat or `--shadow-sm` at rest. Rounding drops only when a block bleeds to the format edge.
+- **Input / search:** `1px` warm border, **rounded** (md, or pill for search); focus → **red** border + `0 0 0 3px rgba(188,45,41,.15)` ring.
+- **Sidebar nav:** cream rail; active = white pill + `--shadow-sm` + **3px red left marker** + red label; idle `--fg2` → hover lift; disabled 40%.
+- **Badges / pills:** rounded-full, 11px/500 — red ("Live"), cream, outline, burgundy ("Closed"). A 7px leading dot for status.
+- **Table:** rounded container, cream header row (11px 700 UPPERCASE), `1px --border-2` row dividers, hover cream; numerics tabular; sort glyph in red.
+- **App mark:** EAV Red **rounded** tile with `EA` in Rubik bold, paper-white — for favicons/avatars/compact chrome. The full wordmark (`assets/logo.svg`) signs everything else.
 
 ---
 
-## 7. Iconography
+## 7. Graphic elements — pulse, rhythm, impact
 
-- **Lucide only** (`lucide-react`), outline, ~1.5px stroke, **16px** in nav/buttons (12–14 dense). Never hand-roll SVG or use emoji.
-- Unicode in text: em dash `—` = null/placeholder; `→` in "View all →".
-- Logo: `EATABLE ADVENTURES` wordmark; compact identity = the square red `EA` monogram.
-
----
-
-## 8. Motion & states
-
-- Fades only: `translateY(4px→0)` + opacity, **0.15s ease-out**. Sidebar width `200ms`. Hovers `transition-colors`.
-- **No** bounces, springs, parallax, loops. Interaction changes color, not size.
-- Hover = ground shift / link turns red. Active = red marker. Press = ink→black, red→`#B71C13`. Focus = red ring. Disabled = 35–50% + `not-allowed`.
+- **Main brand gradient** (`--gradient-brand`): radial Yellow→Orange→Red→Burgundy. **Hero / brand moments only** — covers, openers, impact pages. Never app chrome.
+- **Secondary cream** (`--gradient-cream`): a clean, soft pause for product surfaces and landing pages.
+- **CTA pulse** (`--pulse-red-on`): a soft same-color expansion on action — the heartbeat of a button.
+- **Light point** (`--gradient-lightpoint` / `.light-point`): EAV Yellow pulse that activates *one* focus. Over white, cream or photography only; signals, never decorates.
 
 ---
 
-## 9. Voice
+## 8. Iconography
 
-Terse, functional, impersonal — an internal analyst tool, not a consumer brand. No marketing adjectives, no exclamation, **no emoji**.
-- Labels are nouns ("Startups", "Programs"); helper lines short ("Browse and filter all startups").
-- Counts explicit: "{n} total", "1–25 of 312". Empty: "No results found." Toasts past-tense: "Startup deleted".
-- Domain vocabulary used confidently: nodes, edges, Programs, Watchlists, Rounds Inbox, match score, taxonomy.
+- **Google Material Symbols (Outlined)** — `Weight 300`, `Grade 0`, `Optical Size 48`, **outline**. Load from Google Fonts; render ~18–22px in UI. Used as **functional support**, secondary to text — never hero or decorative. Do not hand-roll SVG or use emoji.
+- **Logo:** `assets/logo.svg` — single-color "Eatable Adventures" wordmark (recolorable: black or EAV Red on light; white on dark/red/gradient).
 
-**Do:** "Browse and filter all startups" · "{n} total" · "Add Startup"  **Don't:** "Discover amazing startups! 🚀"
+---
+
+## 9. Charts & data visualization
+
+Fixed hierarchy — color by **relevance**, not decoration: **Red → Orange → Burgundy → Yellow → Dark Cream → Grey (neutral) → Black (axes/text)** (`--chart-1…5`, `--chart-neutral`, `--chart-axis`). Applies to every chart type. Expressive "impact" charts (gradients in the viz) are reserved for reports/covers, never consulting decks.
+
+---
+
+## 10. Motion & states
+
+- Quick and contained: content fades in (`translateY(4px→0)` + opacity, ~0.15s); the CTA pulse expands on hover. Hovers shift ground or lift softly.
+- **No** bounces, springs, parallax or looping decoration. Interaction changes color/elevation, not size.
+- Press: ink/red → darker. Focus: red ring. Disabled: 40% + `not-allowed`.
+
+---
+
+## 11. Voice
+
+Terse, concrete, proof-driven — **confident, not arrogant**. No empty words, no hype, no emoji. Talk about what's done (cases, figures, timelines), in business terms (P&L, decisions, impact). Names confidently: hubs, pilots, programs, the system. Brand names written exactly: **Eatable Adventures**, **The Beating Heart of Food Innovation**, **Let's Beat**.
+
+**Do:** "We work from challenge to validated pilot. In 6 to 12 months." · "70 companies have executed real projects with us."
+**Don't:** "We catalyze the global food ecosystem to co-create holistic impact 🚀"
 
 ---
 
 ## Pre-ship checklist
-- [ ] Everything on the 12-col grid; composed by column placement, flush-left.
-- [ ] Ink/paper carry it; red only for identity/active/links/focus; data colors only as small fields.
-- [ ] One grotesk; modular sizes; 8px rhythm; emphasis by weight not color.
-- [ ] Square corners; ink keylines (rules) instead of shadows; flat surfaces.
-- [ ] Lucide 16px; no emoji, no hand-drawn SVG.
-- [ ] Copy terse, noun-led, no marketing tone.
+- [ ] Rubik only; headlines Regular + one bold (or red) fragment; left-aligned; 8px rhythm.
+- [ ] EAV palette only; red as a mark; cream blocks; yellow = light point, orange = gradient stop, burgundy = depth.
+- [ ] Rounded cards/inputs, pill buttons; CTA pulse on primary actions.
+- [ ] Restrained for product UI; hero gradient reserved for brand moments.
+- [ ] Material Symbols (Outlined, weight 300), functional & secondary; no emoji, no hand-drawn SVG.
+- [ ] Charts follow Red→Orange→Burgundy→Yellow→Dark Cream→Grey→Black.
+- [ ] Copy terse, concrete, confident — never hype.

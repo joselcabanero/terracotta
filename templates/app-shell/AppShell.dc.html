@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="App Shell" description="Restrained product UI shell on the EAV brand — sidebar, top bar, metrics & table" -->
+<helmet>
+  <script src="./ds-base.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,300,0,0">
+  <style>
+    body{margin:0;}
+  </style>
+</helmet>
+
+<div style="display:flex;height:100vh;width:100%;overflow:hidden;font-family:var(--font-sans);color:var(--fg1);background:var(--paper);">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside style="width:248px;flex-shrink:0;background:var(--surface-cream);border-right:1px solid var(--border-2);display:flex;flex-direction:column;padding:18px 14px;box-sizing:border-box;">
+
+    <div style="display:flex;align-items:center;gap:11px;padding:6px 8px 20px;">
+      <div style="width:36px;height:36px;border-radius:10px;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;letter-spacing:-0.02em;">EA</div>
+      <div style="display:flex;flex-direction:column;line-height:1.15;">
+        <span style="font-size:14px;font-weight:700;letter-spacing:-0.01em;">Eatable Adventures</span>
+        <span style="font-size:11px;color:var(--fg3);">Operating system</span>
+      </div>
+    </div>
+
+    <nav style="display:flex;flex-direction:column;gap:2px;">
+      <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--fg4);padding:12px 10px 6px;">System</span>
+
+      <a style="display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:10px;text-decoration:none;font-size:14px;font-weight:500;color:var(--red);background:#fff;box-shadow:var(--shadow-sm);">
+        <span style="width:3px;height:18px;border-radius:2px;background:var(--red);"></span>
+        <span class="material-symbols-outlined" style="font-size:20px;">dashboard</span>Overview
+      </a>
+      <a style="display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:10px;text-decoration:none;font-size:14px;font-weight:500;color:var(--fg2);cursor:pointer;" style-hover="background:rgba(255,255,255,.6);color:var(--fg1);">
+        <span style="width:3px;height:18px;border-radius:2px;background:transparent;"></span>
+        <span class="material-symbols-outlined" style="font-size:20px;">deployed_code</span>Programs
+      </a>
+      <a style="display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:10px;text-decoration:none;font-size:14px;font-weight:500;color:var(--fg2);cursor:pointer;" style-hover="background:rgba(255,255,255,.6);color:var(--fg1);">
+        <span style="width:3px;height:18px;border-radius:2px;background:transparent;"></span>
+        <span class="material-symbols-outlined" style="font-size:20px;">hub</span>Hubs
+      </a>
+
+      <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--fg4);padding:16px 10px 6px;">Tools</span>
+      <a style="display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:10px;text-decoration:none;font-size:14px;font-weight:500;color:var(--fg2);cursor:pointer;" style-hover="background:rgba(255,255,255,.6);color:var(--fg1);">
+        <span style="width:3px;height:18px;border-radius:2px;background:transparent;"></span>
+        <span class="material-symbols-outlined" style="font-size:20px;">monitoring</span>Reports
+      </a>
+      <a style="display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:10px;text-decoration:none;font-size:14px;font-weight:500;color:var(--fg2);cursor:pointer;" style-hover="background:rgba(255,255,255,.6);color:var(--fg1);">
+        <span style="width:3px;height:18px;border-radius:2px;background:transparent;"></span>
+        <span class="material-symbols-outlined" style="font-size:20px;">travel_explore</span>Scout
+      </a>
+    </nav>
+
+    <div style="margin-top:auto;display:flex;align-items:center;gap:10px;padding:10px;border-radius:12px;background:#fff;border:1px solid var(--border-2);">
+      <div style="width:32px;height:32px;border-radius:999px;background:var(--burgundy);color:#FFF9EE;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;">JC</div>
+      <div style="display:flex;flex-direction:column;line-height:1.2;min-width:0;">
+        <span style="font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">José Cabañero</span>
+        <span style="font-size:11px;color:var(--fg3);">Madrid hub</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main style="flex:1;display:flex;flex-direction:column;min-width:0;">
+
+    <!-- top bar -->
+    <header style="height:64px;flex-shrink:0;border-bottom:1px solid var(--border-2);display:flex;align-items:center;gap:16px;padding:0 24px;background:var(--paper);">
+      <div style="position:relative;width:340px;max-width:42vw;">
+        <span class="material-symbols-outlined" style="position:absolute;left:13px;top:50%;transform:translateY(-50%);font-size:20px;color:var(--fg4);">search</span>
+        <input placeholder="Search projects, hubs, partners…" style="width:100%;padding:10px 14px 10px 42px;border:1px solid var(--input);border-radius:999px;font-size:14px;font-family:var(--font-sans);color:var(--fg1);box-sizing:border-box;background:#fff;">
+      </div>
+      <div style="margin-left:auto;display:flex;align-items:center;gap:12px;">
+        <button style="width:40px;height:40px;border-radius:999px;border:1px solid var(--border-1);background:#fff;color:var(--fg2);display:flex;align-items:center;justify-content:center;cursor:pointer;" style-hover="background:var(--surface-cream);">
+          <span class="material-symbols-outlined" style="font-size:20px;">notifications</span>
+        </button>
+        <button style="display:inline-flex;align-items:center;gap:7px;background:var(--red);color:#fff;border:0;border-radius:999px;padding:10px 18px;font-size:14px;font-weight:500;font-family:var(--font-sans);cursor:pointer;transition:box-shadow .2s,background .15s;" style-hover="background:var(--brand-strong);box-shadow:var(--pulse-red-on);">
+          <span class="material-symbols-outlined" style="font-size:18px;">add</span>New project
+        </button>
+      </div>
+    </header>
+
+    <!-- content -->
+    <div style="flex:1;overflow:auto;padding:30px 24px;">
+      <div style="max-width:1120px;margin:0 auto;">
+
+        <!-- page head -->
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:26px;">
+          <div>
+            <div style="font-size:12px;font-weight:400;text-transform:uppercase;letter-spacing:.16em;color:var(--red);margin-bottom:10px;">The system · 2026</div>
+            <h1 style="font-size:34px;font-weight:400;letter-spacing:-0.02em;margin:0 0 8px;">Where innovation <b style="font-weight:700;">reaches</b> operations</h1>
+            <p style="margin:0;font-size:15px;color:var(--fg2);max-width:60ch;line-height:1.5;">Active pilots and industrial validations across the hub network — from challenge to validated result.</p>
+          </div>
+          <button style="display:inline-flex;align-items:center;gap:7px;background:#fff;color:var(--red);border:1px solid var(--red);border-radius:999px;padding:10px 18px;font-size:14px;font-weight:500;font-family:var(--font-sans);cursor:pointer;white-space:nowrap;" style-hover="background:var(--brand-tint);">
+            <span class="material-symbols-outlined" style="font-size:18px;">download</span>Export
+          </button>
+        </div>
+
+        <!-- metrics -->
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px;">
+          <div style="background:#fff;border:1px solid var(--border-1);border-radius:16px;padding:20px;box-shadow:var(--shadow-sm);">
+            <div style="font-size:12px;color:var(--fg3);margin-bottom:8px;">Active projects</div>
+            <div style="font-size:38px;font-weight:500;letter-spacing:-0.02em;font-variant-numeric:tabular-nums;line-height:1;">42</div>
+            <div style="font-size:12px;color:var(--red);margin-top:8px;display:flex;align-items:center;gap:4px;"><span class="material-symbols-outlined" style="font-size:15px;">trending_up</span>+6 this quarter</div>
+          </div>
+          <div style="background:#fff;border:1px solid var(--border-1);border-radius:16px;padding:20px;box-shadow:var(--shadow-sm);">
+            <div style="font-size:12px;color:var(--fg3);margin-bottom:8px;">Validated pilots</div>
+            <div style="font-size:38px;font-weight:500;letter-spacing:-0.02em;font-variant-numeric:tabular-nums;line-height:1;">18</div>
+            <div style="font-size:12px;color:var(--fg3);margin-top:8px;">in 6–12 months</div>
+          </div>
+          <div style="background:#fff;border:1px solid var(--border-1);border-radius:16px;padding:20px;box-shadow:var(--shadow-sm);">
+            <div style="font-size:12px;color:var(--fg3);margin-bottom:8px;">Partner companies</div>
+            <div style="font-size:38px;font-weight:500;letter-spacing:-0.02em;font-variant-numeric:tabular-nums;line-height:1;">70+</div>
+            <div style="font-size:12px;color:var(--fg3);margin-top:8px;">real projects executed</div>
+          </div>
+        </div>
+
+        <!-- two-column: table + highlight -->
+        <div style="display:grid;grid-template-columns:1.7fr 1fr;gap:16px;align-items:start;">
+
+          <!-- table card -->
+          <div style="background:#fff;border:1px solid var(--border-1);border-radius:16px;overflow:hidden;">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-bottom:1px solid var(--border-2);">
+              <h3 style="margin:0;font-size:16px;font-weight:600;letter-spacing:-0.01em;">Pilots in motion</h3>
+              <a style="font-size:13px;color:var(--fg1);text-decoration:none;font-weight:500;border-bottom:2px solid var(--red);padding-bottom:1px;cursor:pointer;">View all</a>
+            </div>
+            <table style="width:100%;border-collapse:collapse;font-size:14px;">
+              <thead>
+                <tr>
+                  <th style="text-align:left;padding:10px 18px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--fg3);background:var(--surface-cream);">Project</th>
+                  <th style="text-align:left;padding:10px 18px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--fg3);background:var(--surface-cream);">Hub</th>
+                  <th style="text-align:left;padding:10px 18px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--fg3);background:var(--surface-cream);">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-top:1px solid var(--border-2);">
+                  <td style="padding:13px 18px;"><span style="font-weight:500;color:var(--fg1);border-bottom:2px solid var(--red);padding-bottom:1px;">Precision fermentation</span></td>
+                  <td style="padding:13px 18px;color:var(--fg3);">Madrid</td>
+                  <td style="padding:13px 18px;"><span style="display:inline-flex;align-items:center;gap:7px;"><span style="width:8px;height:8px;border-radius:999px;background:var(--red);"></span>Live</span></td>
+                </tr>
+                <tr style="border-top:1px solid var(--border-2);">
+                  <td style="padding:13px 18px;"><span style="font-weight:500;color:var(--fg1);border-bottom:2px solid var(--red);padding-bottom:1px;">Cold-chain validation</span></td>
+                  <td style="padding:13px 18px;color:var(--fg3);">Verona</td>
+                  <td style="padding:13px 18px;"><span style="display:inline-flex;align-items:center;gap:7px;"><span style="width:8px;height:8px;border-radius:999px;background:var(--yellow);"></span>In progress</span></td>
+                </tr>
+                <tr style="border-top:1px solid var(--border-2);">
+                  <td style="padding:13px 18px;"><span style="font-weight:500;color:var(--fg1);border-bottom:2px solid var(--red);padding-bottom:1px;">LatAm market entry</span></td>
+                  <td style="padding:13px 18px;color:var(--fg3);">Bogotá</td>
+                  <td style="padding:13px 18px;"><span style="display:inline-flex;align-items:center;gap:7px;"><span style="width:8px;height:8px;border-radius:999px;background:var(--burgundy);"></span>Closed</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- highlight block -->
+          <div style="position:relative;background:var(--surface-cream);border:1px solid var(--border-2);border-radius:16px;padding:22px;overflow:hidden;">
+            <div style="position:absolute;right:-30px;top:-30px;width:120px;height:120px;border-radius:999px;background:var(--gradient-lightpoint);"></div>
+            <div style="font-size:11px;font-weight:400;text-transform:uppercase;letter-spacing:.16em;color:var(--red);margin-bottom:12px;">The beating heart</div>
+            <div style="font-size:19px;font-weight:400;line-height:1.32;letter-spacing:-0.01em;position:relative;">When a startup joins, it already knows <b style="font-weight:700;">which company it will pilot with.</b></div>
+            <button style="margin-top:18px;display:inline-flex;align-items:center;gap:7px;background:var(--burgundy);color:#FFF9EE;border:0;border-radius:999px;padding:10px 18px;font-size:14px;font-weight:500;font-family:var(--font-sans);cursor:pointer;" style-hover="box-shadow:0 6px 22px rgba(69,14,20,.34);">Let's Beat</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+</x-dc>
+</body>
+</html>

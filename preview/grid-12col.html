@@ -1,4 +1,4 @@
-<!-- @dsCard group="Spacing" viewport="700x200" name="Grid — 12 columns" subtitle="The modular backbone · 24px gutter, 32px margin" -->
+<!-- @dsCard group="Spacing" viewport="700x200" name="Grid — flexible columns" subtitle="1–4 columns by content hierarchy · 24px gutter" -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,29 +6,29 @@
 <link rel="stylesheet" href="../colors_and_type.css">
 <link rel="stylesheet" href="../grid.css">
 <style>
-  html,body{margin:0;background:#fff;color:var(--ink);font-family:var(--font-sans);}
+  html,body{margin:0;background:#fff;color:var(--fg1);font-family:var(--font-sans);}
   .wrap{padding:24px 32px;}
-  .head{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:14px;}
-  .head .t{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;}
-  .head .n{font-family:var(--font-mono);font-size:11px;color:var(--fg3);white-space:nowrap;}
+  .head{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--border-1);padding-bottom:8px;margin-bottom:14px;}
+  .head .t{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;}
+  .head .n{font-size:11px;color:var(--fg3);white-space:nowrap;}
   .cols{display:grid;grid-template-columns:repeat(12,1fr);gap:8px;margin-bottom:10px;}
-  .cols .c{height:46px;background:rgba(225,37,27,0.12);border-top:2px solid var(--red);}
+  .cols .c{height:44px;background:rgba(188,45,41,0.10);border-radius:5px;}
   .demo{display:grid;grid-template-columns:repeat(12,1fr);gap:8px;}
-  .demo .blk{background:var(--ink);color:#fff;height:34px;display:flex;align-items:center;padding-left:8px;font-family:var(--font-mono);font-size:10px;}
+  .demo .blk{background:var(--surface-cream);border:1px solid var(--border-2);border-radius:8px;height:36px;display:flex;align-items:center;padding-left:12px;font-size:11px;color:var(--fg2);font-weight:500;}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="head"><span class="t">12-column modular grid</span><span class="n">24px gutter · 32px margin</span></div>
+  <div class="head"><span class="t">Flexible modular grid</span><span class="n">12-col backbone · subdivides 1–4 · 24px gutter</span></div>
   <div class="cols">
     <div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div>
     <div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div>
     <div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div>
   </div>
   <div class="demo">
-    <div class="blk" style="grid-column:span 6">col-6</div>
-    <div class="blk" style="grid-column:span 3">col-3</div>
-    <div class="blk" style="grid-column:span 3">col-3</div>
+    <div class="blk" style="grid-column:span 6">1/2 — text</div>
+    <div class="blk" style="grid-column:span 3">1/4</div>
+    <div class="blk" style="grid-column:span 3">1/4</div>
   </div>
 </div>
 </body>

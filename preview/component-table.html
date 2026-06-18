@@ -4,19 +4,21 @@
 <head>
 <meta charset="utf-8">
 <link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,300,0,0">
 <style>
-  html,body{margin:0;background:#fff;color:var(--ink);font-family:var(--font-sans);}
+  html,body{margin:0;background:#fff;color:var(--fg1);font-family:var(--font-sans);}
   .wrap{padding:22px 32px;}
-  .tbl{border:1px solid #111;}
-  table{width:100%;border-collapse:collapse;font-size:13px;}
-  thead th{text-align:left;padding:9px 14px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--ink);border-bottom:2px solid #111;}
-  th .s{display:inline-flex;align-items:center;gap:4px;}
-  td{padding:11px 14px;border-top:1px solid #DBDBDB;}
+  .tbl{border:1px solid var(--border-1);border-radius:var(--radius-lg);overflow:hidden;}
+  table{width:100%;border-collapse:collapse;font-size:14px;}
+  thead th{text-align:left;padding:11px 16px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--fg2);background:var(--surface-cream);border-bottom:1px solid var(--border-1);}
+  th .s{display:inline-flex;align-items:center;gap:3px;}
+  .material-symbols-outlined{font-size:15px;color:var(--red);}
+  td{padding:12px 16px;border-top:1px solid var(--border-2);}
   tbody tr:first-child td{border-top:0;}
-  .lnk{font-weight:500;color:var(--ink);text-decoration:none;border-bottom:2px solid var(--red);padding-bottom:1px;}
-  .sq{width:9px;height:9px;display:inline-block;margin-right:6px;vertical-align:middle;}
+  tbody tr:hover{background:var(--surface-cream);}
+  .lnk{font-weight:500;color:var(--fg1);text-decoration:none;border-bottom:2px solid var(--red);padding-bottom:1px;}
+  .dot{width:8px;height:8px;border-radius:999px;display:inline-block;margin-right:8px;vertical-align:middle;}
   .mut{color:var(--fg3);font-variant-numeric:tabular-nums;}
-  svg{width:12px;height:12px;color:var(--ink);}
 </style>
 </head>
 <body>
@@ -24,18 +26,16 @@
   <div class="tbl">
     <table>
       <thead><tr>
-        <th><span class="s">Company <i data-lucide="chevron-up"></i></span></th>
-        <th>Sector</th><th>Stage</th><th>Location</th>
+        <th><span class="s">Project <span class="material-symbols-outlined">arrow_upward</span></span></th>
+        <th>Phase</th><th>Hub</th><th>Status</th>
       </tr></thead>
       <tbody>
-        <tr><td><a class="lnk">Mosa Meat</a></td><td><span class="sq" style="background:#7F77DD"></span>Food as Medicine</td><td class="mut">Series B</td><td class="mut">Maastricht, NL</td></tr>
-        <tr><td><a class="lnk">Apeel</a></td><td><span class="sq" style="background:#EF9F27"></span>Food Logistics</td><td class="mut">Growth</td><td class="mut">Santa Barbara, US</td></tr>
-        <tr><td><a class="lnk">Aerofarms</a></td><td><span class="sq" style="background:#1D9E75"></span>Agritech</td><td class="mut">Series C</td><td class="mut">Newark, US</td></tr>
+        <tr><td><a class="lnk">Precision fermentation pilot</a></td><td class="mut">Test</td><td class="mut">Madrid</td><td><span class="dot" style="background:#BC2D29"></span>Live</td></tr>
+        <tr><td><a class="lnk">Cold-chain validation</a></td><td class="mut">Build</td><td class="mut">Verona</td><td><span class="dot" style="background:#FFA103"></span>In progress</td></tr>
+        <tr><td><a class="lnk">LatAm market entry</a></td><td class="mut">Scale</td><td class="mut">Bogotá</td><td><span class="dot" style="background:#450E14"></span>Closed</td></tr>
       </tbody>
     </table>
   </div>
 </div>
-<script src="https://unpkg.com/lucide@latest"></script>
-<script>lucide.createIcons();</script>
 </body>
 </html>

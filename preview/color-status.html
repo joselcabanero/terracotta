@@ -1,43 +1,29 @@
-<!-- @dsCard group="Colors" -->
+<!-- @dsCard group="Colors" name="Typography & color" subtitle="Approved text / background pairings" -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <link rel="stylesheet" href="../colors_and_type.css">
 <style>
-  html,body{margin:0;background:#fff;color:var(--ink);font-family:var(--font-sans);}
-  .wrap{padding:24px 32px;display:flex;flex-direction:column;gap:18px;}
-  .grp{display:flex;flex-direction:column;gap:9px;}
-  .cap{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--fg3);}
-  .tags{display:flex;gap:8px;flex-wrap:wrap;}
-  .tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:3px 9px;border:1px solid #111;color:#111;background:#fff;}
-  .tag.live{background:#E1251B;color:#fff;border-color:#E1251B;}
-  .scores{display:flex;gap:18px;align-items:baseline;}
-  .score{font-variant-numeric:tabular-nums;}
-  .score .n{font-size:24px;letter-spacing:-0.02em;}
-  .score .c{font-family:var(--font-mono);font-size:10px;color:var(--fg3);margin-left:6px;}
+  html,body{margin:0;background:#fff;color:var(--fg1);font-family:var(--font-sans);}
+  .wrap{padding:24px 32px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .cell{border-radius:var(--radius-md);padding:16px;min-height:88px;display:flex;flex-direction:column;justify-content:center;gap:6px;overflow:hidden;position:relative;}
+  .c-white{background:#fff;border:1px solid var(--border-1);}
+  .c-cream{background:#FFF9EE;}
+  .c-red{background:#BC2D29;}
+  .c-burg{background:#450E14;}
+  .hl{font-size:18px;font-weight:400;letter-spacing:-0.01em;line-height:1.2;}
+  .hl b{font-weight:700;}
+  .bd{font-size:12px;line-height:1.4;}
+  .tag{font-size:9px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;opacity:.7;}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="grp">
-    <span class="cap">News / category tags — monochrome, red marks "live"</span>
-    <div class="tags">
-      <span class="tag live">Funding</span>
-      <span class="tag">Technology</span>
-      <span class="tag">Market</span>
-      <span class="tag">Policy</span>
-      <span class="tag">People</span>
-    </div>
-  </div>
-  <div class="grp">
-    <span class="cap">Match score — hierarchy by weight, not hue</span>
-    <div class="scores">
-      <span class="score"><span class="n" style="font-weight:700;">87</span><span class="c">high</span></span>
-      <span class="score"><span class="n" style="font-weight:500;color:#6F6F6F;">44</span><span class="c">mid</span></span>
-      <span class="score"><span class="n" style="font-weight:400;color:#9B9B9B;">12</span><span class="c">low</span></span>
-    </div>
-  </div>
+  <div class="cell c-white"><span class="tag" style="color:var(--fg3)">on white</span><span class="hl" style="color:#1E1E1E">Black text, <span style="color:#BC2D29;font-weight:700">red</span> word</span><span class="bd" style="color:#574E48">EAV Black body text</span></div>
+  <div class="cell c-cream"><span class="tag" style="color:var(--fg3)">on cream</span><span class="hl" style="color:#1E1E1E">Black on <b>cream</b></span><span class="bd" style="color:#574E48">Highlighted editorial block</span></div>
+  <div class="cell c-red"><span class="tag" style="color:#fff">on red</span><span class="hl" style="color:#FFF9EE">Cream headline</span><span class="bd" style="color:#fff">White body text</span></div>
+  <div class="cell c-burg"><span class="tag" style="color:#F5EACE">on burgundy</span><span class="hl" style="color:#FFF9EE">Cream on burgundy</span><span class="bd" style="color:#fff">Closing / depth moment</span></div>
 </div>
 </body>
 </html>

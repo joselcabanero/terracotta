@@ -5,24 +5,40 @@
 <meta charset="utf-8">
 <link rel="stylesheet" href="../colors_and_type.css">
 <style>
-  html,body{margin:0;background:#fff;color:var(--ink);font-family:var(--font-sans);}
-  .wrap{padding:26px 32px;display:flex;align-items:center;gap:30px;}
-  .logo{width:120px;height:120px;}
-  .logo img{width:100%;height:100%;object-fit:contain;}
-  .meta{display:flex;flex-direction:column;gap:6px;border-left:2px solid var(--ink);padding-left:20px;}
-  .meta .nm{font-size:15px;font-weight:700;}
-  .meta .sub{font-size:13px;color:var(--fg3);}
-  .meta .note{font-family:var(--font-mono);font-size:10px;color:var(--fg4);margin-top:4px;}
+  html,body{margin:0;background:#fff;color:var(--fg1);font-family:var(--font-sans);}
+  .wrap{padding:24px 32px;display:flex;flex-direction:column;gap:14px;}
+  .row{display:flex;gap:12px;}
+  .tile{flex:1;height:96px;border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;border:1px solid var(--border-1);}
+  .tile img{width:64px;height:64px;object-fit:contain;}
+  .t-white{background:#fff;}
+  .t-cream{background:#FFF9EE;border-color:var(--border-2);}
+  .t-red{background:#BC2D29;border:0;}
+  .t-burg{background:#450E14;border:0;}
+  .pos img{filter:brightness(0);}
+  .red-logo img{filter:brightness(0) saturate(100%) invert(22%) sepia(73%) saturate(2600%) hue-rotate(347deg) brightness(85%) contrast(95%);}
+  .neg img{filter:brightness(0) invert(1);}
+  .labels{display:flex;gap:12px;}
+  .lb{flex:1;text-align:center;font-size:10px;color:var(--fg3);}
+  .note{font-size:11px;color:var(--fg4);border-top:1px solid var(--border-1);padding-top:10px;}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="logo"><img src="../assets/logo.svg" alt="Eatable Adventures"></div>
-  <div class="meta">
-    <span class="nm">Eatable Adventures</span>
-    <span class="sub">Startup Intelligence · Ecosystem DB</span>
-    <span class="note">assets/logo.svg — single-color wordmark</span>
+  <div class="row">
+    <div class="tile t-white pos"><img src="../assets/logo.svg" alt="Eatable Adventures"></div>
+    <div class="tile t-cream pos"><img src="../assets/logo.svg" alt="Eatable Adventures"></div>
+    <div class="tile t-white red-logo"><img src="../assets/logo.svg" alt="Eatable Adventures"></div>
+    <div class="tile t-red neg"><img src="../assets/logo.svg" alt="Eatable Adventures"></div>
+    <div class="tile t-burg neg"><img src="../assets/logo.svg" alt="Eatable Adventures"></div>
   </div>
+  <div class="labels">
+    <div class="lb">Positive · black</div>
+    <div class="lb">On cream</div>
+    <div class="lb">EAV Red</div>
+    <div class="lb">Negative</div>
+    <div class="lb">On burgundy</div>
+  </div>
+  <div class="note">Positive: black or EAV Red on white/cream. Negative: white on black, red or approved gradients. Keep the separator line the same color as the logo.</div>
 </div>
 </body>
 </html>

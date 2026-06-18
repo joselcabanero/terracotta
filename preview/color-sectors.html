@@ -1,31 +1,28 @@
-<!-- @dsCard group="Colors" -->
+<!-- @dsCard group="Colors" name="Gradients & light point" subtitle="Hero brand gradient · cream pause · the yellow pulse" -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <link rel="stylesheet" href="../colors_and_type.css">
 <style>
-  html,body{margin:0;background:#fff;color:var(--ink);font-family:var(--font-sans);}
-  .wrap{padding:22px 32px;}
-  .hd{font-family:var(--font-mono);font-size:10px;color:var(--fg3);text-transform:uppercase;letter-spacing:.1em;border-bottom:2px solid #111;padding-bottom:6px;margin-bottom:12px;}
-  .grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 24px;}
-  .row{display:flex;align-items:center;gap:10px;padding:4px 0;}
-  .sq{width:14px;height:14px;flex-shrink:0;}
-  .nm{font-size:13px;font-weight:500;}
-  .hex{font-family:var(--font-mono);font-size:10px;color:var(--fg3);margin-left:auto;}
+  html,body{margin:0;background:#fff;color:var(--fg1);font-family:var(--font-sans);}
+  .wrap{padding:24px 32px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .cell{display:flex;flex-direction:column;gap:8px;}
+  .sw{height:104px;border-radius:var(--radius-md);border:1px solid var(--border-1);position:relative;overflow:hidden;}
+  .g-brand{background:var(--gradient-brand);border:0;}
+  .g-cream{background:var(--gradient-cream);}
+  .g-lp{background:#FFF9EE;}
+  .g-lp::after{content:"";position:absolute;left:22%;top:48%;width:120px;height:120px;transform:translate(-50%,-50%);background:var(--gradient-lightpoint);}
+  .dot{position:absolute;left:22%;top:48%;width:12px;height:12px;transform:translate(-50%,-50%);border-radius:999px;background:var(--yellow);box-shadow:0 0 0 5px rgba(255,161,3,.2);}
+  .nm{font-size:12px;font-weight:700;}
+  .role{font-size:10px;color:var(--fg3);line-height:1.35;}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="hd">Sector taxonomy — data-encoding exception (small fields only)</div>
-  <div class="grid">
-    <div class="row"><span class="sq" style="background:#1D9E75"></span><span class="nm">Agritech</span><span class="hex">1D9E75</span></div>
-    <div class="row"><span class="sq" style="background:#639922"></span><span class="nm">Innovative Food</span><span class="hex">639922</span></div>
-    <div class="row"><span class="sq" style="background:#EF9F27"></span><span class="nm">Food Logistics</span><span class="hex">EF9F27</span></div>
-    <div class="row"><span class="sq" style="background:#D85A30"></span><span class="nm">Retail &amp; Restaurant</span><span class="hex">D85A30</span></div>
-    <div class="row"><span class="sq" style="background:#97C459"></span><span class="nm">Kitchen &amp; Cooking</span><span class="hex">97C459</span></div>
-    <div class="row"><span class="sq" style="background:#7F77DD"></span><span class="nm">Food as Medicine</span><span class="hex">7F77DD</span></div>
-  </div>
+  <div class="cell"><div class="sw g-brand"></div><div class="nm">Main brand gradient</div><div class="role">Radial Yellow→Burgundy. Hero / brand moments only — not app chrome.</div></div>
+  <div class="cell"><div class="sw g-cream"></div><div class="nm">Secondary cream</div><div class="role">A soft, clean pause for product surfaces &amp; landing pages.</div></div>
+  <div class="cell"><div class="sw g-lp"><div class="dot"></div></div><div class="nm">Light point</div><div class="role">EAV Yellow pulse — signals one focus, over white/cream/photo only.</div></div>
 </div>
 </body>
 </html>

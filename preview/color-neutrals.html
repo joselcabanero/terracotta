@@ -5,41 +5,52 @@
 <meta charset="utf-8">
 <link rel="stylesheet" href="../colors_and_type.css">
 <style>
-  html,body{margin:0;background:#fff;color:var(--ink);font-family:var(--font-sans);}
-  .wrap{padding:28px 32px;}
-  .scale{display:flex;border:1px solid var(--ink);}
-  .sw{flex:1;height:70px;border-right:1px solid #DBDBDB;}
-  .sw:last-child{border-right:0;}
-  .labels{display:flex;margin-top:8px;}
-  .lb{flex:1;font-family:var(--font-mono);font-size:9px;color:var(--fg3);text-align:center;line-height:1.5;}
-  .lb b{display:block;color:var(--ink);font-weight:700;font-size:9.5px;font-family:var(--font-sans);}
+  html,body{margin:0;background:#fff;color:var(--fg1);font-family:var(--font-sans);}
+  .wrap{padding:26px 32px;display:flex;flex-direction:column;gap:18px;}
+  .cap{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--fg3);margin-bottom:10px;}
+  .grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;}
+  .cell{border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border-1);}
+  .sw{height:54px;}
+  .info{padding:7px 8px;}
+  .nm{font-size:11px;font-weight:700;line-height:1.15;}
+  .hx{font-size:9.5px;color:var(--fg3);margin-top:2px;}
+  .ramp{display:flex;border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border-1);}
+  .rs{flex:1;height:40px;}
+  .rlabels{display:flex;margin-top:6px;}
+  .rl{flex:1;font-size:9px;color:var(--fg3);text-align:center;}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="scale">
-    <div class="sw" style="background:#FFFFFF"></div>
-    <div class="sw" style="background:#F4F4F2"></div>
-    <div class="sw" style="background:#EAEAEA"></div>
-    <div class="sw" style="background:#DBDBDB"></div>
-    <div class="sw" style="background:#C2C2C2"></div>
-    <div class="sw" style="background:#9B9B9B"></div>
-    <div class="sw" style="background:#6F6F6F"></div>
-    <div class="sw" style="background:#4A4A4A"></div>
-    <div class="sw" style="background:#222222"></div>
-    <div class="sw" style="background:#111111"></div>
+  <div>
+    <div class="cap">Secondary colors — restricted roles</div>
+    <div class="grid">
+      <div class="cell"><div class="sw" style="background:#F5EACE"></div><div class="info"><div class="nm">Dark Cream</div><div class="hx">#F5EACE</div></div></div>
+      <div class="cell"><div class="sw" style="background:#FAFAFA;border-bottom:1px solid var(--border-1)"></div><div class="info"><div class="nm">Light Grey</div><div class="hx">#FAFAFA</div></div></div>
+      <div class="cell"><div class="sw" style="background:#E8E8E8"></div><div class="info"><div class="nm">Grey</div><div class="hx">#E8E8E8</div></div></div>
+      <div class="cell"><div class="sw" style="background:#FFA103"></div><div class="info"><div class="nm">Yellow</div><div class="hx">light point</div></div></div>
+      <div class="cell"><div class="sw" style="background:#DE5533"></div><div class="info"><div class="nm">Orange</div><div class="hx">gradient only</div></div></div>
+      <div class="cell"><div class="sw" style="background:#450E14"></div><div class="info"><div class="nm">Burgundy</div><div class="hx">#450E14</div></div></div>
+    </div>
   </div>
-  <div class="labels">
-    <div class="lb"><b>0</b>fff</div>
-    <div class="lb"><b>50</b>f4f4f2</div>
-    <div class="lb"><b>100</b>eaeaea</div>
-    <div class="lb"><b>200</b>dbdbdb</div>
-    <div class="lb"><b>300</b>c2c2c2</div>
-    <div class="lb"><b>400</b>9b9b9b</div>
-    <div class="lb"><b>500</b>6f6f6f</div>
-    <div class="lb"><b>600</b>4a4a4a</div>
-    <div class="lb"><b>800</b>222</div>
-    <div class="lb"><b>900</b>111</div>
+  <div>
+    <div class="cap">Warm-neutral text ramp (derived)</div>
+    <div class="ramp">
+      <div class="rs" style="background:#1E1E1E"></div>
+      <div class="rs" style="background:#574E48"></div>
+      <div class="rs" style="background:#857B72"></div>
+      <div class="rs" style="background:#ABA197"></div>
+      <div class="rs" style="background:#DCD6CC"></div>
+      <div class="rs" style="background:#F3EFE7"></div>
+    </div>
+    <div class="rlabels">
+      <div class="rl">fg1 · text</div>
+      <div class="rl">fg2 · secondary</div>
+      <div class="rl">fg3 · muted</div>
+      <div class="rl">fg4 · faint</div>
+      <div class="rl">border</div>
+      <div class="rl">fill</div>
+    </div>
   </div>
 </div>
 </body>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eatable Adventures — Brand Foundations</title>
+<link rel="stylesheet" href="colors_and_type.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,300,0,0">
+<style>
+  *{box-sizing:border-box;}
+  html,body{margin:0;background:var(--paper);color:var(--fg1);font-family:var(--font-sans);}
+  .page{max-width:1080px;margin:0 auto;padding:0 32px 80px;}
+  section{padding:56px 0;border-top:1px solid var(--border-1);}
+  .eyebrow{font-size:12px;font-weight:400;text-transform:uppercase;letter-spacing:.16em;color:var(--red);margin-bottom:14px;}
+  h2.sec{font-size:30px;font-weight:400;letter-spacing:-0.02em;margin:0 0 6px;}
+  h2.sec b{font-weight:700;}
+  .sec-lead{font-size:16px;color:var(--fg2);margin:0 0 30px;max-width:62ch;line-height:1.55;}
+  .material-symbols-outlined{line-height:1;}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;border-radius:0;overflow:hidden;background:var(--gradient-brand);color:#fff;min-height:460px;display:flex;flex-direction:column;justify-content:space-between;padding:40px;margin:0 -32px;}
+  .hero-top{display:flex;justify-content:space-between;align-items:center;}
+  .hero-logo{height:30px;filter:brightness(0) invert(1);}
+  .hero-sig{font-size:11px;text-transform:uppercase;letter-spacing:.18em;color:#FFF9EE;opacity:.85;}
+  .lp{position:absolute;width:14px;height:14px;border-radius:999px;background:var(--yellow);box-shadow:0 0 0 7px rgba(255,161,3,.22),0 0 30px 8px rgba(255,161,3,.6);}
+  .hero h1{font-size:58px;line-height:1.02;font-weight:400;letter-spacing:-0.03em;margin:0;max-width:16ch;color:#FFF9EE;position:relative;}
+  .hero h1 b{font-weight:700;color:#fff;}
+  .hero-foot{display:flex;gap:40px;align-items:flex-end;justify-content:space-between;}
+  .hero-foot p{margin:0;font-size:15px;line-height:1.5;max-width:46ch;color:#FFF9EE;}
+  .hero-claim{font-size:13px;text-transform:uppercase;letter-spacing:.16em;color:#FFF9EE;white-space:nowrap;}
+
+  /* ---------- PALETTE ---------- */
+  .swatches{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .sw{border:1px solid var(--border-1);border-radius:var(--radius-md);overflow:hidden;}
+  .sw .chip{height:96px;}
+  .sw .meta{padding:12px 14px;}
+  .sw .nm{font-size:13px;font-weight:700;}
+  .sw .hx{font-size:11px;color:var(--fg3);margin-top:3px;}
+  .sw .role{font-size:11px;color:var(--fg4);margin-top:6px;line-height:1.35;}
+  .sub-h{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--fg3);margin:30px 0 14px;}
+
+  /* ---------- TYPE ---------- */
+  .type-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:start;}
+  .weights{display:flex;flex-direction:column;gap:2px;}
+  .wrow{display:flex;align-items:baseline;gap:18px;padding:9px 0;border-top:1px solid var(--border-2);}
+  .wrow .lbl{font-size:11px;color:var(--fg3);width:130px;flex-shrink:0;}
+  .wrow .lbl b{color:var(--fg1);}
+  .wrow .samp{font-size:26px;letter-spacing:-0.01em;}
+  .specimen{background:var(--surface-cream);border:1px solid var(--border-2);border-radius:var(--radius-lg);padding:26px;}
+  .specimen .e{font-size:11px;font-weight:400;text-transform:uppercase;letter-spacing:.16em;color:var(--red);margin-bottom:12px;}
+  .specimen h3{font-size:30px;font-weight:400;letter-spacing:-0.02em;line-height:1.12;margin:0 0 14px;}
+  .specimen h3 b{font-weight:700;}
+  .specimen .red{color:var(--red);font-weight:700;}
+  .specimen p{font-size:14px;line-height:1.6;color:var(--fg2);margin:0;}
+  .specimen p b{font-weight:700;}
+
+  /* ---------- GRADIENTS ---------- */
+  .grad-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .grad{display:flex;flex-direction:column;gap:10px;}
+  .grad .vis{height:140px;border-radius:var(--radius-lg);border:1px solid var(--border-1);position:relative;overflow:hidden;}
+  .v-brand{background:var(--gradient-brand);border:0;}
+  .v-cream{background:var(--gradient-cream);}
+  .v-lp{background:#FFF9EE;}
+  .v-lp .dot{position:absolute;left:26%;top:55%;width:14px;height:14px;border-radius:999px;background:var(--yellow);box-shadow:0 0 0 6px rgba(255,161,3,.2),0 0 26px 7px rgba(255,161,3,.55);}
+  .grad .gn{font-size:14px;font-weight:700;}
+  .grad .gr{font-size:12px;color:var(--fg3);line-height:1.45;}
+
+  /* ---------- COMPONENTS ---------- */
+  .comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .panel{border:1px solid var(--border-1);border-radius:var(--radius-lg);padding:22px;background:#fff;}
+  .panel .pt{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--fg3);margin-bottom:16px;}
+  .btn-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+  button{font-family:var(--font-sans);font-size:14px;font-weight:500;display:inline-flex;align-items:center;gap:7px;cursor:pointer;border:1px solid transparent;border-radius:var(--radius-pill);transition:background .15s,box-shadow .2s,border-color .15s;}
+  .btn-primary{background:var(--red);color:#fff;padding:10px 18px;}
+  .btn-primary:hover{background:var(--brand-strong);box-shadow:var(--pulse-red-on);}
+  .btn-cta{background:var(--burgundy);color:#FFF9EE;padding:10px 18px;}
+  .btn-outline{background:#fff;color:var(--red);border-color:var(--red);padding:10px 18px;}
+  .btn-ghost{background:transparent;color:var(--fg2);padding:10px 14px;}
+  .btn-ghost:hover{background:var(--surface-cream);color:var(--fg1);}
+  button .material-symbols-outlined{font-size:18px;}
+  .pill-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;}
+  .pill{font-size:11px;font-weight:500;padding:4px 12px;border-radius:999px;display:inline-flex;align-items:center;gap:6px;}
+  .p-red{background:var(--red);color:#fff;}
+  .p-cream{background:var(--surface-cream);color:var(--fg1);border:1px solid var(--border-2);}
+  .p-outline{border:1px solid var(--input);color:var(--fg2);background:#fff;}
+  .p-red .dot{width:7px;height:7px;border-radius:999px;background:#fff;display:inline-block;}
+  .field{margin-bottom:14px;}
+  .field label{display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--fg2);margin-bottom:6px;}
+  .search{position:relative;}
+  .search .material-symbols-outlined{position:absolute;left:13px;top:50%;transform:translateY(-50%);font-size:20px;color:var(--fg4);}
+  .search input{width:100%;padding:11px 14px 11px 42px;border:1px solid var(--input);border-radius:var(--radius-pill);font-size:14px;font-family:var(--font-sans);color:var(--fg1);}
+  .search input:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 3px rgba(188,45,41,.15);}
+  .mini-card{background:var(--surface-cream);border:1px solid var(--border-2);border-radius:var(--radius-md);padding:16px;}
+  .mini-card .e{font-size:10px;font-weight:400;text-transform:uppercase;letter-spacing:.14em;color:var(--red);margin-bottom:6px;}
+  .mini-card .big{font-size:16px;font-weight:400;line-height:1.3;}
+  .mini-card .big b{font-weight:700;}
+
+  /* ---------- PRINCIPLES ---------- */
+  .prin{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .prin .p{border:1px solid var(--border-1);border-radius:var(--radius-lg);padding:24px;}
+  .prin .ic{width:44px;height:44px;border-radius:999px;background:var(--brand-tint);color:var(--red);display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+  .prin .ic .material-symbols-outlined{font-size:24px;}
+  .prin h4{font-size:18px;font-weight:500;letter-spacing:-0.01em;margin:0 0 8px;}
+  .prin p{font-size:13px;line-height:1.55;color:var(--fg3);margin:0;}
+
+  /* ---------- FOOTER ---------- */
+  .foot{display:flex;justify-content:space-between;align-items:center;padding-top:30px;color:var(--fg4);font-size:11px;text-transform:uppercase;letter-spacing:.14em;}
+  .foot img{height:20px;filter:brightness(0);opacity:.7;}
+  @media(max-width:780px){
+    .swatches{grid-template-columns:repeat(2,1fr);}
+    .type-grid,.comp-grid{grid-template-columns:1fr;}
+    .grad-grid,.prin{grid-template-columns:1fr;}
+    .hero h1{font-size:40px;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HERO -->
+  <section style="border-top:0;padding-top:40px;">
+    <div class="hero">
+      <div class="lp" style="left:40px;top:150px;"></div>
+      <div class="hero-top">
+        <img class="hero-logo" src="assets/logo.svg" alt="Eatable Adventures">
+        <span class="hero-sig">Brand Foundations · 2026</span>
+      </div>
+      <h1>The Beating <b>Heart</b> of Food Innovation</h1>
+      <div class="hero-foot">
+        <p>A living system — pulse, rhythm and impact — that turns ambition into real, measurable results inside the food industry.</p>
+        <span class="hero-claim">Let's Beat</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PALETTE -->
+  <section>
+    <div class="eyebrow">Color system</div>
+    <h2 class="sec">Two mother colors, <b>one warm system</b></h2>
+    <p class="sec-lead">EAV Red and EAV Cream anchor the palette; the rest expands from them. Color is structural, not decorative — used with hierarchy and restraint.</p>
+    <div class="sub-h">Primary</div>
+    <div class="swatches">
+      <div class="sw"><div class="chip" style="background:#BC2D29"></div><div class="meta"><div class="nm">EAV Red</div><div class="hx">#BC2D29</div><div class="role">The representative color</div></div></div>
+      <div class="sw"><div class="chip" style="background:#FFF9EE"></div><div class="meta"><div class="nm">EAV Cream</div><div class="hx">#FFF9EE</div><div class="role">Editorial / highlighted blocks</div></div></div>
+      <div class="sw"><div class="chip" style="background:#FFFFFF;border-bottom:1px solid var(--border-1)"></div><div class="meta"><div class="nm">White</div><div class="hx">#FFFFFF</div><div class="role">Predominant ground</div></div></div>
+      <div class="sw"><div class="chip" style="background:#1E1E1E"></div><div class="meta"><div class="nm">EAV Black</div><div class="hx">#1E1E1E</div><div class="role">Footers & typography</div></div></div>
+    </div>
+    <div class="sub-h">Secondary</div>
+    <div class="swatches">
+      <div class="sw"><div class="chip" style="background:#F5EACE"></div><div class="meta"><div class="nm">Dark Cream</div><div class="hx">#F5EACE</div><div class="role">Secondary gradients, wells</div></div></div>
+      <div class="sw"><div class="chip" style="background:#FFA103"></div><div class="meta"><div class="nm">EAV Yellow</div><div class="hx">#FFA103</div><div class="role">The light point only</div></div></div>
+      <div class="sw"><div class="chip" style="background:#DE5533"></div><div class="meta"><div class="nm">EAV Orange</div><div class="hx">#DE5533</div><div class="role">Gradient transition only</div></div></div>
+      <div class="sw"><div class="chip" style="background:#450E14"></div><div class="meta"><div class="nm">EAV Burgundy</div><div class="hx">#450E14</div><div class="role">Closings, CTAs, depth</div></div></div>
+    </div>
+  </section>
+
+  <!-- TYPE -->
+  <section>
+    <div class="eyebrow">Typography</div>
+    <h2 class="sec">Rubik, <b>and only Rubik</b></h2>
+    <p class="sec-lead">One family across every weight. Headlines are set in Regular with a single bold fragment; emphasis comes from weight, size and position — never from a second typeface.</p>
+    <div class="type-grid">
+      <div class="weights">
+        <div class="wrow"><div class="lbl"><b>Light</b> · 300</div><div class="samp" style="font-weight:300;">Make food innovation work</div></div>
+        <div class="wrow"><div class="lbl"><b>Regular</b> · 400</div><div class="samp" style="font-weight:400;">Make food innovation work</div></div>
+        <div class="wrow"><div class="lbl"><b>Medium</b> · 500</div><div class="samp" style="font-weight:500;">Make food innovation work</div></div>
+        <div class="wrow"><div class="lbl"><b>Bold</b> · 700</div><div class="samp" style="font-weight:700;">Make food innovation work</div></div>
+        <div class="wrow"><div class="lbl"><b>Extrabold</b> · 800</div><div class="samp" style="font-weight:800;">Make food innovation work</div></div>
+        <div class="wrow"><div class="lbl"><b>Italic</b> · 400i</div><div class="samp" style="font-weight:400;font-style:italic;">Make food innovation work</div></div>
+      </div>
+      <div class="specimen">
+        <div class="e">Operational clarity</div>
+        <h3>We work with the corporate from challenge to the <span class="red">validated</span> pilot.</h3>
+        <p>Body text is Regular with <b>bold highlights</b>. In long documents it moves to Light with Medium highlights for a lighter, more balanced read. Paragraphs are left-aligned, never justified.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GRADIENTS -->
+  <section>
+    <div class="eyebrow">Graphic elements</div>
+    <h2 class="sec">Pulse, rhythm and <b>the light point</b></h2>
+    <p class="sec-lead">The heartbeat in the form of light. The hero gradient is reserved for brand moments; product surfaces lean on the soft cream pause and the precise yellow light point.</p>
+    <div class="grad-grid">
+      <div class="grad"><div class="vis v-brand"></div><div class="gn">Main brand gradient</div><div class="gr">Radial Yellow → Orange → Red → Burgundy. Covers, heroes and impact moments only.</div></div>
+      <div class="grad"><div class="vis v-cream"></div><div class="gn">Secondary cream</div><div class="gr">A clean, soft pause for landing pages and product surfaces dense with reds.</div></div>
+      <div class="grad"><div class="vis v-lp"><div class="dot"></div></div><div class="gn">Light point</div><div class="gr">EAV Yellow pulse — activates one focus. Over white, cream or photography only.</div></div>
+    </div>
+  </section>
+
+  <!-- COMPONENTS -->
+  <section>
+    <div class="eyebrow">Product UI · restrained expression</div>
+    <h2 class="sec">Components on the <b>brand</b></h2>
+    <p class="sec-lead">For apps and data-dense surfaces the system simplifies: white and cream grounds, rounded cards and pills, subtle red accents, the CTA pulse on action.</p>
+    <div class="comp-grid">
+      <div class="panel">
+        <div class="pt">Buttons & pills</div>
+        <div class="btn-row">
+          <button class="btn-primary"><span class="material-symbols-outlined">add</span>New project</button>
+          <button class="btn-cta">Let's Beat</button>
+          <button class="btn-outline">Cancel</button>
+          <button class="btn-ghost">View all</button>
+        </div>
+        <div class="pill-row">
+          <span class="pill p-red"><span class="dot"></span>Live</span>
+          <span class="pill p-cream">In progress</span>
+          <span class="pill p-outline">Draft</span>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="pt">Inputs & card</div>
+        <div class="field search">
+          <span class="material-symbols-outlined">search</span>
+          <input placeholder="Search projects, hubs, partners…">
+        </div>
+        <div class="mini-card">
+          <div class="e">Highlighted block</div>
+          <div class="big">When a startup joins, it already knows <b>which company it will pilot with.</b></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRINCIPLES -->
+  <section>
+    <div class="eyebrow">Design principles</div>
+    <h2 class="sec">Structure with <b>movement</b></h2>
+    <p class="sec-lead">A premium presence without arrogance. The brand does not shout — but it does not disappear either.</p>
+    <div class="prin">
+      <div class="p"><div class="ic"><span class="material-symbols-outlined">visibility</span></div><h4>Operational clarity</h4><p>Direct headlines, clean modules and enough air. Sophistication is in judgment, not complexity.</p></div>
+      <div class="p"><div class="ic"><span class="material-symbols-outlined">bolt</span></div><h4>Contained energy</h4><p>Intensity, controlled. The red, light point and gradients activate without making the composition noisy.</p></div>
+      <div class="p"><div class="ic"><span class="material-symbols-outlined">diversity_3</span></div><h4>Real humanity</h4><p>People, contexts and processes feel close, in action and tangible — never cold or abstract.</p></div>
+    </div>
+  </section>
+
+  <div class="foot">
+    <img src="assets/logo.svg" alt="Eatable Adventures">
+    <span>© 2026 · Brand Foundations</span>
+  </div>
+
+</div>
+</body>
+</html>

@@ -4,32 +4,36 @@
 <head>
 <meta charset="utf-8">
 <link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,300,0,0">
 <style>
-  html,body{margin:0;background:#fff;color:var(--ink);font-family:var(--font-sans);}
-  .wrap{padding:24px 32px;display:flex;flex-direction:column;gap:14px;}
-  .search{position:relative;width:320px;}
-  .search svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--fg4);}
-  .search input{width:100%;padding:9px 14px 9px 36px;border:1px solid #111;border-radius:0;font-size:14px;font-family:var(--font-sans);box-sizing:border-box;}
-  .search input:focus{outline:none;border-color:#E1251B;box-shadow:0 0 0 1px #E1251B;}
-  .field{display:flex;gap:10px;}
-  input.text,select.sel{padding:8px 11px;border:1px solid #111;border-radius:0;font-size:14px;font-family:var(--font-sans);box-sizing:border-box;background:#fff;}
+  html,body{margin:0;background:#fff;color:var(--fg1);font-family:var(--font-sans);}
+  .wrap{padding:24px 32px;display:flex;flex-direction:column;gap:14px;max-width:520px;}
+  .field label{display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--fg2);margin-bottom:6px;}
+  .search{position:relative;}
+  .search .material-symbols-outlined{position:absolute;left:13px;top:50%;transform:translateY(-50%);font-size:20px;color:var(--fg4);}
+  .search input{width:100%;padding:11px 14px 11px 42px;border:1px solid var(--input);border-radius:var(--radius-pill);font-size:14px;font-family:var(--font-sans);box-sizing:border-box;color:var(--fg1);}
+  input,select{font-family:var(--font-sans);}
+  input::placeholder{color:var(--fg4);}
+  .row{display:flex;gap:10px;}
+  input.text,select.sel{padding:10px 13px;border:1px solid var(--input);border-radius:var(--radius-md);font-size:14px;box-sizing:border-box;background:#fff;color:var(--fg1);}
   input.text{flex:1;}
-  input.text::placeholder{color:var(--fg4);}
-  select.sel{width:170px;color:var(--ink);}
+  input:focus,select:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 3px rgba(188,45,41,.15);}
+  select.sel{width:180px;}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="search">
-    <i data-lucide="search"></i>
-    <input placeholder="Search startups, investors..." />
+  <div class="field search">
+    <span class="material-symbols-outlined">search</span>
+    <input placeholder="Search projects, hubs, partners…">
   </div>
   <div class="field">
-    <input class="text" placeholder="Filter by technology…" />
-    <select class="sel"><option>All sectors</option><option>Agritech</option></select>
+    <label>Technology</label>
+    <div class="row">
+      <input class="text" placeholder="e.g. precision fermentation">
+      <select class="sel"><option>All sectors</option><option>Agritech</option><option>Innovative food</option></select>
+    </div>
   </div>
 </div>
-<script src="https://unpkg.com/lucide@latest"></script>
-<script>lucide.createIcons();</script>
 </body>
 </html>

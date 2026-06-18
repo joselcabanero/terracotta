@@ -4,31 +4,34 @@
 <head>
 <meta charset="utf-8">
 <link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,300,0,0">
 <style>
-  html,body{margin:0;background:#fff;color:var(--ink);font-family:var(--font-sans);}
-  .wrap{padding:24px 32px;display:flex;flex-direction:column;gap:16px;}
+  html,body{margin:0;background:#fff;color:var(--fg1);font-family:var(--font-sans);}
+  .wrap{padding:24px 32px;display:flex;flex-direction:column;gap:18px;}
   .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
-  .cap{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--fg3);width:84px;}
-  .b{font-size:11px;font-weight:600;padding:3px 9px;border-radius:0;display:inline-flex;align-items:center;gap:6px;text-transform:uppercase;letter-spacing:.04em;}
-  .b-ink{background:#111;color:#fff;}
-  .b-outline{border:1px solid #111;color:#111;background:#fff;}
-  .b-red{background:#E1251B;color:#fff;}
-  .b-sector{border:1px solid #111;color:#111;background:#fff;}
-  .dot{width:9px;height:9px;display:inline-block;}
+  .cap{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--fg3);width:78px;}
+  .pill{font-size:11px;font-weight:500;padding:4px 12px;border-radius:var(--radius-pill);display:inline-flex;align-items:center;gap:6px;}
+  .p-red{background:var(--red);color:#fff;}
+  .p-cream{background:var(--surface-cream);color:var(--fg1);border:1px solid var(--border-2);}
+  .p-outline{border:1px solid var(--input);color:var(--fg2);background:#fff;}
+  .p-burg{background:var(--burgundy);color:#FFF9EE;}
+  .dot{width:7px;height:7px;border-radius:999px;display:inline-block;}
+  .live .dot{background:#fff;}
+  .material-symbols-outlined{font-size:14px;}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="row"><span class="cap">status</span>
-    <span class="b b-ink">Admin</span>
-    <span class="b b-outline">Seed</span>
-    <span class="b b-outline">Series A</span>
-    <span class="b b-red">Live round</span>
+    <span class="pill p-red live"><span class="dot"></span>Live</span>
+    <span class="pill p-cream">In progress</span>
+    <span class="pill p-outline">Draft</span>
+    <span class="pill p-burg">Closed</span>
   </div>
-  <div class="row"><span class="cap">sector</span>
-    <span class="b b-sector"><span class="dot" style="background:#1D9E75"></span>Agritech</span>
-    <span class="b b-sector"><span class="dot" style="background:#639922"></span>Innovative Food</span>
-    <span class="b b-sector"><span class="dot" style="background:#7F77DD"></span>Food as Medicine</span>
+  <div class="row"><span class="cap">tag</span>
+    <span class="pill p-outline"><span class="material-symbols-outlined">factory</span>Pilot</span>
+    <span class="pill p-outline"><span class="material-symbols-outlined">science</span>Validation</span>
+    <span class="pill p-outline"><span class="material-symbols-outlined">public</span>Europe</span>
   </div>
 </div>
 </body>

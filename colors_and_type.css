@@ -1,252 +1,282 @@
 /* =========================================================================
-   Eatable Adventures — Startup Intelligence (Ecosystem DB)
+   Eatable Adventures — Brand Design System
    colors_and_type.css — design tokens
    ─────────────────────────────────────────────────────────────────────────
-   STYLE: International Typographic Style (Müller-Brockmann).
-   Austere, objective, grid-driven. Ink + paper + ONE functional red.
-   Hierarchy comes from size, weight, and position on the grid — never
-   from ornament, color, or shadow. Pair this file with grid.css.
-   ─────────────────────────────────────────────────────────────────────────
-   Stack of record: Next.js 14 + Tailwind + shadcn/ui (new-york base).
-   Source: github.com/joselcabanero/ecosystem-db
+   POSITIONING: "The Beating Heart of Food Innovation."
+   The visual system is born from the heartbeat — PULSE · RHYTHM · IMPACT.
+   Warm, human, premium without arrogance. Operational clarity, contained
+   energy, real humanity. Ink + warm creams + EAV Red, set in Rubik.
+
+   APP / PRODUCT INTENSITY: "Restrained expression" — white & cream grounds,
+   Rubik, structure and subtle red accents. Loud radial gradients are held
+   for hero/brand moments; in product UI energy is carried by the CTA pulse,
+   the cream module, and the yellow light point used as a precise accent.
+   Pair this file with grid.css.
    ========================================================================= */
 
-/* ---- Webfonts -----------------------------------------------------------
-   Müller-Brockmann worked in Akzidenz-Grotesk / Helvetica. The faithful,
-   zero-load substitute is the system Helvetica/Arial stack; Inter is the
-   cross-platform grotesk fallback (loaded below). IBM Plex Mono is kept
-   only for tabular numerals. See README → "Typographic character" for the
-   font-substitution note. */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+/* ---- Webfont: Rubik is the ONLY type family. No secondary typeface. -------
+   Light(300) · Regular(400) · Medium(500) · Bold(700) · Extrabold(800), + italics.
+   A system-mono is kept ONLY as a functional fallback for code/tabular data —
+   it is not a brand face. */
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,700;0,800;1,400;1,500&display=swap');
 
 :root {
   /* ===== TYPE FAMILIES ================================================== */
-  /* Primary grotesk: Helvetica Neue → Helvetica → Arial (all Akzidenz-
-     adjacent), with Inter as the loaded cross-platform fallback. */
-  --font-sans: 'Helvetica Neue', Helvetica, Arial, 'Inter', system-ui, sans-serif;
-  --font-grotesk: var(--font-sans);
-  --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
-  --font-feature-settings: normal;   /* objective default — no stylistic sets */
+  --font-sans:  'Rubik', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-brand: var(--font-sans);          /* alias — there is only Rubik */
+  --font-mono:  ui-monospace, 'SF Mono', Menlo, Consolas, monospace; /* code/data only */
+  --font-feature-settings: normal;
 
   /* =====================================================================
-     COLOR — ink, paper, and one red. That is the whole system.
+     COLOR — the EAV palette. Two mother colors (EAV Red + EAV Cream)
+     expand into a warm, functional system. Hex is the source of record
+     for screen; CMYK lives in the brandbook for print.
      ===================================================================== */
 
-  /* ---- Core triad ---- */
-  --paper:      #FFFFFF;   /* ground            */
-  --paper-2:    #F4F4F2;   /* secondary ground  */
-  --ink:        #111111;   /* text + ink fills  */
-  --black:      #111111;   /* primary action surface (alias of ink) */
-  --black-hover:#000000;   /* pressed ink       */
-  --red:        #E1251B;   /* THE functional accent — Swiss red */
-  --red-strong: #B71C13;   /* pressed / deep red */
+  /* ---- PRIMARY colors ---- */
+  --paper:    #FFFFFF;   /* WHITE — the most predominant color; air & clarity */
+  --cream:    #FFF9EE;   /* EAV CREAM — highlighted blocks, editorial grounds */
+  --red:      #BC2D29;   /* EAV RED — the brand's representative color         */
+  --black:    #1E1E1E;   /* EAV BLACK — footers & typography                   */
 
-  /* ---- Objective neutral ramp (halftone grays) ---- */
-  --n-0:   #FFFFFF;
-  --n-50:  #F4F4F2;
-  --n-100: #EAEAEA;
-  --n-200: #DBDBDB;   /* soft divider */
-  --n-300: #C2C2C2;
-  --n-400: #9B9B9B;
-  --n-500: #6F6F6F;   /* muted text */
-  --n-600: #4A4A4A;   /* secondary text */
-  --n-800: #222222;
-  --n-900: #111111;   /* ink */
+  /* ---- SECONDARY colors ---- */
+  --dark-cream: #F5EACE;  /* EAV DARK CREAM — secondary gradients, soft wells  */
+  --light-grey: #FAFAFA;  /* EAV LIGHT GREY — consulting grounds               */
+  --grey:       #E8E8E8;  /* EAV GREY — consulting blocks & dividers           */
+  --yellow:     #FFA103;  /* EAV YELLOW — the LIGHT POINT only                 */
+  --orange:     #DE5533;  /* EAV ORANGE — gradient transition only            */
+  --burgundy:   #450E14;  /* EAV BURGUNDY — closings, CTAs, depth              */
 
-  /* ---- Convenience foreground/surface aliases (used across the kit) ---- */
+  /* ---- Warm-neutral TEXT ramp (derived; tuned warm to sit on cream) ---- */
+  --fg1: #1E1E1E;   /* primary text — EAV Black              */
+  --fg2: #574E48;   /* secondary text — warm dark taupe       */
+  --fg3: #857B72;   /* muted / captions — warm grey           */
+  --fg4: #ABA197;   /* faint meta / placeholder               */
+
+  /* ---- SURFACES ---- */
   --bg:            #FFFFFF;
-  --fg1:           #111111;   /* primary text / ink           */
-  --fg2:           #4A4A4A;   /* secondary text               */
-  --fg3:           #6F6F6F;   /* muted / captions             */
-  --fg4:           #9B9B9B;   /* faint meta / placeholder     */
   --surface:       #FFFFFF;
-  --surface-muted: #F4F4F2;   /* table head / hover ground    */
-  --surface-fill:  #EAEAEA;   /* chips / wells                */
-  --surface-warm:  #F4F4F2;   /* legacy alias → neutral ground */
-  --surface-sand:  #EAEAEA;   /* legacy alias → neutral fill   */
+  --surface-cream: #FFF9EE;   /* highlighted / editorial block ground  */
+  --surface-sand:  #F5EACE;   /* dark-cream well, soft fill            */
+  --surface-grey:  #FAFAFA;   /* neutral consulting ground            */
+  --surface-fill:  #F3EFE7;   /* chips / wells — warm faint           */
 
-  /* ---- Rules & borders: hard ink keylines over soft dividers ---- */
-  --rule:     #111111;        /* structural keyline (the Swiss device) */
-  --border:   #DBDBDB;        /* soft hairline divider */
-  --border-1: #DBDBDB;        /* default border */
-  --border-2: #EAEAEA;        /* faint divider  */
-  --input:    #111111;        /* inputs carry an ink keyline */
+  /* ---- RULES & BORDERS — soft warm hairlines; the ink keyline is reserved
+         for structural emphasis, not every divider ---- */
+  --border-1: #E8E8E8;        /* default divider — EAV Grey            */
+  --border-2: #F0ECE3;        /* faint, cream-tinted divider          */
+  --border:   #E8E8E8;        /* alias                                 */
+  --rule:     #1E1E1E;        /* structural ink keyline (used sparingly) */
+  --input:    #DCD6CC;        /* input border — warm                   */
 
-  /* ===== BRAND ========================================================= */
-  /* Identity = red. The "EA" monogram, active state, links, focus ring.
-     Red is used as a FIELD or MARKER, never as a soft tint. */
-  --brand:        #E1251B;    /* red — the single accent       */
-  --brand-strong: #B71C13;    /* pressed red                   */
-  --brand-amber:  #E1251B;    /* legacy alias → red (no amber)  */
-  --brand-tint:   #FBE2E0;    /* faintest red wash — active row, sparingly */
-  --brand-fg:     #FFFFFF;    /* paper text on red field       */
-  --brand-hover:  #B71C13;    /* pressed red                   */
+  /* ===== BRAND semantic ================================================ */
+  --brand:        #BC2D29;    /* EAV Red — identity, active, links, focus */
+  --brand-strong: #9C231F;    /* pressed red (red→burgundy direction)     */
+  --brand-deep:   #450E14;    /* burgundy — depth / closing               */
+  --brand-fg:     #FFFFFF;    /* paper text on red                        */
+  --brand-tint:   #F8E5E2;    /* faintest red wash — active row, sparingly */
+  --light-point:  #FFA103;    /* the yellow pulse accent                  */
 
-  /* ===== shadcn SEMANTIC TOKENS (full hsl() colors) ==================== */
+  /* ===== GRADIENTS =====================================================
+     Restrained set for product UI: the CTA pulse + the secondary cream.
+     The loud radial Yellow→Burgundy brand gradient is provided for hero /
+     brand pieces only — never as app chrome. ============================ */
+  /* 1 — Main brand gradient (HERO / brand moments only). Radial, all stops 100%. */
+  --gradient-brand: radial-gradient(120% 120% at 18% 115%,
+                      #FFA103 0%, #DE5533 32%, #BC2D29 62%, #450E14 100%); /* @kind color */
+  /* 2 — CTA "pulse": a soft same-color expansion (parallel shadow, 75%). */
+  --pulse-red:   0 0 0 0 rgba(188,45,41,0.0);
+  --pulse-red-on: 0 6px 22px rgba(188,45,41,0.34);
+  /* 3 — Secondary gradient: a clean, soft cream pause — for product surfaces. */
+  --gradient-cream: radial-gradient(135% 120% at 12% 8%, #FFFFFF 0%, #FFF9EE 48%, #F5EACE 100%); /* @kind color */
+  /* The yellow light point as a positionable radial glow. */
+  --gradient-lightpoint: radial-gradient(circle, rgba(255,161,3,0.55) 0%, rgba(255,161,3,0.0) 70%); /* @kind color */
+
+  /* ===== shadcn SEMANTIC TOKENS (full hsl colors) ===================== */
   --background: hsl(0 0% 100%);
-  --foreground: hsl(0 0% 7%);              /* #111 ink */
+  --foreground: hsl(0 0% 12%);
   --card: hsl(0 0% 100%);
-  --card-foreground: hsl(0 0% 7%);
+  --card-foreground: hsl(0 0% 12%);
   --popover: hsl(0 0% 100%);
-  --popover-foreground: hsl(0 0% 7%);
-  --primary: hsl(0 0% 7%);                 /* ink — primary buttons */
-  --primary-foreground: hsl(0 0% 100%);    /* paper */
-  --secondary: hsl(0 0% 92%);              /* #EAEAEA fill */
-  --secondary-foreground: hsl(0 0% 7%);
-  --muted: hsl(0 0% 96%);                  /* #F4F4F2 */
-  --muted-foreground: hsl(0 0% 44%);       /* #6F6F6F */
-  --accent: hsl(3 78% 49%);                /* #E1251B red */
+  --popover-foreground: hsl(0 0% 12%);
+  --primary: hsl(2 64% 45%);               /* EAV Red — primary actions */
+  --primary-foreground: hsl(0 0% 100%);
+  --secondary: hsl(40 38% 95%);            /* cream fill */
+  --secondary-foreground: hsl(0 0% 12%);
+  --muted: hsl(40 50% 97%);                /* cream */
+  --muted-foreground: hsl(24 8% 48%);      /* warm muted */
+  --accent: hsl(2 64% 45%);                /* EAV Red */
   --accent-foreground: hsl(0 0% 100%);
-  --destructive: hsl(3 78% 49%);           /* the one red doubles as destructive */
+  --destructive: hsl(2 64% 45%);
   --destructive-foreground: hsl(0 0% 100%);
-  --border-hsl: hsl(0 0% 86%);             /* #DBDBDB */
-  --ring: hsl(3 78% 49%);                  /* red focus ring */
-  --radius: 0;                             /* SHARP — rectilinear Swiss */
+  --border-hsl: hsl(0 0% 91%);
+  --ring: hsl(2 64% 45%);                  /* red focus ring */
+  --radius: 10px;                          /* ROUNDED — brandbook cards/boxes */
 
-  /* ===== DATA-ENCODING COLORS ==========================================
-     The ONE sanctioned exception to "one accent": categorical data where
-     hue carries meaning (the ontology). Use only as small fields / dots /
-     rules inside data views — never as page chrome. ===================== */
-  --node-startup:   #2563eb;
-  --node-investor:  #16a34a;
-  --node-person:    #9333ea;
-  --node-corporate: #ea580c;
+  /* ===== CHARTS & DATA VISUALIZATION ===================================
+     Fixed color hierarchy — color is assigned by RELEVANCE, not decoration.
+     Red(1) → Orange(2) → Burgundy(3) → Yellow(4) → Dark Cream(5) →
+     Grey(neutral) → Black(axes/text). Applies to every chart type. ====== */
+  --chart-1: #BC2D29;   /* most relevant data point         */
+  --chart-2: #DE5533;   /* second                           */
+  --chart-3: #450E14;   /* third / high-weight support      */
+  --chart-4: #FFA103;   /* fourth / secondary info          */
+  --chart-5: #F5EACE;   /* fifth / secondary support        */
+  --chart-neutral: #E8E8E8;  /* neutral / complementary     */
+  --chart-axis:    #1E1E1E;  /* axes, text, reference        */
 
-  --sector-agritech:        #1D9E75;
-  --sector-innovative-food: #639922;
-  --sector-logistics:       #EF9F27;
-  --sector-retail:          #D85A30;
-  --sector-kitchen:         #97C459;
-  --sector-medicine:        #7F77DD;
-  --sector-other:           #888780;
+  /* ===== ELEVATION — soft & warm. Flat at rest; lift only when floating. */
+  --shadow-sm: 0 1px 2px rgba(30,30,30,0.05);
+  --shadow:    0 2px 8px rgba(30,30,30,0.06);
+  --shadow-md: 0 10px 28px -12px rgba(30,30,30,0.18);
+  --shadow-lg: 0 22px 48px -16px rgba(69,14,20,0.22);
 
-  /* News tags & match scores — kept monochrome by default; the fg colors
-     below are the functional-data exception, used as text/keylines only. */
-  --tag-funding-bg:#F4F4F2; --tag-funding-fg:#111111;
-  --tag-tech-bg:   #F4F4F2; --tag-tech-fg:   #111111;
-  --tag-market-bg: #F4F4F2; --tag-market-fg: #111111;
-  --tag-policy-bg: #F4F4F2; --tag-policy-fg: #111111;
-  --tag-people-bg: #F4F4F2; --tag-people-fg: #111111;
-
-  --score-high: #111111;  /* hierarchy by weight, not hue */
-  --score-mid:  #6F6F6F;
-  --score-low:  #9B9B9B;
-
-  /* ===== ELEVATION — flat. Rules, not shadows. ========================= */
-  --shadow-sm: none;
-  --shadow:    none;
-  --shadow-md: 0 0 0 1px rgba(17,17,17,0.08), 0 8px 24px -12px rgba(17,17,17,0.25);
-  --shadow-lg: 0 0 0 1px rgba(17,17,17,0.08), 0 16px 40px -16px rgba(17,17,17,0.30);
-
-  /* ===== RADII — rectilinear ========================================== */
-  --radius-sm: 0;
-  --radius-md: 0;
-  --radius-lg: 0;
-  --radius-xl: 0;
-  --radius-full: 9999px;   /* reserved for true dots/score markers only */
+  /* ===== RADII — rounded (brandbook: cards/boxes/pills round) ========= */
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   16px;
+  --radius-xl:   24px;
+  --radius-pill: 999px;
+  --radius-full: 999px;
 
   /* ===== SPACING — 8px baseline grid (4 = half-step) ================== */
   --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px;
   --space-5: 24px; --space-6: 24px; --space-8: 32px; --space-12: 48px;
 
-  /* ===== MODULAR TYPE SCALE ===========================================
-     Strict scale, ratio 1.25 (major third), base 16px. Each step is
-     ~1.25× its predecessor. Line-heights snap to the 8px baseline. */
-  --ratio: 1.25; /* @kind other */
-  --t-xs:   13px;   /* base / 1.25 — meta, captions   */
-  --t-ui:   14px;   /* dense UI body (the app's text-sm exception) */
-  --t-base: 16px;   /* body                           */
-  --t-md:   20px;   /* lead / h4   (16 × 1.25)         */
-  --t-lg:   25px;   /* h3          (× 1.25)            */
-  --t-xl:   31px;   /* h2          (× 1.25)            */
-  --t-2xl:  39px;   /* h1          (× 1.25)            */
-  --t-3xl:  49px;   /* display     (× 1.25)            */
-  --t-4xl:  61px;   /* poster      (× 1.25)            */
-  --t-5xl:  76px;   /* big poster  (× 1.25)            */
+  /* ===== TYPE SCALE — Rubik. Hierarchy = weight + size + position.
+     A screen-friendly scale (base 16) that preserves the brandbook's
+     proportional relationships: eyebrow < body < subtitle < headline. */
+  --t-eyebrow: 12px;   /* uppercase, tracked, Regular        */
+  --t-xs:   13px;      /* meta / caption                     */
+  --t-sm:   14px;      /* dense UI body                      */
+  --t-base: 16px;      /* body                               */
+  --t-md:   18px;      /* subtitle / lead                    */
+  --t-lg:   22px;      /* h3                                 */
+  --t-xl:   28px;      /* h2 / headline                      */
+  --t-2xl:  36px;      /* h1                                 */
+  --t-3xl:  46px;      /* display                            */
+  --t-4xl:  60px;      /* poster                             */
+  --t-5xl:  76px;      /* big poster / hero claim            */
 
   /* Legacy semantic aliases (kept so existing markup resolves) */
-  --text-page-title: var(--t-2xl);  /* 39 */
-  --text-section:    var(--t-xl);   /* 31 */
-  --text-card-title: var(--t-ui);   /* 14 */
-  --text-body:       var(--t-base); /* 16 */
-  --text-sm:         var(--t-xs);   /* 13 */
+  --text-page-title: var(--t-2xl);
+  --text-section:    var(--t-xl);
+  --text-card-title: var(--t-sm);
+  --text-body:       var(--t-base);
+  --text-sm:         var(--t-xs);
   --text-meta:       12px;
   --text-micro:      11px;
   --text-label:      11px;
+
+  /* ---- Compatibility aliases for the previous (Swiss) token names ----
+     so any markup or kit referencing them still resolves to brand values. */
+  --ink:        #1E1E1E;
+  --black-hover:#000000;
+  --red-strong: #9C231F;
+  --paper-2:    #FFF9EE;
+  --n-0:#FFFFFF; --n-50:#FAFAFA; --n-100:#F3EFE7; --n-200:#E8E8E8;
+  --n-300:#DCD6CC; --n-400:#ABA197; --n-500:#857B72; --n-600:#574E48;
+  --n-800:#2C2A28; --n-900:#1E1E1E;
+  --surface-muted: #FFF9EE;
+  --surface-warm:  #FFF9EE;
+  --brand-amber:   #FFA103;
+  --brand-hover:   #9C231F;
 }
 
 /* =========================================================================
-   SEMANTIC ELEMENT STYLES — objective hierarchy. Copy what you need.
-   Headings are flush-left, tight, set in the grotesk. Weight + size do the
-   work; tracking tightens as size grows.
+   SEMANTIC ELEMENT STYLES — Rubik hierarchy.
+   Headlines are Rubik REGULAR (400) with BOLD (700) fragments for emphasis,
+   set with an initial capital and the rest lowercase, flush-left. One word
+   in a headline may be highlighted in red (.hl-red) — restrained, headlines
+   only, never body. Use <b>, <strong>, or .hl to bold a fragment.
    ========================================================================= */
 body {
   font-family: var(--font-sans);
   font-feature-settings: var(--font-feature-settings);
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
   color: var(--fg1);
   background: var(--bg);
 }
 
+/* Headlines: Regular weight; emphasis comes from a bold fragment, not the
+   whole line. */
 h1, .h1 {
   font-size: var(--t-2xl);
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: -0.02em;
-  line-height: 1.05;       /* 40/39 ≈ baseline-snapped */
+  line-height: 1.08;
   margin: 0;
 }
 h2, .h2 {
   font-size: var(--t-xl);
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: -0.015em;
-  line-height: 1.1;
+  line-height: 1.12;
   margin: 0;
 }
 h3, .h3 {
   font-size: var(--t-lg);
   font-weight: 500;
   letter-spacing: -0.01em;
-  line-height: 1.12;
+  line-height: 1.18;
   margin: 0;
 }
 h4, .h4 {
   font-size: var(--t-md);
   font-weight: 500;
   letter-spacing: -0.005em;
-  line-height: 1.2;
+  line-height: 1.25;
   margin: 0;
 }
+/* The bold fragment inside a Regular headline. */
+h1 b, h2 b, h3 b, .h1 b, .h2 b, .h3 b,
+.hl { font-weight: 700; }
+/* One red-highlighted word — headlines only, sparingly. */
+.hl-red { color: var(--red); font-weight: 700; }
+
 p, .body {
   font-size: var(--t-base);
-  line-height: 1.5;        /* 24px on a 16px body — two baselines */
+  line-height: 1.55;
   color: var(--fg1);
 }
-.lead {
+p b, .body b, p strong { font-weight: 700; }   /* bold highlights in body */
+
+/* Long-form reading: Light body with Medium highlights. */
+.longform, .longform p { font-weight: 300; }
+.longform b, .longform strong { font-weight: 500; }
+
+.lead, .subtitle {
   font-size: var(--t-md);
-  line-height: 1.4;
+  font-weight: 400;
+  line-height: 1.45;
   color: var(--fg2);
 }
 .muted { font-size: var(--t-base); color: var(--fg3); }
-.meta  { font-size: var(--text-meta); color: var(--fg3); line-height: 1.33; }
+.meta  { font-size: var(--text-meta); color: var(--fg3); line-height: 1.4; }
 
-/* Tabular numerals for data tables / metrics */
+/* Tabular numerals for data tables / metrics (Rubik supports tnum). */
 .tnum { font-variant-numeric: tabular-nums; font-feature-settings: 'tnum' 1; }
 
-/* Uppercase tracked label — the grotesk eyebrow that titles a grid field.
-   (Was a mono label; in the Swiss system it is grotesk, uppercase, tracked.) */
-.label, .label-mono {
+/* Eyebrow — Rubik Regular, UPPERCASE, tracked. Sits above the headline.
+   May be ink or red. */
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--t-eyebrow);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--fg1);
+}
+.eyebrow-red { color: var(--red); }
+
+/* Label — small UPPERCASE Bold marker for fields/column heads. */
+.label {
   font-family: var(--font-sans);
   font-size: var(--text-label);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--fg1);
-}
-.eyebrow {
-  font-size: var(--text-meta);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.10em;
   color: var(--fg1);
 }
 
@@ -254,14 +284,23 @@ code, .mono { font-family: var(--font-mono); font-size: 13px; }
 
 /* Links: ink with a red underline marker, or plain red. */
 a.link {
-  color: var(--ink);
+  color: var(--fg1);
   font-weight: 500;
   text-decoration: none;
   border-bottom: 2px solid var(--red);
   padding-bottom: 1px;
+  transition: color .15s ease;
 }
 a.link:hover { color: var(--red); }
 
-/* The Swiss keyline: a hard ink rule used to structure the grid. */
-.keyline { border: 0; border-top: 1px solid var(--rule); }
-.keyline-heavy { border: 0; border-top: 2px solid var(--rule); }
+/* A soft warm divider (default) and the structural ink keyline (emphasis). */
+.divider { border: 0; border-top: 1px solid var(--border-1); }
+.keyline { border: 0; border-top: 2px solid var(--rule); }
+
+/* The yellow LIGHT POINT — a precise pulse accent. Place over white, cream
+   or photography only; signals, never decorates. */
+.light-point {
+  width: 14px; height: 14px; border-radius: 999px;
+  background: var(--yellow);
+  box-shadow: 0 0 0 6px rgba(255,161,3,0.18), 0 0 22px 6px rgba(255,161,3,0.55);
+}

@@ -1,28 +1,45 @@
-<!-- @dsCard group="Colors" -->
+<!-- @dsCard group="Colors" name="Chart hierarchy" subtitle="Color assigned by relevance, not decoration" -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <link rel="stylesheet" href="../colors_and_type.css">
 <style>
-  html,body{margin:0;background:#fff;color:var(--ink);font-family:var(--font-sans);}
-  .wrap{padding:22px 32px;}
-  .hd{font-family:var(--font-mono);font-size:10px;color:var(--fg3);text-transform:uppercase;letter-spacing:.1em;border-bottom:2px solid #111;padding-bottom:6px;margin-bottom:14px;}
-  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
-  .node{display:flex;flex-direction:column;gap:7px;}
-  .sq{width:28px;height:28px;}
-  .nm{font-size:13px;font-weight:700;}
-  .hex{font-family:var(--font-mono);font-size:10px;color:var(--fg3);}
+  html,body{margin:0;background:#fff;color:var(--fg1);font-family:var(--font-sans);}
+  .wrap{padding:24px 32px;display:flex;gap:30px;align-items:flex-start;}
+  .cap{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--fg3);margin-bottom:14px;}
+  .list{flex:1;}
+  .row{display:flex;align-items:center;gap:12px;padding:7px 0;border-top:1px solid var(--border-1);}
+  .rank{font-size:11px;font-weight:700;color:var(--fg4);width:14px;}
+  .sw{width:26px;height:26px;border-radius:var(--radius-sm);flex-shrink:0;}
+  .nm{font-size:13px;font-weight:500;}
+  .hx{font-size:10px;color:var(--fg3);margin-left:auto;}
+  .demo{width:150px;flex-shrink:0;display:flex;flex-direction:column;gap:8px;align-items:center;}
+  .bars{display:flex;align-items:flex-end;gap:7px;height:96px;}
+  .bar{width:18px;border-radius:4px 4px 0 0;}
+  .dnote{font-size:10px;color:var(--fg4);text-align:center;}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="hd">Node types — graph encoding</div>
-  <div class="grid">
-    <div class="node"><div class="sq" style="background:#2563eb"></div><div class="nm">Startup</div><div class="hex">2563EB</div></div>
-    <div class="node"><div class="sq" style="background:#16a34a"></div><div class="nm">Investor</div><div class="hex">16A34A</div></div>
-    <div class="node"><div class="sq" style="background:#9333ea"></div><div class="nm">Person</div><div class="hex">9333EA</div></div>
-    <div class="node"><div class="sq" style="background:#ea580c"></div><div class="nm">Corporate</div><div class="hex">EA580C</div></div>
+  <div class="list">
+    <div class="cap">Data visualization order</div>
+    <div class="row"><span class="rank">1</span><span class="sw" style="background:#BC2D29"></span><span class="nm">EAV Red</span><span class="hx">most relevant</span></div>
+    <div class="row"><span class="rank">2</span><span class="sw" style="background:#DE5533"></span><span class="nm">EAV Orange</span><span class="hx">second</span></div>
+    <div class="row"><span class="rank">3</span><span class="sw" style="background:#450E14"></span><span class="nm">EAV Burgundy</span><span class="hx">third / support</span></div>
+    <div class="row"><span class="rank">4</span><span class="sw" style="background:#FFA103"></span><span class="nm">EAV Yellow</span><span class="hx">secondary</span></div>
+    <div class="row"><span class="rank">5</span><span class="sw" style="background:#F5EACE"></span><span class="nm">Dark Cream</span><span class="hx">support</span></div>
+    <div class="row"><span class="rank">·</span><span class="sw" style="background:#E8E8E8"></span><span class="nm">Grey</span><span class="hx">neutral</span></div>
+  </div>
+  <div class="demo">
+    <div class="bars">
+      <div class="bar" style="height:96px;background:#BC2D29"></div>
+      <div class="bar" style="height:74px;background:#DE5533"></div>
+      <div class="bar" style="height:58px;background:#450E14"></div>
+      <div class="bar" style="height:40px;background:#FFA103"></div>
+      <div class="bar" style="height:28px;background:#F5EACE"></div>
+    </div>
+    <div class="dnote">Same order across bars, lines, pies</div>
   </div>
 </div>
 </body>

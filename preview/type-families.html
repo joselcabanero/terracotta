@@ -5,24 +5,24 @@
 <meta charset="utf-8">
 <link rel="stylesheet" href="../colors_and_type.css">
 <style>
-  html,body{margin:0;background:#fff;color:var(--ink);}
-  .wrap{padding:26px 32px;display:flex;flex-direction:column;gap:16px;}
-  .row{display:flex;align-items:baseline;gap:20px;border-top:2px solid var(--ink);padding-top:12px;}
-  .tag{font-family:var(--font-mono);font-size:10px;color:var(--fg3);text-transform:uppercase;letter-spacing:.1em;width:140px;flex-shrink:0;line-height:1.4;}
-  .big{font-family:var(--font-sans);font-size:40px;font-weight:700;letter-spacing:-0.025em;line-height:1;}
-  .mono{font-family:var(--font-mono);font-size:24px;font-weight:500;}
+  html,body{margin:0;background:#fff;color:var(--fg1);font-family:var(--font-sans);}
+  .wrap{padding:26px 32px;display:flex;flex-direction:column;gap:14px;}
+  .row{display:flex;align-items:baseline;gap:20px;border-top:1px solid var(--border-1);padding-top:12px;}
+  .tag{font-size:10px;font-weight:500;color:var(--fg3);text-transform:uppercase;letter-spacing:.12em;width:150px;flex-shrink:0;line-height:1.5;}
+  .tag b{color:var(--fg1);font-weight:700;}
+  .big{font-size:34px;letter-spacing:-0.02em;line-height:1.05;}
+  .note{font-size:11px;color:var(--fg4);padding-top:6px;}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="row">
-    <div class="tag">Grotesk · UI<br>Helvetica / Arial</div>
-    <div class="big">Grotesk Neue 1957</div>
-  </div>
-  <div class="row">
-    <div class="tag">Mono · numerals<br>IBM Plex Mono</div>
-    <div class="mono">0123456789 — →</div>
-  </div>
+  <div class="row"><div class="tag"><b>Rubik Light</b><br>300 · long-form body</div><div class="big" style="font-weight:300;">Beating heart</div></div>
+  <div class="row"><div class="tag"><b>Rubik Regular</b><br>400 · body, headlines</div><div class="big" style="font-weight:400;">Beating heart</div></div>
+  <div class="row"><div class="tag"><b>Rubik Medium</b><br>500 · subtitles, highlights</div><div class="big" style="font-weight:500;">Beating heart</div></div>
+  <div class="row"><div class="tag"><b>Rubik Bold</b><br>700 · emphasis fragment</div><div class="big" style="font-weight:700;">Beating heart</div></div>
+  <div class="row"><div class="tag"><b>Rubik Extrabold</b><br>800 · rare, max impact</div><div class="big" style="font-weight:800;">Beating heart</div></div>
+  <div class="row"><div class="tag"><b>Rubik Italic</b><br>400i · sparing emphasis</div><div class="big" style="font-weight:400;font-style:italic;">Beating heart</div></div>
+  <div class="note">Rubik is the only type family — there is no secondary typeface.</div>
 </div>
 </body>
 </html>

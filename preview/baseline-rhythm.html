@@ -5,22 +5,22 @@
 <meta charset="utf-8">
 <link rel="stylesheet" href="../colors_and_type.css">
 <style>
-  html,body{margin:0;background:#fff;color:var(--ink);font-family:var(--font-sans);}
+  html,body{margin:0;background:#fff;color:var(--fg1);font-family:var(--font-sans);}
   .wrap{padding:24px 32px;display:flex;gap:32px;align-items:flex-start;}
-  .rhythm{flex:1;background-image:repeating-linear-gradient(to bottom,rgba(225,37,27,0.16) 0,rgba(225,37,27,0.16) 1px,transparent 1px,transparent 8px);}
-  .rhythm h4{margin:0;font-size:20px;line-height:24px;font-weight:700;}
-  .rhythm p{margin:8px 0 0;font-size:13px;line-height:16px;color:#4A4A4A;}
-  .legend{width:150px;flex-shrink:0;display:flex;flex-direction:column;gap:10px;}
-  .legend .t{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;border-bottom:2px solid var(--ink);padding-bottom:6px;}
-  .legend .row{font-family:var(--font-mono);font-size:10px;color:var(--fg3);display:flex;justify-content:space-between;}
-  .legend .row b{color:var(--ink);}
+  .rhythm{flex:1;background-image:repeating-linear-gradient(to bottom,rgba(188,45,41,0.14) 0,rgba(188,45,41,0.14) 1px,transparent 1px,transparent 8px);}
+  .rhythm h4{margin:0;font-size:20px;line-height:24px;font-weight:500;}
+  .rhythm p{margin:8px 0 0;font-size:13px;line-height:16px;color:var(--fg2);}
+  .legend{width:160px;flex-shrink:0;display:flex;flex-direction:column;gap:10px;}
+  .legend .t{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;border-bottom:1px solid var(--border-1);padding-bottom:6px;}
+  .legend .row{font-size:11px;color:var(--fg3);display:flex;justify-content:space-between;}
+  .legend .row b{color:var(--fg1);font-weight:700;}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="rhythm">
     <h4>Baseline rhythm</h4>
-    <p>Every line of type sits on an 8-pixel baseline. Leading, margins, and component heights are all multiples of the same unit, so vertical rhythm stays mathematically consistent across the whole interface.</p>
+    <p>Every line of type sits on an 8-pixel baseline. Leading, margins and component heights are multiples of the same unit, so vertical rhythm stays consistent across the interface — clarity with enough air.</p>
   </div>
   <div class="legend">
     <span class="t">8px base</span>
