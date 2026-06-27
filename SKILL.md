@@ -1,6 +1,6 @@
 ---
-name: eatable-adventures-design
-description: Use this skill to generate well-branded interfaces and assets for Eatable Adventures (the operating system for food innovation — "The Beating Heart of Food Innovation"), for production or throwaway prototypes/mocks. Contains the brand's colors, Rubik type, gradients, light point, assets, components and an app-shell template.
+name: terracotta
+description: Use this skill (Terracotta — the Eatable Adventures design system) to generate well-branded interfaces and assets for Eatable Adventures (the operating system for food innovation — "The Beating Heart of Food Innovation"), for production or throwaway prototypes/mocks. Contains the brand's colors, Rubik type, gradients, light point, assets, components and an app-shell template.
 user-invocable: true
 ---
 

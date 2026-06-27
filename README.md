@@ -1,6 +1,6 @@
-# Eatable Adventures — Brand Design System
+# Terracotta — the Eatable Adventures Design System
 
-A reusable design system for **Eatable Adventures' apps and proprietary products**, adapted directly from the **2026 Brandbook** (brand refresh). Eatable Adventures is the operating system for food innovation — accelerator, consultancy and fund in one — built to turn ambition into measurable business results.
+**Terracotta** is the reusable design system for **Eatable Adventures' apps and proprietary products**, adapted directly from the **2026 Brandbook** (brand refresh). *(Terracotta is the name of the system; Eatable Adventures is the brand it expresses.)* Eatable Adventures is the operating system for food innovation — accelerator, consultancy and fund in one — built to turn ambition into measurable business results.
 
 This folder gives a design agent everything needed to produce on-brand interfaces, mockups, prototypes and slides: design tokens (color + Rubik type), a flexible grid, the brand assets, written tone/voice guidance, specimen cards, a brand foundations one-pager, and a ready-to-use app-shell template.
 
