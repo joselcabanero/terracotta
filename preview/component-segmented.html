@@ -1,0 +1,54 @@
+<!-- @dsCard group="Components" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,300,0,0">
+<style>
+  html,body{margin:0;background:#fff;color:var(--fg1);font-family:var(--font-sans);}
+  .wrap{padding:24px 32px;display:flex;flex-direction:column;gap:24px;max-width:560px;}
+  .field{display:flex;flex-direction:column;gap:8px;}
+  .lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--fg2);}
+
+  .seg{display:inline-flex;background:var(--cream);border-radius:999px;padding:4px;gap:4px;}
+  .seg .item{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:999px;font-size:14px;font-weight:500;color:var(--fg2);cursor:pointer;white-space:nowrap;}
+  .seg .item .material-symbols-outlined{font-size:18px;}
+  .seg .item.active{background:#fff;color:var(--red);box-shadow:var(--shadow-sm);}
+
+  .seg.sm{padding:3px;}
+  .seg.sm .item{padding:7px;color:var(--fg3);}
+  .seg.sm .item .material-symbols-outlined{font-size:20px;}
+  .seg.sm .item.active{color:var(--red);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="field">
+    <div class="lbl">Pilot view</div>
+    <div class="seg">
+      <span class="item active"><span class="material-symbols-outlined">dashboard</span>Overview</span>
+      <span class="item"><span class="material-symbols-outlined">groups</span>Startups</span>
+      <span class="item"><span class="material-symbols-outlined">timeline</span>Milestones</span>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="lbl">Timeframe</div>
+    <div class="seg">
+      <span class="item">Month</span>
+      <span class="item active">Quarter</span>
+      <span class="item">Year</span>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="lbl">Layout</div>
+    <div class="seg sm">
+      <span class="item active"><span class="material-symbols-outlined">view_list</span></span>
+      <span class="item"><span class="material-symbols-outlined">grid_view</span></span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

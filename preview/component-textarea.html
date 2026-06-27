@@ -1,0 +1,44 @@
+<!-- @dsCard group="Components" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,300,0,0">
+<style>
+  html,body{margin:0;background:#fff;color:var(--fg1);font-family:var(--font-sans);}
+  .wrap{padding:24px 32px;display:flex;flex-direction:column;gap:20px;max-width:560px;}
+  .field{display:flex;flex-direction:column;}
+  label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--fg2);margin-bottom:6px;}
+  .ta{border:1px solid var(--input);border-radius:var(--radius-md);background:#fff;padding:11px 13px;font-size:14px;line-height:1.5;color:var(--fg1);min-height:64px;}
+  .ta.placeholder{color:var(--fg4);}
+  .ta.focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(188,45,41,.15);}
+  .ta.error{border-color:var(--red);}
+  .help{font-size:12px;color:var(--fg3);margin-top:6px;}
+  .err{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--red);margin-top:6px;}
+  .err .material-symbols-outlined{font-size:15px;}
+  .counter{align-self:flex-end;font-size:12px;color:var(--fg4);margin-top:6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="field">
+    <label>Pilot description — default</label>
+    <div class="ta placeholder">Describe the challenge the startup will tackle in this pilot…</div>
+    <div class="help">A short summary shown to startups in the matching feed.</div>
+  </div>
+
+  <div class="field">
+    <label>Pilot description — focus</label>
+    <div class="ta focus">Validate a precision-fermentation dairy protein with three agritech hubs across Iberia before the scale-up window.</div>
+    <div class="counter">120 / 500</div>
+  </div>
+
+  <div class="field">
+    <label>Pilot description — error</label>
+    <div class="ta error placeholder">Describe the challenge…</div>
+    <div class="err"><span class="material-symbols-outlined">error</span>Description is required</div>
+  </div>
+</div>
+</body>
+</html>

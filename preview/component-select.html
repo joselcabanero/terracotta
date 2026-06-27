@@ -1,0 +1,78 @@
+<!-- @dsCard group="Components" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,300,0,0">
+<style>
+  html,body{margin:0;background:#fff;color:var(--fg1);font-family:var(--font-sans);}
+  .wrap{padding:24px 32px;display:flex;flex-direction:column;gap:20px;max-width:560px;}
+  .field{display:flex;flex-direction:column;}
+  label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--fg2);margin-bottom:6px;}
+  .trigger{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 13px;border:1px solid var(--input);border-radius:var(--radius-md);background:#fff;font-size:14px;color:var(--fg1);}
+  .trigger .material-symbols-outlined{font-size:20px;color:var(--fg4);}
+  .trigger.focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(188,45,41,.15);}
+  .trigger.placeholder{color:var(--fg4);}
+  .trigger.disabled{opacity:.4;cursor:not-allowed;background:var(--surface-grey);}
+  .trigger.error{border-color:var(--red);}
+  .help{font-size:12px;color:var(--fg3);margin-top:6px;}
+  .err{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--red);margin-top:6px;}
+  .err .material-symbols-outlined{font-size:15px;}
+
+  /* dropdown panel */
+  .menu{margin-top:6px;border:1px solid var(--border-1);border-radius:var(--radius-md);background:#fff;box-shadow:var(--shadow-md);padding:5px;overflow:hidden;}
+  .item{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 11px;border-radius:6px;font-size:14px;color:var(--fg1);cursor:pointer;}
+  .item:hover{background:var(--surface-cream);}
+  .item.sel{color:var(--red);font-weight:500;}
+  .item .material-symbols-outlined{font-size:18px;color:var(--red);}
+
+  /* multi-select tags */
+  .tagfield{display:flex;align-items:center;flex-wrap:wrap;gap:6px;padding:8px 11px;border:1px solid var(--input);border-radius:var(--radius-md);background:#fff;min-height:24px;}
+  .tag{display:inline-flex;align-items:center;gap:5px;padding:4px 6px 4px 10px;border:1px solid var(--border-1);background:var(--cream);border-radius:999px;font-size:13px;color:var(--fg1);}
+  .tag .material-symbols-outlined{font-size:15px;color:var(--fg3);cursor:pointer;}
+  .caret{flex:1;min-width:40px;font-size:14px;color:var(--fg4);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="field">
+    <label>Sector — closed</label>
+    <div class="trigger"><span>Innovative food</span><span class="material-symbols-outlined">expand_more</span></div>
+    <div class="help">Choose the primary sector for this pilot.</div>
+  </div>
+
+  <div class="field">
+    <label>Sector — open</label>
+    <div class="trigger focus"><span>Innovative food</span><span class="material-symbols-outlined">expand_more</span></div>
+    <div class="menu">
+      <div class="item">Agritech</div>
+      <div class="item sel">Innovative food<span class="material-symbols-outlined">check</span></div>
+      <div class="item">Food packaging</div>
+      <div class="item">Alternative proteins</div>
+    </div>
+  </div>
+
+  <div class="field">
+    <label>Sectors — multi-select</label>
+    <div class="tagfield">
+      <span class="tag">Agritech<span class="material-symbols-outlined">close</span></span>
+      <span class="tag">Fermentation<span class="material-symbols-outlined">close</span></span>
+      <span class="tag">Packaging<span class="material-symbols-outlined">close</span></span>
+      <span class="caret">Add…</span>
+    </div>
+  </div>
+
+  <div class="field">
+    <label>Hub region — disabled</label>
+    <div class="trigger disabled placeholder"><span>Assigned automatically</span><span class="material-symbols-outlined">expand_more</span></div>
+  </div>
+
+  <div class="field">
+    <label>Sector — error</label>
+    <div class="trigger error placeholder"><span>Select a sector</span><span class="material-symbols-outlined">expand_more</span></div>
+    <div class="err"><span class="material-symbols-outlined">error</span>Select a sector</div>
+  </div>
+</div>
+</body>
+</html>

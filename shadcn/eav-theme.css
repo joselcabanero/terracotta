@@ -1,0 +1,191 @@
+/* =========================================================================
+   Terracotta — eav-theme.css  (the Eatable Adventures design system)
+   The EAV brand layer for a shadcn/ui application (e.g. jarvis).
+   (Filename kept as eav-theme.css for tooling/plan references; "Terracotta"
+   is the system name, "Eatable Adventures" the brand it expresses.)
+
+   HOW TO USE
+   1. Keep your shadcn setup as-is.
+   2. Import this file AFTER your shadcn globals.css so the EAV deltas win:
+        @import "./globals.css";
+        @import "@eatable/ds/shadcn/eav-theme.css";   (or copy this file in)
+   3. Everything below is the *minimum* needed to make stock shadcn components
+      read as Eatable Adventures: Rubik, EAV Red, cream surfaces, rounded
+      cards, pill buttons, the CTA pulse, and a red focus ring.
+
+   PHILOSOPHY (Olivier): we override states, not just colours. A component is
+   only "done" when hover / focus-visible / disabled / aria-invalid all behave.
+   This file is deliberately small — less, but better.
+   ========================================================================= */
+
+/* -------------------------------------------------------------------------
+   1. TOKENS — shadcn variable contract, mapped to EAV.
+   These mirror colors_and_type.css. If you already import that file you can
+   delete this :root block; it is repeated here so this file is self-sufficient.
+   NOTE: values are full hsl()/hex (Tailwind v4 style). For a Tailwind v3 setup
+   that does `hsl(var(--primary))`, strip the hsl() wrapper (see README).
+   ------------------------------------------------------------------------- */
+:root {
+  --background: hsl(0 0% 100%);          /* white ground            */
+  --foreground: hsl(0 0% 12%);           /* EAV Black — primary text*/
+  --card: hsl(0 0% 100%);
+  --card-foreground: hsl(0 0% 12%);
+  --popover: hsl(0 0% 100%);
+  --popover-foreground: hsl(0 0% 12%);
+  --primary: hsl(2 64% 45%);             /* EAV Red                 */
+  --primary-foreground: hsl(0 0% 100%);
+  --secondary: hsl(40 38% 95%);          /* cream fill              */
+  --secondary-foreground: hsl(0 0% 12%);
+  --muted: hsl(40 50% 97%);              /* cream                   */
+  --muted-foreground: hsl(24 8% 48%);    /* warm muted (--fg3)      */
+  --accent: hsl(40 38% 95%);             /* cream hover ground      */
+  --accent-foreground: hsl(2 64% 45%);   /* red on cream            */
+  --destructive: hsl(2 64% 45%);         /* EAV Red doubles as error*/
+  --destructive-foreground: hsl(0 0% 100%);
+  --border: hsl(0 0% 91%);               /* --border-1 #E8E8E8      */
+  --input: hsl(36 18% 83%);              /* warm input border #DCD6CC*/
+  --ring: hsl(2 64% 45%);                /* red focus ring          */
+  --radius: 0.625rem;                    /* 10px — md default        */
+
+  /* EAV brand extras (consume directly, outside the shadcn contract) */
+  --eav-red: #BC2D29;
+  --eav-red-strong: #9C231F;
+  --eav-burgundy: #450E14;
+  --eav-cream: #FFF9EE;
+  --eav-dark-cream: #F5EACE;
+  --eav-yellow: #FFA103;          /* the light point — signals only */
+  --eav-pulse-on: 0 6px 22px rgba(188,45,41,0.34);   /* CTA heartbeat */
+  --eav-ring-soft: 0 0 0 3px rgba(188,45,41,0.15);   /* input focus  */
+  --radius-pill: 999px;
+  --radius-lg: 16px;
+
+  --font-sans: 'Rubik', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Tailwind v4: expose the brand extras as utilities (optional). */
+@theme inline {
+  --color-eav-red: var(--eav-red);
+  --color-eav-burgundy: var(--eav-burgundy);
+  --color-eav-cream: var(--eav-cream);
+  --color-eav-yellow: var(--eav-yellow);
+  --font-sans: var(--font-sans);
+}
+
+html { font-family: var(--font-sans); }
+
+/* -------------------------------------------------------------------------
+   2. COMPONENT DELTAS
+   Targeted via shadcn's data-slot attributes (shadcn 2024+) so they survive
+   className changes. Each rule is one intentional brand decision.
+   ------------------------------------------------------------------------- */
+@layer components {
+
+  /* BUTTON — EAV buttons are pills, weight 500, and the primary one pulses.
+     This is the single most recognisable EAV signature. */
+  [data-slot="button"] {
+    border-radius: var(--radius-pill);
+    font-weight: 500;
+    transition: background-color .15s ease, box-shadow .2s ease, color .15s ease;
+  }
+  /* primary → CTA pulse on hover (the heartbeat) */
+  [data-slot="button"].bg-primary:hover,
+  [data-slot="button"][data-variant="default"]:hover {
+    background-color: var(--eav-red-strong);
+    box-shadow: var(--eav-pulse-on);
+  }
+  /* outline → red hairline + red text, cream tint on hover */
+  [data-slot="button"][data-variant="outline"] {
+    border-color: var(--eav-red);
+    color: var(--eav-red);
+  }
+  [data-slot="button"][data-variant="outline"]:hover {
+    background-color: #F8E5E2;        /* --brand-tint */
+    color: var(--eav-red);
+  }
+  /* a burgundy "closing / Let's Beat" CTA — add data-variant="cta" yourself */
+  [data-slot="button"][data-variant="cta"] {
+    background: var(--eav-burgundy);
+    color: var(--eav-cream);
+    border-radius: var(--radius-pill);
+  }
+
+  /* CARD — softer rounding than shadcn default + warm resting shadow */
+  [data-slot="card"] {
+    border-radius: var(--radius-lg);
+    border-color: var(--border);
+    box-shadow: 0 1px 2px rgba(30,30,30,0.05);
+  }
+
+  /* INPUT / TEXTAREA / SELECT TRIGGER — warm border, red focus, soft ring.
+     Focus is the contract: never remove the ring, recolour it. */
+  [data-slot="input"],
+  [data-slot="textarea"],
+  [data-slot="select-trigger"] {
+    border-color: var(--input);
+  }
+  [data-slot="input"]:focus-visible,
+  [data-slot="textarea"]:focus-visible,
+  [data-slot="select-trigger"]:focus-visible {
+    border-color: var(--eav-red);
+    box-shadow: var(--eav-ring-soft);
+    outline: none;
+  }
+  /* ERROR / INVALID — the state your old system never specified.
+     shadcn sets aria-invalid; we paint it EAV Red, ring included. */
+  [data-slot="input"][aria-invalid="true"],
+  [data-slot="textarea"][aria-invalid="true"],
+  [data-slot="select-trigger"][aria-invalid="true"] {
+    border-color: var(--eav-red);
+    box-shadow: 0 0 0 3px rgba(188,45,41,0.18);
+  }
+
+  /* CHECKBOX / RADIO / SWITCH — EAV Red when on, nothing flashy when off */
+  [data-slot="checkbox"][data-state="checked"],
+  [data-slot="radio-group-item"][data-state="checked"],
+  [data-slot="switch"][data-state="checked"] {
+    background-color: var(--eav-red);
+    border-color: var(--eav-red);
+  }
+
+  /* OVERLAYS (dialog / drawer / popover / dropdown / tooltip) —
+     white surface, warm border, generous rounding, soft elevation. */
+  [data-slot="dialog-content"],
+  [data-slot="drawer-content"],
+  [data-slot="popover-content"],
+  [data-slot="dropdown-menu-content"],
+  [data-slot="alert-dialog-content"] {
+    border-radius: var(--radius-lg);
+    border-color: var(--border);
+    box-shadow: 0 22px 48px -16px rgba(69,14,20,0.22);  /* burgundy-tinted */
+  }
+  [data-slot="tooltip-content"] {
+    background: var(--foreground);
+    color: #fff;
+    border-radius: 8px;
+    font-size: 12px;
+  }
+
+  /* BADGE / TAG — pill, EAV semantics. Use variant + these helpers. */
+  [data-slot="badge"] { border-radius: var(--radius-pill); font-weight: 500; }
+
+  /* SEGMENTED CONTROL / TABS — cream rail, white active pill, red accent */
+  [data-slot="tabs-list"] { background: var(--eav-cream); border-radius: var(--radius-pill); }
+  [data-slot="tabs-trigger"][data-state="active"] {
+    background: #fff;
+    color: var(--eav-red);
+    box-shadow: 0 1px 2px rgba(30,30,30,0.05);
+    border-radius: var(--radius-pill);
+  }
+
+  /* TOAST (sonner) — white card, warm border, red bar for destructive */
+  [data-sonner-toast] { border-radius: 12px; border: 1px solid var(--border); }
+  [data-sonner-toast][data-type="error"] { border-left: 3px solid var(--eav-red); }
+}
+
+/* -------------------------------------------------------------------------
+   3. FOCUS — global, non-negotiable. Visible, red, never suppressed.
+   ------------------------------------------------------------------------- */
+:where(a, button, [role="button"], [tabindex]):focus-visible {
+  outline: 2px solid var(--eav-red);
+  outline-offset: 2px;
+}

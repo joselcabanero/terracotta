@@ -1,6 +1,6 @@
-# DESIGN.md — Eatable Adventures (Brand Design System)
+# DESIGN.md — Terracotta (the Eatable Adventures Design System)
 
-Design guide for building on-brand product UI. Drop this in your repo (or reference it from `CLAUDE.md`) so the agent designs with the right tokens, type, and graphic system. **Brand: "The Beating Heart of Food Innovation."** The visual system is born from the heartbeat — **pulse · rhythm · impact** — and is warm, human, and premium without arrogance. Type is **Rubik** (only), color is **EAV Red + warm creams**, surfaces are **rounded**, energy is **contained**.
+**Terracotta** is the design guide for building on-brand Eatable Adventures product UI. Drop this in your repo (or reference it from `CLAUDE.md`) so the agent designs with the right tokens, type, and graphic system. **Brand: "The Beating Heart of Food Innovation."** The visual system is born from the heartbeat — **pulse · rhythm · impact** — and is warm, human, and premium without arrogance. Type is **Rubik** (only), color is **EAV Red + warm creams**, surfaces are **rounded**, energy is **contained**.
 
 > Companion files: `README.md` (full rationale + voice), `colors_and_type.css` (tokens), `grid.css` (the grid), `preview/` (specimen cards), `Brand Foundations.html` (one-page showcase), `templates/app-shell/` (a ready product shell). When in doubt, copy patterns from the foundations page or the app-shell template.
 
@@ -136,6 +136,51 @@ Terse, concrete, proof-driven — **confident, not arrogant**. No empty words, n
 
 ---
 
+## 12. Component coverage roadmap
+
+The brand layer (tokens, type, colour, charts) is mature; the **interactive layer is the gap**. This is the deliberate set to build on top of [shadcn/ui](shadcn/README.md) — chosen because our shadcn token contract already lives in `colors_and_type.css`. Build by **usability necessity**, not feature-parity: a component that serves no user task is not added.
+
+**Tier 1 — Forms & input** *(build first — every data app lives here)*
+Button · Input · Textarea · Label · **Form group** (the atomic field unit) · Checkbox · Radio · Switch · Select · Combobox/autocomplete · Multi-select · Slider · **Date / date-range field** · Numeric stepper · Segmented control.
+→ specimens: `preview/component-checkbox-radio · -select · -textarea · -numeric · -form-group · -segmented · -datefield`.
+
+**Tier 2 — Overlays & feedback** *(currently we have none)*
+Dialog · Alert-dialog (destructive confirm) · Drawer/sheet · Popover · Tooltip · Toast · Callout (inline alert) · Empty / non-ideal state · Spinner · Progress · Skeleton.
+→ specimens: `preview/component-dialog · -alertdialog · -drawer · -popover-tooltip · -toast · -callout · -empty-state · -loading`.
+
+**Tier 3 — Navigation & data** *(as the app grows)*
+Tabs · Breadcrumbs · Dropdown menu · Accordion (collapse) · Pagination · Interactive table (sort/select/sticky — replaces today's static one) · Avatar · Tree.
+
+**Deliberately deferred** (add only on real demand): hotkeys palette, dark theme, density modes. Note them so the absence is a decision, not an oversight.
+
+---
+
+## 13. Input & form states — the contract
+
+A control is only finished when **all** its states are defined. The happy path is not the product. Every input ships with:
+
+| State | EAV treatment |
+|---|---|
+| **Rest** | warm `1px var(--input)` border, `radius-md` (pill for search), white fill. |
+| **Hover** | border darkens to `--fg4`; cursor `text`/`pointer`. |
+| **Focus** | `--red` border **+** `0 0 0 3px rgba(188,45,41,.15)` ring. Never remove the outline — recolour it. |
+| **Filled** | value in `--fg1`; placeholder `--fg4` (never use placeholder as a label). |
+| **Invalid / error** | `--red` border + `0 0 0 3px rgba(188,45,41,.18)` + a **message** below: error icon + text in red. **Colour alone never carries error** — icon + text + position do (accessibility). EAV has no separate error hue; red is it. |
+| **Disabled** | 40% opacity, `cursor:not-allowed`, no focus ring. |
+| **Loading / pending** | inline spinner in the control; control stays in place (no layout shift). |
+
+**The form group is the unit, not the input.** Every field = `label` (11px/700 uppercase tracked, `--fg2`) → control → helper (`--fg3`) *or* error (red). Required fields carry an asterisk. This wrapper is what enforces the 8px rhythm and accessibility across a form — see `preview/component-form-group.html`.
+
+**Overlay conventions:** dialogs are focus-trapped and ESC-closable; destructive actions use a **blocking alert-dialog, never a toast**; tooltips never hold essential information; toasts auto-dismiss and never carry an action that must be taken. The light point (yellow) is a *signal*, not a generic warning colour — don't let it leak into callouts as a fill.
+
+---
+
+## 14. shadcn integration
+
+Apps (e.g. jarvis) are built on shadcn/ui. The brand is delivered as **one CSS file** layered over stock components — components stay owned in the app repo, the brand lives in `shadcn/eav-theme.css`. Moving to shadcn is **additive**: our HSL token contract already matches shadcn's, so a stock `<Button>` is already EAV Red with a red ring; the theme file adds the EAV deltas (pill radius, CTA pulse, cream surfaces, error states). Full install order, component list, and per-component deltas: **`shadcn/README.md`**.
+
+---
+
 ## Pre-ship checklist
 - [ ] Rubik only; headlines Regular + one bold (or red) fragment; left-aligned; 8px rhythm.
 - [ ] EAV palette only; red as a mark; cream blocks; yellow = light point, orange = gradient stop, burgundy = depth.
@@ -144,3 +189,5 @@ Terse, concrete, proof-driven — **confident, not arrogant**. No empty words, n
 - [ ] Material Symbols (Outlined, weight 300), functional & secondary; no emoji, no hand-drawn SVG.
 - [ ] Charts follow Red→Orange→Burgundy→Yellow→Dark Cream→Grey→Black.
 - [ ] Copy terse, concrete, confident — never hype.
+- [ ] Every input has all states: rest · hover · focus · filled · **invalid (icon+text, not colour alone)** · disabled · loading.
+- [ ] Fields wrapped in a form group (label + helper/error); focus ring never suppressed; destructive actions use a blocking dialog, not a toast.

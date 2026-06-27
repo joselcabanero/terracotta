@@ -1,0 +1,68 @@
+<!-- @dsCard group="Components" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,300,0,0">
+<style>
+  html,body{margin:0;background:#fff;color:var(--fg1);font-family:var(--font-sans);}
+  .wrap{padding:24px 32px;display:flex;flex-direction:column;gap:20px;max-width:340px;}
+  .field{display:flex;flex-direction:column;}
+  label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--fg2);margin-bottom:6px;}
+  .date{display:flex;align-items:center;gap:9px;padding:10px 13px;border:1px solid var(--input);border-radius:var(--radius-md);background:#fff;font-size:14px;color:var(--fg1);}
+  .date .material-symbols-outlined{font-size:19px;color:var(--fg4);}
+  .date.focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(188,45,41,.15);}
+
+  /* calendar popover */
+  .cal{margin-top:8px;border:1px solid var(--border-1);border-radius:var(--radius-lg);background:#fff;box-shadow:var(--shadow-md);padding:14px;width:252px;box-sizing:border-box;}
+  .calhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+  .calhead .mo{font-size:14px;font-weight:500;}
+  .calhead .nav{display:flex;gap:4px;}
+  .calhead .nav span{width:26px;height:26px;border-radius:6px;display:flex;align-items:center;justify-content:center;color:var(--fg3);cursor:pointer;}
+  .calhead .nav span:hover{background:var(--surface-cream);}
+  .calhead .nav .material-symbols-outlined{font-size:18px;}
+  .grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;}
+  .grid .wd{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--fg4);text-align:center;padding:4px 0;font-weight:700;}
+  .grid .d{height:30px;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--fg1);border-radius:999px;cursor:pointer;font-variant-numeric:tabular-nums;}
+  .grid .d.mute{color:var(--fg4);}
+  .grid .d:hover{background:var(--surface-cream);}
+  .grid .d.today{background:var(--cream);}
+  .grid .d.range{background:var(--cream);border-radius:0;}
+  .grid .d.sel{background:var(--red);color:#fff;}
+  .grid .d.sel:hover{background:var(--red);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="field">
+    <label>Pilot start — default</label>
+    <div class="date"><span class="material-symbols-outlined">calendar_today</span>12 Jun 2026</div>
+  </div>
+
+  <div class="field">
+    <label>Pilot start — focus</label>
+    <div class="date focus"><span class="material-symbols-outlined">calendar_today</span>12 Jun 2026</div>
+    <div class="cal">
+      <div class="calhead">
+        <span class="mo">June 2026</span>
+        <span class="nav"><span class="material-symbols-outlined">chevron_left</span><span class="material-symbols-outlined">chevron_right</span></span>
+      </div>
+      <div class="grid">
+        <div class="wd">M</div><div class="wd">T</div><div class="wd">W</div><div class="wd">T</div><div class="wd">F</div><div class="wd">S</div><div class="wd">S</div>
+        <div class="d mute">1</div><div class="d mute">2</div><div class="d mute">3</div><div class="d mute">4</div><div class="d mute">5</div><div class="d">6</div><div class="d">7</div>
+        <div class="d">8</div><div class="d">9</div><div class="d">10</div><div class="d">11</div><div class="d sel">12</div><div class="d range">13</div><div class="d range">14</div>
+        <div class="d range">15</div><div class="d range">16</div><div class="d range">17</div><div class="d range">18</div><div class="d range">19</div><div class="d range">20</div><div class="d range">21</div>
+        <div class="d range">22</div><div class="d range">23</div><div class="d range">24</div><div class="d range">25</div><div class="d today">26</div><div class="d">27</div><div class="d">28</div>
+        <div class="d">29</div><div class="d">30</div><div class="d mute">1</div><div class="d mute">2</div><div class="d mute">3</div><div class="d mute">4</div><div class="d mute">5</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <label>Pilot window — range</label>
+    <div class="date"><span class="material-symbols-outlined">date_range</span>12 Jun – 30 Sep 2026</div>
+  </div>
+</div>
+</body>
+</html>

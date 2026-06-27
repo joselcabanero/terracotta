@@ -1,0 +1,45 @@
+<!-- @dsCard group="Components" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,300,0,0">
+<style>
+  html,body{margin:0;background:#fff;color:var(--fg1);font-family:var(--font-sans);}
+  .wrap{padding:24px 32px;background:#fff;max-width:640px;display:flex;flex-direction:column;gap:18px;}
+  /* primary empty state */
+  .empty{border:1px solid var(--border-1);border-radius:var(--radius-lg);padding:56px 32px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;}
+  .glyph{color:var(--fg4);}
+  .glyph .material-symbols-outlined{font-size:44px;}
+  .empty h3{margin:0;font-size:18px;font-weight:400;letter-spacing:-0.01em;color:var(--fg1);}
+  .empty p{margin:0;font-size:13px;color:var(--fg3);line-height:1.5;max-width:320px;}
+  .btn{margin-top:6px;font-family:var(--font-sans);font-size:13px;font-weight:500;border-radius:var(--radius-pill);padding:10px 20px;cursor:pointer;border:1px solid var(--red);background:var(--red);color:#fff;}
+  .ghost{background:transparent;border-color:transparent;color:var(--fg2);}
+  /* compact no-results */
+  .noresults{border:1px solid var(--border-1);border-radius:var(--radius-md);padding:24px;display:flex;align-items:center;gap:14px;}
+  .noresults .material-symbols-outlined{font-size:24px;color:var(--fg4);flex:none;}
+  .noresults .t{font-size:14px;font-weight:500;}
+  .noresults .d{font-size:12px;color:var(--fg3);margin-top:2px;}
+  .noresults .right{margin-left:auto;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="empty">
+    <div class="glyph"><span class="material-symbols-outlined">storefront</span></div>
+    <h3>No startups yet</h3>
+    <p>Add the first startup to this hub to start matching it with corporate pilots.</p>
+    <button class="btn">Add first startup</button>
+  </div>
+  <div class="noresults">
+    <span class="material-symbols-outlined">search_off</span>
+    <div>
+      <div class="t">No results</div>
+      <div class="d">No startups match “agritech · Series B · Iberia”.</div>
+    </div>
+    <button class="btn ghost right">Clear filters</button>
+  </div>
+</div>
+</body>
+</html>

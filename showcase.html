@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terracotta — Eatable Adventures Design System Showcase</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,300,0,0">
+<style>
+  /* ---- Showcase chrome (page-local; the brand lives in styles.css) ---- */
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--fg1);font-family:var(--font-sans);
+       font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;}
+  a{color:var(--red);text-decoration:none;}
+  .eyebrow{font-size:12px;font-weight:400;text-transform:uppercase;letter-spacing:.16em;
+           color:var(--red);margin:0 0 10px;}
+
+  /* layout */
+  .layout{display:grid;grid-template-columns:236px 1fr;}
+  /* sidebar nav */
+  .nav{position:sticky;top:0;align-self:start;height:100vh;overflow:auto;
+       background:var(--cream);border-right:1px solid var(--border-1);padding:24px 18px;}
+  .nav .mark{display:flex;align-items:center;gap:10px;margin-bottom:22px;}
+  .nav .tile{width:34px;height:34px;border-radius:9px;background:var(--red);color:#fff;
+             font-weight:800;font-size:15px;display:grid;place-items:center;letter-spacing:.02em;}
+  .nav .mark b{font-weight:700;font-size:14px;line-height:1.15;}
+  .nav .mark span{display:block;font-size:11px;color:var(--fg3);font-weight:400;}
+  .nav h4{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;
+          color:var(--fg4);margin:18px 0 7px;}
+  .nav a{display:block;color:var(--fg2);font-size:13.5px;padding:5px 9px;border-radius:7px;}
+  .nav a:hover{background:#fff;color:var(--red);}
+
+  main{min-width:0;}
+  section{padding:56px 48px;border-bottom:1px solid var(--border-2);}
+  section > h2{font-size:var(--t-xl);font-weight:400;margin:0 0 6px;}
+  section > h2 b{font-weight:700;}
+  section > .lead{color:var(--fg2);max-width:64ch;margin:0 0 28px;}
+  .sub{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
+       color:var(--fg3);margin:34px 0 14px;}
+
+  /* hero */
+  .hero{padding:0;border:0;}
+  .hero .inner{background:var(--gradient-brand);color:#fff;padding:72px 48px 64px;}
+  .hero .eyebrow{color:rgba(255,255,255,.85);}
+  .hero h1{font-size:clamp(34px,5vw,60px);font-weight:400;margin:0 0 14px;line-height:1.05;max-width:18ch;}
+  .hero h1 b{font-weight:700;}
+  .hero p{max-width:56ch;color:rgba(255,255,255,.92);margin:0;font-size:18px;}
+  .hero .meta{margin-top:30px;display:flex;gap:26px;flex-wrap:wrap;font-size:13px;color:rgba(255,255,255,.85);}
+  .hero .meta b{color:#fff;font-weight:700;}
+
+  /* palette */
+  .swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;}
+  .sw{border:1px solid var(--border-1);border-radius:var(--radius-lg);overflow:hidden;background:#fff;}
+  .sw .chip{height:78px;}
+  .sw .info{padding:10px 12px;}
+  .sw .name{font-size:13px;font-weight:500;}
+  .sw .hex{font-size:12px;color:var(--fg3);font-variant-numeric:tabular-nums;text-transform:uppercase;}
+  .sw .role{font-size:11px;color:var(--fg4);margin-top:3px;line-height:1.35;}
+  .ramp{display:flex;border-radius:var(--radius-md);overflow:hidden;border:1px solid var(--border-1);}
+  .ramp div{flex:1;height:46px;display:grid;place-items:end center;padding-bottom:5px;font-size:10px;}
+
+  /* type */
+  .typerow{display:flex;align-items:baseline;gap:18px;padding:9px 0;border-bottom:1px dashed var(--border-2);}
+  .typerow .tok{width:120px;flex:none;font-size:12px;color:var(--fg4);font-variant-numeric:tabular-nums;}
+  .typerow .demo{color:var(--fg1);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .hl-red{color:var(--red);} .hl{font-weight:700;}
+
+  /* spacing + radii */
+  .stack{display:flex;align-items:flex-end;gap:14px;flex-wrap:wrap;}
+  .spc{text-align:center;font-size:11px;color:var(--fg4);}
+  .spc .bar{background:var(--red);border-radius:3px;width:26px;margin:0 auto 6px;}
+  .radii{display:flex;gap:18px;flex-wrap:wrap;}
+  .rad{text-align:center;font-size:11px;color:var(--fg4);}
+  .rad .box{width:74px;height:54px;background:var(--cream);border:1px solid var(--red);margin-bottom:6px;}
+
+  /* charts */
+  .chart{display:flex;align-items:flex-end;gap:10px;height:150px;padding:14px 0;}
+  .chart .col{width:46px;border-radius:8px 8px 0 0;display:flex;justify-content:center;align-items:flex-start;
+              padding-top:6px;color:#fff;font-size:11px;font-weight:600;}
+  .chart-legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--fg2);margin-top:8px;}
+  .chart-legend span{display:inline-flex;align-items:center;gap:6px;}
+  .dot{width:11px;height:11px;border-radius:3px;display:inline-block;}
+
+  /* elevation */
+  .elev{display:flex;gap:22px;flex-wrap:wrap;}
+  .elev .card{width:150px;height:92px;border-radius:var(--radius-lg);background:#fff;
+              border:1px solid var(--border-1);display:grid;place-items:center;font-size:12px;color:var(--fg3);}
+
+  /* component gallery (framed preview cards) */
+  .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:22px;}
+  .frame{border:1px solid var(--border-1);border-radius:var(--radius-lg);overflow:hidden;
+         background:#fff;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;}
+  .frame.wide{grid-column:1 / -1;}
+  .frame .cap{display:flex;align-items:baseline;justify-content:space-between;gap:12px;
+              padding:12px 16px;border-bottom:1px solid var(--border-2);background:var(--light-grey);}
+  .frame .cap b{font-weight:500;font-size:14px;}
+  .frame .cap em{font-style:normal;font-size:11.5px;color:var(--fg4);}
+  .frame iframe{width:100%;border:0;display:block;background:#fff;}
+
+  .note{font-size:12.5px;color:var(--fg3);background:var(--cream);border:1px solid var(--border-2);
+        border-radius:var(--radius-md);padding:12px 14px;margin-top:22px;}
+  .note b{color:var(--fg1);}
+
+  @media (max-width:880px){
+    .layout{grid-template-columns:1fr;}
+    .nav{position:static;height:auto;border-right:0;border-bottom:1px solid var(--border-1);}
+    section{padding:40px 22px;}
+    .hero .inner{padding:48px 22px;}
+  }
+</style>
+</head>
+<body>
+<div class="layout">
+
+  <!-- ===================== SIDEBAR NAV ===================== -->
+  <aside class="nav">
+    <div class="mark">
+      <div class="tile">EA</div>
+      <div><b>Terracotta</b><span>Eatable Adventures Design System</span></div>
+    </div>
+    <h4>Foundations</h4>
+    <a href="#brand">Brand</a>
+    <a href="#color">Colour</a>
+    <a href="#type">Typography</a>
+    <a href="#spacing">Spacing &amp; radii</a>
+    <a href="#charts">Charts</a>
+    <a href="#elevation">Elevation</a>
+    <h4>Components</h4>
+    <a href="#forms">Forms &amp; input</a>
+    <a href="#overlays">Overlays &amp; feedback</a>
+    <a href="#core">Core &amp; layout</a>
+    <h4>Build on it</h4>
+    <a href="shadcn/README.md">shadcn integration ↗</a>
+    <a href="DESIGN.md">DESIGN.md ↗</a>
+  </aside>
+
+  <main>
+    <!-- ===================== HERO ===================== -->
+    <section class="hero" id="brand">
+      <div class="inner">
+        <p class="eyebrow">The Beating Heart of Food Innovation</p>
+        <h1><b>Terracotta</b> — a design system born from the heartbeat: pulse, rhythm, impact.</h1>
+        <p>Warm, human and premium without arrogance. Rubik only, EAV Red on warm creams,
+           rounded surfaces, energy kept contained. This page showcases every token and
+           component — open it locally and browse.</p>
+        <div class="meta">
+          <span><b>Type</b> · Rubik (one family)</span>
+          <span><b>Colour</b> · EAV Red + warm creams</span>
+          <span><b>Components</b> · 21 specimens</span>
+          <span><b>Built for</b> · shadcn / jarvis</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== COLOUR ===================== -->
+    <section id="color">
+      <p class="eyebrow">Foundations</p>
+      <h2>Colour — <b>structural, not decorative</b></h2>
+      <p class="lead">Two mother colours anchor the system: EAV Red is the mark, EAV Cream is the
+        editorial ground. Colour is assigned by hierarchy and meaning. Yellow is <em>only</em> the
+        light point; orange is <em>only</em> a gradient stop; burgundy is depth.</p>
+
+      <div class="sub">Brand &amp; surfaces</div>
+      <div class="swatches">
+        <div class="sw"><div class="chip" style="background:#BC2D29"></div><div class="info"><div class="name">EAV Red</div><div class="hex">#BC2D29</div><div class="role">Identity, active, links, focus, CTAs</div></div></div>
+        <div class="sw"><div class="chip" style="background:#450E14"></div><div class="info"><div class="name">EAV Burgundy</div><div class="hex">#450E14</div><div class="role">Closings, depth, “Let’s Beat”</div></div></div>
+        <div class="sw"><div class="chip" style="background:#FFF9EE;border-bottom:1px solid var(--border-1)"></div><div class="info"><div class="name">EAV Cream</div><div class="hex">#FFF9EE</div><div class="role">Editorial blocks, app grounds</div></div></div>
+        <div class="sw"><div class="chip" style="background:#F5EACE"></div><div class="info"><div class="name">Dark Cream</div><div class="hex">#F5EACE</div><div class="role">Soft wells, secondary gradients</div></div></div>
+        <div class="sw"><div class="chip" style="background:#FFFFFF;border-bottom:1px solid var(--border-1)"></div><div class="info"><div class="name">White</div><div class="hex">#FFFFFF</div><div class="role">Predominant working ground</div></div></div>
+        <div class="sw"><div class="chip" style="background:#1E1E1E"></div><div class="info"><div class="name">EAV Black</div><div class="hex">#1E1E1E</div><div class="role">Primary text, footers</div></div></div>
+        <div class="sw"><div class="chip" style="background:#FFA103"></div><div class="info"><div class="name">EAV Yellow</div><div class="hex">#FFA103</div><div class="role">The light point — signal only</div></div></div>
+        <div class="sw"><div class="chip" style="background:#DE5533"></div><div class="info"><div class="name">EAV Orange</div><div class="hex">#DE5533</div><div class="role">Gradient transition only</div></div></div>
+      </div>
+
+      <div class="sub">Warm text ramp &amp; neutrals</div>
+      <div class="ramp">
+        <div style="background:#1E1E1E;color:#fff">fg1</div>
+        <div style="background:#574E48;color:#fff">fg2</div>
+        <div style="background:#857B72;color:#fff">fg3</div>
+        <div style="background:#ABA197;color:#fff">fg4</div>
+        <div style="background:#DCD6CC;color:#1E1E1E">input</div>
+        <div style="background:#E8E8E8;color:#1E1E1E">border</div>
+        <div style="background:#F3EFE7;color:#1E1E1E">n-100</div>
+        <div style="background:#FAFAFA;color:#1E1E1E">n-50</div>
+      </div>
+
+      <div class="sub">Gradients &amp; the light point</div>
+      <div class="swatches">
+        <div class="sw"><div class="chip" style="height:96px;background:var(--gradient-brand)"></div><div class="info"><div class="name">Brand gradient</div><div class="role">Hero / brand moments only — never app chrome</div></div></div>
+        <div class="sw"><div class="chip" style="height:96px;background:var(--gradient-cream)"></div><div class="info"><div class="name">Cream gradient</div><div class="role">A soft pause for product surfaces</div></div></div>
+        <div class="sw"><div class="chip" style="height:96px;background:radial-gradient(circle at 50% 50%, rgba(255,161,3,.55), rgba(255,161,3,0) 70%), #fff"></div><div class="info"><div class="name">Light point</div><div class="role">Activates one focus — a signal, not décor</div></div></div>
+      </div>
+    </section>
+
+    <!-- ===================== TYPE ===================== -->
+    <section id="type">
+      <p class="eyebrow">Foundations</p>
+      <h2>Typography — <b>Rubik</b>, one family</h2>
+      <p class="lead">Headlines are Rubik Regular with an initial capital; emphasis is a single bold
+        fragment, and at most <em>one word may turn <span class="hl-red">red</span></em>. Paragraphs
+        left-aligned, never justified. A system mono is kept only as a functional fallback.</p>
+
+      <div class="sub">Scale (base 16 · 8px rhythm)</div>
+      <div class="typerow"><span class="tok">--t-5xl · 76</span><span class="demo" style="font-size:76px;font-weight:400;line-height:1">Impact</span></div>
+      <div class="typerow"><span class="tok">--t-4xl · 60</span><span class="demo" style="font-size:60px;font-weight:400;line-height:1">Cover headline</span></div>
+      <div class="typerow"><span class="tok">--t-2xl · 36</span><span class="demo" style="font-size:36px;font-weight:400;line-height:1.05">From challenge to <span class="hl">validated pilot</span></span></div>
+      <div class="typerow"><span class="tok">--t-xl · 28</span><span class="demo" style="font-size:28px;font-weight:400">Section heading</span></div>
+      <div class="typerow"><span class="tok">--t-lg · 22</span><span class="demo" style="font-size:22px;font-weight:400">Subtitle, smaller than the headline</span></div>
+      <div class="typerow"><span class="tok">--t-md · 18</span><span class="demo" style="font-size:18px">Lead paragraph and intros</span></div>
+      <div class="typerow"><span class="tok">--t-base · 16</span><span class="demo" style="font-size:16px">Body — Regular with <b>bold</b> highlights for emphasis</span></div>
+      <div class="typerow"><span class="tok">--t-sm · 14</span><span class="demo" style="font-size:14px">UI text, controls, table cells</span></div>
+      <div class="typerow"><span class="tok">--eyebrow · 12</span><span class="demo eyebrow" style="margin:0">Eyebrow — uppercase, tracked</span></div>
+
+      <div class="sub">Weights</div>
+      <div class="typerow"><span class="tok">300 Light</span><span class="demo" style="font-weight:300;font-size:22px">Long-form moves to Light</span></div>
+      <div class="typerow"><span class="tok">400 Regular</span><span class="demo" style="font-weight:400;font-size:22px">The default voice</span></div>
+      <div class="typerow"><span class="tok">500 Medium</span><span class="demo" style="font-weight:500;font-size:22px">Labels &amp; controls</span></div>
+      <div class="typerow"><span class="tok">700 Bold</span><span class="demo" style="font-weight:700;font-size:22px">Headline emphasis fragment</span></div>
+      <div class="typerow"><span class="tok">800 Extrabold</span><span class="demo" style="font-weight:800;font-size:22px">Monogram &amp; rare accents</span></div>
+    </section>
+
+    <!-- ===================== SPACING & RADII ===================== -->
+    <section id="spacing">
+      <p class="eyebrow">Foundations</p>
+      <h2>Spacing &amp; radii — the <b>8px baseline</b></h2>
+      <p class="lead">Everything snaps to an 8px rhythm (with a 4px half-step). Surfaces are rounded;
+        rounding only drops when a block bleeds to the format edge.</p>
+
+      <div class="sub">Spacing scale</div>
+      <div class="stack">
+        <div class="spc"><div class="bar" style="height:4px"></div>4 · half</div>
+        <div class="spc"><div class="bar" style="height:8px"></div>8 · b1</div>
+        <div class="spc"><div class="bar" style="height:16px"></div>16 · b2</div>
+        <div class="spc"><div class="bar" style="height:24px"></div>24 · b3</div>
+        <div class="spc"><div class="bar" style="height:32px"></div>32 · b4</div>
+        <div class="spc"><div class="bar" style="height:40px"></div>40 · b5</div>
+        <div class="spc"><div class="bar" style="height:48px"></div>48 · b6</div>
+        <div class="spc"><div class="bar" style="height:64px"></div>64 · b8</div>
+        <div class="spc"><div class="bar" style="height:80px"></div>80 · b10</div>
+      </div>
+
+      <div class="sub">Radii</div>
+      <div class="radii">
+        <div class="rad"><div class="box" style="border-radius:6px"></div>sm · 6</div>
+        <div class="rad"><div class="box" style="border-radius:10px"></div>md · 10</div>
+        <div class="rad"><div class="box" style="border-radius:16px"></div>lg · 16</div>
+        <div class="rad"><div class="box" style="border-radius:24px"></div>xl · 24</div>
+        <div class="rad"><div class="box" style="border-radius:999px"></div>pill · 999</div>
+      </div>
+    </section>
+
+    <!-- ===================== CHARTS ===================== -->
+    <section id="charts">
+      <p class="eyebrow">Foundations</p>
+      <h2>Charts — colour by <b>relevance</b></h2>
+      <p class="lead">A fixed hierarchy, never decorative: Red → Orange → Burgundy → Yellow → Dark
+        Cream → Grey (neutral) → Black (axes). Applies to every chart type.</p>
+      <div class="chart">
+        <div class="col" style="height:100%;background:#BC2D29">1</div>
+        <div class="col" style="height:82%;background:#DE5533">2</div>
+        <div class="col" style="height:66%;background:#450E14">3</div>
+        <div class="col" style="height:52%;background:#FFA103;color:#1E1E1E">4</div>
+        <div class="col" style="height:40%;background:#F5EACE;color:#1E1E1E">5</div>
+        <div class="col" style="height:30%;background:#E8E8E8;color:#1E1E1E">n</div>
+      </div>
+      <div class="chart-legend">
+        <span><i class="dot" style="background:#BC2D29"></i>chart-1 Red</span>
+        <span><i class="dot" style="background:#DE5533"></i>chart-2 Orange</span>
+        <span><i class="dot" style="background:#450E14"></i>chart-3 Burgundy</span>
+        <span><i class="dot" style="background:#FFA103"></i>chart-4 Yellow</span>
+        <span><i class="dot" style="background:#F5EACE"></i>chart-5 Dark Cream</span>
+        <span><i class="dot" style="background:#E8E8E8"></i>neutral</span>
+      </div>
+    </section>
+
+    <!-- ===================== ELEVATION ===================== -->
+    <section id="elevation">
+      <p class="eyebrow">Foundations</p>
+      <h2>Elevation</h2>
+      <p class="lead">Restrained and warm — shadows are soft and, at the top end, burgundy-tinted.</p>
+      <div class="elev">
+        <div class="card" style="box-shadow:var(--shadow-sm)">shadow-sm</div>
+        <div class="card" style="box-shadow:var(--shadow)">shadow</div>
+        <div class="card" style="box-shadow:var(--shadow-md)">shadow-md</div>
+        <div class="card" style="box-shadow:var(--shadow-lg)">shadow-lg</div>
+        <div class="card" style="box-shadow:var(--pulse-red-on)">CTA pulse</div>
+      </div>
+    </section>
+
+    <!-- ===================== FORMS ===================== -->
+    <section id="forms">
+      <p class="eyebrow">Components · Tier 1</p>
+      <h2>Forms &amp; input</h2>
+      <p class="lead">Every control ships all its states — rest, focus, filled, <em>invalid</em>,
+        disabled. The form group is the atomic unit: label → control → helper or error.</p>
+      <div class="gallery">
+        <div class="frame"><div class="cap"><b>Buttons</b><em>pill · CTA pulse</em></div><iframe src="preview/component-buttons.html" height="240" loading="lazy"></iframe></div>
+        <div class="frame"><div class="cap"><b>Inputs &amp; search</b><em>warm border · red focus</em></div><iframe src="preview/component-inputs.html" height="240" loading="lazy"></iframe></div>
+        <div class="frame"><div class="cap"><b>Badges &amp; pills</b><em>status</em></div><iframe src="preview/component-badges.html" height="240" loading="lazy"></iframe></div>
+        <div class="frame wide"><div class="cap"><b>Form group</b><em>the atomic field unit — incl. invalid &amp; disabled</em></div><iframe src="preview/component-form-group.html" height="520" loading="lazy"></iframe></div>
+        <div class="frame"><div class="cap"><b>Checkbox · radio · switch</b><em>red when on</em></div><iframe src="preview/component-checkbox-radio.html" height="360" loading="lazy"></iframe></div>
+        <div class="frame"><div class="cap"><b>Select &amp; multi-select</b><em>dropdown · tags · error</em></div><iframe src="preview/component-select.html" height="440" loading="lazy"></iframe></div>
+        <div class="frame"><div class="cap"><b>Textarea</b><em>focus · error · counter</em></div><iframe src="preview/component-textarea.html" height="400" loading="lazy"></iframe></div>
+        <div class="frame"><div class="cap"><b>Numeric stepper</b><em>units</em></div><iframe src="preview/component-numeric.html" height="320" loading="lazy"></iframe></div>
+        <div class="frame"><div class="cap"><b>Segmented control</b><em>view toggle</em></div><iframe src="preview/component-segmented.html" height="320" loading="lazy"></iframe></div>
+        <div class="frame wide"><div class="cap"><b>Date field</b><em>date &amp; range · calendar popover</em></div><iframe src="preview/component-datefield.html" height="520" loading="lazy"></iframe></div>
+      </div>
+    </section>
+
+    <!-- ===================== OVERLAYS ===================== -->
+    <section id="overlays">
+      <p class="eyebrow">Components · Tier 2</p>
+      <h2>Overlays &amp; feedback</h2>
+      <p class="lead">Dialogs are focus-trapped and ESC-closable; destructive actions use a blocking
+        alert-dialog, never a toast; tooltips never hold essential information.</p>
+      <div class="gallery">
+        <div class="frame"><div class="cap"><b>Dialog</b><em>create / edit</em></div><iframe src="preview/component-dialog.html" height="440" loading="lazy"></iframe></div>
+        <div class="frame"><div class="cap"><b>Alert dialog</b><em>destructive confirm</em></div><iframe src="preview/component-alertdialog.html" height="440" loading="lazy"></iframe></div>
+        <div class="frame wide"><div class="cap"><b>Drawer</b><em>detail without losing context</em></div><iframe src="preview/component-drawer.html" height="500" loading="lazy"></iframe></div>
+        <div class="frame"><div class="cap"><b>Popover &amp; tooltip</b><em>contextual</em></div><iframe src="preview/component-popover-tooltip.html" height="380" loading="lazy"></iframe></div>
+        <div class="frame"><div class="cap"><b>Toast</b><em>transient · error bar</em></div><iframe src="preview/component-toast.html" height="380" loading="lazy"></iframe></div>
+        <div class="frame"><div class="cap"><b>Callout</b><em>in-page info · warn · error</em></div><iframe src="preview/component-callout.html" height="380" loading="lazy"></iframe></div>
+        <div class="frame"><div class="cap"><b>Empty state</b><em>calm · one action</em></div><iframe src="preview/component-empty-state.html" height="440" loading="lazy"></iframe></div>
+        <div class="frame"><div class="cap"><b>Loading</b><em>spinner · progress · skeleton</em></div><iframe src="preview/component-loading.html" height="340" loading="lazy"></iframe></div>
+      </div>
+    </section>
+
+    <!-- ===================== CORE ===================== -->
+    <section id="core">
+      <p class="eyebrow">Components · Core &amp; layout</p>
+      <h2>Core &amp; layout</h2>
+      <p class="lead">The original primitives — cards, sidebar navigation and the data table.</p>
+      <div class="gallery">
+        <div class="frame"><div class="cap"><b>Cards</b><em>white &amp; cream</em></div><iframe src="preview/component-cards.html" height="380" loading="lazy"></iframe></div>
+        <div class="frame"><div class="cap"><b>Sidebar nav</b><em>active = pill + red marker</em></div><iframe src="preview/component-nav.html" height="440" loading="lazy"></iframe></div>
+        <div class="frame wide"><div class="cap"><b>Table</b><em>cream header · tabular numerics</em></div><iframe src="preview/component-table.html" height="380" loading="lazy"></iframe></div>
+      </div>
+
+      <div class="note">
+        <b>Opening locally:</b> double-click this file to browse. If the component frames appear
+        blank under <code>file://</code> in your browser, run a tiny local server from this folder —
+        <code>python3 -m http.server</code> — then open <code>http://localhost:8000/showcase.html</code>.
+        The foundations above always render; only the framed cards depend on local file access.
+      </div>
+    </section>
+
+    <footer style="padding:34px 48px;color:var(--fg4);font-size:12.5px;">
+      Terracotta — the Eatable Adventures design system · The Beating Heart of Food Innovation · Rubik · EAV Red + warm creams ·
+      <a href="DESIGN.md">DESIGN.md</a> · <a href="shadcn/README.md">shadcn integration</a>
+    </footer>
+  </main>
+</div>
+</body>
+</html>
