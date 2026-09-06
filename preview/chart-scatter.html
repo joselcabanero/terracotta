@@ -1,0 +1,71 @@
+<!-- @dsCard group="Charts" viewport="520x340" name="Scatter / bubble" subtitle="Population grey, the points that matter in red" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  *{box-sizing:border-box;}
+  html,body{margin:0;background:var(--paper);color:var(--fg1);font-family:var(--font-sans);}
+  .page{max-width:1080px;margin:0 auto;padding:48px 32px 80px;}
+  .eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:var(--red);margin-bottom:14px;}
+  h1{font-size:38px;font-weight:400;letter-spacing:-0.02em;margin:0 0 10px;line-height:1.08;}
+  h1 b{font-weight:700;}
+  .lead{font-size:16px;color:var(--fg2);max-width:64ch;line-height:1.55;margin:0 0 28px;}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;padding:16px 18px;background:var(--surface-cream);border:1px solid var(--border-2);border-radius:var(--radius-lg);margin-bottom:40px;}
+  .lg{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--fg2);}
+  .lg i{width:14px;height:14px;border-radius:4px;display:inline-block;border:1px solid rgba(30,30,30,.06);}
+  .lg b{color:var(--fg1);font-weight:700;margin-right:2px;}
+  .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;}
+  .card{background:#fff;border:1px solid var(--border-1);border-radius:var(--radius-lg);padding:22px;display:flex;flex-direction:column;gap:14px;}
+  .card.wide{grid-column:1 / -1;}
+  .hd{display:flex;justify-content:space-between;align-items:baseline;gap:12px;}
+  .hd h3{margin:0;font-size:16px;font-weight:600;letter-spacing:-0.01em;}
+  .hd span{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--fg4);white-space:nowrap;}
+  .use{font-size:13px;color:var(--fg3);line-height:1.5;margin:0;}
+  svg{width:100%;height:auto;display:block;overflow:visible;}
+  svg text{font-family:var(--font-sans);fill:var(--fg3);font-size:11px;}
+  svg .ax{stroke:var(--border-1);stroke-width:1;}
+  svg .val{fill:var(--fg1);font-weight:500;}
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .kpi{border:1px solid var(--border-1);border-radius:var(--radius-md);padding:14px;}
+  .kpi .l{font-size:12px;color:var(--fg3);}
+  .kpi .n{font-size:30px;font-weight:500;letter-spacing:-0.02em;font-variant-numeric:tabular-nums;line-height:1.1;margin:6px 0;}
+  .kpi .d{font-size:12px;color:var(--red);display:flex;align-items:center;gap:4px;}
+  .kpi .d.m{color:var(--fg3);}
+  .prog{display:flex;flex-direction:column;gap:12px;}
+  .pr{display:grid;grid-template-columns:150px 1fr 44px;gap:12px;align-items:center;font-size:13px;}
+  .pr .bar{height:10px;border-radius:999px;background:var(--surface-fill);overflow:hidden;}
+  .pr .bar i{display:block;height:100%;border-radius:999px;}
+  .pr .v{text-align:right;font-variant-numeric:tabular-nums;color:var(--fg2);}
+  .rules{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .rule{border-top:2px solid var(--fg1);padding-top:14px;}
+  .rule h4{margin:0 0 6px;font-size:14px;font-weight:600;}
+  .rule p{margin:0;font-size:13px;color:var(--fg3);line-height:1.5;}
+  @media(max-width:760px){.grid,.kpis,.rules{grid-template-columns:1fr;}}
+
+  .page{padding:16px;max-width:none;}
+  .card{border:0;padding:8px;}
+</style>
+</head>
+<body>
+<div class="page">
+<!-- Scatter -->
+    <div class="card">
+      <div class="hd"><h3>Scatter / bubble</h3><span>Correlation · two measures</span></div>
+      <svg viewBox="0 0 440 220">
+        <line class="ax" x1="40" y1="180" x2="430" y2="180"/><line class="ax" x1="40" y1="20" x2="40" y2="180"/>
+        <line class="ax" x1="40" y1="100" x2="430" y2="100" stroke-dasharray="2 4"/><line class="ax" x1="235" y1="20" x2="235" y2="180" stroke-dasharray="2 4"/>
+        <g fill="#E8E8E8"><circle cx="70" cy="160" r="6"/><circle cx="96" cy="150" r="5"/><circle cx="120" cy="140" r="7"/><circle cx="150" cy="128" r="5"/><circle cx="180" cy="120" r="8"/><circle cx="205" cy="135" r="5"/><circle cx="250" cy="90" r="6"/><circle cx="280" cy="76" r="5"/><circle cx="310" cy="88" r="7"/><circle cx="350" cy="60" r="5"/><circle cx="130" cy="92" r="5"/><circle cx="300" cy="140" r="6"/></g>
+        <circle cx="330" cy="52" r="11" fill="#DE5533" opacity=".9"/>
+        <circle cx="390" cy="38" r="14" fill="#BC2D29"/><circle cx="390" cy="38" r="22" fill="#BC2D29" opacity=".16"/>
+        <text class="val" x="390" y="16" text-anchor="middle">Lead pilot</text>
+        <text x="235" y="200" text-anchor="middle">Technology readiness →</text>
+        <text transform="translate(18,100) rotate(-90)" text-anchor="middle">Market traction →</text>
+        <text x="428" y="96" text-anchor="end" style="fill:#ABA197;">high / high</text>
+      </svg>
+      <p class="use">Population in grey; the one or two points that matter in red and orange, sized by a third measure. Quadrant guides dashed.</p>
+    </div>
+</div>
+</body>
+</html>

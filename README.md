@@ -65,6 +65,13 @@ The heartbeat in the form of light. **Pulse** activates (CTAs); **Rhythm** organ
 - **CTA pulse** — a soft same-color expansion on action (the button's heartbeat).
 - **Light point** — an EAV Yellow pulse that activates one focus; over white, cream or photography only. Signals, never decorates.
 
+### Components
+Exported React components live in `components/` — each ships as a `.jsx` implementation, a `.d.ts` contract and a standalone HTML specimen:
+- **Button** — `components/Button.jsx` (`Button.d.ts`, specimen `button.html`). Rubik pill with the CTA pulse on hover. Variants: `primary` (EAV Red), `cta` (burgundy, cream text), `outline` (red border/text), `ghost`. Sizes `md` / `sm`; optional Material Symbols icon; disabled renders at 40%.
+
+### Charts & data visualization
+Color is assigned by **relevance**, in a fixed order: **Red → Orange → Burgundy → Yellow → Dark Cream → Grey (neutral) → Black (axes/text)**. Seventeen chart types are specified in `Charts Catalogue.html` (and as `preview/chart-*` cards): KPI tiles, bar, horizontal bars, line, area, donut, stacked bars, funnel, progress-vs-target, heatmap, sunburst, timeline/Gantt, radar, scatter, waterfall, treemap, sankey. Max five series; no 3D, shadows or full pies; the only in-chart gradients are the area fade and heatmap ramp.
+
 ### Motion
 Quick and contained: short fades, the CTA pulse, soft hover lifts. **No** bounces, springs, parallax or looping decoration — interaction changes color/elevation, not size.
 
@@ -107,8 +114,10 @@ Terse, concrete and proof-driven — **confident, not arrogant**. The register o
 | `colors_and_type.css` | All design tokens (EAV palette, warm text ramp, **Rubik** type scale, rounded radii, gradients & light point, chart hierarchy, 8px spacing) + semantic element styles. Import first. |
 | `grid.css` | The flexible / 12-column backbone grid + 8px baseline utilities and specimen overlays. Import after `colors_and_type.css`. |
 | `Brand Foundations.html` | One-page brand showcase — palette, type, gradients, light point, components, principles. |
+| `Charts Catalogue.html` | Data-visualization catalogue — 17 chart types on the brand hierarchy, with rules. |
 | `templates/app-shell/` | Reusable product **app-shell** template (`AppShell.dc.html`) on the restrained brand — sidebar, top bar, metrics, table, highlight block. |
-| `preview/` | Standalone specimen cards that populate the Design System tab (Type, Colors, Components, Spacing, Brand). |
+| `components/` | Exported React components (Button). |
+| `preview/` | Standalone specimen cards that populate the Design System tab (Type, Colors, Components, Spacing, Brand) plus the 17 `chart-*` cards. |
 | `assets/` | Brand assets — `logo.svg` (Eatable Adventures wordmark). |
 | `ui_kits/ecosystem-db/` | A high-fidelity app recreation kept on the **previous** (Swiss) visual language — self-contained on its own local CSS. *Not yet re-skinned to the refreshed brand.* |
 

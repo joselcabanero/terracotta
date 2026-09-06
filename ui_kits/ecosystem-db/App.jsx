@@ -70,4 +70,5 @@ function Placeholder({ route }) {
   );
 }
 
-ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+const __uiKitRoot = typeof document !== 'undefined' && document.querySelector('#root[data-ui-kit="ecosystem-db"]');
+if (__uiKitRoot) ReactDOM.createRoot(__uiKitRoot).render(<App />);

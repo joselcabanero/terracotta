@@ -1,0 +1,93 @@
+<!-- @dsCard group="Charts" viewport="520x320" name="Sunburst" subtitle="Nested hierarchy, two rings" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  *{box-sizing:border-box;}
+  html,body{margin:0;background:var(--paper);color:var(--fg1);font-family:var(--font-sans);}
+  .page{max-width:1080px;margin:0 auto;padding:48px 32px 80px;}
+  .eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:var(--red);margin-bottom:14px;}
+  h1{font-size:38px;font-weight:400;letter-spacing:-0.02em;margin:0 0 10px;line-height:1.08;}
+  h1 b{font-weight:700;}
+  .lead{font-size:16px;color:var(--fg2);max-width:64ch;line-height:1.55;margin:0 0 28px;}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;padding:16px 18px;background:var(--surface-cream);border:1px solid var(--border-2);border-radius:var(--radius-lg);margin-bottom:40px;}
+  .lg{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--fg2);}
+  .lg i{width:14px;height:14px;border-radius:4px;display:inline-block;border:1px solid rgba(30,30,30,.06);}
+  .lg b{color:var(--fg1);font-weight:700;margin-right:2px;}
+  .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;}
+  .card{background:#fff;border:1px solid var(--border-1);border-radius:var(--radius-lg);padding:22px;display:flex;flex-direction:column;gap:14px;}
+  .card.wide{grid-column:1 / -1;}
+  .hd{display:flex;justify-content:space-between;align-items:baseline;gap:12px;}
+  .hd h3{margin:0;font-size:16px;font-weight:600;letter-spacing:-0.01em;}
+  .hd span{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--fg4);white-space:nowrap;}
+  .use{font-size:13px;color:var(--fg3);line-height:1.5;margin:0;}
+  svg{width:100%;height:auto;display:block;overflow:visible;}
+  svg text{font-family:var(--font-sans);fill:var(--fg3);font-size:11px;}
+  svg .ax{stroke:var(--border-1);stroke-width:1;}
+  svg .val{fill:var(--fg1);font-weight:500;}
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .kpi{border:1px solid var(--border-1);border-radius:var(--radius-md);padding:14px;}
+  .kpi .l{font-size:12px;color:var(--fg3);}
+  .kpi .n{font-size:30px;font-weight:500;letter-spacing:-0.02em;font-variant-numeric:tabular-nums;line-height:1.1;margin:6px 0;}
+  .kpi .d{font-size:12px;color:var(--red);display:flex;align-items:center;gap:4px;}
+  .kpi .d.m{color:var(--fg3);}
+  .prog{display:flex;flex-direction:column;gap:12px;}
+  .pr{display:grid;grid-template-columns:150px 1fr 44px;gap:12px;align-items:center;font-size:13px;}
+  .pr .bar{height:10px;border-radius:999px;background:var(--surface-fill);overflow:hidden;}
+  .pr .bar i{display:block;height:100%;border-radius:999px;}
+  .pr .v{text-align:right;font-variant-numeric:tabular-nums;color:var(--fg2);}
+  .rules{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .rule{border-top:2px solid var(--fg1);padding-top:14px;}
+  .rule h4{margin:0 0 6px;font-size:14px;font-weight:600;}
+  .rule p{margin:0;font-size:13px;color:var(--fg3);line-height:1.5;}
+  @media(max-width:760px){.grid,.kpis,.rules{grid-template-columns:1fr;}}
+
+  .page{padding:16px;max-width:none;}
+  .card{border:0;padding:8px;}
+</style>
+</head>
+<body>
+<div class="page">
+<!-- Sunburst -->
+    <div class="card">
+      <div class="hd"><h3>Sunburst</h3><span>Nested hierarchy</span></div>
+      <div style="display:flex;align-items:center;gap:26px;">
+        <svg viewBox="0 0 200 200" style="width:180px;flex-shrink:0;">
+          <!-- inner ring (4 segments) -->
+          <g fill="none" stroke-width="26" transform="rotate(-90 100 100)">
+            <circle cx="100" cy="100" r="42" stroke="#BC2D29" stroke-dasharray="118 264"/>
+            <circle cx="100" cy="100" r="42" stroke="#DE5533" stroke-dasharray="66 264" stroke-dashoffset="-118"/>
+            <circle cx="100" cy="100" r="42" stroke="#450E14" stroke-dasharray="48 264" stroke-dashoffset="-184"/>
+            <circle cx="100" cy="100" r="42" stroke="#FFA103" stroke-dasharray="32 264" stroke-dashoffset="-232"/>
+          </g>
+          <!-- outer ring (children, tinted) -->
+          <g fill="none" stroke-width="20" transform="rotate(-90 100 100)">
+            <circle cx="100" cy="100" r="70" stroke="#BC2D29" stroke-dasharray="110 440"/>
+            <circle cx="100" cy="100" r="70" stroke="#BC2D29" opacity=".55" stroke-dasharray="86 440" stroke-dashoffset="-110"/>
+            <circle cx="100" cy="100" r="70" stroke="#DE5533" stroke-dasharray="60 440" stroke-dashoffset="-196"/>
+            <circle cx="100" cy="100" r="70" stroke="#DE5533" opacity=".5" stroke-dasharray="50 440" stroke-dashoffset="-256"/>
+            <circle cx="100" cy="100" r="70" stroke="#450E14" stroke-dasharray="80 440" stroke-dashoffset="-306"/>
+            <circle cx="100" cy="100" r="70" stroke="#FFA103" stroke-dasharray="54 440" stroke-dashoffset="-386"/>
+          </g>
+          <!-- white separators -->
+          <g fill="none" stroke="#fff" stroke-width="2" transform="rotate(-90 100 100)">
+            <circle cx="100" cy="100" r="42" stroke-dasharray="1 263"/><circle cx="100" cy="100" r="42" stroke-dasharray="1 263" stroke-dashoffset="-118"/><circle cx="100" cy="100" r="42" stroke-dasharray="1 263" stroke-dashoffset="-184"/><circle cx="100" cy="100" r="42" stroke-dasharray="1 263" stroke-dashoffset="-232"/>
+          </g>
+          <circle cx="100" cy="100" r="56" fill="none" stroke="#fff" stroke-width="3"/>
+          <text x="100" y="97" text-anchor="middle" style="font-size:20px;font-weight:500;fill:#1E1E1E;letter-spacing:-0.02em;">184</text>
+          <text x="100" y="112" text-anchor="middle" style="font-size:9px;">startups</text>
+        </svg>
+        <div class="prog" style="flex:1;gap:8px;">
+          <div class="lg"><i style="background:#BC2D29"></i>Agritech · precision ag, inputs</div>
+          <div class="lg"><i style="background:#DE5533"></i>Innovative food · alt-protein</div>
+          <div class="lg"><i style="background:#450E14"></i>Retail &amp; foodservice</div>
+          <div class="lg"><i style="background:#FFA103"></i>Supply chain</div>
+        </div>
+      </div>
+      <p class="use">Parents on the inner ring in rank color; children inherit the parent hue at 100% then ~50% opacity. Two rings maximum; total in the center.</p>
+    </div>
+</div>
+</body>
+</html>

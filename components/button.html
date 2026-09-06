@@ -1,0 +1,33 @@
+<!-- @dsCard group="Components" name="Button (React)" subtitle="Exported <Button> — primary, cta, outline, ghost" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,300,0,0">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="../_ds_bundle.js"></script>
+<style>
+  html,body{margin:0;background:#fff;font-family:var(--font-sans);}
+  #root{padding:24px 32px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+  const { Button } = window.EatableAdventuresAPPsDesignSystem_b28ef2;
+  const e = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(
+    e(React.Fragment, null,
+      e(Button, { icon: 'add' }, 'New project'),
+      e(Button, { variant: 'cta' }, "Let's Beat"),
+      e(Button, { variant: 'outline' }, 'Cancel'),
+      e(Button, { variant: 'ghost' }, 'View all'),
+      e(Button, { size: 'sm', variant: 'outline', icon: 'tune' }, 'Filters'),
+      e(Button, { disabled: true }, 'Disabled')
+    )
+  );
+</script>
+</body>
+</html>

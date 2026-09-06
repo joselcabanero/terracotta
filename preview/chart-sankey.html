@@ -1,0 +1,84 @@
+<!-- @dsCard group="Charts" viewport="760x380" name="Sankey" subtitle="Flows carry the source rank color" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  *{box-sizing:border-box;}
+  html,body{margin:0;background:var(--paper);color:var(--fg1);font-family:var(--font-sans);}
+  .page{max-width:1080px;margin:0 auto;padding:48px 32px 80px;}
+  .eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:var(--red);margin-bottom:14px;}
+  h1{font-size:38px;font-weight:400;letter-spacing:-0.02em;margin:0 0 10px;line-height:1.08;}
+  h1 b{font-weight:700;}
+  .lead{font-size:16px;color:var(--fg2);max-width:64ch;line-height:1.55;margin:0 0 28px;}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;padding:16px 18px;background:var(--surface-cream);border:1px solid var(--border-2);border-radius:var(--radius-lg);margin-bottom:40px;}
+  .lg{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--fg2);}
+  .lg i{width:14px;height:14px;border-radius:4px;display:inline-block;border:1px solid rgba(30,30,30,.06);}
+  .lg b{color:var(--fg1);font-weight:700;margin-right:2px;}
+  .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;}
+  .card{background:#fff;border:1px solid var(--border-1);border-radius:var(--radius-lg);padding:22px;display:flex;flex-direction:column;gap:14px;}
+  .card.wide{grid-column:1 / -1;}
+  .hd{display:flex;justify-content:space-between;align-items:baseline;gap:12px;}
+  .hd h3{margin:0;font-size:16px;font-weight:600;letter-spacing:-0.01em;}
+  .hd span{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--fg4);white-space:nowrap;}
+  .use{font-size:13px;color:var(--fg3);line-height:1.5;margin:0;}
+  svg{width:100%;height:auto;display:block;overflow:visible;}
+  svg text{font-family:var(--font-sans);fill:var(--fg3);font-size:11px;}
+  svg .ax{stroke:var(--border-1);stroke-width:1;}
+  svg .val{fill:var(--fg1);font-weight:500;}
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .kpi{border:1px solid var(--border-1);border-radius:var(--radius-md);padding:14px;}
+  .kpi .l{font-size:12px;color:var(--fg3);}
+  .kpi .n{font-size:30px;font-weight:500;letter-spacing:-0.02em;font-variant-numeric:tabular-nums;line-height:1.1;margin:6px 0;}
+  .kpi .d{font-size:12px;color:var(--red);display:flex;align-items:center;gap:4px;}
+  .kpi .d.m{color:var(--fg3);}
+  .prog{display:flex;flex-direction:column;gap:12px;}
+  .pr{display:grid;grid-template-columns:150px 1fr 44px;gap:12px;align-items:center;font-size:13px;}
+  .pr .bar{height:10px;border-radius:999px;background:var(--surface-fill);overflow:hidden;}
+  .pr .bar i{display:block;height:100%;border-radius:999px;}
+  .pr .v{text-align:right;font-variant-numeric:tabular-nums;color:var(--fg2);}
+  .rules{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .rule{border-top:2px solid var(--fg1);padding-top:14px;}
+  .rule h4{margin:0 0 6px;font-size:14px;font-weight:600;}
+  .rule p{margin:0;font-size:13px;color:var(--fg3);line-height:1.5;}
+  @media(max-width:760px){.grid,.kpis,.rules{grid-template-columns:1fr;}}
+
+  .page{padding:16px;max-width:none;}
+  .card{border:0;padding:8px;}
+</style>
+</head>
+<body>
+<div class="page">
+<!-- Sankey -->
+    <div class="card">
+      <div class="hd"><h3>Sankey</h3><span>Flow between stages</span></div>
+      <svg viewBox="0 0 900 260">
+        <g style="font-size:11px;"><text x="60" y="14" text-anchor="middle">Source</text><text x="450" y="14" text-anchor="middle">Program</text><text x="840" y="14" text-anchor="middle">Outcome</text></g>
+        <!-- flows -->
+        <g fill-opacity=".85">
+          <path d="M80,30 C260,30 260,40 430,40 L430,110 C260,110 260,90 80,90 Z" fill="#BC2D29" opacity=".55"/>
+          <path d="M80,90 C260,90 260,160 430,160 L430,190 C260,190 260,120 80,120 Z" fill="#DE5533" opacity=".55"/>
+          <path d="M80,135 C260,135 260,120 430,120 L430,150 C260,150 260,165 80,165 Z" fill="#450E14" opacity=".45"/>
+          <path d="M80,180 C260,180 260,200 430,200 L430,230 C260,230 260,210 80,210 Z" fill="#FFA103" opacity=".55"/>
+          <path d="M470,40 C650,40 650,30 820,30 L820,100 C650,100 650,100 470,100 Z" fill="#BC2D29" opacity=".55"/>
+          <path d="M470,100 C650,100 650,130 820,130 L820,180 C650,180 650,140 470,140 Z" fill="#450E14" opacity=".45"/>
+          <path d="M470,140 C650,140 650,190 820,190 L820,240 C650,240 650,230 470,230 Z" fill="#E8E8E8"/>
+        </g>
+        <!-- nodes -->
+        <g>
+          <rect x="60" y="30" width="20" height="60" rx="4" fill="#BC2D29"/><rect x="60" y="90" width="20" height="45" rx="4" fill="#DE5533"/><rect x="60" y="135" width="20" height="45" rx="4" fill="#450E14"/><rect x="60" y="180" width="20" height="30" rx="4" fill="#FFA103"/>
+          <rect x="430" y="40" width="40" height="190" rx="6" fill="#1E1E1E"/>
+          <rect x="820" y="30" width="20" height="70" rx="4" fill="#BC2D29"/><rect x="820" y="130" width="20" height="50" rx="4" fill="#450E14"/><rect x="820" y="190" width="20" height="50" rx="4" fill="#ABA197"/>
+        </g>
+        <g class="val" style="font-size:12px;fill:#1E1E1E;font-weight:500;">
+          <text x="50" y="64" text-anchor="end">Scouting · 120</text><text x="50" y="116" text-anchor="end">Referrals · 60</text><text x="50" y="161" text-anchor="end">Corporates · 45</text><text x="50" y="199" text-anchor="end">Inbound · 30</text>
+          <text x="450" y="140" text-anchor="middle" style="fill:#fff;">Build</text>
+          <text x="850" y="68">Validated pilot · 80</text><text x="850" y="158">In progress · 50</text><text x="850" y="218" style="fill:#857B72;">Dropped · 35</text>
+        </g>
+      </svg>
+      <p class="use">Flows carry their source node's rank color at ~55% opacity; dropped/neutral flows go grey. The central stage is an EAV Black node. Never rainbow the links.</p>
+    </div>
+</div>
+</body>
+</html>

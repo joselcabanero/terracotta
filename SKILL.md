@@ -4,7 +4,7 @@ description: Use this skill (Terracotta — the Eatable Adventures design system
 user-invocable: true
 ---
 
-Read the `README.md` file within this skill, and explore the other available files (`DESIGN.md`, `colors_and_type.css`, `grid.css`, `assets/`, `preview/`, `Brand Foundations.html`, `templates/app-shell/`).
+Read the `README.md` file within this skill, and explore the other available files (`DESIGN.md`, `colors_and_type.css`, `grid.css`, `assets/`, `preview/`, `Brand Foundations.html`, `Charts Catalogue.html`, `components/`, `templates/app-shell/`).
 
 If creating visual artifacts (slides, mocks, throwaway prototypes, etc), copy assets out and create static HTML files for the user to view. If working on production code, copy assets and read the rules here to become an expert in designing with this brand. For anything app-like, start from `templates/app-shell/`; to see the system whole, open `Brand Foundations.html`.
 
@@ -14,6 +14,7 @@ Key facts to internalize before you start:
 - **Type — Rubik, and only Rubik** (Light/Regular/Medium/Bold/Extrabold + italics). Headlines are **Regular** with one **bold** (or red) fragment; body Regular with bold highlights; long-form Light + Medium. Left-aligned, never justified. 8px rhythm.
 - **Shape:** rounded by rule — `radius-lg` (16px) cards, **pill** buttons & chips, rounded inputs; warm hairline dividers; soft shadows only when floating. The **CTA pulse** (soft same-color expansion) marks primary actions.
 - **Icons:** Google Material Symbols (Outlined, weight 300), ~18–22px, functional & secondary. Never hand-roll SVG icons or use emoji.
+- **Charts:** fixed hierarchy Red→Orange→Burgundy→Yellow→Dark Cream→Grey→Black, by relevance. 17 specified types in `Charts Catalogue.html`. Max five series; no 3D/shadows/full pies.
 - **Voice:** terse, concrete, proof-driven — confident, not arrogant. No empty words, no hype, no emoji. Brand names exact: Eatable Adventures · The Beating Heart of Food Innovation · Let's Beat.
 
 If the user invokes this skill without any other guidance, ask them what they want to build or design, ask some questions, and act as an expert designer who outputs HTML artifacts _or_ production code, depending on the need.

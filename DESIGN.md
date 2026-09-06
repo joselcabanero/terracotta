@@ -117,6 +117,10 @@ Brand extras (full hex, consume directly): `--red #BC2D29 · --burgundy #450E14 
 
 Fixed hierarchy — color by **relevance**, not decoration: **Red → Orange → Burgundy → Yellow → Dark Cream → Grey (neutral) → Black (axes/text)** (`--chart-1…5`, `--chart-neutral`, `--chart-axis`). Applies to every chart type. Expressive "impact" charts (gradients in the viz) are reserved for reports/covers, never consulting decks.
 
+**Supported types** (see `Charts Catalogue.html` and the `preview/chart-*.html` cards): KPI tiles · bar · horizontal bars · line · area · donut · stacked bars · funnel · progress-vs-target · heatmap · sunburst · timeline/Gantt · radar · scatter/bubble · waterfall · treemap · sankey.
+
+**Rules:** Rubik everywhere; axis labels 11px `--fg3`, value labels 500 in EAV Black; hairline axes + dashed guides, no boxed plots. Max five series/segments. No 3D, shadows or full pies. Rounded bar ends / cells. The only gradients inside a chart are the single-series area fade and the heatmap ramp. Waterfall decreases are hollow grey (neutral, not "bad"); sankey flows carry the source node's rank color at ~55%; sunburst children inherit the parent hue. The yellow light point marks "today"/a milestone or the last point of the primary line.
+
 ---
 
 ## 10. Motion & states

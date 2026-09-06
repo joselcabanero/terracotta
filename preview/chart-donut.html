@@ -1,0 +1,78 @@
+<!-- @dsCard group="Charts" viewport="520x300" name="Donut" subtitle="Part of whole — max five segments" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  *{box-sizing:border-box;}
+  html,body{margin:0;background:var(--paper);color:var(--fg1);font-family:var(--font-sans);}
+  .page{max-width:1080px;margin:0 auto;padding:48px 32px 80px;}
+  .eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:var(--red);margin-bottom:14px;}
+  h1{font-size:38px;font-weight:400;letter-spacing:-0.02em;margin:0 0 10px;line-height:1.08;}
+  h1 b{font-weight:700;}
+  .lead{font-size:16px;color:var(--fg2);max-width:64ch;line-height:1.55;margin:0 0 28px;}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;padding:16px 18px;background:var(--surface-cream);border:1px solid var(--border-2);border-radius:var(--radius-lg);margin-bottom:40px;}
+  .lg{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--fg2);}
+  .lg i{width:14px;height:14px;border-radius:4px;display:inline-block;border:1px solid rgba(30,30,30,.06);}
+  .lg b{color:var(--fg1);font-weight:700;margin-right:2px;}
+  .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;}
+  .card{background:#fff;border:1px solid var(--border-1);border-radius:var(--radius-lg);padding:22px;display:flex;flex-direction:column;gap:14px;}
+  .card.wide{grid-column:1 / -1;}
+  .hd{display:flex;justify-content:space-between;align-items:baseline;gap:12px;}
+  .hd h3{margin:0;font-size:16px;font-weight:600;letter-spacing:-0.01em;}
+  .hd span{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--fg4);white-space:nowrap;}
+  .use{font-size:13px;color:var(--fg3);line-height:1.5;margin:0;}
+  svg{width:100%;height:auto;display:block;overflow:visible;}
+  svg text{font-family:var(--font-sans);fill:var(--fg3);font-size:11px;}
+  svg .ax{stroke:var(--border-1);stroke-width:1;}
+  svg .val{fill:var(--fg1);font-weight:500;}
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .kpi{border:1px solid var(--border-1);border-radius:var(--radius-md);padding:14px;}
+  .kpi .l{font-size:12px;color:var(--fg3);}
+  .kpi .n{font-size:30px;font-weight:500;letter-spacing:-0.02em;font-variant-numeric:tabular-nums;line-height:1.1;margin:6px 0;}
+  .kpi .d{font-size:12px;color:var(--red);display:flex;align-items:center;gap:4px;}
+  .kpi .d.m{color:var(--fg3);}
+  .prog{display:flex;flex-direction:column;gap:12px;}
+  .pr{display:grid;grid-template-columns:150px 1fr 44px;gap:12px;align-items:center;font-size:13px;}
+  .pr .bar{height:10px;border-radius:999px;background:var(--surface-fill);overflow:hidden;}
+  .pr .bar i{display:block;height:100%;border-radius:999px;}
+  .pr .v{text-align:right;font-variant-numeric:tabular-nums;color:var(--fg2);}
+  .rules{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .rule{border-top:2px solid var(--fg1);padding-top:14px;}
+  .rule h4{margin:0 0 6px;font-size:14px;font-weight:600;}
+  .rule p{margin:0;font-size:13px;color:var(--fg3);line-height:1.5;}
+  @media(max-width:760px){.grid,.kpis,.rules{grid-template-columns:1fr;}}
+
+  .page{padding:16px;max-width:none;}
+  .card{border:0;padding:8px;}
+</style>
+</head>
+<body>
+<div class="page">
+<!-- Donut -->
+    <div class="card">
+      <div class="hd"><h3>Donut</h3><span>Part of whole</span></div>
+      <div style="display:flex;align-items:center;gap:26px;">
+        <svg viewBox="0 0 160 160" style="width:150px;flex-shrink:0;">
+          <circle cx="80" cy="80" r="58" fill="none" stroke="#F3EFE7" stroke-width="22"/>
+          <circle cx="80" cy="80" r="58" fill="none" stroke="#BC2D29" stroke-width="22" stroke-dasharray="153 364" transform="rotate(-90 80 80)"/>
+          <circle cx="80" cy="80" r="58" fill="none" stroke="#DE5533" stroke-width="22" stroke-dasharray="95 364" stroke-dashoffset="-153" transform="rotate(-90 80 80)"/>
+          <circle cx="80" cy="80" r="58" fill="none" stroke="#450E14" stroke-width="22" stroke-dasharray="62 364" stroke-dashoffset="-248" transform="rotate(-90 80 80)"/>
+          <circle cx="80" cy="80" r="58" fill="none" stroke="#FFA103" stroke-width="22" stroke-dasharray="36 364" stroke-dashoffset="-310" transform="rotate(-90 80 80)"/>
+          <text x="80" y="76" text-anchor="middle" style="font-size:28px;font-weight:500;fill:#1E1E1E;letter-spacing:-0.02em;">42%</text>
+          <text x="80" y="94" text-anchor="middle">Agritech</text>
+        </svg>
+        <div class="prog" style="flex:1;gap:8px;">
+          <div class="lg"><i style="background:#BC2D29"></i>Agritech · 42%</div>
+          <div class="lg"><i style="background:#DE5533"></i>Innovative food · 26%</div>
+          <div class="lg"><i style="background:#450E14"></i>Retail &amp; foodservice · 17%</div>
+          <div class="lg"><i style="background:#FFA103"></i>Supply chain · 10%</div>
+          <div class="lg"><i style="background:#F3EFE7"></i>Other · 5%</div>
+        </div>
+      </div>
+      <p class="use">Max five segments; the largest starts at 12 o'clock in red. Headline number in the hole. Never a full pie.</p>
+    </div>
+</div>
+</body>
+</html>

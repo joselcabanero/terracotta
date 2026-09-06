@@ -1,0 +1,72 @@
+<!-- @dsCard group="Charts" viewport="520x300" name="Heatmap" subtitle="Sequential warm ramp" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  *{box-sizing:border-box;}
+  html,body{margin:0;background:var(--paper);color:var(--fg1);font-family:var(--font-sans);}
+  .page{max-width:1080px;margin:0 auto;padding:48px 32px 80px;}
+  .eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:var(--red);margin-bottom:14px;}
+  h1{font-size:38px;font-weight:400;letter-spacing:-0.02em;margin:0 0 10px;line-height:1.08;}
+  h1 b{font-weight:700;}
+  .lead{font-size:16px;color:var(--fg2);max-width:64ch;line-height:1.55;margin:0 0 28px;}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;padding:16px 18px;background:var(--surface-cream);border:1px solid var(--border-2);border-radius:var(--radius-lg);margin-bottom:40px;}
+  .lg{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--fg2);}
+  .lg i{width:14px;height:14px;border-radius:4px;display:inline-block;border:1px solid rgba(30,30,30,.06);}
+  .lg b{color:var(--fg1);font-weight:700;margin-right:2px;}
+  .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;}
+  .card{background:#fff;border:1px solid var(--border-1);border-radius:var(--radius-lg);padding:22px;display:flex;flex-direction:column;gap:14px;}
+  .card.wide{grid-column:1 / -1;}
+  .hd{display:flex;justify-content:space-between;align-items:baseline;gap:12px;}
+  .hd h3{margin:0;font-size:16px;font-weight:600;letter-spacing:-0.01em;}
+  .hd span{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--fg4);white-space:nowrap;}
+  .use{font-size:13px;color:var(--fg3);line-height:1.5;margin:0;}
+  svg{width:100%;height:auto;display:block;overflow:visible;}
+  svg text{font-family:var(--font-sans);fill:var(--fg3);font-size:11px;}
+  svg .ax{stroke:var(--border-1);stroke-width:1;}
+  svg .val{fill:var(--fg1);font-weight:500;}
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .kpi{border:1px solid var(--border-1);border-radius:var(--radius-md);padding:14px;}
+  .kpi .l{font-size:12px;color:var(--fg3);}
+  .kpi .n{font-size:30px;font-weight:500;letter-spacing:-0.02em;font-variant-numeric:tabular-nums;line-height:1.1;margin:6px 0;}
+  .kpi .d{font-size:12px;color:var(--red);display:flex;align-items:center;gap:4px;}
+  .kpi .d.m{color:var(--fg3);}
+  .prog{display:flex;flex-direction:column;gap:12px;}
+  .pr{display:grid;grid-template-columns:150px 1fr 44px;gap:12px;align-items:center;font-size:13px;}
+  .pr .bar{height:10px;border-radius:999px;background:var(--surface-fill);overflow:hidden;}
+  .pr .bar i{display:block;height:100%;border-radius:999px;}
+  .pr .v{text-align:right;font-variant-numeric:tabular-nums;color:var(--fg2);}
+  .rules{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .rule{border-top:2px solid var(--fg1);padding-top:14px;}
+  .rule h4{margin:0 0 6px;font-size:14px;font-weight:600;}
+  .rule p{margin:0;font-size:13px;color:var(--fg3);line-height:1.5;}
+  @media(max-width:760px){.grid,.kpis,.rules{grid-template-columns:1fr;}}
+
+  .page{padding:16px;max-width:none;}
+  .card{border:0;padding:8px;}
+</style>
+</head>
+<body>
+<div class="page">
+<!-- Heatmap -->
+    <div class="card">
+      <div class="hd"><h3>Heatmap</h3><span>Density / intensity</span></div>
+      <svg viewBox="0 0 440 170">
+        <g style="font-size:11px;">
+          <text x="60" y="14" text-anchor="middle">Mon</text><text x="120" y="14" text-anchor="middle">Tue</text><text x="180" y="14" text-anchor="middle">Wed</text><text x="240" y="14" text-anchor="middle">Thu</text><text x="300" y="14" text-anchor="middle">Fri</text>
+          <text x="20" y="46" text-anchor="end">Detect</text><text x="20" y="86" text-anchor="end">Build</text><text x="20" y="126" text-anchor="end">Test</text>
+        </g>
+        <g>
+          <rect x="34" y="26" width="52" height="30" rx="5" fill="#F5EACE"/><rect x="94" y="26" width="52" height="30" rx="5" fill="#DE5533"/><rect x="154" y="26" width="52" height="30" rx="5" fill="#BC2D29"/><rect x="214" y="26" width="52" height="30" rx="5" fill="#F8E5E2"/><rect x="274" y="26" width="52" height="30" rx="5" fill="#F5EACE"/>
+          <rect x="34" y="66" width="52" height="30" rx="5" fill="#F8E5E2"/><rect x="94" y="66" width="52" height="30" rx="5" fill="#F5EACE"/><rect x="154" y="66" width="52" height="30" rx="5" fill="#DE5533"/><rect x="214" y="66" width="52" height="30" rx="5" fill="#BC2D29"/><rect x="274" y="66" width="52" height="30" rx="5" fill="#450E14"/>
+          <rect x="34" y="106" width="52" height="30" rx="5" fill="#F5EACE"/><rect x="94" y="106" width="52" height="30" rx="5" fill="#F8E5E2"/><rect x="154" y="106" width="52" height="30" rx="5" fill="#F5EACE"/><rect x="214" y="106" width="52" height="30" rx="5" fill="#DE5533"/><rect x="274" y="106" width="52" height="30" rx="5" fill="#BC2D29"/>
+        </g>
+        <g><rect x="350" y="26" width="14" height="110" rx="3" fill="url(#hm)"/><defs><linearGradient id="hm" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#450E14"/><stop offset=".45" stop-color="#BC2D29"/><stop offset=".75" stop-color="#DE5533"/><stop offset="1" stop-color="#F5EACE"/></linearGradient></defs><text x="372" y="32">high</text><text x="372" y="136">low</text></g>
+      </svg>
+      <p class="use">Sequential warm ramp: Dark Cream → Orange → Red → Burgundy. Rounded cells, one ramp legend.</p>
+    </div>
+</div>
+</body>
+</html>
