@@ -65,12 +65,11 @@ The heartbeat in the form of light. **Pulse** activates (CTAs); **Rhythm** organ
 - **CTA pulse** — a soft same-color expansion on action (the button's heartbeat).
 - **Light point** — an EAV Yellow pulse that activates one focus; over white, cream or photography only. Signals, never decorates.
 
-### Components
-Exported React components live in `components/` — each ships as a `.jsx` implementation, a `.d.ts` contract and a standalone HTML specimen:
-- **Button** — `components/Button.jsx` (`Button.d.ts`, specimen `button.html`). Rubik pill with the CTA pulse on hover. Variants: `primary` (EAV Red), `cta` (burgundy, cream text), `outline` (red border/text), `ghost`. Sizes `md` / `sm`; optional Material Symbols icon; disabled renders at 40%.
-
 ### Charts & data visualization
 Color is assigned by **relevance**, in a fixed order: **Red → Orange → Burgundy → Yellow → Dark Cream → Grey (neutral) → Black (axes/text)**. Seventeen chart types are specified in `Charts Catalogue.html` (and as `preview/chart-*` cards): KPI tiles, bar, horizontal bars, line, area, donut, stacked bars, funnel, progress-vs-target, heatmap, sunburst, timeline/Gantt, radar, scatter, waterfall, treemap, sankey. Max five series; no 3D, shadows or full pies; the only in-chart gradients are the area fade and heatmap ramp.
+
+### Maps & geography
+Maps render **real Natural Earth geometry** (never freehand outlines) with a quiet base — land EAV Grey, water paper — and spend colour only on the data layer, in chart rank order. The yellow light point marks headquarters. Six types are specified in `Maps Catalogue.html` (and as `preview/map-*` cards): hub network, coverage, choropleth, region focus, bubble map, flow map. `maps-brand.js` provides the renderers.
 
 ### Motion
 Quick and contained: short fades, the CTA pulse, soft hover lifts. **No** bounces, springs, parallax or looping decoration — interaction changes color/elevation, not size.
@@ -115,13 +114,19 @@ Terse, concrete and proof-driven — **confident, not arrogant**. The register o
 | `grid.css` | The flexible / 12-column backbone grid + 8px baseline utilities and specimen overlays. Import after `colors_and_type.css`. |
 | `Brand Foundations.html` | One-page brand showcase — palette, type, gradients, light point, components, principles. |
 | `Charts Catalogue.html` | Data-visualization catalogue — 17 chart types on the brand hierarchy, with rules. |
+| `Maps Catalogue.html` | Maps &amp; geography catalogue — 6 map types on real Natural Earth geometry. |
+| `maps-brand.js` | Brand map renderers (`EAMaps.load()` / `EAMaps.render.*`) on d3-geo + world-atlas. |
+| `components/` | Exported React components (see Components below). |
 | `templates/app-shell/` | Reusable product **app-shell** template (`AppShell.dc.html`) on the restrained brand — sidebar, top bar, metrics, table, highlight block. |
-| `components/` | Exported React components (Button). |
-| `preview/` | Standalone specimen cards that populate the Design System tab (Type, Colors, Components, Spacing, Brand) plus the 17 `chart-*` cards. |
+| `preview/` | Standalone specimen cards that populate the Design System tab (Type, Colors, Components, Charts, Maps, Spacing, Brand). |
 | `assets/` | Brand assets — `logo.svg` (Eatable Adventures wordmark). |
 | `ui_kits/ecosystem-db/` | A high-fidelity app recreation kept on the **previous** (Swiss) visual language — self-contained on its own local CSS. *Not yet re-skinned to the refreshed brand.* |
 
 > **Fonts:** Rubik loads from Google Fonts in `colors_and_type.css` (weights 300/400/500/700/800 + italics). Material Symbols (Outlined, weight 300) loads where icons are used. No local font files required.
+
+## Components
+
+- **Button** — the EAV pill button (`primary` red with CTA pulse, `cta` burgundy, `outline`, `ghost`; `md`/`sm`; optional Material Symbols icon).
 
 ---
 

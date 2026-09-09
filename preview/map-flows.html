@@ -1,0 +1,20 @@
+<!-- @dsCard group="Maps" viewport="760x400" name="Flow map" subtitle="Great-circle arcs from headquarters" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<script src="https://unpkg.com/d3@7.9.0/dist/d3.min.js" integrity="sha384-CjloA8y00+1SDAUkjs099PVfnY2KmDC2BZnws9kh8D/lX1s46w6EPhpXdqMfjK6i" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js" integrity="sha384-Ukv1p/xTma6P4/2bY5KzWBw+ydSpXmhCMtyciIQVDJ1RmOxtCYNMF1uXT9T63H67" crossorigin="anonymous"></script>
+<script src="../maps-brand.js"></script>
+<style>
+  html,body{margin:0;background:#fff;font-family:var(--font-sans);}
+  .wrap{padding:12px;}
+  svg{display:block;width:100%;}
+</style>
+</head>
+<body>
+<div class="wrap"><svg id="m"></svg></div>
+<script>EAMaps.load().then(g=>EAMaps.render.flows(document.getElementById('m'),g)).catch(e=>console.error(e));</script>
+</body>
+</html>

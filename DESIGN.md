@@ -121,6 +121,12 @@ Fixed hierarchy — color by **relevance**, not decoration: **Red → Orange →
 
 **Rules:** Rubik everywhere; axis labels 11px `--fg3`, value labels 500 in EAV Black; hairline axes + dashed guides, no boxed plots. Max five series/segments. No 3D, shadows or full pies. Rounded bar ends / cells. The only gradients inside a chart are the single-series area fade and the heatmap ramp. Waterfall decreases are hollow grey (neutral, not "bad"); sankey flows carry the source node's rank color at ~55%; sunburst children inherit the parent hue. The yellow light point marks "today"/a milestone or the last point of the primary line.
 
+### Maps & geography
+
+Geography is data, not drawing: render real Natural Earth geometry (world-atlas TopoJSON via d3-geo — `maps-brand.js` wraps it as `EAMaps.load()` + `EAMaps.render.<type>(svgEl, geo)`). **Six types** (`Maps Catalogue.html`, `preview/map-*.html`): hub network · coverage · choropleth · region focus · bubble map · flow map.
+
+**Rules:** land EAV Grey with white hairline borders, water paper (cream ground + Dark Cream focus countries for a region); no relief, tiles or gridlines. Natural Earth projection for the world (Antarctica dropped), Mercator fitted to a bounding box for regions. Data layer follows the chart rank: Red (hubs, active, flows) → Orange (partner network) → Burgundy (cities, endpoints); the yellow light point marks headquarters only. Sequential ramps ≤4 classes (Dark Cream → Orange → Red → Burgundy); categorical fills ≤3. Flows are great-circle arcs from one origin at 55%. Labels Rubik 11–12px with a paper/cream halo. Interactive street-level maps (prototypes) use Leaflet + OpenStreetMap with attribution.
+
 ---
 
 ## 10. Motion & states

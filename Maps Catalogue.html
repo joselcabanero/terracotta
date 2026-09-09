@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eatable Adventures — Maps & Geography</title>
+<link rel="stylesheet" href="colors_and_type.css">
+<script src="https://unpkg.com/d3@7.9.0/dist/d3.min.js" integrity="sha384-CjloA8y00+1SDAUkjs099PVfnY2KmDC2BZnws9kh8D/lX1s46w6EPhpXdqMfjK6i" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js" integrity="sha384-Ukv1p/xTma6P4/2bY5KzWBw+ydSpXmhCMtyciIQVDJ1RmOxtCYNMF1uXT9T63H67" crossorigin="anonymous"></script>
+<script src="maps-brand.js"></script>
+<style>
+  *{box-sizing:border-box;}
+  html,body{margin:0;background:var(--paper);color:var(--fg1);font-family:var(--font-sans);}
+  .page{max-width:1080px;margin:0 auto;padding:48px 32px 80px;}
+  .eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:var(--red);margin-bottom:14px;}
+  h1{font-size:38px;font-weight:400;letter-spacing:-0.02em;margin:0 0 10px;line-height:1.08;}
+  h1 b{font-weight:700;}
+  .lead{font-size:16px;color:var(--fg2);max-width:64ch;line-height:1.55;margin:0 0 28px;}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;padding:16px 18px;background:var(--surface-cream);border:1px solid var(--border-2);border-radius:var(--radius-lg);margin-bottom:40px;}
+  .lg{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--fg2);}
+  .lg i{width:14px;height:14px;border-radius:4px;display:inline-block;border:1px solid rgba(30,30,30,.06);}
+  .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;}
+  .card{background:#fff;border:1px solid var(--border-1);border-radius:var(--radius-lg);padding:22px;display:flex;flex-direction:column;gap:14px;}
+  .card.wide{grid-column:1 / -1;}
+  .hd{display:flex;justify-content:space-between;align-items:baseline;gap:12px;}
+  .hd h3{margin:0;font-size:16px;font-weight:600;letter-spacing:-0.01em;}
+  .hd span{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--fg4);white-space:nowrap;}
+  .use{font-size:13px;color:var(--fg3);line-height:1.5;margin:0;}
+  .map{border-radius:var(--radius-md);overflow:hidden;background:var(--paper);}
+  .map svg{display:block;width:100%;}
+  .rules{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .rule{border-top:2px solid var(--fg1);padding-top:14px;}
+  .rule h4{margin:0 0 6px;font-size:14px;font-weight:600;}
+  .rule p{margin:0;font-size:13px;color:var(--fg3);line-height:1.5;}
+  .attr{font-size:11px;color:var(--fg4);margin-top:28px;}
+  @media(max-width:760px){.grid,.rules{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="eyebrow">Maps &amp; geography</div>
+  <h1>Maps on the <b>brand hierarchy</b></h1>
+  <p class="lead">Geography is data, not drawing — every map renders real Natural Earth geometry. Land is EAV Grey, water is paper, and the palette follows the same rank order as the charts: red for what matters most, the yellow light point for headquarters.</p>
+
+  <div class="legend">
+    <span class="lg"><i style="background:#E8E8E8"></i>Land · EAV Grey</span>
+    <span class="lg"><i style="background:#FFFFFF;border-color:#E8E8E8"></i>Water · paper</span>
+    <span class="lg"><i style="background:#FFA103"></i>Headquarters · light point</span>
+    <span class="lg"><i style="background:#BC2D29"></i>Rank 1 · hubs, active, flows</span>
+    <span class="lg"><i style="background:#DE5533"></i>Rank 2 · partner network</span>
+    <span class="lg"><i style="background:#450E14"></i>Rank 3 · cities, endpoints</span>
+    <span class="lg"><i style="background:#F5EACE"></i>Dark Cream · focus region, low class</span>
+  </div>
+
+  <div class="grid">
+    <div class="card wide">
+      <div class="hd"><h3>Hub network</h3><span>World · point map</span></div>
+      <div class="map"><svg id="m-hubs"></svg></div>
+      <p class="use">Natural Earth projection, land in grey. Hubs are red points with a soft pulse ring; headquarters carries the yellow light point. Labels in Rubik 12/500 with a paper halo.</p>
+    </div>
+
+    <div class="card wide">
+      <div class="hd"><h3>Coverage</h3><span>World · categorical</span></div>
+      <div class="map"><svg id="m-coverage"></svg></div>
+      <p class="use">Three states only: active hub country (red), partner network (orange), no presence (grey). Never more than three categorical fills on one map.</p>
+    </div>
+
+    <div class="card">
+      <div class="hd"><h3>Choropleth</h3><span>Region · sequential</span></div>
+      <div class="map"><svg id="m-choropleth"></svg></div>
+      <p class="use">Mercator fitted to the region. Warm sequential ramp — Dark Cream → Orange → Red → Burgundy — in four classes max; no-data countries in light grey.</p>
+    </div>
+
+    <div class="card">
+      <div class="hd"><h3>Region focus</h3><span>Country · cities</span></div>
+      <div class="map"><svg id="m-region"></svg></div>
+      <p class="use">Cream ground, focus countries in Dark Cream, neighbours in light grey. HQ light point, hub red, partner cities burgundy; labels haloed in cream.</p>
+    </div>
+
+    <div class="card wide">
+      <div class="hd"><h3>Bubble map</h3><span>World · proportional symbols</span></div>
+      <div class="map"><svg id="m-bubbles"></svg></div>
+      <p class="use">Circle area encodes the value at each country centroid. The top three take rank colors and a label; the rest sit in warm grey at 45% so the field stays readable.</p>
+    </div>
+
+    <div class="card wide">
+      <div class="hd"><h3>Flow map</h3><span>Connections · great circles</span></div>
+      <div class="map"><svg id="m-flows"></svg></div>
+      <p class="use">Great-circle arcs from headquarters, all in red at 55% with width by weight; endpoints as burgundy dots. One origin per map — never a web.</p>
+    </div>
+  </div>
+
+  <div class="rules">
+    <div class="rule"><h4>Real geometry</h4><p>Load Natural Earth TopoJSON and project with d3-geo — never freehand outlines. Natural Earth for the world, Mercator fitted to a bounding box for regions. Antarctica is dropped.</p></div>
+    <div class="rule"><h4>Quiet base, loud data</h4><p>Land EAV Grey with white hairline borders, water paper (or cream for a focus region). No relief, no tiles, no gridlines. Colour is spent only on the data layer.</p></div>
+    <div class="rule"><h4>Rank, then colour</h4><p>Same order as charts: Red → Orange → Burgundy → Yellow (light point, HQ only) → Dark Cream. Sequential maps use the warm ramp in ≤4 classes; categorical maps use ≤3 fills.</p></div>
+  </div>
+  <p class="attr">Geometry: Natural Earth via world-atlas (public domain).</p>
+</div>
+<script>
+EAMaps.load().then(geo=>{
+  for(const k of ['hubs','coverage','choropleth','region','bubbles','flows']) EAMaps.render[k](document.getElementById('m-'+k),geo);
+}).catch(e=>console.error('map load failed',e));
+</script>
+</body>
+</html>
