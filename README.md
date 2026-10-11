@@ -71,12 +71,15 @@ Color is assigned by **relevance**, in a fixed order: **Red → Orange → Burgu
 ### Maps & geography
 Maps render **real Natural Earth geometry** (never freehand outlines) with a quiet base — land EAV Grey, water paper — and spend colour only on the data layer, in chart rank order. The yellow light point marks headquarters. Six types are specified in `Maps Catalogue.html` (and as `preview/map-*` cards): hub network, coverage, choropleth, region focus, bubble map, flow map. `maps-brand.js` provides the renderers.
 
+### Navigation
+One nav list drives every layout. At **768px and up** (iPad portrait included) apps use the **white-paper sidebar**, 224px or a 64px icon rail. Below 768px they use an **iPhone tab bar** (four tabs + More) and a **More bottom sheet**. Only the exact current page gets the active pill, children open only inside the current section, and status marks (red count, cream beta, grey lock) shrink to corner dots in the rail. Safe-area insets are paid back with `max(floor, env(...))`. Full spec, live demos and the iOS home-screen setup: `Navigation Guidelines.html` (and the `preview/nav-*` cards).
+
 ### Motion
 Quick and contained: short fades, the CTA pulse, soft hover lifts. **No** bounces, springs, parallax or looping decoration — interaction changes color/elevation, not size.
 
 ### Interaction states
 - **Hover:** ground shift / soft lift; links turn red.
-- **Active nav:** white pill + soft shadow + **3px red marker** + red label.
+- **Active nav:** `--brand-tint` pill + **3px red marker** + red label, on a **white-paper** nav ground (navigation never sits on cream).
 - **Press:** red → `--brand-strong`; burgundy deepens. **Focus:** red ring. **Disabled:** ~40% + `not-allowed`.
 
 ---
@@ -115,10 +118,11 @@ Terse, concrete and proof-driven — **confident, not arrogant**. The register o
 | `Brand Foundations.html` | One-page brand showcase — palette, type, gradients, light point, components, principles. |
 | `Charts Catalogue.html` | Data-visualization catalogue — 17 chart types on the brand hierarchy, with rules. |
 | `Maps Catalogue.html` | Maps &amp; geography catalogue — 6 map types on real Natural Earth geometry. |
+| `Navigation Guidelines.html` | Navigation spec with live demos — sidebar & rail, iPhone tab bar, More sheet, iOS install, rules. |
 | `maps-brand.js` | Brand map renderers (`EAMaps.load()` / `EAMaps.render.*`) on d3-geo + world-atlas. |
 | `components/` | Exported React components (see Components below). |
 | `templates/app-shell/` | Reusable product **app-shell** template (`AppShell.dc.html`) on the restrained brand — sidebar, top bar, metrics, table, highlight block. |
-| `preview/` | Standalone specimen cards that populate the Design System tab (Type, Colors, Components, Charts, Maps, Spacing, Brand). |
+| `preview/` | Standalone specimen cards that populate the Design System tab (Type, Colors, Components, Navigation, Charts, Maps, Spacing, Brand). |
 | `assets/` | Brand assets — `logo.svg` (Eatable Adventures wordmark). |
 | `ui_kits/ecosystem-db/` | A high-fidelity app recreation kept on the **previous** (Swiss) visual language — self-contained on its own local CSS. *Not yet re-skinned to the refreshed brand.* |
 

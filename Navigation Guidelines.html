@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eatable Adventures — Navigation</title>
+<link rel="stylesheet" href="colors_and_type.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,300,0,0">
+<style>
+  *{box-sizing:border-box;}
+  html,body{margin:0;background:var(--paper);color:var(--fg1);font-family:var(--font-sans);}
+  .page{max-width:1080px;margin:0 auto;padding:48px 32px 80px;}
+  .eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:var(--red);margin-bottom:14px;}
+  h1{font-size:38px;font-weight:400;letter-spacing:-0.02em;margin:0 0 10px;line-height:1.08;}
+  h1 b,h2 b{font-weight:700;}
+  h2{font-size:24px;font-weight:400;letter-spacing:-0.01em;margin:56px 0 8px;line-height:1.2;}
+  h3{margin:0;font-size:16px;font-weight:600;letter-spacing:-0.01em;}
+  .lead{font-size:16px;color:var(--fg2);max-width:64ch;line-height:1.55;margin:0 0 28px;}
+  .intro{font-size:14px;color:var(--fg3);max-width:68ch;line-height:1.55;margin:0 0 20px;}
+  code{font-family:var(--font-mono);font-size:.86em;background:var(--surface-fill);padding:.1em .35em;border-radius:4px;}
+  .msi{font-family:'Material Symbols Outlined';font-weight:300;font-style:normal;font-size:20px;line-height:1;letter-spacing:normal;text-transform:none;white-space:nowrap;direction:ltr;-webkit-font-smoothing:antialiased;font-variation-settings:'opsz' 48,'wght' 300,'FILL' 0,'GRAD' 0;flex-shrink:0;}
+
+  .rules{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .rule{border-top:2px solid var(--fg1);padding-top:14px;}
+  .rule h4{margin:0 0 6px;font-size:14px;font-weight:600;}
+  .rule p{margin:0;font-size:13px;color:var(--fg3);line-height:1.5;}
+
+  .tbl{border:1px solid var(--border-1);border-radius:var(--radius-lg);overflow:hidden;overflow-x:auto;background:#fff;}
+  table{width:100%;border-collapse:collapse;font-size:13px;}
+  th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--border-2);vertical-align:top;line-height:1.5;}
+  tr:last-child td{border-bottom:0;}
+  th{background:var(--surface-cream);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--fg2);white-space:nowrap;}
+  td:first-child{font-weight:500;white-space:nowrap;}
+  td{color:var(--fg2);}
+
+  /* Stage: a framed live demo */
+  .stage{border:1px solid var(--border-1);border-radius:var(--radius-lg);overflow:hidden;background:#fff;}
+  .stage-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding:10px 16px;border-bottom:1px solid var(--border-2);background:var(--surface-grey);}
+  .stage-title{font-size:13px;font-weight:500;}
+  .stage-title small{color:var(--fg3);font-weight:400;margin-left:6px;}
+  .seg{display:inline-flex;border:1px solid var(--border-1);border-radius:var(--radius-pill);overflow:hidden;background:#fff;}
+  .seg button{border:0;background:transparent;color:var(--fg2);font:inherit;font-size:12px;padding:5px 12px;cursor:pointer;}
+  .seg button[aria-pressed="true"]{background:var(--fg1);color:#fff;}
+  .stage-body{padding:28px 20px;display:flex;justify-content:center;background:var(--surface-grey);}
+  .stage-foot{padding:10px 16px;border-top:1px solid var(--border-2);font-size:13px;color:var(--fg3);}
+  :focus-visible{outline:2px solid var(--red);outline-offset:2px;}
+
+  /* ---------- Sidebar (Terracotta) ---------- */
+  .app{display:flex;width:100%;max-width:700px;min-height:500px;background:#fff;border:1px solid var(--border-1);border-radius:var(--radius-lg);overflow:hidden;}
+  .sb{flex-shrink:0;width:224px;background:var(--paper);border-right:1px solid var(--border-1);padding:20px 0 8px;display:flex;flex-direction:column;transition:width .2s ease;}
+  .sb.collapsed{width:64px;}
+  .sb-mark{display:flex;align-items:center;gap:10px;padding:0 18px 14px;font-size:14px;font-weight:500;white-space:nowrap;overflow:hidden;}
+  .sb.collapsed .sb-mark{padding-inline:0;justify-content:center;}
+  .sb.collapsed .sb-mark span:last-child{display:none;}
+  .appmark{width:28px;height:28px;border-radius:8px;background:var(--red);color:#fff;font-weight:700;font-size:12px;display:grid;place-items:center;flex-shrink:0;}
+  .sb nav{flex:1;padding:4px 10px;display:flex;flex-direction:column;gap:2px;}
+  .sb.collapsed nav{padding-inline:8px;}
+  .row{position:relative;display:flex;align-items:center;gap:11px;width:100%;padding:9px 12px;border:0;border-radius:var(--radius-md);background:transparent;font:inherit;font-size:14px;font-weight:400;line-height:1.25;color:var(--fg2);text-align:left;cursor:pointer;transition:background-color .15s,color .15s;}
+  .row:hover{background:var(--surface-cream);color:var(--fg1);}
+  .row.active{background:var(--brand-tint);color:var(--red);font-weight:500;}
+  .row.active::before{content:"";position:absolute;left:0;top:8px;bottom:8px;width:3px;border-radius:999px;background:var(--red);}
+  .row .nav-label{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .sb.collapsed .row{justify-content:center;padding-inline:0;}
+  .sb.collapsed .row .nav-label,.sb.collapsed .mark-full{display:none;}
+  .children{margin:2px 0 2px 21px;border-left:1px solid var(--border-1);padding-left:8px;display:flex;flex-direction:column;gap:2px;}
+  .sb.collapsed .children{display:none;}
+  .row.child{padding:7px 12px;font-size:13px;gap:8px;}
+  .row.child.active::before{top:7px;bottom:7px;}
+  .util{font-size:12px;color:var(--fg4);}
+  .util:hover{background:transparent;color:var(--fg2);}
+  .util .msi{font-size:18px;}
+
+  .count{border-radius:999px;background:var(--red);color:#fff;font-size:10px;font-weight:700;line-height:1;padding:3px 6px;min-width:18px;text-align:center;font-variant-numeric:tabular-nums;}
+  .beta{font-size:9px;font-weight:500;color:var(--fg2);background:var(--surface-sand);border-radius:999px;padding:3px 6px;line-height:1;text-transform:uppercase;letter-spacing:.1em;}
+  .lock{font-size:15px;color:var(--fg3);}
+  .dot{display:none;position:absolute;top:5px;right:9px;width:8px;height:8px;border-radius:50%;}
+  .sb.collapsed .dot{display:block;}
+  .dot.d-count{background:var(--red);}
+  .dot.d-beta{background:#fff;box-shadow:inset 0 0 0 2px var(--fg3);}
+  .dot.d-lock{width:auto;height:auto;border-radius:0;top:3px;right:6px;font-size:12px;color:var(--fg3);}
+
+  .content{flex:1;min-width:0;padding:28px 24px;display:flex;flex-direction:column;gap:14px;}
+  .crumb{font-size:12px;color:var(--fg3);}
+  .content h4{margin:0;font-size:22px;font-weight:400;letter-spacing:-0.01em;}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;}
+  .kpi{background:#fff;border:1px solid var(--border-1);border-radius:var(--radius-md);padding:10px 12px;display:flex;flex-direction:column;gap:2px;}
+  .kpi span{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--fg3);}
+  .kpi b{font-size:18px;font-weight:500;font-variant-numeric:tabular-nums;}
+  .skel{height:9px;border-radius:999px;background:var(--surface-fill);}
+
+  /* ---------- Phone ---------- */
+  .phone-wrap{display:flex;flex-wrap:wrap;gap:32px;justify-content:center;align-items:flex-start;}
+  .phone{position:relative;width:300px;max-width:100%;height:600px;border-radius:44px;padding:10px;background:var(--fg1);flex-shrink:0;}
+  .screen{position:relative;height:100%;border-radius:34px;overflow:hidden;background:#fff;display:flex;flex-direction:column;}
+  .statusbar{height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:0 26px;font-size:13px;font-weight:500;font-variant-numeric:tabular-nums;}
+  .island{width:90px;height:26px;border-radius:20px;background:#000;}
+  .ph-main{flex:1;overflow:hidden;padding:8px 16px;display:flex;flex-direction:column;gap:12px;}
+  .ph-main h5{margin:0;font-size:22px;font-weight:400;letter-spacing:-0.01em;}
+  .ph-list{border:1px solid var(--border-1);border-radius:var(--radius-md);background:#fff;}
+  .ph-item{display:flex;justify-content:space-between;gap:8px;padding:10px 12px;font-size:13px;border-bottom:1px solid var(--border-2);}
+  .ph-item:last-child{border-bottom:0;}
+  .ph-item span:last-child{color:var(--fg3);font-variant-numeric:tabular-nums;}
+  .tabbar{flex-shrink:0;border-top:1px solid var(--border-1);background:#fff;padding:0 12px var(--home,12px);position:relative;}
+  .tabgrid{display:grid;grid-template-columns:repeat(5,1fr);max-width:448px;margin:0 auto;padding:4px;}
+  .tab{position:relative;min-height:56px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:6px 2px;font:inherit;font-size:11px;line-height:1;color:var(--fg3);background:none;border:0;cursor:pointer;}
+  .tab .pill{display:flex;align-items:center;justify-content:center;border-radius:999px;padding:4px 14px;transition:background-color .15s,color .15s;}
+  .tab.active{color:var(--fg1);font-weight:500;}
+  .tab.active .pill{background:var(--brand-tint);color:var(--red);}
+  .tab .tabtxt{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .tab .tdot{position:absolute;top:6px;left:50%;transform:translateX(12px);width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 0 2px #fff;}
+  .home-ind{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);width:110px;height:5px;border-radius:3px;background:var(--fg1);}
+  .safe-zone{position:absolute;left:0;right:0;bottom:0;height:var(--home,12px);background:repeating-linear-gradient(135deg,rgba(188,45,41,.14) 0 6px,transparent 6px 12px);pointer-events:none;display:none;}
+  .show-safe .safe-zone{display:block;}
+  .backdrop{position:absolute;inset:0;background:rgba(30,30,30,.35);opacity:0;pointer-events:none;transition:opacity .2s;}
+  .sheet{position:absolute;left:0;right:0;bottom:0;background:#fff;border-radius:var(--radius-xl) var(--radius-xl) 0 0;transform:translateY(105%);transition:transform .25s ease;padding-bottom:var(--home,12px);max-height:85%;display:flex;flex-direction:column;box-shadow:var(--shadow-lg);}
+  .sheet-open .backdrop{opacity:1;pointer-events:auto;}
+  .sheet-open .sheet{transform:translateY(0);}
+  .grabber{display:flex;justify-content:center;padding:12px 0 4px;}
+  .grabber span{width:36px;height:4px;border-radius:999px;background:var(--border-1);}
+  .sheet-body{overflow-y:auto;overscroll-behavior:contain;padding:0 16px 20px;}
+  .sheet-body h6{margin:4px 0 8px;font-size:16px;font-weight:500;}
+  .sheet-body .row{padding:11px 12px;}
+  .sheet-body .dot{display:none;}
+  .notes-dl{flex:1;min-width:240px;max-width:360px;margin:0;display:flex;flex-direction:column;gap:14px;font-size:14px;}
+  .notes-dl dt{font-weight:500;}
+  .notes-dl dd{margin:2px 0 0;color:var(--fg3);line-height:1.5;font-size:13px;}
+
+  /* Breakpoints */
+  .bp{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-bottom:18px;}
+  .card{background:#fff;border:1px solid var(--border-1);border-radius:var(--radius-lg);padding:20px;display:flex;flex-direction:column;gap:12px;}
+  .card p{margin:0;font-size:13px;color:var(--fg3);line-height:1.5;}
+  .schem{height:120px;border:1px solid var(--border-1);border-radius:var(--radius-md);display:flex;overflow:hidden;background:#fff;}
+  .schem .s-side{width:26%;background:var(--paper);border-right:1px solid var(--border-1);padding:10px 6px;display:flex;flex-direction:column;gap:5px;}
+  .schem i{display:block;height:6px;border-radius:3px;background:var(--border-1);}
+  .schem i.on{background:var(--red);}
+  .schem .s-main{flex:1;padding:12px;display:flex;flex-direction:column;gap:6px;}
+  .schem .s-main i{background:var(--surface-fill);}
+  .schem.ph{width:92px;height:160px;margin:0 auto;flex-direction:column;border-radius:16px;}
+  .schem .s-tab{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;padding:8px 6px 12px;border-top:1px solid var(--border-1);}
+
+  .dd{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;}
+  .dd .card h3{font-size:12px;text-transform:uppercase;letter-spacing:.12em;font-weight:700;}
+  .dd .do h3{color:var(--fg1);}
+  .dd .dont h3{color:var(--red);}
+  .dd ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:8px;font-size:13px;color:var(--fg2);line-height:1.5;}
+  .attr{font-size:11px;color:var(--fg4);margin-top:40px;}
+
+  @media (max-width:760px){
+    .page{padding:32px 16px 64px;}
+    .rules,.bp,.dd{grid-template-columns:1fr;}
+    .app .content{display:none;}
+    .app{max-width:260px;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .sb,.row,.sheet,.backdrop,.tab .pill{transition:none;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="eyebrow">Navigation</div>
+  <h1>Quiet navigation, <b>one list</b> for every layout</h1>
+  <p class="lead">How a Terracotta app moves people around: a white-paper sidebar on iPad and desktop, a bottom tab bar and More sheet on iPhone, and a proper home-screen install. The structure comes from the Venture Desk navigation; colour, type, shape and icons are Terracotta's.</p>
+
+  <div class="rules">
+    <div class="rule"><h4>Calm by default</h4><p>Idle rows are <code>--fg2</code> on white paper; navigation never sits on cream. Red appears only on the current page and on counts.</p></div>
+    <div class="rule"><h4>One "you are here"</h4><p>Only the exact current page gets the red-tint pill and red marker. A parent never lights up alongside its child.</p></div>
+    <div class="rule"><h4>Depth only where you are</h4><p>Subsections expand inside the current section only, so the list reads as one level.</p></div>
+    <div class="rule"><h4>One list, every layout</h4><p>Sidebar, tab bar and More sheet are filtered from the same nav array and permissions, so they can't drift apart.</p></div>
+    <div class="rule"><h4>Tokens only</h4><p>Every colour is a Terracotta variable. No raw hex or palette classes inside navigation components.</p></div>
+    <div class="rule"><h4>Follow the platform</h4><p>Tab bar and sheet on iPhone, sidebar on iPad and desktop, and a real home-screen install.</p></div>
+  </div>
+
+  <h2>App <b>shell</b></h2>
+  <p class="intro">One breakpoint decides the navigation model. iPad in portrait is exactly 768px wide, so it gets the sidebar rather than a stretched phone layout.</p>
+  <div class="bp">
+    <div class="card">
+      <div class="schem ph" aria-hidden="true">
+        <div class="s-main"><i></i><i></i><i style="width:70%"></i><i></i></div>
+        <div class="s-tab"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+      </div>
+      <h3>Below 768px · iPhone</h3>
+      <p>Fixed bottom tab bar with four tabs and More. Content gets a bottom spacer equal to the bar plus the safe-area inset.</p>
+    </div>
+    <div class="card">
+      <div class="schem" aria-hidden="true">
+        <div class="s-side"><i></i><i class="on"></i><i></i><i></i><i style="width:70%"></i></div>
+        <div class="s-main"><i style="width:40%"></i><i></i><i></i><i style="width:80%"></i></div>
+      </div>
+      <h3>768px and up · iPad and desktop</h3>
+      <p>White-paper sidebar, 224px wide or a 64px icon rail. The width animates over 200ms.</p>
+    </div>
+  </div>
+  <div class="tbl"><table><tbody>
+    <tr><td>Breakpoint</td><td><code>md</code> = 768px. Mobile parts are <code>md:hidden</code>; the sidebar is <code>hidden md:flex</code>.</td></tr>
+    <tr><td>Sidebar</td><td><code>w-56</code> (224px) expanded, <code>w-16</code> (64px) rail, <code>transition-[width] duration-200</code>. Ground <code>--paper</code> (white), <code>1px --border-1</code> on the right.</td></tr>
+    <tr><td>Content</td><td><code>flex-1 min-w-0</code>; on mobile, bottom padding from the tab-bar spacer (below).</td></tr>
+    <tr><td>Collapse state</td><td>A small context saved to <code>localStorage</code>, read after mount so server and client render the same first frame.</td></tr>
+  </tbody></table></div>
+
+  <h2><b>Sidebar</b></h2>
+  <p class="intro">Click rows to move the current page; switch to the rail to see the status marks turn into corner dots. Programs and Fund show their children only while you are inside them.</p>
+  <div class="stage">
+    <div class="stage-bar">
+      <div class="stage-title">Live sidebar<small>768px and up</small></div>
+      <div class="seg" role="group" aria-label="Sidebar width">
+        <button type="button" id="sbExpand" aria-pressed="true">Expanded</button>
+        <button type="button" id="sbCollapse" aria-pressed="false">Rail</button>
+      </div>
+    </div>
+    <div class="stage-body">
+      <div class="app">
+        <div class="sb" id="sb">
+          <div class="sb-mark"><span class="appmark">EA</span><span>Eatable Adventures</span></div>
+          <nav id="sbNav" aria-label="Demo navigation"></nav>
+        </div>
+        <div class="content" id="sbContent"></div>
+      </div>
+    </div>
+    <div class="stage-foot" id="sbFoot"></div>
+  </div>
+
+  <h3 style="margin:28px 0 12px">Row anatomy</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Part</th><th>Spec</th></tr></thead>
+    <tbody>
+      <tr><td>List</td><td><code>padding 4px 10px</code>, rows <code>gap 2px</code></td></tr>
+      <tr><td>Top-level row</td><td><code>flex items-center gap 11px</code>, <code>padding 9px 12px</code>, <code>--radius-md</code>, 14px Rubik 400, <code>--fg2</code></td></tr>
+      <tr><td>Hover</td><td>Text <code>--fg1</code>, ground <code>--surface-cream</code>. Colour and ground change; size never does.</td></tr>
+      <tr><td>Current page</td><td><code>--brand-tint</code> pill (no shadow) + 3px red left marker + <code>--red</code> label at 500, with <code>aria-current="page"</code></td></tr>
+      <tr><td>Icon</td><td>Material Symbols Outlined, weight 300, 20px, inherits the row colour</td></tr>
+      <tr><td>Child group</td><td><code>margin-left 21px</code>, <code>1px --border-1</code> left hairline, <code>padding-left 8px</code>. Shown only inside the current section.</td></tr>
+      <tr><td>Child row</td><td><code>padding 7px 12px</code>, 13px, no icon. Same current-page treatment.</td></tr>
+      <tr><td>Utilities</td><td>Lowest in the rail, 12px <code>--fg4</code>: Hide sidebar (and a System/Light/Dark switch once the dark theme ships)</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3 style="margin:28px 0 12px">Status marks</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Mark</th><th>Expanded</th><th>Rail</th></tr></thead>
+    <tbody>
+      <tr><td><span class="count">3</span>&nbsp; Count</td><td>Red pill, white 10px/700, <code>min-width 18px</code>, tabular, capped at <b>99+</b></td><td>8px red dot, top-right of the row</td></tr>
+      <tr><td><span class="beta">beta</span>&nbsp; Beta</td><td>Dark-cream pill, 9px/500 uppercase, tracked <code>.1em</code>, <code>--fg2</code></td><td>8px hollow <code>--fg3</code> ring</td></tr>
+      <tr><td><span class="msi lock" style="vertical-align:-3px">lock</span>&nbsp; Restricted</td><td><code>lock</code> symbol 15px in <code>--fg3</code></td><td><code>lock</code> 12px in the corner</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="rules" style="margin-top:28px">
+    <div class="rule"><h4>Exact page only</h4><p>Top-level rows match <code>pathname === href</code>. Prefix matching lights a parent and its child at once on some sections and on none in others.</p></div>
+    <div class="rule"><h4>Keep the section open</h4><p>A section stays expanded on any page under its path, including pages the nav doesn't list.</p></div>
+    <div class="rule"><h4>The rail keeps its information</h4><p>Labels hide, icons centre, the native <code>title</code> gives the tooltip, and every mark shrinks to a corner dot.</p></div>
+  </div>
+
+  <h2>iPhone <b>tab bar</b> &amp; More sheet</h2>
+  <p class="intro">Tap the tabs, open More, and switch on the safe-area overlay to see the space kept clear of the home indicator.</p>
+  <div class="stage">
+    <div class="stage-bar">
+      <div class="stage-title">Live phone<small>below 768px</small></div>
+      <div class="seg" role="group" aria-label="Safe area overlay">
+        <button type="button" id="safeOff" aria-pressed="true">Plain</button>
+        <button type="button" id="safeOn" aria-pressed="false">Show safe area</button>
+      </div>
+    </div>
+    <div class="stage-body">
+      <div class="phone-wrap">
+        <div class="phone">
+          <div class="screen" id="screen" style="--home:34px">
+            <div class="statusbar"><span>9:41</span><span class="island"></span><span>●●●</span></div>
+            <div class="ph-main" id="phMain"></div>
+            <div class="tabbar"><nav class="tabgrid" id="tabgrid" aria-label="Demo tabs"></nav><div class="safe-zone"></div><div class="home-ind"></div></div>
+            <div class="backdrop" id="backdrop"></div>
+            <div class="sheet" role="dialog" aria-label="More navigation">
+              <div class="grabber"><span></span></div>
+              <div class="sheet-body"><h6>Go to</h6><div id="sheetList"></div></div>
+              <div class="safe-zone"></div>
+            </div>
+          </div>
+        </div>
+        <dl class="notes-dl">
+          <div><dt>Four tabs and More</dt><dd>Picked from a priority list, then filtered by what the user can access. Everything else lives in the sheet.</dd></div>
+          <div><dt>Centred and capped</dt><dd>Tabs sit in a <code>max-w-md</code> (448px) grid, so a wide phone doesn't push them into corners the thumb can't reach.</dd></div>
+          <div><dt>Current tab</dt><dd>Label goes to <code>--fg1</code>/500; the icon turns red inside a <code>--brand-tint</code> pill, the same tint as the sidebar's current row. The only red in the bar.</dd></div>
+          <div><dt>Unread</dt><dd>An 8px red dot beside the icon, never a number.</dd></div>
+          <div><dt>More is current</dt><dd>When the page lives in the sheet, the More tab carries the current state.</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+
+  <div class="tbl" style="margin-top:18px"><table>
+    <thead><tr><th>Part</th><th>Spec</th></tr></thead>
+    <tbody>
+      <tr><td>Bar</td><td><code>fixed inset-x-0 bottom-0 z-40</code>, white, <code>1px --border-1</code> top edge</td></tr>
+      <tr><td>Safe area</td><td><code>pb-[max(0.75rem,env(safe-area-inset-bottom))]</code>, and the same <code>max()</code> on left and right for landscape</td></tr>
+      <tr><td>Grid</td><td><code>grid grid-cols-5 mx-auto max-w-md p-1</code></td></tr>
+      <tr><td>Tab</td><td><code>min-h-14</code> (56px), column, <code>gap 4px</code>, 11px label, <code>--fg3</code></td></tr>
+      <tr><td>Icon pill</td><td><code>rounded-full px-3.5 py-1</code>; <code>--brand-tint</code> + red icon when current</td></tr>
+      <tr><td>Content spacer</td><td><code>pb-[calc(4.5rem+max(0.75rem,env(safe-area-inset-bottom)))] md:pb-0</code>, exported from the tab-bar file so the two numbers can't drift</td></tr>
+      <tr><td>Sheet</td><td>shadcn <code>Sheet</code> (Radix Dialog) from the bottom; <code>--radius-xl</code> top corners, <code>--shadow-lg</code>, backdrop <code>rgba(30,30,30,.35)</code>, ESC and backdrop close it</td></tr>
+      <tr><td>Grabber</td><td><code>h-1 w-9 rounded-full</code> in <code>--border-1</code>, centred, <code>pt-3 pb-1</code></td></tr>
+      <tr><td>Sheet body</td><td><code>max-h-[calc(85svh-2rem)] overflow-y-auto overscroll-contain px-4 pb-6</code>, plus <code>pb-[env(safe-area-inset-bottom)]</code> on the sheet</td></tr>
+      <tr><td>Sheet heading</td><td>Visible "Go to" at 16/500, plus an <code>sr-only</code> <code>SheetTitle</code> for screen readers</td></tr>
+      <tr><td>Sheet rows</td><td>The sidebar row styles, so the two read as one system</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2>iOS &amp; iPadOS <b>install</b></h2>
+  <p class="intro">Opened from the home screen, the app runs without Safari's address bar and toolbar. These settings make that work and keep the EA app mark on the icon.</p>
+  <div class="dd">
+    <div class="card do">
+      <h3>Do</h3>
+      <ul>
+        <li>Ship a manifest with <code>display: standalone</code>.</li>
+        <li>Set <code>appleWebApp: { capable: true, statusBarStyle: 'default' }</code> for older iOS.</li>
+        <li>Provide an apple-touch-icon for each size: 180 for iPhone, 152 and 167 for iPad. Use the EA app mark (red rounded tile, white <b>EA</b>). iOS rescales a single icon badly.</li>
+        <li>Set <code>themeColor</code> to <code>#FFFFFF</code> (<code>--background</code>), and add a dark value when the dark theme ships.</li>
+        <li>Version the service worker and bump it to push a brand change.</li>
+      </ul>
+    </div>
+    <div class="card dont">
+      <h3>Don't</h3>
+      <ul>
+        <li>Set <code>appleWebApp.title</code>. It overrides the manifest's <code>short_name</code> and pins every client to one name.</li>
+        <li>Block zoom with <code>maximumScale</code> or <code>userScalable: false</code>. People pinch-zoom tables of figures.</li>
+        <li>Add <code>viewportFit: 'cover'</code> unless the whole shell pays back every inset.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Rules for <b>every app</b></h2>
+  <div class="rules">
+    <div class="rule"><h4>Highlight exactly</h4><p>A nav row lights only on its exact page. Child rows may match by prefix.</p></div>
+    <div class="rule"><h4>Tokens, enforced</h4><p>Forbid raw hex and palette classes such as <code>bg-gray-100</code> in components, and enforce it with a lint rule or test.</p></div>
+    <div class="rule"><h4>Numbers line up</h4><p>Counts and figures use <code>tabular-nums</code>. Mono is for code and IDs only.</p></div>
+    <div class="rule"><h4>Colour means status</h4><p>In navigation, red is "you are here" or "needs attention", never decoration. Yellow stays the light point and never marks status.</p></div>
+    <div class="rule"><h4>Hidden isn't secured</h4><p>Hiding a nav item is not access control. Gate the route or page itself.</p></div>
+    <div class="rule"><h4>One source</h4><p>Derive every navigation layout from one list, filtered by permissions.</p></div>
+  </div>
+
+  <p class="attr">Adapted from the Venture Desk navigation reference (captured 11 Oct 2026): sidebar, tab bar, More sheet and PWA setup. Venture Desk's grey active pill, amber and blue status hues, Instrument Sans and lucide icons are replaced by Terracotta's red-tint pill with red marker on white paper, EAV palette, Rubik and Material Symbols. Demo data is illustrative.</p>
+</div>
+
+<script>
+(function () {
+  var NAV = [
+    { href: '/overview', label: 'Overview', icon: 'dashboard' },
+    { href: '/inbox', label: 'Inbox', icon: 'inbox', count: 3 },
+    { href: '/programs', label: 'Programs', icon: 'deployed_code', children: [
+      { href: '/programs/cohorts', label: 'Cohorts' },
+      { href: '/programs/pilots', label: 'Pilots' },
+      { href: '/programs/results', label: 'Results' }
+    ]},
+    { href: '/hubs', label: 'Hubs', icon: 'hub' },
+    { href: '/startups', label: 'Startups', icon: 'rocket_launch' },
+    { href: '/fund', label: 'Fund', icon: 'account_balance', children: [
+      { href: '/fund/overview', label: 'Overview' },
+      { href: '/fund/capital-accounts', label: 'Capital accounts' },
+      { href: '/fund/capital-calls', label: 'Capital calls', lock: true }
+    ]},
+    { href: '/diligence', label: 'Diligence', icon: 'description', beta: true },
+    { href: '/review', label: 'Review', icon: 'fact_check', count: 128 },
+    { href: '/settings', label: 'Settings', icon: 'settings', lock: true }
+  ];
+  var PAGES = {
+    '/overview': ['Overview', 'All programs', [['Startups', '214'], ['Pilots live', '31'], ['Corporates', '70']]],
+    '/inbox': ['Inbox', 'Updates', [['Unread', '3'], ['This week', '17'], ['Parsed', '94%']]],
+    '/programs': ['Programs', '2026', [['Programs', '6'], ['Cohorts', '12'], ['Pilots', '31']]],
+    '/programs/cohorts': ['Cohorts', 'Programs', [['Active', '4'], ['Startups', '48'], ['Mentors', '36']]],
+    '/programs/pilots': ['Pilots', 'Programs', [['Live', '31'], ['Validated', '19'], ['Avg weeks', '14']]],
+    '/programs/results': ['Results', 'Programs', [['Contracts', '27'], ['Revenue', '€4.6m'], ['Countries', '9']]],
+    '/hubs': ['Hubs', 'Network', [['Hubs', '7'], ['Countries', '6'], ['Partners', '58']]],
+    '/startups': ['Startups', 'Portfolio', [['Active', '214'], ['New', '22'], ['Exited', '5']]],
+    '/fund': ['Fund', 'Fund I', [['Committed', '€42.0m'], ['Called', '65%'], ['LPs', '86']]],
+    '/fund/overview': ['Overview', 'Fund › Fund I', [['Committed', '€42.0m'], ['Called', '€27.3m'], ['Dry powder', '€14.7m']]],
+    '/fund/capital-accounts': ['Capital accounts', 'Fund › Fund I', [['Partners', '86'], ['Contributed', '€27.3m'], ['Distributed', '€4.9m']]],
+    '/fund/capital-calls': ['Capital calls', 'Fund › Fund I', [['Issued', '6'], ['Outstanding', '€1.2m'], ['Paid', '97%']]],
+    '/diligence': ['Diligence', 'Beta', [['Active', '4'], ['Memos', '11'], ['Questions', '57']]],
+    '/review': ['Review', 'Queue', [['Waiting', '128'], ['Today', '14'], ['Oldest', '6d']]],
+    '/settings': ['Settings', 'Admin only', [['Members', '7'], ['Hubs', '7'], ['Domains', '1']]]
+  };
+  function msi(name, cls) { return '<span class="msi' + (cls ? ' ' + cls : '') + '" aria-hidden="true">' + name + '</span>'; }
+  function marks(it) {
+    if (it.count) return '<span class="count mark-full">' + (it.count > 99 ? '99+' : it.count) + '</span><span class="dot d-count"></span>';
+    if (it.beta) return '<span class="beta mark-full">beta</span><span class="dot d-beta"></span>';
+    if (it.lock) return msi('lock', 'lock mark-full') + '<span class="dot d-lock msi" aria-hidden="true">lock</span>';
+    return '';
+  }
+
+  /* Sidebar */
+  var st = { active: '/fund/capital-accounts', collapsed: false };
+  var sb = document.getElementById('sb'), sbNav = document.getElementById('sbNav');
+  function renderSidebar() {
+    var h = '';
+    NAV.forEach(function (it) {
+      var on = st.active === it.href;
+      var open = on || st.active.indexOf(it.href + '/') === 0;
+      h += '<div><button type="button" class="row' + (on ? ' active' : '') + '" data-href="' + it.href + '"' + (on ? ' aria-current="page"' : '') +
+        (st.collapsed ? ' title="' + it.label + '"' : '') + '>' + msi(it.icon) + '<span class="nav-label">' + it.label + '</span>' + marks(it) + '</button>';
+      if (it.children && open) {
+        h += '<div class="children">';
+        it.children.forEach(function (c) {
+          var a = st.active === c.href;
+          h += '<button type="button" class="row child' + (a ? ' active' : '') + '" data-href="' + c.href + '"' + (a ? ' aria-current="page"' : '') + '><span class="nav-label">' + c.label + '</span>' + (c.lock ? msi('lock', 'lock') : '') + '</button>';
+        });
+        h += '</div>';
+      }
+      h += '</div>';
+    });
+    h += '<div style="flex:1;min-height:16px"></div>';
+    var t = st.collapsed ? 'Show sidebar' : 'Hide sidebar';
+    h += '<button type="button" class="row util" id="sbToggle" title="' + t + '">' + msi(st.collapsed ? 'left_panel_open' : 'left_panel_close') + '<span class="nav-label">' + t + '</span></button>';
+    sbNav.innerHTML = h;
+    sb.classList.toggle('collapsed', st.collapsed);
+    document.getElementById('sbExpand').setAttribute('aria-pressed', String(!st.collapsed));
+    document.getElementById('sbCollapse').setAttribute('aria-pressed', String(st.collapsed));
+    document.getElementById('sbFoot').innerHTML = 'Current page: <code>' + st.active + '</code>';
+    var p = PAGES[st.active] || PAGES['/overview'];
+    var c = '<div class="crumb">' + p[1] + '</div><h4>' + p[0] + '</h4><div class="kpis">';
+    p[2].forEach(function (k) { c += '<div class="kpi"><span>' + k[0] + '</span><b>' + k[1] + '</b></div>'; });
+    c += '</div><div class="skel" style="width:92%"></div><div class="skel" style="width:78%"></div><div class="skel" style="width:85%"></div><div class="skel" style="width:60%"></div>';
+    document.getElementById('sbContent').innerHTML = c;
+  }
+  sbNav.addEventListener('click', function (e) {
+    var b = e.target.closest('button');
+    if (!b) return;
+    if (b.id === 'sbToggle') st.collapsed = !st.collapsed;
+    else st.active = b.dataset.href;
+    renderSidebar();
+  });
+  document.getElementById('sbExpand').addEventListener('click', function () { st.collapsed = false; renderSidebar(); });
+  document.getElementById('sbCollapse').addEventListener('click', function () { st.collapsed = true; renderSidebar(); });
+  renderSidebar();
+
+  /* Phone */
+  var TABS = ['/overview', '/inbox', '/programs', '/startups'];
+  var byHref = {};
+  NAV.forEach(function (i) { byHref[i.href] = i; });
+  var ph = { active: '/overview' };
+  var screen = document.getElementById('screen');
+  function renderPhone() {
+    var h = '', inTabs = false;
+    TABS.forEach(function (href) {
+      var it = byHref[href];
+      var a = ph.active === href || ph.active.indexOf(href + '/') === 0;
+      if (a) inTabs = true;
+      h += '<button type="button" class="tab' + (a ? ' active' : '') + '" data-href="' + href + '"' + (a ? ' aria-current="page"' : '') + '><span class="pill">' + msi(it.icon) + '</span><span class="tabtxt">' + it.label + '</span>' + (it.count ? '<span class="tdot"></span>' : '') + '</button>';
+    });
+    h += '<button type="button" class="tab' + (inTabs ? '' : ' active') + '" id="moreBtn"><span class="pill">' + msi('more_horiz') + '</span><span class="tabtxt">More</span></button>';
+    document.getElementById('tabgrid').innerHTML = h;
+
+    var p = PAGES[ph.active] || PAGES['/overview'];
+    var m = '<div class="crumb">' + p[1] + '</div><h5>' + p[0] + '</h5><div class="ph-list">';
+    p[2].forEach(function (k) { m += '<div class="ph-item"><span>' + k[0] + '</span><span>' + k[1] + '</span></div>'; });
+    m += '</div><div class="ph-list">';
+    [['Madrid hub', '41'], ['Lisbon hub', '18'], ['Mexico City hub', '27'], ['Riyadh hub', '12']].forEach(function (r) {
+      m += '<div class="ph-item"><span>' + r[0] + '</span><span>' + r[1] + '</span></div>';
+    });
+    document.getElementById('phMain').innerHTML = m + '</div>';
+
+    var s = '';
+    NAV.filter(function (i) { return TABS.indexOf(i.href) === -1; }).forEach(function (it) {
+      var a = ph.active === it.href;
+      s += '<button type="button" class="row' + (a ? ' active' : '') + '" data-href="' + it.href + '"' + (a ? ' aria-current="page"' : '') + '>' + msi(it.icon) + '<span class="nav-label">' + it.label + '</span>' + marks(it) + '</button>';
+    });
+    document.getElementById('sheetList').innerHTML = s;
+  }
+  document.getElementById('tabgrid').addEventListener('click', function (e) {
+    var b = e.target.closest('button');
+    if (!b) return;
+    if (b.id === 'moreBtn') { screen.classList.add('sheet-open'); return; }
+    ph.active = b.dataset.href; renderPhone();
+  });
+  document.getElementById('backdrop').addEventListener('click', function () { screen.classList.remove('sheet-open'); });
+  document.getElementById('sheetList').addEventListener('click', function (e) {
+    var b = e.target.closest('button');
+    if (!b) return;
+    ph.active = b.dataset.href; screen.classList.remove('sheet-open'); renderPhone();
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') screen.classList.remove('sheet-open'); });
+  function safe(on) {
+    screen.classList.toggle('show-safe', on);
+    document.getElementById('safeOn').setAttribute('aria-pressed', String(on));
+    document.getElementById('safeOff').setAttribute('aria-pressed', String(!on));
+  }
+  document.getElementById('safeOn').addEventListener('click', function () { safe(true); });
+  document.getElementById('safeOff').addEventListener('click', function () { safe(false); });
+  renderPhone();
+})();
+</script>
+</body>
+</html>

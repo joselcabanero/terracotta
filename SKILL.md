@@ -4,7 +4,7 @@ description: Use this skill (Terracotta — the Eatable Adventures design system
 user-invocable: true
 ---
 
-Read the `README.md` file within this skill, and explore the other available files (`DESIGN.md`, `colors_and_type.css`, `grid.css`, `assets/`, `preview/`, `Brand Foundations.html`, `templates/app-shell/`).
+Read the `README.md` file within this skill, and explore the other available files (`DESIGN.md`, `colors_and_type.css`, `grid.css`, `assets/`, `preview/`, `Brand Foundations.html`, `Navigation Guidelines.html`, `templates/app-shell/`).
 
 If creating visual artifacts (slides, mocks, throwaway prototypes, etc), copy assets out and create static HTML files for the user to view. If working on production code, copy assets and read the rules here to become an expert in designing with this brand. For anything app-like, start from `templates/app-shell/`; to see the system whole, open `Brand Foundations.html`.
 
@@ -16,6 +16,7 @@ Key facts to internalize before you start:
 - **Icons:** Google Material Symbols (Outlined, weight 300), ~18–22px, functional & secondary. Never hand-roll SVG icons or use emoji.
 - **Charts:** fixed hierarchy Red→Orange→Burgundy→Yellow→Dark Cream→Grey→Black, by relevance. 17 specified types in `Charts Catalogue.html` (KPI, bar, line, area, donut, stacked, funnel, progress, heatmap, sunburst, timeline, radar, scatter, waterfall, treemap, sankey). Max five series; no 3D/shadows/full pies.
 - **Maps:** real Natural Earth geometry via `maps-brand.js` (d3-geo). Land grey, water paper, data in rank colours, HQ = yellow light point. 6 types in `Maps Catalogue.html` (hub network, coverage, choropleth, region focus, bubble, flow).
+- **Navigation:** one nav list for every layout — white-paper sidebar (224px, or 64px rail) at 768px+, iPhone tab bar (four tabs + More) and More bottom sheet below. Exact-page highlight only; children open only in the current section; status marks are a red count, cream beta or grey lock, never amber/blue. Spec and demos in `Navigation Guidelines.html`.
 - **Voice:** terse, concrete, proof-driven — confident, not arrogant. No empty words, no hype, no emoji. Brand names exact: Eatable Adventures · The Beating Heart of Food Innovation · Let's Beat.
 
 If the user invokes this skill without any other guidance, ask them what they want to build or design, ask some questions, and act as an expert designer who outputs HTML artifacts _or_ production code, depending on the need.

@@ -8,13 +8,13 @@
 <style>
   html,body{margin:0;background:#fff;color:var(--fg1);font-family:var(--font-sans);}
   .wrap{padding:20px 32px;display:flex;gap:30px;align-items:center;}
-  .rail{width:210px;background:var(--surface-cream);border:1px solid var(--border-2);border-radius:var(--radius-lg);padding:12px 10px;display:flex;flex-direction:column;gap:2px;}
+  .rail{width:210px;background:var(--paper);border:1px solid var(--border-1);border-radius:var(--radius-lg);padding:12px 10px;display:flex;flex-direction:column;gap:2px;}
   .glabel{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--fg4);padding:6px 12px 4px;}
   .nav{display:flex;align-items:center;gap:11px;padding:9px 12px;font-size:14px;font-weight:500;color:var(--fg2);text-decoration:none;border-radius:var(--radius-md);position:relative;}
   .material-symbols-outlined{font-size:20px;line-height:1;}
-  .nav.active{background:#fff;color:var(--red);font-weight:500;box-shadow:var(--shadow-sm);}
+  .nav.active{background:var(--brand-tint);color:var(--red);font-weight:500;}
   .nav.active::before{content:"";position:absolute;left:0;top:8px;bottom:8px;width:3px;border-radius:999px;background:var(--red);}
-  .nav.idle:hover{background:rgba(255,255,255,.6);color:var(--fg1);}
+  .nav.idle:hover{background:var(--surface-cream);color:var(--fg1);}
   .nav.disabled{opacity:.4;}
   .legend{width:160px;flex-shrink:0;display:flex;flex-direction:column;gap:10px;font-size:11px;color:var(--fg3);}
   .legend b{color:var(--fg1);font-weight:700;}
@@ -32,7 +32,7 @@
     <a class="nav disabled"><span class="material-symbols-outlined">travel_explore</span>Scout</a>
   </div>
   <div class="legend">
-    <span><b>active</b><br>white pill + red marker &amp; label</span>
+    <span><b>active</b><br>red-tint pill + red marker &amp; label, on white paper</span>
     <span><b>idle</b><br>warm grey, hover lift</span>
     <span><b>disabled</b><br>40% opacity</span>
   </div>

@@ -90,7 +90,7 @@ Brand extras (full hex, consume directly): `--red #BC2D29 · --burgundy #450E14 
 - **Ghost:** transparent, `--fg2` → hover cream fill.
 - **Card / box:** white (or cream for highlighted blocks), `1px` warm border, **rounded** (`radius-lg` 16px), flat or `--shadow-sm` at rest. Rounding drops only when a block bleeds to the format edge.
 - **Input / search:** `1px` warm border, **rounded** (md, or pill for search); focus → **red** border + `0 0 0 3px rgba(188,45,41,.15)` ring.
-- **Sidebar nav:** cream rail; active = white pill + `--shadow-sm` + **3px red left marker** + red label; idle `--fg2` → hover lift; disabled 40%.
+- **Sidebar nav:** **white paper** ground (`--paper`, `1px --border-1` edge) — never cream; active = `--brand-tint` pill + **3px red left marker** + red label; idle `--fg2` → hover `--surface-cream`; disabled 40%. Full navigation model (rail, iPhone tab bar, More sheet, install): **§15**.
 - **Badges / pills:** rounded-full, 11px/500 — red ("Live"), cream, outline, burgundy ("Closed"). A 7px leading dot for status.
 - **Table:** rounded container, cream header row (11px 700 UPPERCASE), `1px --border-2` row dividers, hover cream; numerics tabular; sort glyph in red.
 - **App mark:** EAV Red **rounded** tile with `EA` in Rubik bold, paper-white — for favicons/avatars/compact chrome. The full wordmark (`assets/logo.svg`) signs everything else.
@@ -159,6 +159,7 @@ Dialog · Alert-dialog (destructive confirm) · Drawer/sheet · Popover · Toolt
 → specimens: `preview/component-dialog · -alertdialog · -drawer · -popover-tooltip · -toast · -callout · -empty-state · -loading`.
 
 **Tier 3 — Navigation & data** *(as the app grows)*
+App navigation (sidebar, rail, tab bar, More sheet) is specified in §15.
 Tabs · Breadcrumbs · Dropdown menu · Accordion (collapse) · Pagination · Interactive table (sort/select/sticky — replaces today's static one) · Avatar · Tree.
 
 **Deliberately deferred** (add only on real demand): hotkeys palette, dark theme, density modes. Note them so the absence is a decision, not an oversight.
@@ -191,6 +192,23 @@ Apps (e.g. jarvis) are built on shadcn/ui. The brand is delivered as **one CSS f
 
 ---
 
+## 15. Navigation — sidebar, tab bar, More sheet
+
+Full spec with live demos: **`Navigation Guidelines.html`** (cards: `preview/nav-sidebar-rail.html`, `preview/nav-tabbar.html`). The structure is adapted from the Venture Desk navigation, and every visual is Terracotta's.
+
+- **One breakpoint, `md` = 768px.** Below it, a fixed bottom **tab bar** (four tabs + More). At 768px and up (iPad portrait included), the **white-paper sidebar**: 224px expanded or a 64px icon rail, width animated over 200ms, collapse state saved to `localStorage` and read after mount.
+- **One nav array** feeds the sidebar, tab bar and More sheet, filtered by permissions. Hiding an item is **not** access control; gate the route itself.
+- **One "you are here".** Highlight a top-level row only on its **exact** page (`pathname === href`); child rows may match by prefix. A parent never lights up with its child. The current page uses the standard Terracotta active row (`--brand-tint` pill, 3px red marker, red label, `aria-current="page"`).
+- **Depth only where you are.** Children appear only inside the current section (`margin-left 21px`, `1px --border-1` hairline, 13px rows, no icon) and stay open on any page under that path.
+- **Status marks.** Count: red pill, white 10px/700, tabular, capped at `99+`. Beta: dark-cream pill, 9px uppercase. Restricted: `lock` symbol in `--fg3`. In the rail, labels hide, `title` gives the tooltip, and each mark becomes an 8px corner dot (red, hollow `--fg3` ring, or a 12px lock). **Never** amber, blue or yellow for status; yellow stays the light point.
+- **Navigation surfaces are always white paper** (`--paper`): sidebar, rail, tab bar and More sheet. Cream is for editorial blocks, never nav chrome.
+- **Tab bar:** white, `1px --border-1` top edge, `grid-cols-5 max-w-md` centred, tabs `min-h 56px` with 11px labels in `--fg3`. Current tab: label `--fg1`/500, icon red in a `--brand-tint` pill. Unread = 8px red dot, never a number. Padding `max(0.75rem, env(safe-area-inset-*))` on bottom, left and right; content spacer `calc(4.5rem + max(0.75rem, env(safe-area-inset-bottom)))`, exported next to the bar.
+- **More sheet:** shadcn `Sheet` from the bottom, `--radius-xl` top corners, `--shadow-lg`, grabber 36×4 in `--border-1`, body `max-h-[calc(85svh-2rem)] overscroll-contain`, safe-area bottom padding, visible "Go to" heading plus an `sr-only` title. Rows reuse the sidebar row styles.
+- **iOS install:** manifest `display: standalone`; `appleWebApp.capable`; apple-touch-icons at 180/152/167 using the EA app mark; `themeColor #FFFFFF`. Don't set `appleWebApp.title`, don't block zoom, don't use `viewportFit: 'cover'` unless the whole shell pays back the insets.
+- **Motion:** colour/ground transitions 150ms, rail 200ms, sheet 250ms; all off under `prefers-reduced-motion`.
+
+---
+
 ## Pre-ship checklist
 - [ ] Rubik only; headlines Regular + one bold (or red) fragment; left-aligned; 8px rhythm.
 - [ ] EAV palette only; red as a mark; cream blocks; yellow = light point, orange = gradient stop, burgundy = depth.
@@ -201,3 +219,4 @@ Apps (e.g. jarvis) are built on shadcn/ui. The brand is delivered as **one CSS f
 - [ ] Copy terse, concrete, confident — never hype.
 - [ ] Every input has all states: rest · hover · focus · filled · **invalid (icon+text, not colour alone)** · disabled · loading.
 - [ ] Fields wrapped in a form group (label + helper/error); focus ring never suppressed; destructive actions use a blocking dialog, not a toast.
+- [ ] Navigation: one nav array for sidebar/tab bar/More sheet; exact-page highlight only; tab bar below 768px with safe-area `max()` padding; status marks in red/cream/grey, never amber or blue.

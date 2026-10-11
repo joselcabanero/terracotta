@@ -1,0 +1,67 @@
+<!-- @dsCard group="Navigation" viewport="700x460" name="Sidebar & rail" subtitle="White paper · exact-page pill · section depth · status marks become corner dots" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,300,0,0">
+<style>
+  html,body{margin:0;background:#fff;color:var(--fg1);font-family:var(--font-sans);}
+  .wrap{padding:20px 28px;display:flex;gap:28px;align-items:flex-start;}
+  .material-symbols-outlined{font-size:20px;line-height:1;font-variation-settings:'opsz' 48,'wght' 300,'FILL' 0,'GRAD' 0;}
+  .rail{background:var(--paper);border:1px solid var(--border-1);border-radius:var(--radius-lg);padding:10px;display:flex;flex-direction:column;gap:2px;}
+  .rail.wide{width:224px;}
+  .rail.slim{width:64px;padding-inline:8px;}
+  .row{position:relative;display:flex;align-items:center;gap:11px;padding:9px 12px;border-radius:var(--radius-md);font-size:14px;color:var(--fg2);}
+  .slim .row{justify-content:center;padding-inline:0;}
+  .row .nav-label{flex:1;white-space:nowrap;}
+  .row.active{background:var(--brand-tint);color:var(--red);font-weight:500;}
+  .row.active::before{content:"";position:absolute;left:0;top:8px;bottom:8px;width:3px;border-radius:999px;background:var(--red);}
+  .children{margin:2px 0 2px 21px;border-left:1px solid var(--border-1);padding-left:8px;display:flex;flex-direction:column;gap:2px;}
+  .child{padding:7px 12px;font-size:13px;gap:8px;}
+  .child.active::before{top:7px;bottom:7px;}
+  .count{border-radius:999px;background:var(--red);color:#fff;font-size:10px;font-weight:700;line-height:1;padding:3px 6px;min-width:18px;text-align:center;font-variant-numeric:tabular-nums;}
+  .beta{font-size:9px;font-weight:500;color:var(--fg2);background:var(--surface-sand);border-radius:999px;padding:3px 6px;line-height:1;text-transform:uppercase;letter-spacing:.1em;}
+  .lock{font-size:15px;color:var(--fg3);}
+  .dot{position:absolute;top:5px;right:9px;width:8px;height:8px;border-radius:50%;}
+  .d-count{background:var(--red);}
+  .d-beta{background:#fff;box-shadow:inset 0 0 0 2px var(--fg3);}
+  .d-lock{position:absolute;top:3px;right:6px;font-size:12px;color:var(--fg3);}
+  .legend{flex:1;display:flex;flex-direction:column;gap:10px;font-size:11px;color:var(--fg3);line-height:1.45;padding-top:4px;}
+  .legend b{color:var(--fg1);font-weight:700;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="rail wide">
+    <div class="row"><span class="material-symbols-outlined">dashboard</span><span class="nav-label">Overview</span></div>
+    <div class="row"><span class="material-symbols-outlined">inbox</span><span class="nav-label">Inbox</span><span class="count">3</span></div>
+    <div class="row"><span class="material-symbols-outlined">deployed_code</span><span class="nav-label">Programs</span></div>
+    <div class="row"><span class="material-symbols-outlined">account_balance</span><span class="nav-label">Fund</span></div>
+    <div class="children">
+      <div class="row child"><span class="nav-label">Overview</span></div>
+      <div class="row child active"><span class="nav-label">Capital accounts</span></div>
+      <div class="row child"><span class="nav-label">Capital calls</span><span class="material-symbols-outlined lock">lock</span></div>
+    </div>
+    <div class="row"><span class="material-symbols-outlined">description</span><span class="nav-label">Diligence</span><span class="beta">beta</span></div>
+    <div class="row"><span class="material-symbols-outlined">fact_check</span><span class="nav-label">Review</span><span class="count">99+</span></div>
+    <div class="row"><span class="material-symbols-outlined">settings</span><span class="nav-label">Settings</span><span class="material-symbols-outlined lock">lock</span></div>
+  </div>
+  <div class="rail slim">
+    <div class="row"><span class="material-symbols-outlined">dashboard</span></div>
+    <div class="row"><span class="material-symbols-outlined">inbox</span><span class="dot d-count"></span></div>
+    <div class="row"><span class="material-symbols-outlined">deployed_code</span></div>
+    <div class="row"><span class="material-symbols-outlined">account_balance</span></div>
+    <div class="row"><span class="material-symbols-outlined">description</span><span class="dot d-beta"></span></div>
+    <div class="row"><span class="material-symbols-outlined">fact_check</span><span class="dot d-count"></span></div>
+    <div class="row"><span class="material-symbols-outlined">settings</span><span class="material-symbols-outlined d-lock">lock</span></div>
+  </div>
+  <div class="legend">
+    <span><b>One "you are here"</b> — only the exact page gets the red-tint pill and marker; Fund stays idle.</span>
+    <span><b>Depth where you are</b> — children open inside the current section only.</span>
+    <span><b>Marks</b> — red count (99+ cap), dark-cream beta, grey lock.</span>
+    <span><b>Rail (64px)</b> — labels hide, marks become 8px corner dots, <code>title</code> is the tooltip.</span>
+  </div>
+</div>
+</body>
+</html>
